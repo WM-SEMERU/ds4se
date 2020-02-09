@@ -1,0 +1,39 @@
+Use case name MODIFICABANNER
+Changing the image of a banner ad.
+Partecipating
+Actor initialization Operator Point Of Restaurants
+Entry
+conditions � The Point Of Restaurant Operator has successfully authenticated to the system.
+Flow of events User System
+1. Select the editing functionality of the banner.
+2 View the list of banner associated with the point of rest.
+3 Select a banner from the list and enter the editing functionality.
+4 Displays a form for the selection of an image.
+5 Select a picture and send the request to change the system.
+6. Check the characteristics of the inserted and asks for confirmation of the change of the banner. In the event that the inserted image is not valid, enable the use case Errored.
+7 Confirmation of the transaction change.
+8 Bookmark this new image for the selected banner.
+Exit conditions � The system shall notify the successful modification of the banner.
+� The Point Of Operator Restaurant cancels the operation.
+� Interruption of the connection to the server ETOUR.
+Quality requirements
+
+Usa il nome del caso MODIFICABANNER
+Modifica dell'immagine di un banner pubblicitario.
+Partecipare
+Inizializzazione degli attori Operator Point Of Restaurants
+Iscrizione
+condizioni L'operatore Point Of Restaurant è stato autenticato correttamente nel sistema.
+Flusso di eventi Sistema utente
+1. Seleziona la funzionalità di modifica del banner.
+2 Visualizza l'elenco di banner associato al punto di riposo.
+3 Seleziona un banner dall'elenco e inserisci la funzionalità di modifica.
+4 Visualizza un modulo per la selezione di un'immagine.
+5 Selezionare un'immagine e inviare la richiesta per modificare il sistema.
+6. Verifica le caratteristiche dell'inserito e chiede conferma del cambio del banner. Nel caso in cui l'immagine inserita non sia valida, abilitare il caso d'uso Errored.
+7 Conferma della modifica della transazione.
+8 Aggiungi questa nuova immagine ai segnalibri per il banner selezionato.
+Condizioni di uscita Il sistema notificherà la corretta modifica del banner.
+Il Point Of Operator Restaurant annulla l'operazione.
+Interruzione della connessione al server ETOUR.
+Requisiti di qualità

@@ -1,0 +1,37 @@
+Use case name RICHIESTACONVENZIONE
+Require to conclude a Convention between the points of rest and the agency involved.
+Partecipating
+Actor initialization Operator Point Of Restaurants
+Entry
+conditions � The Point Of Restaurant Operator has successfully authenticated to the system.
+Flow of events User System
+1. Enable the functionality to request the Convention to the Agency.
+2 Displays a form for entering data of the Convention.
+3 Inserts the data in the form of the agreement and submit.
+4 Verify the data entered and asks for confirmation of the request. Where the data is invalid or insufficient, the system activates the use case Errored.
+5 Confirm the operation.
+6. Send the request to the Convention.
+Exit conditions � The notification about the call for the Convention to the Agency.
+� Restaurant Point Of Operator cancels the operation.
+� Interruption of the connection to the server ETOUR.
+Quality
+requirements
+
+Usa il nome del caso RICHIESTACONVENZIONE
+Richiedere di concludere una convenzione tra i punti di sosta e l'agenzia coinvolta.
+Partecipare
+Inizializzazione degli attori Operator Point Of Restaurants
+Iscrizione
+condizioni L'operatore Point Of Restaurant è stato autenticato correttamente nel sistema.
+Flusso di eventi Sistema utente
+1. Abilitare la funzionalità per richiedere la Convenzione all'Agenzia.
+2 Visualizza un modulo per l'inserimento dei dati della convenzione.
+3 Inserisce i dati nella forma dell'accordo e invia.
+4 Verificare i dati inseriti e chiedere conferma della richiesta. Laddove i dati non sono validi o insufficienti, il sistema attiva il caso d'uso Errored.
+5 Confermare l'operazione.
+6. Invia la richiesta alla Convenzione.
+Condizioni di uscita La notifica del bando per la Convenzione all'Agenzia.
+Restaurant Point Of Operator annulla l'operazione.
+Interruzione della connessione al server ETOUR.
+Qualità
+requisiti

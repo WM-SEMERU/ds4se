@@ -1,0 +1,37 @@
+Use case name INSERISCIBENECULTURALE
+Inserts a new cultural object in the system.
+Partecipating
+Actor initialization Agency Operator
+Entry
+Operator conditions � The agency has logged.
+Flow of events User System
+1. Activate the feature for the insertion of a new cultural good.
+2 Displays the corresponding form.
+3 Fill out the form with the data of the cultural and submit.
+4 Verify the data entered and asks for confirmation of the transaction. Where the data is invalid or insufficient, the system activates the use case Errored.
+5 Confirm the operation.
+6. Memorize your new cultural good.
+Exit conditions � The system shall notify the proper inclusion of the cultural.
+� Operator Agency cancels the operation.
+� Interruption of the connection to the server ETOUR.
+Quality
+The system requirements will not accept duplicates cultural heritage.
+
+Usa il nome del caso INSERISCIBENECULTURALE
+Inserisce un nuovo oggetto culturale nel sistema.
+Partecipare
+Operatore di inizializzazione degli attori
+Iscrizione
+Condizioni dell'operatore L'agenzia ha effettuato l'accesso.
+Flusso di eventi Sistema utente
+1. Attivare la funzione per l'inserimento di un nuovo bene culturale.
+2 Visualizza il modulo corrispondente.
+3 Compila il modulo con i dati della cultura e invia.
+4 Verificare i dati inseriti e chiede conferma della transazione. Laddove i dati non sono validi o insufficienti, il sistema attiva il caso d'uso Errored.
+5 Confermare l'operazione.
+6. Memorizza il tuo nuovo bene culturale.
+Condizioni di uscita Il sistema deve informare l'inclusione corretta del culturale.
+L'agenzia dell'operatore annulla l'operazione.
+Interruzione della connessione al server ETOUR.
+Qualità
+I requisiti di sistema non accetteranno duplicati del patrimonio culturale.

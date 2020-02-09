@@ -1,0 +1,25 @@
+Use case name LOGINERRATO
+The data supplied for the login is incorrect.
+Participating
+Actor
+Entry
+Conditions � The data supplied for the login is incorrect.
+Flow of events User System
+1. Notice that the data entered for the login is not valid and asks for confirmation of the reading.
+2 Confirmation of the reading of the notification.
+3 Recovers the previous state.
+Exit conditions � The system returns control to the user interaction.
+Quality requirements
+
+Utilizzare il nome del caso LOGINERRATO
+I dati forniti per il login non sono corretti.
+partecipante
+Attore
+Iscrizione
+Condizioni I dati forniti per l'accesso non sono corretti.
+Flusso di eventi Sistema utente
+1. Si noti che i dati immessi per l'accesso non sono validi e richiedono la conferma della lettura.
+2 Conferma della lettura della notifica.
+3 Recupera lo stato precedente.
+Condizioni di uscita Il sistema restituisce il controllo all'interazione dell'utente.
+Requisiti di qualità

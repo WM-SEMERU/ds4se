@@ -1,0 +1,39 @@
+Use case name INSERISCIBANNER
+Inserting a new banner associated with a point of rest.
+Partecipating
+Actor initialization Agency Operator
+Entry
+Operator conditions � The agency has logged.
+Flow of events User System
+1. Receives a list of turning points of the rest use case RicercaPuntiDiRistoro and select one from the list and access to the function of inserting banners.
+2 Displays a form for the selection of an image.
+3 Select an image and sends the request for entering the system.
+4 Check the characteristics of the inserted, check that the number of banner did not exceed the maximum point of the restaurant and asks for confirmation of the insertion of the banner. In the event that the inserted image is not valid, enable the use case Errored.
+
+5 Confirm the operation of insertion.
+6. Remember the banners associated with the selected point of rest.
+Exit conditions � The notification about the insertion of new banner to the Refreshments selected.
+� The Operator Agency cancels the operation.
+� The point of eating has already entered the maximum number of banners allowed.
+� Interruption of the connection to the server ETOUR.
+Quality requirements
+
+Utilizzare il nome del caso INSERISCIBANNER
+Inserimento di un nuovo banner associato a un punto di sosta.
+Partecipare
+Operatore di inizializzazione degli attori
+Iscrizione
+Condizioni dell'operatore L'agenzia ha effettuato l'accesso.
+Flusso di eventi Sistema utente
+1. Riceve un elenco di punti di svolta del resto usa RicercaPuntiDiRistoro caso e selezionarne uno dall'elenco e accedere alla funzione di inserimento di banner.
+2 Visualizza un modulo per la selezione di un'immagine.
+3 Selezionare un'immagine e invia la richiesta di accesso al sistema.
+4 Verificare le caratteristiche dell'inserimento, verificare che il numero di banner non superi il punto massimo del ristorante e richieda la conferma dell'inserimento del banner. Nel caso in cui l'immagine inserita non sia valida, abilitare il caso d'uso Errored.
+
+5 Confermare l'operazione di inserimento.
+6. Ricorda i banner associati al punto di riposo selezionato.
+Condizioni di uscita La notifica relativa all'inserimento di un nuovo banner nei rinfreschi selezionati.
+L'agenzia di gestione annulla l'operazione.
+Il punto di mangiare ha già inserito il numero massimo di banner consentito.
+Interruzione della connessione al server ETOUR.
+Requisiti di qualità
