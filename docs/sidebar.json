@@ -1,10 +1,11 @@
 {
-  "Notebook": {
-    "Export to modules": "/export",
-    "Convert to html": "/export2html",
-    "Show doc": "/showdoc",
-    "Test functions": "/test",
-    "Core functions": "/core",
-    "Command line functions": "/cli"
+  "ds4se": {
+    "Overview": "/",
+    "preprocessing": "/data.preprocessing",
+    "Exploration of your data": "/data.exploratory",
+    "Data Management": "/data.management",
+    "Data Representation": "/benchmark.traceability",
+    "Example Template": "/templates.example",
+    "Example Blog": "/blog.example"
   }
 }

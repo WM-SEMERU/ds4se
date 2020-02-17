@@ -7,24 +7,27 @@ entries:
 - folders:
   - folderitems:
     - output: web,pdf
-      title: Export to modules
-      url: /export.html
+      title: Overview
+      url: /
     - output: web,pdf
-      title: Convert to html
-      url: /export2html.html
+      title: preprocessing
+      url: /data.preprocessing
     - output: web,pdf
-      title: Show doc
-      url: /showdoc.html
+      title: Exploration of your data
+      url: /data.exploratory
     - output: web,pdf
-      title: Test functions
-      url: /test.html
+      title: Data Management
+      url: /data.management
     - output: web,pdf
-      title: Core functions
-      url: /core.html
+      title: Data Representation
+      url: /benchmark.traceability
     - output: web,pdf
-      title: Command line functions
-      url: /cli.html
+      title: Example Template
+      url: /templates.example
+    - output: web,pdf
+      title: Example Blog
+      url: /blog.example
     output: web
-    title: Notebook
+    title: ds4se
   output: web
   title: Sidebar
