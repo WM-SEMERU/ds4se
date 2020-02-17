@@ -1,0 +1,3373 @@
+code,docstring
+"public Complexd toComplex() {
+        final double w2 = w * w;
+        return new Complexd(2 * w2 - 1, 2 * w * (double) Math.sqrt(1 - w2));
+    }","Converts this quaternion to a complex by extracting the rotation around
+the axis and returning it as a rotation in the plane perpendicular to the
+rotation axis.
+
+@return The rotation without the axis as a complex"
+"protected Collection<ReadLock> lockAndGetReadLocks() {
+
+        // internally ownerTags.size() (WeakHashMap) contains synchronization
+        // better avoid calling it
+        // normally there will be one sharedObject so the capacity may be
+        // considered as 2 because the load factor is 0.75f
+        final Collection<ReadLock> readLocks = new HashSet<>(2);
+
+        for (final AbstractHtml ownerTag : ownerTags) {
+            final ReadLock readLock = ownerTag.getSharedObject()
+                    .getLock(ACCESS_OBJECT).readLock();
+            if (readLock != null) {
+                readLocks.add(readLock);
+            }
+        }
+
+        // must be separately locked
+        for (final ReadLock readLock : readLocks) {
+            try {
+                readLock.lock();
+                readLocks.add(readLock);
+            } catch (final Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return readLocks;
+    }","NB: this may not return the same locks as there could be the its
+ownerTags change. Use it for only unlock.
+
+@return the set of read locks after locking"
+"private  Map<String, Configuration> loadAllMessageFilesForRegisteredLanguages() {
+        
+        Map<String, Configuration> langToKeyAndValuesMappingMutable = Maps.newHashMap();
+
+        // Load default messages:
+        Configuration defaultLanguage = loadLanguageConfiguration(""conf/messages.properties"");
+
+        // Make sure we got the file.
+        // Everything else does not make much sense.
+        if (defaultLanguage == null) {
+            throw new RuntimeException(
+                    ""Did not find conf/messages.properties. Please add a default language file."");
+        } else {
+            langToKeyAndValuesMappingMutable.put("""", defaultLanguage);
+        }
+
+        // Get the languages from the application configuration.
+        String[] applicationLangs = ninjaProperties
+                .getStringArray(NinjaConstant.applicationLanguages);
+
+        // If we don't have any languages declared we just return.
+        // We'll use the default messages.properties file.
+        if (applicationLangs == null) {
+            return ImmutableMap.copyOf(langToKeyAndValuesMappingMutable);
+        }
+
+        // Load each language into the HashMap containing the languages:
+        for (String lang : applicationLangs) {
+
+            // First step: Load complete language eg. en-US
+            Configuration configuration = loadLanguageConfiguration(String
+                    .format(""conf/messages_%s.properties"", lang));
+
+            Configuration configurationLangOnly = null;
+
+            // If the language has a country code load the default values for
+            // the language, too. For instance missing variables in en-US will
+            // be
+            // Overwritten by the default languages.
+            if (lang.contains(""-"")) {
+                // get the lang
+                String langOnly = lang.split(""-"")[0];
+
+                // And load the configuraion
+                configurationLangOnly = loadLanguageConfiguration(String
+                        .format(""conf/messages_%s.properties"", langOnly));
+
+            }
+
+            // This is strange. If you defined the language in application.conf
+            // it should be there propably.
+            if (configuration == null) {
+                logger.info(
+                        ""Did not find conf/messages_{}.properties but it was specified in application.conf. Using default language instead."",
+                        lang);
+
+            } else {
+
+                // add new language, but combine with default language if stuff
+                // is missing...
+                CompositeConfiguration compositeConfiguration = new CompositeConfiguration();
+                // Add eg. ""en-US""
+                compositeConfiguration.addConfiguration(configuration);
+
+                // Add eg. ""en""
+                if (configurationLangOnly != null) {
+                    compositeConfiguration
+                            .addConfiguration(configurationLangOnly);
+                }
+                // Add messages.conf (default pack)
+                compositeConfiguration.addConfiguration(defaultLanguage);
+
+                // and add the composed configuration to the hashmap with the
+                // mapping.
+                langToKeyAndValuesMappingMutable.put(lang,
+                        (Configuration) compositeConfiguration);
+            }
+
+        }
+        
+        
+        return ImmutableMap.copyOf(langToKeyAndValuesMappingMutable);
+
+    }","Does all the loading of message files.
+
+Only registered messages in application.conf are loaded."
+"public static void getSharesByUser (Activity context, User user, int start, int end, ShareListListener listener) {
+		proxy.getSharesByUser(context, user, start, end, listener);
+	}","Retrieves all share events performed by the given user.
+@param context The current context.
+@param user The user who performed the share(s).
+@param start The start index for the result set (0 indexed).
+@param end The end index for the result set.
+@param listener A listener to handle the result."
+"public void insert(final int index, final Object... items) {
+        if (mAnimateAdditionAdapter == null) {
+            throw new IllegalStateException(""Adapter should implement Insertable!"");
+        }
+        mAnimateAdditionAdapter.insert(index, items);
+    }","Inserts items, starting at given index. Will show an entrance animation for the new items if the newly added items are visible.
+Will also call {@link Insertable#add(int, Object)} of the root {@link android.widget.BaseAdapter}.
+
+@param index the starting index the new items should be inserted at.
+@param items the items to insert.
+
+@throws java.lang.IllegalStateException if the adapter that was set does not implement {@link com.nhaarman.listviewanimations.util.Insertable}."
+"public static void reset() {
+    ShadowApplication shadowApplication = Shadow.extract(RuntimeEnvironment.application);
+    shadowApplication.getShownToasts().clear();
+  }","Discards the recorded {@code Toast}s. Shown toasts are automatically cleared between
+tests. This method allows the user to discard recorded toasts during the test in order to make assertions clearer
+e.g:
+
+<pre>
+
+// Show a single toast
+myClass.showToast();
+
+assertThat(ShadowToast.shownToastCount()).isEqualTo(1);
+ShadowToast.reset();
+
+// Show another toast
+myClass.showToast();
+
+assertThat(ShadowToast.shownToastCount()).isEqualTo(1);
+
+</pre>"
+"final Map<String, String> getPropertiesForConnectorConfigurationName(final String connectorName) {
+
+        final Map<String, String> propertyMap = new HashMap<String, String>();
+
+        final String patternString = String.format(CONNECTOR_PROPERTY_GRABBER_PATTERN, connectorName);
+        final Pattern propertyGrabPattern = Pattern.compile(patternString);
+
+        final Set<Map.Entry<Object, Object>> entries = getSystemProperties().entrySet();
+
+        for (Map.Entry<Object, Object> entry : entries) {
+            final String key = entry.getKey().toString();
+            final Object value = entry.getValue();
+
+            // check if property key has tracee connector format
+            final Matcher matcher = propertyGrabPattern.matcher(key);
+            if (value != null && matcher.matches() && matcher.groupCount() > 0) {
+
+                final String propertyName = matcher.group(1);
+
+                propertyMap.put(propertyName, value.toString());
+
+            }
+
+        }
+
+        return propertyMap;
+
+    }","Collects all properties for a given connector configuration name and writes them to a Map.
+
+@param connectorName the name of the connector configuration
+@return a Map containing all properties for a connector configuration name"
+"@Override
+	@SuppressWarnings(""unchecked"")
+	public T fromString(final String rawValue) { // NOSONAR
+		try {
+			Object result = null;
+			if (byte.class.equals(this.valueClass)) {
+				result = Byte.decode(rawValue);
+			} else if (short.class.equals(this.valueClass)) {
+				result = Short.decode(rawValue);
+			} else if (int.class.equals(this.valueClass)) {
+				result = Integer.decode(rawValue);
+			} else if (long.class.equals(this.valueClass)) {
+				result = Long.decode(rawValue);
+			} else if (double.class.equals(this.valueClass)) {
+				result = Double.valueOf(rawValue);
+			} else if (float.class.equals(this.valueClass)) {
+				result = Float.valueOf(rawValue);
+			} else if (boolean.class.equals(this.valueClass)) {
+				result = parseBoolean(rawValue);
+			} else { // Must be char
+				result = parseCharacter(rawValue);
+			}
+			return (T) result;
+		} catch (final Exception e) {
+			throw new ObjectParseException(e, this.valueClass, rawValue);
+		}
+	}",{@inheritDoc}
+"@Override
+    public String toHtmlString(final Charset charset) {
+        final Charset previousCharset = super.getCharset();
+        try {
+            super.setCharset(charset);
+            if (prependDocType) {
+                // assigning it to new variable is very important here as this
+                // line of code should invoke before finally block
+                final String htmlString = new String(
+                        (super.toHtmlString(super.getCharset()))
+                                .getBytes(super.getCharset()),
+                        getCharset());
+                return htmlString;
+            }
+
+            // assigning it to new variable is very important here as this line
+            // of code should invoke before finally block
+            final String htmlString = super.toHtmlString(super.getCharset());
+            return htmlString;
+        } finally {
+            super.setCharset(previousCharset);
+        }
+    }","/*
+(non-Javadoc)
+
+@see
+com.webfirmframework.wffweb.tag.html.AbstractHtml#toHtmlString(java.nio.
+charset.Charset)"
+"@Override
+    public Long lRem(byte[] key, long count, byte[] value) {
+        try {
+            if (isPipelined()) {
+                pipeline(new JedisResult(pipeline.lrem(key, count, value)));
+                return null;
+            }
+
+            return client.lrem(key, count, value);
+        } catch (Exception ex) {
+            throw convertException(ex);
+        }
+    }","/*
+@see org.springframework.data.redis.connection.RedisListCommands#lRem(byte[], long, byte[])"
+"public <T extends Comparable<T>> void assertLessThan(Description description, T actual, T other) {
+    assertNotNull(description, actual);
+    if (!isLessThan(actual, other)) {
+      throw failures.failure(description, shouldBeLessThan(actual, other));
+    }
+  }","Asserts that the <em>actual</em> value is less than the other one.
+
+@param description the description of the <em>actual</em> value.
+@param actual the <em>actual</em> value.
+@param other the value to compare the <em>actual</em> value to.
+@throws AssertionError if the <em>actual</em> value is {@code null}.
+@throws AssertionError if the <em>actual</em> value is not less than the other one."
+"public SortedSet<String> getDefinedChanges() {
+        SortedSet<String> names = new TreeSet<>();
+        for (Change change : findAllInstances()) {
+            names.add(getChangeMetaData(change).getName());
+        }
+        return Collections.unmodifiableSortedSet(names);
+    }",Returns all defined changes in the registry. Returned set is not modifiable.
+"public static void joinFor(Clock clock, Thread thread, Object timeout)
+    throws InterruptedException, TimeoutException
+  {
+    joinUntil(clock, thread, ClockUtils.toEndTime(timeout));
+  }","Joins on the thread but if end time is expired then throws an exception.
+
+@param thread the thread to join on
+@param timeout how long to join for (<code>null</code> or <= 0 means forever)
+@throws InterruptedException if the thread is interrupted while waiting
+@throws TimeoutException if the time has been reached"
+"public <V> void assertContainsValue(Description description, Map<?, ?> actual, V value) {
+    assertNotNull(description, actual);
+    if (!actual.containsValue(value)) {
+      throw failures.failure(description, shouldContainValue(actual, value));
+    }
+  }","Asserts that the actual map contain the given value.
+
+@param description contains information about the assertion.
+@param actual the given {@code Map}.
+@param value the given value
+@throws AssertionError if the actual map is {@code null}.
+@throws AssertionError if the actual map not contains the given value."
+"private Task<Exec.Result> createNewBuildTask(final String hash, final InputStream body) {
+
+    LOG.info(""building: "" + hash);
+
+    final Task<Void> createDotFile = Task.action(""createDotFile"",
+        () -> Files.copy(body, pathToCacheFile(hash, ""dot""), StandardCopyOption.REPLACE_EXISTING));
+
+    // Task that runs a graphviz command.
+    // We give process TIMEOUT_MS time to finish, after that
+    // it will be forcefully killed.
+    final Task<Exec.Result> graphviz = _exec
+        .command(""graphviz"", _timeoutMs, TimeUnit.MILLISECONDS, _dotLocation, ""-T"" + Constants.OUTPUT_TYPE,
+            ""-Grankdir=LR"", ""-Gnewrank=true"", ""-Gbgcolor=transparent"", pathToCacheFile(hash, ""dot"").toString(), ""-o"",
+            pathToCacheFile(hash, Constants.OUTPUT_TYPE).toString());
+
+    // Since Exec utility allows only certain number of processes
+    // to run in parallel and rest is enqueued, we also specify
+    // timeout on a task level equal to 2 * graphviz timeout.
+    final Task<Exec.Result> graphvizWithTimeout = graphviz.withTimeout(_timeoutMs * 2, TimeUnit.MILLISECONDS);
+
+    return createDotFile.andThen(graphvizWithTimeout);
+  }",Returns new task that builds graph using graphviz.
+"protected int launchTIBCOBinary(File binary, List<File> tras, ArrayList<String> arguments, File workingDir, String errorMsg, boolean fork, boolean synchronous) throws IOException, MojoExecutionException {
+		Integer result = 0;
+		
+		if (tras == null) { // no value specified as Mojo parameter, we use the .tra in the same directory as the binary
+			String traPathFileName = binary.getAbsolutePath();
+			traPathFileName = FilenameUtils.removeExtension(traPathFileName);
+			traPathFileName += "".tra"";
+			tras = new ArrayList<File>();
+			tras.add(new File(traPathFileName));
+		}
+
+		HashMap<File, File> trasMap = new HashMap<File, File>();
+		for (File tra : tras) {
+			// copy of "".tra"" file in the working directory
+			File tmpTRAFile = new File(directory, tra.getName());
+			trasMap.put(tra, tmpTRAFile);
+			copyFile(tra, tmpTRAFile);
+		}
+
+		for (File tra : trasMap.keySet()) {
+			if (trasMap.containsKey(tibcoDesignerTRAPath)
+					&& ((tibcoBuildEARUseDesignerTRA && tra == tibcoBuildEARTRAPath) || (tibcoBuildLibraryUseDesignerTRA && tra == tibcoBuildLibraryTRAPath))) {
+				if (tras.size() > 1) {
+					ReplaceRegExp replaceRegExp = new ReplaceRegExp();
+					replaceRegExp.setFile(trasMap.get(tra));
+					replaceRegExp.setMatch(""tibco.include.tra (.*/designer.tra)"");
+					replaceRegExp.setReplace(""tibco.include.tra "" + trasMap.get(tibcoDesignerTRAPath).toString().replace('\\', '/'));
+					replaceRegExp.setByLine(true);
+
+					replaceRegExp.execute();
+				}
+			}
+
+			if (tra == tibcoBuildEARTRAPath ||
+				tra == tibcoDesignerTRAPath ||
+				tra == tibcoBWEngineTRAPath) { // FIXME: should check more properly
+				// append user.home at the end to force the use of custom Designer5.prefs
+				PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(trasMap.get(tra), true)));
+				out.println("""");
+				out.println(""java.property.user.home="" + directory.getAbsolutePath().replace(""\\"", ""/""));
+				out.close();
+			}
+		}
+
+		CommandLine cmdLine = new CommandLine(binary);
+
+		for (String argument : arguments) {
+			cmdLine.addArgument(argument);
+		}
+		getLog().debug(""launchTIBCOBinary command line : "" + cmdLine.toString());
+		getLog().debug(""working dir : "" + workingDir);
+		
+		DefaultExecutor executor = new DefaultExecutor();
+		executor.setWorkingDirectory(workingDir);
+		
+		if (timeOut > 0) {
+			ExecuteWatchdog watchdog = new ExecuteWatchdog(timeOut * 1000);
+			executor.setWatchdog(watchdog);
+		}
+
+		executor.setProcessDestroyer(new ShutdownHookProcessDestroyer());
+		
+		ByteArrayOutputStream stdOutAndErr = new ByteArrayOutputStream();
+		executor.setStreamHandler(new PumpStreamHandler(stdOutAndErr));
+
+		if (fork) {
+			CommandLauncher commandLauncher = CommandLauncherFactory.createVMLauncher();
+			commandLauncher.exec(cmdLine, null, workingDir);
+		} else {
+			try {
+				if (synchronous) {
+					result = executor.execute(cmdLine);
+				} else {
+					executor.execute(cmdLine, new DefaultExecuteResultHandler());					
+				}
+			} catch (ExecuteException e) {
+				// TODO : gérer erreurs des exécutables (éventuellement parser les erreurs classiques)
+				getLog().info(cmdLine.toString());
+				getLog().info(stdOutAndErr.toString());
+				getLog().info(result.toString());
+				throw new MojoExecutionException(errorMsg, e);
+			} catch (IOException e) {
+				throw new MojoExecutionException(e.getMessage(), e);
+			}
+		}
+
+		return result;
+	}","This calls a TIBCO binary.
+
+@param binary, the TIBCO binary file to execute
+@param tras, the TRA files associated with the TIBCO binary
+@param arguments, command-line arguments
+@param workingDir, working directory from where the binary is launched
+@param errorMsg, error message to display in case of a failure
+@param fork, if true the chiild process will be detached from the caller
+
+@throws IOException
+@throws MojoExecutionException"
+"private boolean isWaitingForResults(QueryToken currentQuery) {
+        synchronized (mLock) {
+            Set<String> buckets = mWaitingForResults.get(currentQuery);
+            return buckets != null && buckets.size() > 0;
+        }
+    }","Determines if the adapter is still waiting for results for a given {@link QueryToken}
+
+@param currentQuery the {@link QueryToken} to check if waiting for results on
+
+@return true if still waiting for the results of the current query"
+"protected String getWffPrintStructure() {
+        final String attributeValue = this.attributeValue;
+        String result = """";
+        beforeWffPrintStructure();
+        final StringBuilder attrBuilder = new StringBuilder();
+
+        attrBuilder.append(attributeName);
+        if (attributeValue != null) {
+            attrBuilder.append(new char[] { '=' }).append(attributeValue);
+            result = StringBuilderUtil.getTrimmedString(attrBuilder);
+        } else if (attributeValueMap != null && attributeValueMap.size() > 0) {
+            attrBuilder.append(new char[] { '=' });
+            final Set<Entry<String, String>> entrySet = getAttributeValueMap()
+                    .entrySet();
+            for (final Entry<String, String> entry : entrySet) {
+                attrBuilder.append(entry.getKey()).append(':')
+                        .append(entry.getValue()).append(';');
+            }
+
+            result = StringBuilderUtil.getTrimmedString(attrBuilder);
+        } else if (attributeValueSet != null && attributeValueSet.size() > 0) {
+            attrBuilder.append(new char[] { '=' });
+            for (final String each : getAttributeValueSet()) {
+                attrBuilder.append(each).append(' ');
+            }
+            result = StringBuilderUtil.getTrimmedString(attrBuilder);
+        } else {
+            result = attrBuilder.toString();
+        }
+
+        return result;
+    }","gets the attribute name and value in the format of name=value. <br>
+Eg: style=color:green;background:blue <br>
+This reduces 2 bytes taken for "".
+
+@return the attribute name and value in the format of name=value. Eg:
+style=color:green;background:blue
+@since 2.0.0
+@author WFF"
+"@Implementation
+  protected static boolean nativeIsUpToDate(long ptr) {
+    CppApkAssets apk_assets = Registries.NATIVE_APK_ASSETS_REGISTRY.getNativeObject(ptr);
+    // (void)apk_assets;
+    return JNI_TRUE;
+  }","static jboolean NativeIsUpToDate(JNIEnv* /*env*/, jclass /*clazz*/, jlong ptr) {"
+"protected List<Path> findRootPaths(ClassLoader classLoader) throws Exception {
+        if (classLoader == null) {
+            return new ArrayList<>();
+
+        }
+
+        Logger logger = Scope.getCurrentScope().getLog(getClass());
+
+        List<URL> returnUrls = new ArrayList<>();
+        if (classLoader instanceof URLClassLoader) {
+            returnUrls.addAll(CollectionUtil.createIfNull(Arrays.asList(((URLClassLoader) classLoader).getURLs())));
+        } else {
+            logger.info(""Found non-URL ClassLoader classloader "" + classLoader.toString() + "". Liquibase will try to figure out now to load resources from it, some may be missed. Consider using a custom ClassLoaderResourceAccessor subclass."");
+            Set<String> seenUrls = new HashSet<>(); //need to track externalForm as a string to avoid java problem with URL.equals making a network call
+
+            Enumeration<URL> emptyPathUrls = classLoader.getResources("""");
+            while (emptyPathUrls.hasMoreElements()) {
+                URL url = emptyPathUrls.nextElement();
+                if (seenUrls.add(url.toExternalForm())) {
+                    returnUrls.add(url);
+                }
+            }
+
+            Enumeration<URL> metaInfoPathUrls = classLoader.getResources(""META-INF"");
+            while (metaInfoPathUrls.hasMoreElements()) {
+                String originalUrl = metaInfoPathUrls.nextElement().toExternalForm();
+                String finalUrl = originalUrl.replaceFirst(""/META-INF"", """");
+                if (finalUrl.startsWith(""jar:"")) {
+                    if (finalUrl.endsWith(""!"")) {
+                        finalUrl = finalUrl.replaceFirst(""^jar:"", """").replaceFirst(""!$"", """");
+                    } else {
+                        logger.warning(""ClassLoader URL "" + finalUrl + "" starts with jar: but does not end with !, don't knnow how to handle it. Skipping"");
+                        continue;
+                    }
+                }
+
+                URL finalUrlObj = new URL(finalUrl);
+                if (seenUrls.add(finalUrlObj.toExternalForm())) {
+                    returnUrls.add(finalUrlObj);
+                }
+            }
+
+        }
+
+        List<Path> returnPaths = new ArrayList<>();
+        for (URL url : returnUrls) {
+            Path path = rootUrlToPath(url);
+            if (path != null) {
+                logger.fine(""Found classloader root at "" + path.toString());
+                returnPaths.add(path);
+            }
+        }
+        return returnPaths;
+    }","Called by constructor to create all the root paths from the given classloader.
+Works best if the passed classLoader is a {@link URLClassLoader} because it can get the root file/dirs directly.
+If it is not a URLClassLoader, it still attempts to find files by looking up base packages and MANIFEST.MF files.
+This may miss some roots, however, and so if you are not using a URLClassLoader consider using a custom subclass."
+"final T get(int index) {
+    if (index >= size()) {
+      return mDefault;
+    }
+
+//    byte bucketIndex = static_cast<byte>(index) >> 4;
+    byte bucketIndex = (byte) (index >> 4);
+    T[] bucket = (T[]) mBuckets[bucketIndex];
+    if (bucket == null) {
+      return mDefault;
+    }
+    T t = bucket[0x0f & ((byte) index)];
+    return t == null ? mDefault : t;
+  }",}
+"public NutValidate addAll(Map<String, Object> map) {
+        NutMap m2 = NutMap.WRAP(map);
+        for (String key : m2.keySet()) {
+            // 针对字符串型的值，检查前是否要预先去掉左右空白
+            if (""trim"".equals(key)) {
+                this.items.add(new TrimValidator());
+            }
+            // 数字区间
+            else if (""intRange"".equals(key)) {
+                String str = m2.getString(key);
+                this.items.add(new IntRangeValidator(str));
+            }
+            // 日期范围的区间
+            else if (""dateRange"".equals(key)) {
+                String str = m2.getString(key);
+                this.items.add(new DateRangeValidator(str));
+            }
+            // 验证值的字符串形式，支持 ""!"" 开头
+            else if (""regex"".equals(key)) {
+                String str = m2.getString(key);
+                this.items.add(new RegexValidator(str));
+            }
+            // 确保值非 null
+            else if (""notNull"".equals(key)) {
+                this.items.add(new NotNullValidator());
+            }
+            // 针对字符串的值，最大长度不超过多少
+            else if (""maxLength"".equals(key)) {
+                int len = m2.getInt(key);
+                this.items.add(new MaxLengthValidator(len));
+            }
+            // 针对字符串的值，最小长度不能低于多少
+            else if (""minLength"".equals(key)) {
+                int len = m2.getInt(key);
+                this.items.add(new MinLengthValidator(len));
+            }
+            // 其他的无视
+        }
+        return this;
+    }","根据一个描述的表增加自身的检查项，
+
+@param map
+描述检查项的 Map
+@return 自身以便链式赋值"
+"@Override
+    public NutMap omit(String... keys) {
+        NutMap re = new NutMap();
+        for (Map.Entry<String, Object> en : this.entrySet()) {
+            String key = en.getKey();
+            if (!Lang.contains(keys, key)) {
+                re.put(key, en.getValue());
+            }
+        }
+        return re;
+    }","从 Map 里将指定的键过滤，生成一个新的 Map
+
+@param keys
+键
+@return 新 Map"
+"private static void addData(final Map<String, List<ViewRiksdagenPartyBallotSupportAnnualSummary>> map, final Series series,
+			final DataSeries dataSeries) {
+		final Set<Entry<String, List<ViewRiksdagenPartyBallotSupportAnnualSummary>>> entryMap = map.entrySet();
+		
+		for (final Entry<String, List<ViewRiksdagenPartyBallotSupportAnnualSummary>> entry : entryMap) {
+			series.addSeries(new XYseries().setLabel(entry.getKey()));
+			
+			dataSeries.newSeries();
+			for (final ViewRiksdagenPartyBallotSupportAnnualSummary data : entry.getValue()) {
+					dataSeries.add(data.getEmbeddedId().getDate(),
+							100 - data.getDisagreePercentage());
+			}
+
+		}
+	}","Adds the data.
+
+@param map        the map
+@param series     the series
+@param dataSeries the data series"
+"public <K extends K0, V extends V0> Multimap<K, V> build(
+      Multimap<? extends K, ? extends V> multimap) {
+    Multimap<K, V> result = build();
+    result.putAll(multimap);
+    return result;
+  }","Returns a {@code Multimap} with the specified implementation, initialized with the entries of
+{@code multimap}."
+"protected String createServerUrl(String scheme, String host, Integer port) {
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append(scheme);
+        sb.append(""://"");
+        sb.append((host != null ? host : ""localhost""));
+        
+        if ((""http"".equals(scheme) && port != 80) || (""https"".equals(scheme) && port != 443)) {
+            sb.append("":"");
+            sb.append(port);
+        }
+        
+        return sb.toString();
+    }",helpful utilities for subclasses
+"public void requestAllTasks(Action1<Map<TaskQueue.TaskState, Collection<QueuableTask>>> action) throws TaskQueueException {
+        if (!taskMapRequest.offer(action))
+            throw new TaskQueueException(""Too many pending actions submitted for getting tasks collection"");
+    }","Get all of the tasks in the scheduling service's queue and call the given action when it is available. The
+list of queues returned is in a consistent state, that is, transitionary actions from ongoing scheduling
+iterations do not affect the returned collection of tasks. Although an ongoing scheduling iteration is
+unaffected by this call, onset of the next scheduling iteration may be delayed until the call to the given
+{@code action} returns. Therefore, it is expected that the {@code action} callback return quickly.
+@param action The action to call with task collection.
+@throws TaskQueueException if too many actions are pending to get tasks collection."
+"public static <T> Generator<PVector2F<T>> create()
+  {
+    return new PVector2FGenerator<>(PrimitiveGenerators.doubles(
+      GeneratorConstants.BOUND_LARGE_FLOAT_LOWER,
+      GeneratorConstants.BOUND_LARGE_FLOAT_UPPER
+    ));
+  }","Create a generator initialized with a default component generator.
+
+@param <T> A phantom type parameter
+
+@return A generator"
+"public static RadioInput build(String name) {
+		RadioInput i = new RadioInput();
+		i.name = name;
+		return i;
+	}",order
+"public void addErrorResult(final MongoBulkWriteException exception, final IndexMap indexMap) {
+        addResult(exception.getWriteResult(), indexMap);
+        mergeWriteErrors(exception.getWriteErrors(), indexMap);
+        mergeWriteConcernError(exception.getWriteConcernError());
+    }","Add an error result
+
+@param exception the exception
+@param indexMap  the index map"
+"public void deselectAllSpans() {
+        mBlockCompletion = true;
+        Editable text = getText();
+        MentionSpan[] spans = text.getSpans(0, text.length(), MentionSpan.class);
+        for (MentionSpan span : spans) {
+            if (span.isSelected()) {
+                span.setSelected(false);
+                updateSpan(span);
+            }
+        }
+        mBlockCompletion = false;
+    }",Deselects any spans in the editor that are currently selected.
+"public static <T> String toXmlWithXStream(final XStream xstream, final T objectToXML)
+	{
+		return toXmlWithXStream(xstream, objectToXML, null);
+	}","Creates from the given Object an xml string.
+
+@param <T>
+the generic type of the object that will be transformed to xml
+@param xstream
+the xstream object.
+@param objectToXML
+the object to xml
+@return the xml string"
+"public VersionRange restrict( VersionRange restriction ) throws OverConstrainedVersionException {
+        List<Restriction> r1 = this.restrictions;
+        List<Restriction> r2 = restriction.restrictions;
+        List<Restriction> restrictions;
+        if ( r1.isEmpty() || r2.isEmpty() )
+        {
+            restrictions = Collections.emptyList();
+        }
+        else
+        {
+            restrictions = intersection( r1, r2 );
+        }
+
+        ComponentVersion version = null;
+        if ( restrictions.size() > 0 )
+        {
+            boolean found = false;
+            for ( Iterator i = restrictions.iterator(); i.hasNext() && !found; )
+            {
+                Restriction r = (Restriction) i.next();
+
+                if ( recommendedVersion != null && r.containsVersion( recommendedVersion ) )
+                {
+                    // if we find the original, use that
+                    version = recommendedVersion;
+                    found = true;
+                }
+                else if ( version == null && restriction.getRecommendedVersion() != null &&
+                    r.containsVersion( restriction.getRecommendedVersion() ) )
+                {
+                    // use this if we can, but prefer the original if possible
+                    version = restriction.getRecommendedVersion();
+                }
+            }
+        }
+        // Either the original or the specified version ranges have no restructions
+        else if ( recommendedVersion != null )
+        {
+            // Use the original recommended version since it exists
+            version = recommendedVersion;
+        }
+        else if (restriction.recommendedVersion != null)
+        {
+            // Use the recommended version from the specified VersionRange since there is no
+            // original recommended version
+            version = restriction.recommendedVersion;
+        }
+        else
+        {
+            //TODO: the component is null
+            throw new OverConstrainedVersionException( ""Restricting incompatible version ranges"", null );
+        }
+
+        return new VersionRange( version, restrictions );
+    }","Creates and returns a new <code>VersionRange</code> that is a restriction of this
+version range and the specified version range.
+<p>
+Note: Precedence is given to the recommended version from this version range over the
+recommended version from the specified version range.
+</p>
+@param restriction the <code>VersionRange</code> that will be used to restrict this version
+range.
+@return the <code>VersionRange</code> that is a restriction of this version range and the
+specified version range.
+<p>
+The restrictions of the returned version range will be an intersection of the restrictions
+of this version range and the specified version range if both version ranges have
+restrictions. Otherwise, the restrictions on the returned range will be empty.
+</p>
+<p>
+The recommended version of the returned version range will be the recommended version of
+this version range, provided that ranges falls within the intersected restrictions. If
+the restrictions are empty, this version range's recommended version is used if it is not
+<code>null</code>. If it is <code>null</code>, the specified version range's recommended
+version is used (provided it is non-<code>null</code>). If no recommended version can be
+obtained, the returned version range's recommended version is set to <code>null</code>.
+</p>
+@throws NullPointerException if the specified <code>VersionRange</code> is
+<code>null</code>."
+"@PostConstruct
+	public void init() throws Exception {
+    log.info(""======================="");
+    log.info(""Adding camunda BPM Component to Camel"");
+    log.info(""======================="");
+	  
+	  CamundaBpmComponent component = new CamundaBpmComponent(processEngine);
+    component.setCamelContext(cdiCamelContext);
+    cdiCamelContext.addComponent(""camunda-bpm"", component); // TODO: could be done by META-INF/service as well- maybe switch?
+
+    // For simplicity JMS was removed from the example - but you can easily re-add it:
+		// inject the JMS connection factory into camel's JMS component
+//		JmsComponent jmsComponent = cdiCamelContext.getComponent(""jms"", JmsComponent.class);
+//		jmsComponent.setConnectionFactory(queueConnectionFactory);
+
+    // Instead we exchanged the JMS component by replacing it with Camel seda component for in memory queues
+    cdiCamelContext.addComponent(""jms"", cdiCamelContext.getComponent(""seda"", SedaComponent.class));
+
+		// add routes to camel context
+		log.info(""======================="");
+		log.info(""adding OpenAccountRoute to camel context"");
+		log.info(""======================="");
+		cdiCamelContext.addRoutes(openAccountRoute);
+		log.info(""======================="");
+		log.info(""Camel Components: "" + cdiCamelContext.getComponentNames());
+		log.info(""======================="");
+		log.info(""======================="");
+		log.info(""starting camel context"");
+		log.info(""======================="");
+		// cdiCamelContext.setTracing(true);
+		cdiCamelContext.start();
+		log.info(""======================="");
+		log.info(""successfully created camel context and started open account route!"");
+		log.info(""======================="");
+	}",private QueueConnectionFactory queueConnectionFactory;
+"public static boolean isPolyExpression(Expression expression) {
+        if (expression instanceof EnclosedExpr) {
+            throw new UnsupportedOperationException(expression.toString());
+        }
+        if (expression instanceof ObjectCreationExpr) {
+            // A class instance creation expression is a poly expression (§15.2) if it uses the diamond form for type
+            // arguments to the class, and it appears in an assignment context or an invocation context (§5.2, §5.3).
+            // Otherwise, it is a standalone expression.
+            ObjectCreationExpr objectCreationExpr = (ObjectCreationExpr)expression;
+            if (objectCreationExpr.isUsingDiamondOperator()) {
+                throw new UnsupportedOperationException(expression.toString());
+            } else {
+                return false;
+            }
+        }
+        if (expression instanceof MethodCallExpr) {
+            MethodCallExpr methodCallExpr = (MethodCallExpr)expression;
+
+            // A method invocation expression is a poly expression if all of the following are true:
+            //
+            // 1. The invocation appears in an assignment context or an invocation context (§5.2, §5.3).
+
+            if (!appearsInAssignmentContext(expression) || appearsInInvocationContext(expression)) {
+                return false;
+            }
+
+            // 2. If the invocation is qualified (that is, any form of MethodInvocation except for the first), then
+            //    the invocation elides TypeArguments to the left of the Identifier.
+
+            if (isQualified(methodCallExpr) && !elidesTypeArguments(methodCallExpr)) {
+                return false;
+            }
+
+            // 3. The method to be invoked, as determined by the following subsections, is generic (§8.4.4) and has a
+            //    return type that mentions at least one of the method's type parameters.
+
+            //boolean condition3 =;
+            throw new UnsupportedOperationException(expression.toString());
+
+            // Otherwise, the method invocation expression is a standalone expression.
+            //return true;
+        }
+        if (expression instanceof MethodReferenceExpr) {
+            throw new UnsupportedOperationException(expression.toString());
+        }
+        if (expression instanceof ConditionalExpr) {
+            throw new UnsupportedOperationException(expression.toString());
+        }
+        if (expression instanceof LambdaExpr) {
+            return true;
+        }
+        return false;
+    }","See https://docs.oracle.com/javase/specs/jls/se8/html/jls-15.html#jls-15.2
+@return"
+"public static boolean isSpecifiedPropertyName(final String propertyName) {
+        boolean found = false;
+        if (propertyName.startsWith(CUSTOM_PREFIX)) {
+            return true;
+        }
+        if (propertyName.startsWith(EXTENSION_PREFIX)) {
+            return true;
+        }
+        if (propertyName.startsWith(OAUTH_PREFIX)) {
+            return true;
+        }
+        for (String key : BasicLTIConstants.validPropertyNames) {
+            if (key.equals(propertyName)) {
+                found = true;
+                break;
+            }
+        }
+        return found;
+    }","Checks to see if the passed propertyName is equal to one of the Strings
+contained in {@link BasicLTIConstants#validPropertyNames}. String
+matching is case sensitive.
+
+@param propertyName
+@return true if propertyName is equal to one of the Strings contained in
+{@link BasicLTIConstants#validPropertyNames} or is a custom parameter oe
+extension parameter ; else return false."
+"public static String getInitParam(ServletContext context, String name)
+   {
+      return getInitParam(context, name, null);
+   }","Retrieve the named context-parameter from the given {@link ServletContext}. If the parameter is not defined,
+return null."
+"@Override
+    public int getTopBorder()
+    {
+        Box box = getBox();
+        if (box instanceof ElementBox)
+            return ((ElementBox) box).getBorder().top;
+        else
+            return 0;
+    }","Obtains the top border of the box
+@return the width of the border or 0 when there is no border"
+"public final <R> ParallelFlux<R> concatMap(Function<? super T, ? extends Publisher<? extends R>> mapper) {
+		return concatMap(mapper, 2, ErrorMode.IMMEDIATE);
+	}","Generates and concatenates Publishers on each 'rail', signalling errors immediately
+and generating 2 publishers upfront.
+
+@param <R> the result type
+@param mapper the function to map each rail's value into a Publisher source and the
+inner Publishers (immediate, boundary, end)
+
+@return the new {@link ParallelFlux} instance"
+"public StringClauses insertBefore(Enum existingKey, Enum newKey, String newValue) {
+        return insertBefore(existingKey.name(), newKey.name(), newValue);
+    }","Convenience method for {@link #insertBefore(String, String)} when using enums."
+"private void checkForSubscribersToSkip(Messager messager, String myPackage) {
+        for (TypeElement skipCandidate : methodsByClass.keySet()) {
+            TypeElement subscriberClass = skipCandidate;
+            while (subscriberClass != null) {
+                if (!isVisible(myPackage, subscriberClass)) {
+                    boolean added = classesToSkip.add(skipCandidate);
+                    if (added) {
+                        String msg;
+                        if (subscriberClass.equals(skipCandidate)) {
+                            msg = ""Falling back to reflection because class is not public"";
+                        } else {
+                            msg = ""Falling back to reflection because "" + skipCandidate +
+                                    "" has a non-public super class"";
+                        }
+                        messager.printMessage(Diagnostic.Kind.NOTE, msg, subscriberClass);
+                    }
+                    break;
+                }
+                List<ExecutableElement> methods = methodsByClass.get(subscriberClass);
+                if (methods != null) {
+                    for (ExecutableElement method : methods) {
+                        String skipReason = null;
+                        VariableElement param = method.getParameters().get(0);
+                        TypeMirror typeMirror = getParamTypeMirror(param, messager);
+                        if (!(typeMirror instanceof DeclaredType) ||
+                                !(((DeclaredType) typeMirror).asElement() instanceof TypeElement)) {
+                            skipReason = ""event type cannot be processed"";
+                        }
+                        if (skipReason == null) {
+                            TypeElement eventTypeElement = (TypeElement) ((DeclaredType) typeMirror).asElement();
+                            if (!isVisible(myPackage, eventTypeElement)) {
+                                skipReason = ""event type is not public"";
+                            }
+                        }
+                        if (skipReason != null) {
+                            boolean added = classesToSkip.add(skipCandidate);
+                            if (added) {
+                                String msg = ""Falling back to reflection because "" + skipReason;
+                                if (!subscriberClass.equals(skipCandidate)) {
+                                    msg += "" (found in super class for "" + skipCandidate + "")"";
+                                }
+                                messager.printMessage(Diagnostic.Kind.NOTE, msg, param);
+                            }
+                            break;
+                        }
+                    }
+                }
+                subscriberClass = getSuperclass(subscriberClass);
+            }
+        }
+    }",Subscriber classes should be skipped if their class or any involved event class are not visible to the index.
+"private static void addCanonicalizedHeaders(final HttpURLConnection conn, final StringBuilder canonicalizedString) {
+        // Look for header names that start with
+        // HeaderNames.PrefixForStorageHeader
+        // Then sort them in case-insensitive manner.
+
+        final Map<String, List<String>> headers = conn.getRequestProperties();
+        final ArrayList<String> httpStorageHeaderNameArray = new ArrayList<String>();
+
+        for (final String key : headers.keySet()) {
+            if (key.toLowerCase(Utility.LOCALE_US).startsWith(Constants.PREFIX_FOR_STORAGE_HEADER)) {
+                httpStorageHeaderNameArray.add(key.toLowerCase(Utility.LOCALE_US));
+            }
+        }
+
+        Collections.sort(httpStorageHeaderNameArray);
+
+        // Now go through each header's values in the sorted order and append
+        // them to the canonicalized string.
+        for (final String key : httpStorageHeaderNameArray) {
+            final StringBuilder canonicalizedElement = new StringBuilder(key);
+            String delimiter = "":"";
+            final ArrayList<String> values = getHeaderValues(headers, key);
+
+            boolean appendCanonicalizedElement = false;
+            // Go through values, unfold them, and then append them to the
+            // canonicalized element string.
+            for (final String value : values) {
+                if (value != null) {
+                    appendCanonicalizedElement = true;
+                }
+
+                // Unfolding is simply removal of CRLF.
+                final String unfoldedValue = CRLF.matcher(value)
+                    .replaceAll(Matcher.quoteReplacement(Constants.EMPTY_STRING));
+
+                // Append it to the canonicalized element string.
+                canonicalizedElement.append(delimiter);
+                canonicalizedElement.append(unfoldedValue);
+                delimiter = "","";
+            }
+
+            // Now, add this canonicalized element to the canonicalized header
+            // string.
+            if (appendCanonicalizedElement) {
+                appendCanonicalizedElement(canonicalizedString, canonicalizedElement.toString());
+            }
+        }
+    }","Add x-ms- prefixed headers in a fixed order.
+
+@param conn
+the HttpURLConnection for the operation
+@param canonicalizedString
+the canonicalized string to add the canonicalized headerst to."
+"@SuppressWarnings(""incomplete-switch"")
+	@Override
+	public void init(InputStream json) throws IOException {
+		try (final JsonParser parser = JsonUtils.createJsonParser(json)) {
+			JsonToken tk;
+			while ((tk = parser.nextToken()) != null) {
+				switch (tk) {
+				case FIELD_NAME:
+					final String fieldName = parser.getCurrentName();
+					if (fieldName.equals(""entityId"")) {
+						setEntityId(UUID.fromString(parser.nextTextValue()));
+					} else if (fieldName.equals(""entityVersion"")) {
+						setEntityVersion(parser.nextLongValue(0));
+					} else if (fieldName.equals(""entityCreatedOn"")) {
+						setEntityCreatedOn(parser.nextLongValue(0));
+					} else if (fieldName.equals(""createdByEntityId"")) {
+						setCreatedBy(UUID.fromString(parser.nextTextValue()));
+					} else if (fieldName.equals(""entityUpdatedOn"")) {
+						setEntityUpdatedOn(parser.nextLongValue(0));
+					} else if (fieldName.equals(""updatedByEntityId"")) {
+						setUpdatedBy(UUID.fromString(parser.nextTextValue()));
+					} else {
+						init(parser);
+					}
+					break;
+				}
+			}
+		}
+
+	}","Knows how to parse the following JSON fields:
+
+<ul>
+<li>entityId</li>
+<li>entityVersion</li>
+<li>entityCreatedOn</li>
+<li>createdByEntityId</li>
+<li>entityUpdatedOn</li>
+<li>updatedByEntityId</li>
+</ul>
+
+For any other field, JSON parsing is delegated to init(JsonParser parser)"
+"public Map<String, ChangeParameterMetaData> getRequiredParameters(Database database) {
+        Map<String, ChangeParameterMetaData> returnMap = new HashMap<>();
+
+        for (ChangeParameterMetaData metaData : parameters.values()) {
+            if (metaData.isRequiredFor(database)) {
+                returnMap.put(metaData.getParameterName(), metaData);
+            }
+        }
+        return returnMap;
+    }","Returns the required parameters for this change for the given database. Will never return a null map, only an empty or populated map."
+"private String buildMessage( final ChangeSummary summary, final Collection<String> paths )
+    {
+        final StringBuilder message =
+                        new StringBuilder().append( summary.getSummary() );
+        if ( config.isCommitFileManifestsEnabled() )
+        {
+            message.append( ""\n\nFiles changed:\n"" )
+                   .append( join( paths, ""\n"" ) );
+        }
+
+        return message.toString();
+    }","/*
+private boolean verifyChangesExist( final Collection<String> paths )
+throws GitSubsystemException
+{
+return lockAnd(me->{
+try
+{
+final DiffFormatter formatter = new DiffFormatter( System.out );
+formatter.setRepository( repo );
+
+resolve the HEAD object
+final ObjectId oid = repo.resolve( Constants.HEAD );
+if ( oid == null )
+{
+if there's no head, then these must be real changes...
+return true;
+}
+
+reset a new tree object to the HEAD
+final RevWalk walk = new RevWalk( repo );
+final RevCommit commit = walk.parseCommit( oid );
+final RevTree treeWalk = walk.parseTree( commit );
+
+construct filters for the paths we're trying to add/commit
+final List<TreeFilter> filters = new ArrayList<>();
+for ( final String path : paths )
+{
+filters.add( PathFilter.create( path ) );
+}
+
+we're interested in trees with an actual diff. This should improve walk performance.
+filters.add( TreeFilter.ANY_DIFF );
+
+set the path filters from above
+walk.setTreeFilter( AndTreeFilter.create( filters ) );
+
+setup the tree for doing the comparison vs. uncommitted files
+final CanonicalTreeParser tree = new CanonicalTreeParser();
+final ObjectReader oldReader = repo.newObjectReader();
+try
+{
+tree.reset( oldReader, treeWalk.getId() );
+}
+finally
+{
+oldReader.release();
+}
+walk.dispose();
+
+this iterator will actually scan the uncommitted files for diff'ing
+final FileTreeIterator files = new FileTreeIterator( repo );
+
+do the scan.
+final List<DiffEntry> entries = formatter.scan( tree, files );
+
+we're not interested in WHAT the differences are, only that there are differences.
+return entries != null && !entries.isEmpty();
+}
+catch ( final IOException e )
+{
+throw new GitSubsystemException( ""Failed to scan for actual changes among: %s. Reason: %s"", e, paths,
+e.getMessage() );
+}
+});
+}"
+"public static double round(double input, int decimals) {
+        final double p = Math.pow(10, decimals);
+        return Math.round(input * p) / p;
+    }","Rounds a number to the amount of decimals specified
+
+@param input to round
+@param decimals to round to
+@return the rounded number"
+"protected <T extends Writable> T readFields(byte[] bytes, T writable) throws IOException {
+    Preconditions.checkNotNull(bytes, ""Input bytes are null"");
+    Preconditions.checkNotNull(writable, ""Writable is null"");
+    buf.reset(bytes, bytes.length);
+    writable.readFields(buf);
+    return writable;
+  }","Deserializes raw bytes into a Writable instance, returning that instance. This implementation
+relies on derived classes to initialize {@link #writable} before this method is called.
+
+@param bytes serialized Writable data.
+@param writable Writable instance into which data should be stored.
+@return {@code writable}.
+@throws IllegalArgumentException if either argument is {@code null}.
+@throws IOException"
+"@GwtCompatible(serializable = true)
+  public static <T> Ordering<T> explicit(T leastValue, T... remainingValuesInOrder) {
+    return explicit(Lists.asList(leastValue, remainingValuesInOrder));
+  }",TODO(kevinb): provide replacement
+"@Override
+  public void warn (final String msg, final Throwable thr)
+  {
+    _log ().warn (msg, thr);
+  }",{@inheritDoc}
+"public static Complexd fromAngleRad(double angle) {
+        return new Complexd(TrigMath.cos(angle), TrigMath.sin(angle));
+    }","Creates a new complex from the double angle in radians.
+
+@param angle The angle in radians
+@return The complex defined by the angle"
+"public List<String> getKeys(String key) {
+
+
+        final URI uri = createURI(""/"" + key);
+        final HttpRequestBuilder httpRequestBuilder = RequestUtils
+                .getHttpRequestBuilder(null, null, RequestOptions.BLANK, """");
+
+
+        httpRequestBuilder.addParam(""keys"", ""true"");
+
+
+        final HTTP.Response httpResponse = HTTP.getResponse(uri.toString() + ""?"" + httpRequestBuilder.paramString());
+
+
+        if (httpResponse.code() == 200) {
+            return fromJsonArray(httpResponse.body(), String.class);
+        } else {
+            die(""Unable to get nested keys"", uri, key, httpResponse.code(), httpResponse.body());
+            return Collections.emptyList();
+        }
+    }","Retrieves a list of matching keys for the given key.
+<p>
+GET /v1/keyValueStore/{key}?keys
+
+@param key The key to retrieve.
+@return A list of zero to many keys."
+"public static ControllerMethodInvoker build(
+            Method functionalMethod, 
+            Method implementationMethod, 
+            Injector injector,
+            NinjaProperties ninjaProperties) {
+        // get both the parameters...
+        final Type[] genericParameterTypes = implementationMethod.getGenericParameterTypes();
+        final MethodParameter[] methodParameters = MethodParameter.convertIntoMethodParameters(genericParameterTypes);
+        // ... and all annotations for the parameters
+        final Annotation[][] paramAnnotations = implementationMethod
+                .getParameterAnnotations();
+
+        ArgumentExtractor<?>[] argumentExtractors = new ArgumentExtractor<?>[methodParameters.length];
+
+        // now we skip through the parameters and process the annotations
+        for (int i = 0; i < methodParameters.length; i++) {
+            try {
+                argumentExtractors[i] = getArgumentExtractor(methodParameters[i], paramAnnotations[i],
+                        injector);
+            } catch (RoutingException e) {
+                throw new RoutingException(""Error building argument extractor for parameter "" + i +
+                        "" in method "" + implementationMethod.getDeclaringClass().getName() + ""."" + implementationMethod.getName() + ""()"", e);
+            }
+        }
+
+        // Replace a null extractor with a bodyAs extractor, but make sure there's only one
+        int bodyAsFound = -1;
+        for (int i = 0; i < argumentExtractors.length; i++) {
+            if (argumentExtractors[i] == null) {
+                if (bodyAsFound > -1) {
+                    throw new RoutingException(""Only one parameter may be deserialised as the body ""
+                            + implementationMethod.getDeclaringClass().getName() + ""."" + implementationMethod.getName() + ""()\n""
+                            + ""Extracted parameter is type: "" + methodParameters[bodyAsFound].parameterClass.getName() + ""\n""
+                            + ""Extra parmeter is type: "" + methodParameters[i].parameterClass.getName());
+                } else {
+                    argumentExtractors[i] = new ArgumentExtractors.BodyAsExtractor(methodParameters[i].parameterClass);
+                    bodyAsFound = i;
+                }
+            }
+        }
+
+        // Now that every parameter has an argument extractor we can run validation on the annotated
+        // parameters
+        for (int i = 0; i < argumentExtractors.length; i++) {
+            argumentExtractors[i] =
+                    validateArgumentWithExtractor(
+                            methodParameters[i],
+                            paramAnnotations[i], 
+                            injector,
+                            argumentExtractors[i]);
+        }
+        
+        boolean useStrictArgumentExtractors = determineWhetherToUseStrictArgumentExtractorMode(ninjaProperties);
+
+        return new ControllerMethodInvoker(functionalMethod, argumentExtractors, useStrictArgumentExtractors);
+    }","Builds an invoker for a functional method.  Understands what parameters
+to inject and extract based on type and annotations.
+@param functionalMethod The method to be invoked
+@param implementationMethod The method to use for determining what
+actual parameters and annotations to use for each argument.  Useful
+when type/lambda erasure makes the functional interface not reliable
+for reflecting.
+@param injector The guice injector
+@param ninjaProperties The NinjaProperties of this application
+@return An invoker"
+"@EmbeddedId
+    @AttributeOverrides({
+        @AttributeOverride(name = ""year"", column = @Column(name = ""EMBEDDED_ID_YEAR"", precision = 10, scale = 0)),
+        @AttributeOverride(name = ""groupAgainst"", column = @Column(name = ""EMBEDDED_ID_GROUP_AGAINST""))
+    })
+    public ViewRiksdagenPartyCoalationAgainstAnnualSummaryEmbeddedId getEmbeddedId() {
+        return embeddedId;
+    }","Gets the value of the embeddedId property.
+
+@return
+possible object is
+{@link ViewRiksdagenPartyCoalationAgainstAnnualSummaryEmbeddedId }"
+"public void stopWork() {
+        if (DEBUG) {
+            CLog.d(LOG_TAG, ""work_status: stopWork %s"", this);
+        }
+        mExitTasksEarly = true;
+        setPause(false);
+
+        flushFileCache();
+    }","Drop all the work, and leave it in the work list."
+"@Override
+    public void drawPolyline(int[] xPoints, int[] yPoints, int nPoints) {
+        GeneralPath p = GraphicsUtils.createPolygon(xPoints, yPoints, nPoints, 
+                false);
+        draw(p);
+    }","Draws the specified multi-segment line using the current
+{@code paint} and {@code stroke}.
+
+@param xPoints  the x-points.
+@param yPoints  the y-points.
+@param nPoints  the number of points to use for the polyline."
+"public static Bson mod(final String fieldName, final long divisor, final long remainder) {
+        return new OperatorFilter<BsonArray>(""$mod"", fieldName, new BsonArray(asList(new BsonInt64(divisor), new BsonInt64(remainder))));
+    }","Creates a filter that matches all documents where the value of a field divided by a divisor has the specified remainder (i.e. perform
+a modulo operation to select documents).
+
+@param fieldName the field name
+@param divisor   the modulus
+@param remainder the remainder
+@return the filter
+@mongodb.driver.manual reference/operator/query/mod $mod"
+"@NonNull
+    static String buildUrl(
+            @NonNull String redirectUri,
+            @NonNull ResponseType responseType,
+            @NonNull SessionConfiguration configuration) {
+
+        final String CLIENT_ID_PARAM = ""client_id"";
+        final String ENDPOINT = ""login"";
+        final String HTTPS = ""https"";
+        final String PATH = ""oauth/v2/authorize"";
+        final String REDIRECT_PARAM = ""redirect_uri"";
+        final String RESPONSE_TYPE_PARAM = ""response_type"";
+        final String SCOPE_PARAM = ""scope"";
+        final String SHOW_FB_PARAM = ""show_fb"";
+        final String SIGNUP_PARAMS = ""signup_params"";
+        final String REDIRECT_LOGIN = ""{\""redirect_to_login\"":true}"";
+
+
+
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme(HTTPS)
+                .authority(ENDPOINT + ""."" + configuration.getEndpointRegion().getDomain())
+                .appendEncodedPath(PATH)
+                .appendQueryParameter(CLIENT_ID_PARAM, configuration.getClientId())
+                .appendQueryParameter(REDIRECT_PARAM, redirectUri)
+                .appendQueryParameter(RESPONSE_TYPE_PARAM, responseType.toString().toLowerCase(
+                        Locale.US))
+                .appendQueryParameter(SCOPE_PARAM, getScopes(configuration))
+                .appendQueryParameter(SHOW_FB_PARAM, ""false"")
+                .appendQueryParameter(SIGNUP_PARAMS, AuthUtils.createEncodedParam(REDIRECT_LOGIN));
+
+        return builder.build().toString();
+    }","Builds a URL {@link String} using the necessary parameters to load in the {@link WebView}.
+
+@return the URL to load in the {@link WebView}"
+"public InputStream open() {
+        if (path.startsWith(CLASSPATH_PREFIX)) {
+            final ClassLoader loader = Thread.currentThread().getContextClassLoader();
+            return loader.getResourceAsStream(path.substring(CLASSPATH_PREFIX_LENGTH));
+        } else {
+            final File file = new File(path);
+            try {
+                return new FileInputStream(file);
+            } catch (final FileNotFoundException e) {
+                return null;
+            }
+        }
+    }","Open the resource or file and return the input stream. If the path is prefixed with classpath: then it is treated
+as a classpath resource. Otherwise, it is assumed to be a file system path.
+
+@return The input stream or {@code null} if the file or resource cannot be found."
+"public static String[] stringValues2Array(final List<StringValue> _values)
+    {
+        final String[] ret;
+        if (_values != null) {
+            ret = new String[_values.size()];
+            int i = 0;
+            for (final StringValue value : _values) {
+                ret[i] = value.toString();
+                i++;
+            }
+        } else {
+            ret = new String[0];
+        }
+        return ret;
+    }","Get an array for the StringValues.
+
+@param _values the values
+@return always StringArray, if parameter does not exist an empty
+StringArray"
+"public static GraphQLFieldDefinition field (String tableName) {
+        return newFieldDefinition()
+                .name(tableName)
+                .type(new GraphQLList(GraphQLGtfsSchema.routeType))
+                .argument(stringArg(""namespace""))
+                .argument(multiStringArg(""route_id""))
+                .dataFetcher(new JDBCFetcher(tableName, null))
+                .build();
+    }",Still maybe we could make the most basic ones this way (automatically). Keeping this function as an example.
+"public final boolean cancel(@NonNull final String tag, final boolean mayInterrupt) {
+        final Integer id = mTaggedRequests.get(tag);
+        //noinspection SimplifiableIfStatement
+        if (id != null) {
+            return cancel(id, mayInterrupt);
+        } else {
+            return false;
+        }
+    }","Cancels operation launch by its tag. May not physically kill the background thread, but it is
+guaranteed that the result of the operation will not be delivered to any ServiceConnector.
+
+@param tag          a pre-cache key of the operation launch that should be cancelled
+@param mayInterrupt {@code true} if threads executing operations task should be interrupted;
+otherwise, in-progress tasks are allowed to complete
+@return {@code false} if the task could not be cancelled, typically because it has already
+completed normally or there is no running operation with a given tag; {@code true} otherwise
+@see #invoke(ChronosOperation, boolean)
+@see #invoke(ChronosOperation, String, boolean)
+@see #cancel(int, boolean)
+@see Chronos#cancelAll(boolean)"
+"private static void generateSelectiveToTrimEleTo(XmlElement trimEle, IntrospectedColumn introspectedColumn, String prefix, int type) {
+        if (type != 3 && (introspectedColumn.isSequenceColumn() || introspectedColumn.getFullyQualifiedJavaType().isPrimitive())) {
+            // if it is a sequence column, it is not optional
+            // This is required for MyBatis3 because MyBatis3 parses
+            // and calculates the SQL before executing the selectKey
+
+            // if it is primitive, we cannot do a null check
+            generateSelectiveCommColumnTo(trimEle, introspectedColumn, prefix, type);
+        } else {
+            XmlElement eleIf = new XmlElement(""if"");
+            eleIf.addAttribute(new Attribute(""test"", introspectedColumn.getJavaProperty(prefix) + "" != null""));
+
+            generateSelectiveCommColumnTo(eleIf, introspectedColumn, prefix, type);
+
+            trimEle.addElement(eleIf);
+        }
+    }","生成选择列到trim 节点
+@param trimEle
+@param introspectedColumn
+@param prefix
+@param type               1:key,2:value,3:set"
+"@SuppressWarnings(""unused"")
+  public static long nanoTime() {
+    if (ShadowLooper.looperMode() == LooperMode.Mode.PAUSED) {
+      return TimeUnit.MILLISECONDS.toNanos(SystemClock.uptimeMillis());
+    } else {
+      return ShadowLegacySystemClock.nanoTime();
+    }
+  }","Implements {@link System#nanoTime} through ShadowWrangler.
+
+@return Current time with nanos."
+"@Override
+    public void drawLine(int x1, int y1, int x2, int y2) {
+        if (this.line == null) {
+            this.line = new Line2D.Double(x1, y1, x2, y2);
+        } else {
+            this.line.setLine(x1, y1, x2, y2);
+        }
+        draw(this.line);
+    }","Draws a line from {@code (x1, y1)} to {@code (x2, y2)} using
+the current {@code paint} and {@code stroke}.
+
+@param x1  the x-coordinate of the start point.
+@param y1  the y-coordinate of the start point.
+@param x2  the x-coordinate of the end point.
+@param y2  the x-coordinate of the end point."
+"public void applyLeaseConditionToRequest(final HttpURLConnection request) {
+        if (!Utility.isNullOrEmpty(this.leaseID)) {
+            request.setRequestProperty(Constants.HeaderConstants.LEASE_ID_HEADER, this.leaseID);
+        }
+    }","RESERVED FOR INTERNAL USE. Applies the lease access condition to the request.
+
+@param request
+A <code>java.net.HttpURLConnection</code> object that represents the request
+to which the condition is being applied."
+"@CheckResult @NonNull
+  public final <T> Observable<T> mapToOneOrDefault(@NonNull Function<Cursor, T> mapper,
+      @NonNull T defaultValue) {
+    return lift(Query.mapToOneOrDefault(mapper, defaultValue));
+  }","Given a function mapping the current row of a {@link Cursor} to {@code T}, transform each
+emitted {@link Query} which returns a single row to {@code T}.
+<p>
+It is an error for a query to pass through this operator with more than 1 row in its result
+set. Use {@code LIMIT 1} on the underlying SQL query to prevent this. Result sets with 0 rows
+emit {@code defaultValue}.
+<p>
+This method is equivalent to:
+<pre>{@code
+flatMap(q -> q.asRows(mapper).take(1).defaultIfEmpty(defaultValue))
+}</pre>
+and a convenience operator for:
+<pre>{@code
+lift(Query.mapToOneOrDefault(mapper, defaultValue))
+}</pre>
+
+@param mapper Maps the current {@link Cursor} row to {@code T}. May not return null.
+@param defaultValue Value returned if result set is empty"
+"public static String concatSortedPercentEncodedParams(Map<String, String> params) {
+        StringBuilder result = new StringBuilder();
+
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            result.append(entry.getKey()).append(PAIR_SEPARATOR);
+            result.append(entry.getValue()).append(PARAM_SEPARATOR);
+        }
+
+        return result.toString().substring(0, result.length() - 1);
+    }","Concats a key-value map into a querystring-like String
+
+@param params key-value map
+@return querystring-like String"
+"public DatabaseSnapshot createSnapshot(CatalogAndSchema[] examples, Database database,
+                                           SnapshotControl snapshotControl)
+            throws DatabaseException, InvalidExampleException {
+        if (database == null) {
+            return null;
+        }
+
+        /*
+         * Translate the given examples into ""real"" Schema objects according to the database's abilities (e.g.
+         * does the DB support catalogs? schemas? are the given schema/catalog names the default ones for the
+         * DB connection?)
+          */
+        Schema[] schemas = new Schema[examples.length];
+        for (int i = 0; i< schemas.length; i++) {
+            examples[i] = examples[i].customize(database);
+            schemas[i] = new Schema(examples[i].getCatalogName(), examples[i].getSchemaName());
+
+
+        }
+
+        return createSnapshot(schemas, database, snapshotControl);
+    }","Creates a database snapshot for a given array of catalog/schema combinations.
+
+@param examples        an array of CatalogAndSchema objects
+@param database        the database to work on
+@param snapshotControl the options/settings for snapshot generation
+@return a database snapshot that includes all objects matching the specification
+@throws DatabaseException       if a problem occurs during snapshotting
+@throws InvalidExampleException if the given catalog/schema combinations are invalid (e.g. duplicates)"
+"Item newMethodItem(final String owner, final String name,
+            final String desc, final boolean itf) {
+        int type = itf ? IMETH : METH;
+        key3.set(type, owner, name, desc);
+        Item result = get(key3);
+        if (result == null) {
+            put122(type, newClass(owner), newNameType(name, desc));
+            result = new Item(index++, key3);
+            put(result);
+        }
+        return result;
+    }","Adds a method reference to the constant pool of the class being build.
+Does nothing if the constant pool already contains a similar item.
+
+@param owner
+the internal name of the method's owner class.
+@param name
+the method's name.
+@param desc
+the method's descriptor.
+@param itf
+<tt>true</tt> if <tt>owner</tt> is an interface.
+@return a new or already existing method reference item."
+"@Override
+    public QueuedEntityPlacer buildEntityPlacer(HeuristicConfigPolicy configPolicy) {
+        EntitySelectorConfig entitySelectorConfig_ = buildEntitySelectorConfig(configPolicy);
+        EntitySelector entitySelector = entitySelectorConfig_.buildEntitySelector(configPolicy,
+                SelectionCacheType.PHASE, SelectionOrder.ORIGINAL);
+
+        List<MoveSelectorConfig> moveSelectorConfigList_;
+        if (ConfigUtils.isEmptyCollection(moveSelectorConfigList)) {
+            EntityDescriptor entityDescriptor = entitySelector.getEntityDescriptor();
+            Collection<GenuineVariableDescriptor> variableDescriptors = entityDescriptor.getGenuineVariableDescriptors();
+            List<MoveSelectorConfig> subMoveSelectorConfigList = new ArrayList<>(
+                    variableDescriptors.size());
+            for (GenuineVariableDescriptor variableDescriptor : variableDescriptors) {
+                subMoveSelectorConfigList.add(buildChangeMoveSelectorConfig(
+                        configPolicy, entitySelectorConfig_.getId(), variableDescriptor));
+            }
+            MoveSelectorConfig subMoveSelectorConfig;
+            if (subMoveSelectorConfigList.size() > 1) {
+                // Default to cartesian product (not a queue) of planning variables.
+                subMoveSelectorConfig = new CartesianProductMoveSelectorConfig(subMoveSelectorConfigList);
+            } else {
+                subMoveSelectorConfig = subMoveSelectorConfigList.get(0);
+            }
+            moveSelectorConfigList_ = Collections.singletonList(subMoveSelectorConfig);
+        } else {
+            moveSelectorConfigList_ = moveSelectorConfigList;
+        }
+        List<MoveSelector> moveSelectorList = new ArrayList<>(moveSelectorConfigList_.size());
+        for (MoveSelectorConfig moveSelectorConfig : moveSelectorConfigList_) {
+            moveSelectorList.add(moveSelectorConfig.buildMoveSelector(
+                    configPolicy, SelectionCacheType.JUST_IN_TIME, SelectionOrder.ORIGINAL));
+        }
+        return new QueuedEntityPlacer(entitySelector, moveSelectorList);
+    }",************************************************************************
+"public static Set<ResourceType> complementOf(final Set<ResourceType> resourceTypes) {
+        final Set<ResourceType> set = allOf();
+        set.removeAll(resourceTypes);
+        return set;
+    }","Returns a set containing all the known resource types, except those is the given set
+
+@param resourceTypes The resource types which will not be included in the returned set
+@return The complement of the given set of resource types"
+"public ImageView addNewImageView(Bitmap pBitmap, float pScale_Left, float pScale_Top, float pScale_Width, float pScale_Height) {
+        BitmapDrawable bm = new BitmapDrawable(getResources(), pBitmap);
+        return addNewImageView(bm, pScale_Left, pScale_Top, pScale_Width, pScale_Height, false);
+    }","adds new ImageView with (Bitmap, Left, Top, Width, Height) parameters
+sets Image of ImageView with Bitmap parameter
+DuplicateState is false by default.
+@param pBitmap
+@param pScale_Left
+@param pScale_Top
+@param pScale_Width
+@param pScale_Height
+@return created ImageView instance"
+"public void rpushx(final String key, final String string) {
+        rpushx(SafeEncoder.encode(key), SafeEncoder.encode(string));
+    }","Rpushx.
+
+@param key    the key
+@param string the string"
+"@Nonnull
+  public PSLet readLetFromXML (@Nonnull final IMicroElement eLet)
+  {
+    final PSLet ret = new PSLet ();
+
+    eLet.forAllAttributes ( (sNS, sAttrName, sVal) -> {
+      final String sAttrValue = _getAttributeValue (sVal);
+      if (sAttrName.equals (CSchematronXML.ATTR_NAME))
+        ret.setName (sAttrValue);
+      else
+        if (sAttrName.equals (CSchematronXML.ATTR_VALUE))
+          ret.setValue (sAttrValue);
+        else
+          _warn (ret, ""Unsupported attribute '"" + sAttrName + ""'='"" + sAttrValue + ""'"");
+    });
+
+    eLet.forAllChildElements (eLetChild -> {
+      if (CSchematron.NAMESPACE_SCHEMATRON.equals (eLetChild.getNamespaceURI ()))
+      {
+        _warn (ret, ""Unsupported Schematron element '"" + eLetChild.getLocalName () + ""'"");
+      }
+      else
+        _warn (ret, ""Unsupported namespace URI '"" + eLetChild.getNamespaceURI () + ""'"");
+    });
+    return ret;
+  }","Read a &lt;let&gt; element
+
+@param eLet
+The source micro element. Never <code>null</code>.
+@return The created domain object. May not be <code>null</code>."
+"void deleteProperty(final String key, final Configuration config) {
+        if (config.containsKey(key)) {
+            logger.debug(""deleting property key ["" + key + ""]"");
+
+            config.clearProperty(key);
+        }
+    }","Delete a property in the underlying config
+
+@param key
+@param config"
+"public static <E> Set<E> newConcurrentHashSet(Iterable<? extends E> elements) {
+    Set<E> set = newConcurrentHashSet();
+    Iterables.addAll(set, elements);
+    return set;
+  }","Creates a thread-safe set backed by a hash map and containing the given elements. The set is
+backed by a {@link ConcurrentHashMap} instance, and thus carries the same concurrency
+guarantees.
+
+<p>Unlike {@code HashSet}, this class does NOT allow {@code null} to be used as an element. The
+set is serializable.
+
+@param elements the elements that the set should contain
+@return a new thread-safe set containing those elements (minus duplicates)
+@throws NullPointerException if {@code elements} or any of its contents is null
+@since 15.0"
+"public static VectorByteBufferedIntegral3s8 createWithBase(
+    final ByteBuffer b,
+    final MutableLongType base,
+    final int offset)
+  {
+    return new VectorByteBufferedIntegral3s8(b, base, offset);
+  }","<p>Return a new vector that is backed by the given byte buffer {@code
+b}</p>
+
+<p>The data for the instance will be taken from the data at the current
+value of {@code base.get() + offset}, each time a field is requested or
+set.</p>
+
+<p>No initialization of the data is performed.</p>
+
+@param b      The byte buffer
+@param base   The base address
+@param offset A constant offset
+
+@return A new buffered vector"
+"private String stripContextPath(final String contextPath, String uri)
+   {
+      if (!contextPath.equals(""/"") && uri.startsWith(contextPath))
+      {
+         uri = uri.substring(contextPath.length());
+      }
+      return uri;
+   }","If the given URL is prefixed with this request's context-path, return the URI without the context path. Otherwise
+return the URI unchanged."
+"public static void fail(String failureMessage, Throwable realCause) {
+    AssertionError error = Failures.instance().failure(failureMessage);
+    error.initCause(realCause);
+    throw error;
+  }","Throws an {@link AssertionError} with the given message and with the {@link Throwable} that caused the failure.
+
+@param failureMessage the description of the failed assertion. It can be {@code null}.
+@param realCause cause of the error.
+@throws AssertionError with the given message and with the {@link Throwable} that caused the failure."
+"public <TArg0> StateConfiguration<S, T> permitDynamic(TriggerWithParameters1<TArg0, T> trigger, Func2<TArg0, S> destinationStateSelector) {
+        return permitDynamicIf(trigger, destinationStateSelector, NO_GUARD);
+    }","Accept the specified trigger and transition to the destination state, calculated dynamically by the supplied
+function
+
+@param trigger                  The accepted trigger
+@param destinationStateSelector Function to calculate the state that the trigger will cause a transition to
+@param <TArg0>                  Type of the first trigger argument
+@return The receiver"
+"public String getIndexFields() {
+        String orderFieldName = getOrderFieldName();
+        if (orderFieldName == null) return getKeyFieldName();
+        else return String.join("","", getKeyFieldName(), orderFieldName);
+    }","Gets index fields for the spec table. WARNING: this MUST be called on a spec table (i.e., one of the constant
+tables defined in this class). Otherwise, it could return fields that should not be indexed.
+@return"
+"public <T> T getEmbedded(final List<?> keys, final T defaultValue) {
+        notNull(""keys"", keys);
+        isTrue(""keys"", !keys.isEmpty());
+        notNull(""defaultValue"", defaultValue);
+        return getEmbeddedValue(keys, null, defaultValue);
+    }","Gets the value in an embedded document, casting it to the given {@code Class<T>} or returning the default value if null.
+The list of keys represents a path to the embedded value, drilling down into an embedded document for each key.
+This is useful to avoid having casts in client code, though the effect is the same.
+
+The generic type of the keys list is {@code ?} to be consistent with the corresponding {@code get} methods, but in practice
+the actual type of the argument should be {@code List<String>}. So to get the embedded value of a key list that is of type String,
+you would write {@code String name = doc.getEmbedded(List.of(""employee"", ""manager"", ""name""), ""John Smith"")} instead of
+{@code String name = doc.get(""employee"", Document.class).get(""manager"", Document.class).get(""name"", ""John Smith"") }.
+
+@param keys  the list of keys
+@param defaultValue what to return if the value is null
+@param <T>   the type of the class
+@return the value of the given key, or null if the instance does not contain this key.
+@throws ClassCastException if the value of the given key is not of type T
+@since 3.10"
+"@Nullable
+    public String getPackageNameToUse(Context context) {
+        if (packageNameToUse != null) return packageNameToUse;
+
+        PackageManager pm = context.getPackageManager();
+        // Get default VIEW intent handler.
+        Intent activityIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(""http://www.example.com""));
+        ResolveInfo defaultViewHandlerInfo = pm.resolveActivity(activityIntent, 0);
+        String defaultViewHandlerPackageName = null;
+        if (defaultViewHandlerInfo != null) {
+            defaultViewHandlerPackageName = defaultViewHandlerInfo.activityInfo.packageName;
+        }
+
+        // Get all apps that can handle VIEW intents.
+        List<ResolveInfo> resolvedActivityList = pm.queryIntentActivities(activityIntent, 0);
+        List<String> packagesSupportingCustomTabs = new ArrayList<>();
+        for (ResolveInfo info : resolvedActivityList) {
+            Intent serviceIntent = new Intent();
+            serviceIntent.setAction(ACTION_CUSTOM_TABS_CONNECTION);
+            serviceIntent.setPackage(info.activityInfo.packageName);
+            if (pm.resolveService(serviceIntent, 0) != null) {
+                packagesSupportingCustomTabs.add(info.activityInfo.packageName);
+            }
+        }
+
+        // Now packagesSupportingCustomTabs contains all apps that can handle both VIEW intents
+        // and service calls.
+        if (packagesSupportingCustomTabs.isEmpty()) {
+            packageNameToUse = null;
+        } else if (packagesSupportingCustomTabs.size() == 1) {
+            packageNameToUse = packagesSupportingCustomTabs.get(0);
+        } else if (!TextUtils.isEmpty(defaultViewHandlerPackageName)
+                && !hasSpecializedHandlerIntents(context, activityIntent)
+                && packagesSupportingCustomTabs.contains(defaultViewHandlerPackageName)) {
+            packageNameToUse = defaultViewHandlerPackageName;
+        } else if (packagesSupportingCustomTabs.contains(STABLE_PACKAGE)) {
+            packageNameToUse = STABLE_PACKAGE;
+        } else if (packagesSupportingCustomTabs.contains(BETA_PACKAGE)) {
+            packageNameToUse = BETA_PACKAGE;
+        } else if (packagesSupportingCustomTabs.contains(DEV_PACKAGE)) {
+            packageNameToUse = DEV_PACKAGE;
+        } else if (packagesSupportingCustomTabs.contains(LOCAL_PACKAGE)) {
+            packageNameToUse = LOCAL_PACKAGE;
+        }
+        return packageNameToUse;
+    }","Goes through all apps that handle VIEW intents and have a warmup service. Picks
+the one chosen by the user if there is one, otherwise makes a best effort to return a
+valid package name.
+
+This is <strong>not</strong> threadsafe.
+
+@param context {@link Context} to use for accessing {@link PackageManager}.
+@return The package name recommended to use for connecting to custom tabs related components."
+"public static int getColumnIndex(ResultSetMetaData meta, String colName) throws SQLException {
+        if (meta == null)
+            return 0;
+        int columnCount = meta.getColumnCount();
+        for (int i = 1; i <= columnCount; i++)
+            if (meta.getColumnName(i).equalsIgnoreCase(colName))
+                return i;
+        // TODO 尝试一下meta.getColumnLabel?
+        log.debugf(""Can not find @Column(%s) in table/view (%s)"", colName, meta.getTableName(1));
+        throw Lang.makeThrow(SQLException.class, ""Can not find @Column(%s)"", colName);
+    }","获取colName所在的行数
+
+@param meta
+从连接中取出的ResultSetMetaData
+@param colName
+字段名
+@return 所在的索引,如果不存在就抛出异常
+@throws SQLException
+指定的colName找不到"
+"public LookUpStrategy determineLookUpStrategy(Object object) {
+        Class<?> objectClass = object.getClass();
+        return decisionCache.computeIfAbsent(objectClass, key -> {
+            if (object.getClass().isEnum()) {
+                return new ImmutableLookUpStrategy();
+            }
+            switch (lookUpStrategyType) {
+                case PLANNING_ID_OR_NONE:
+                    MemberAccessor memberAccessor1 = ConfigUtils.findPlanningIdMemberAccessor(objectClass);
+                    if (memberAccessor1 == null) {
+                        return new NoneLookUpStrategy();
+                    }
+                    return new PlanningIdLookUpStrategy(memberAccessor1);
+                case PLANNING_ID_OR_FAIL_FAST:
+                    MemberAccessor memberAccessor2 = ConfigUtils.findPlanningIdMemberAccessor(objectClass);
+                    if (memberAccessor2 == null) {
+                        throw new IllegalArgumentException(""The class ("" + objectClass
+                                + "") does not have a "" + PlanningId.class.getSimpleName() + "" annotation,""
+                                + "" but the lookUpStrategyType ("" + lookUpStrategyType + "") requires it.\n""
+                                + ""Maybe add the "" + PlanningId.class.getSimpleName() + "" annotation""
+                                + "" or change the "" + PlanningSolution.class.getSimpleName() + "" annotation's ""
+                                + LookUpStrategyType.class.getSimpleName() + ""."");
+                    }
+                    return new PlanningIdLookUpStrategy(memberAccessor2);
+                case EQUALITY:
+                    Method equalsMethod;
+                    Method hashCodeMethod;
+                    try {
+                        equalsMethod = object.getClass().getMethod(""equals"", Object.class);
+                        hashCodeMethod = object.getClass().getMethod(""hashCode"");
+                    } catch (NoSuchMethodException e) {
+                        throw new IllegalStateException(
+                                ""Impossible state because equals() and hashCode() always exist."", e);
+                    }
+                    if (equalsMethod.getDeclaringClass().equals(Object.class)) {
+                        throw new IllegalArgumentException(""The class ("" + object.getClass().getSimpleName()
+                                + "") doesn't override the equals() method, neither does any superclass."");
+                    }
+                    if (hashCodeMethod.getDeclaringClass().equals(Object.class)) {
+                        throw new IllegalArgumentException(""The class ("" + object.getClass().getSimpleName()
+                                + "") overrides equals() but neither it nor any superclass""
+                                + "" overrides the hashCode() method."");
+                    }
+                    return new EqualsLookUpStrategy();
+                case NONE:
+                    return new NoneLookUpStrategy();
+                default:
+                    throw new IllegalStateException(""The lookUpStrategyType ("" + lookUpStrategyType
+                            + "") is not implemented."");
+            }
+        });
+    }","This method is thread-safe.
+@param object never null
+@return never null"
+"public static String[] allStrings(Cursor cursor, boolean close) {
+        String[] s = EMPTY_STRING_ARRAY;
+        if (cursor.moveToFirst()) {
+            s = new String[cursor.getCount()];
+            do {
+                s[cursor.getPosition()] = cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+        close(cursor, close);
+        return s;
+    }","Get all String values in the first column.
+
+@param close true to close the cursor or false to leave it open"
+"@ManyToOne(targetEntity = DetailElement.class, cascade = {
+        CascadeType.ALL
+    })
+    @JoinColumn(name = ""DETAIL_LIST_PERSON_DETAIL_EL_0"")
+    public DetailElement getDetailList() {
+        return detailList;
+    }","Gets the detail list.
+
+@return the detail list"
+"public static URI addToQuery(final URI resourceURI, final String queryString) throws URISyntaxException,
+            StorageException {
+        return addToSingleUriQuery(resourceURI, parseQueryString(queryString));
+    }","Adds a queryString to an URI.
+
+@param resourceURI
+the URI of the resource
+@param queryString
+the query string to add
+@return an appended URI.
+@throws URISyntaxException
+if the resulting URI is invalid.
+@throws StorageException"
+"@Implementation
+  protected static int writeEvent(int tag, int value) {
+    addEvent(new EventBuilder(tag, value).build());
+    return Integer.BYTES + Integer.BYTES;
+  }","Writes an event log message, returning an approximation of the bytes written."
+"public static String formURLEncode(String string) {
+        Preconditions.checkNotNull(string, ""Cannot encode null string"");
+
+        try {
+            return URLEncoder.encode(string, UTF_8);
+        } catch (UnsupportedEncodingException uee) {
+            throw new IllegalStateException(ERROR_MSG, uee);
+        }
+    }","Translates a string into application/x-www-form-urlencoded format
+
+@param plain
+@return form-urlencoded string"
+"@Override
+    public void encode(final BsonWriter writer, final LocalTime value, final EncoderContext encoderContext) {
+        writer.writeDateTime(value.atDate(LocalDate.ofEpochDay(0L)).toInstant(ZoneOffset.UTC).toEpochMilli());
+    }","{@inheritDoc}
+<p>Converts the {@code LocalTime} to {@link ZoneOffset#UTC} at EpochDay via {@link LocalTime#atDate(LocalDate)} and
+{@link java.time.LocalDateTime#toInstant(ZoneOffset)}.</p>"
+"private static void getCombination(List<String> slist,
+                                       char[] a,
+                                       int n,
+                                       int begin,
+                                       char[] b,
+                                       int index) {
+        if (n == 0) {// 如果够n个数了，输出b数组
+            getAllPermutation(slist, b, 0);// 得到b的全排列
+            return;
+        }
+        for (int i = begin; i < a.length; i++) {
+            b[index] = a[i];
+            getCombination(slist, a, n - 1, i + 1, b, index + 1);
+        }
+
+    }",--------------------------- 以下为几个辅助方法
+"public SafeHtmlBuilder setSrcdoc(SafeHtml value) {
+    if (!SRCDOC_SAFE_HTML_ELEMENT_WHITELIST.contains(elementName)) {
+      throw new IllegalArgumentException(
+          ""Attribute \""srcdoc\"" with a SafeHtml value can only be used ""
+              + ""by one of the following elements: ""
+              + SRCDOC_SAFE_HTML_ELEMENT_WHITELIST);
+    }
+    return setAttribute(""srcdoc"", value.getSafeHtmlString());
+  }","Sets the {@code srcdoc} attribute for this element.
+
+<p>The attribute {@code srcdoc} with a {@code SafeHtml} value is allowed on these elements:
+
+<ul>
+<li>{@code iframe}
+</ul>
+
+@throws IllegalArgumentException if the {@code srcdoc} attribute with a {@code SafeHtml} value
+is not allowed on this element"
+"public static Object createShutdownProxy(Object o,
+                                           Class[] interfaces,
+                                           Shutdown shutdown)
+  {
+    if(interfaces == null)
+      interfaces = ReflectUtils.extractAllInterfaces(o);
+
+    return Proxy.newProxyInstance(o.getClass().getClassLoader(),
+                                  interfaces,
+                                  new ShutdownProxy(o, shutdown));
+
+  }","Creates the proxy to check for shutdown.
+
+@param o
+@param interfaces restriction on which interface to apply the proxy on
+@param shutdown
+@return the proxy"
+"@Nonnull
+  public PSValueOf readValueOfFromXML (@Nonnull final IMicroElement eValueOf)
+  {
+    final PSValueOf ret = new PSValueOf ();
+
+    eValueOf.forAllAttributes ( (sNS, sAttrName, sVal) -> {
+      final String sAttrValue = _getAttributeValue (sVal);
+      if (sAttrName.equals (CSchematronXML.ATTR_SELECT))
+        ret.setSelect (sAttrValue);
+      else
+        ret.addForeignAttribute (sAttrName, sAttrValue);
+    });
+
+    eValueOf.forAllChildElements (eValueOfChild -> {
+      if (CSchematron.NAMESPACE_SCHEMATRON.equals (eValueOfChild.getNamespaceURI ()))
+      {
+        _warn (ret, ""Unsupported Schematron element '"" + eValueOfChild.getLocalName () + ""'"");
+      }
+      else
+        _warn (ret, ""Unsupported namespace URI '"" + eValueOfChild.getNamespaceURI () + ""'"");
+    });
+    return ret;
+  }","Read a &lt;value-of&gt; element
+
+@param eValueOf
+The source micro element. Never <code>null</code>.
+@return The created domain object. May not be <code>null</code>."
+"public File getDeletedFile(int index) {
+    CheckUtilities.checkIntIndexInListRange(deletedFiles, index);
+    return deletedFiles.get(index);
+  }","Returns the file at a given location in the deletedFiles list
+
+@param index
+in the list and should be positive and less than no. of files deleted.
+@return deleted file at the index in deleteFiles list."
+"private String getConfigAttribute(Configuration config, ChainedItem<Configuration> parentConfiguration,
+                                      String attributeName, String defaultValue) {
+        String ret;
+        try {
+            ret = config.getAttribute(attributeName);
+        } catch (CheckstyleException e) {
+            // Try to find the attribute in a parent, if there are any
+            if (parentConfiguration != null) {
+                ret =
+                        getConfigAttribute(parentConfiguration.value, parentConfiguration.parent, attributeName,
+                                defaultValue);
+            } else {
+                ret = defaultValue;
+            }
+        }
+        return ret;
+    }","Get the value of the specified attribute from the Checkstyle configuration.
+If parentConfigurations is non-null and non-empty, the parent
+configurations are searched if the attribute cannot be found in the
+current configuration. If the attribute is still not found, the
+specified default value will be returned.
+
+@param config              The current Checkstyle configuration
+@param parentConfiguration The configuration of the parent of the current configuration
+@param attributeName       The name of the attribute
+@param defaultValue        The default value to use if the attribute cannot be found in any configuration
+@return The value of the specified attribute"
+"@Override
+	public String getProfileBulk(String token, String appIdentifier, String fields) {
+		Utils.logCall(TAG, ""getProfileBulk"", token, appIdentifier, fields);
+
+		String[] fieldListArray = FieldContainerMarshaller.unmarshallIdentifierList(fields);
+
+		SPFSecurityMonitor monitor = mSpf.getSecurityMonitor();
+		PersonAuth auth = monitor.getPersonRegistry().getPersonAuthFrom(token);
+		SPFPersona persona = monitor.getPersonaOf(appIdentifier);
+		ProfileFieldContainer container = mSpf.getProfileManager().getProfileFieldBulk(auth, persona, fieldListArray);
+
+		return FieldContainerMarshaller.marshallContainer(container);
+	}","/*
+(non-Javadoc)
+
+@see
+it.polimi.spf.framework.proximity.ProximityResponder#getProfileBulk
+(java.lang.String, java.lang.String, java.lang.String[])"
+"protected void login(Activity context, String appId, String[] permissions, boolean sso, boolean read, final AuthProviderListener listener) {
+
+		Session.OpenRequest auth = new Session.OpenRequest(context);
+		
+		if(permissions != null) {
+			auth.setPermissions(Arrays.asList(permissions));
+		}
+		
+		if(sso) {
+			auth.setLoginBehavior(SessionLoginBehavior.SSO_WITH_FALLBACK);
+		}
+		else {
+			auth.setLoginBehavior(SessionLoginBehavior.SUPPRESS_SSO);
+		}
+	
+		auth.setCallback(createLoginCallback(listener));
+		
+		Session session = createNewSession(context, appId);
+		Session.setActiveSession(session);
+		
+		if(read) {
+			openSessionForRead(session ,auth);
+		}
+		else {
+			openSessionForPublish(session ,auth);
+		}
+	}",Protected so we can mock
+"@ManyToOne(targetEntity = PersonData.class, cascade = {
+        CascadeType.ALL
+    })
+    @JoinColumn(name = ""PERSON_PERSON_CONTAINER_DATA_0"")
+    public PersonData getPerson() {
+        return person;
+    }","Gets the person.
+
+@return the person"
+"@Override
+    public void setDeploymentServerId(String value) {
+        super.setDeploymentServerId(value);
+        setValueInConfig(DEPLOYMENT_SERVER_ID_PROPERTY, value);
+        setValueInConfig(ContextKey.serverId.getKey(), value);
+    }","Call super and also update the configuration to reflect the changes.
+
+@param value"
+"public void assertHasSize(Description description, List<?> actual, int expectedSize) {
+    assertNotNull(description, actual);
+    int sizeOfActual = actual.size();
+    if (sizeOfActual != expectedSize) {
+      throw failures.failure(description, shouldHaveSize(actual, sizeOfActual, expectedSize));
+    }
+  }","Asserts that the number of elements in the given {@code List} is equal to the expected one.
+
+@param description  contains information about the assertion.
+@param actual       the given {@code List}.
+@param expectedSize the expected size of {@code actual}.
+@throws AssertionError if the given {@code Collection} is {@code null}.
+@throws AssertionError if the number of elements in the given {@code List} is different than the expected one."
+"public static <T> T newInstance(Class<T> cl) {
+    try {
+      return cl.getDeclaredConstructor().newInstance();
+    } catch (InstantiationException | IllegalAccessException | NoSuchMethodException
+        | InvocationTargetException e) {
+      throw new RuntimeException(e);
+    }
+  }","Create a new instance of a class
+
+@param cl The class object.
+@param <T> The class type.
+@return New class instance."
+"public void setAppxml( File descr )
+        throws ArchiverException
+    {
+        deploymentDescriptor = descr;
+        if ( !deploymentDescriptor.exists() )
+        {
+            throw new ArchiverException( ""Deployment descriptor: "" + deploymentDescriptor + "" does not exist."" );
+        }
+
+        addFile( descr, ""META-INF/application.xml"" );
+    }",File to incorporate as application.xml.
+"public static <K, V> ImmutableListMultimap<K, V> copyOf(
+      Multimap<? extends K, ? extends V> multimap) {
+    if (multimap.isEmpty()) {
+      return of();
+    }
+
+    // TODO(lowasser): copy ImmutableSetMultimap by using asList() on the sets
+    if (multimap instanceof ImmutableListMultimap) {
+      @SuppressWarnings(""unchecked"") // safe since multimap is not writable
+      ImmutableListMultimap<K, V> kvMultimap = (ImmutableListMultimap<K, V>) multimap;
+      if (!kvMultimap.isPartialView()) {
+        return kvMultimap;
+      }
+    }
+
+    return fromMapEntries(multimap.asMap().entrySet(), null);
+  }","Returns an immutable multimap containing the same mappings as {@code multimap}. The generated
+multimap's key and value orderings correspond to the iteration ordering of the {@code
+multimap.asMap()} view.
+
+<p>Despite the method name, this method attempts to avoid actually copying the data when it is
+safe to do so. The exact circumstances under which a copy will or will not be performed are
+undocumented and subject to change.
+
+@throws NullPointerException if any key or value in {@code multimap} is null"
+"public static Throwable unwrapCompletionException(Throwable throwable)
+    {
+        if (throwable instanceof CompletionException) {
+            return firstNonNull(throwable.getCause(), throwable);
+        }
+        return throwable;
+    }",Attempts to unwrap a throwable that has been wrapped in a {@link CompletionException}.
+"public static String getFieldName(final Method method) {
+        if (method != null) {
+            return getFieldName(method.getName());
+        }
+        else {
+            return null;
+        }
+    }","Strips getter prefix from method name.
+
+@param method the method to be processed
+@return the stripped method name with Decapitalized first letter or null if passed method is null or if the method name has no getter prefix."
+"private void addPaths(Path.ID path, HashSet<Path.ID> paths, ZipFile zf) {
+		if(path.size() > 0 && !paths.contains(path)) {
+			addPaths(path.parent(),paths,zf);
+			// A new path encountered
+			String directory = path.toString() + ""/"";
+			System.out.println(""ADDING DIRECTORY: "" + directory);
+			zf.add(new ZipEntry(directory), new byte[0]);
+			paths.add(path);
+		}
+	}","This is a slightly strange method. Basically, it recursively adds directory
+entries into the ZipFile. Technically such entries should not be needed.
+However, due to a quirk in the way that ZipFileRoot works (in fact,
+AbstractFolder to be more precise) these entries are required for now.
+
+@param path
+@param paths
+@param zf"
+"public static boolean isValid(final String cssValue) {
+        final String trimmedCssValue = TagStringUtil
+                .toLowerCase(StringUtil.strip(cssValue));
+        if (StringUtil.containsSpace(trimmedCssValue)) {
+            return false;
+        }
+        try {
+            final int parsedValue = Integer.parseInt(trimmedCssValue);
+
+            return !(parsedValue == 0
+                    && (StringUtil.containsMinus(trimmedCssValue)
+                            || StringUtil.containsPlus(trimmedCssValue)));
+        } catch (final NumberFormatException e) {
+        }
+
+        return PREDEFINED_CONSTANTS.contains(trimmedCssValue);
+    }","validates if the given cssValue is valid for this class.
+
+@param cssValue
+the value to check.
+@return true if valid and false if invalid.
+@author WFF
+@since 1.0.0"
+"public final int runOperation(@NonNull final ChronosOperation operation, @NonNull final String tag,
+            final boolean broadcast) {
+        return mChronosListener.invoke(operation, tag, broadcast);
+    }","Runs an operation in a background thread. Only one operation with the given tag may run in a
+single moment of time. The result will be delivered to {@link Chronos#OWN_CALLBACK_METHOD_NAME}
+method. If {@code broadcast} is {@code true} all other Chronos clients will receive the
+result in {@link Chronos#BROADCAST_CALLBACK_METHOD_NAME} method. Both method must have only
+one parameter of type {@link ChronosOperation#getResultClass()} to receive a result.
+
+@param operation an operation to be run in background
+@param tag       value which prohibits running new operations with the same tag while there
+is a running one
+@param broadcast {@code true} if any other Chronos clients should be able to receive a
+result; {@code false} otherwise
+@return a unique launch id, may be the same with the previous run with the same tag, if the
+operation is still running
+@see #runOperation(ChronosOperation, boolean)
+@see #cancelOperation(int, boolean)
+@see #cancelOperation(String, boolean)"
+"public static void checkTableColumn(Dao dao, Object tableName, final Class<?> clsType) {
+        final NutDao d = (NutDao) dao;
+        final JdbcExpert expert = d.getJdbcExpert();
+        ext(d, tableName).run(new ConnCallback() {
+            public void invoke(Connection conn) throws Exception {
+                Entity<?> en = d.getEntity(clsType);
+                expert.setupEntityField(conn, en);
+            }
+        });
+    }","检查分表中是否有字段变化 提示
+
+@param dao
+Dao实例
+@param tableName
+动态表名上下文
+@param clsType
+映射Pojo"
+"protected RoutedRequest handleResponse(RoutedRequest roureq,
+                       HttpResponse response,
+                       HttpContext context)
+    throws HttpException, IOException {
+
+    HttpRoute route = roureq.getRoute();
+    RequestWrapper request = roureq.getRequest();
+
+    HttpParams params = request.getParams();
+    if (HttpClientParams.isRedirecting(params) &&
+        this.redirectHandler.isRedirectRequested(response, context)) {
+
+      if (redirectCount >= maxRedirects) {
+        throw new RedirectException(""Maximum redirects (""
+            + maxRedirects + "") exceeded"");
+      }
+      redirectCount++;
+
+      // Virtual host cannot be used any longer
+      virtualHost = null;
+
+      URI uri = this.redirectHandler.getLocationURI(response, context);
+
+      HttpHost newTarget = new HttpHost(
+          uri.getHost(),
+          uri.getPort(),
+          uri.getScheme());
+
+      // Unset auth scope
+      targetAuthState.setAuthScope(null);
+      proxyAuthState.setAuthScope(null);
+
+      // Invalidate auth states if redirecting to another host
+      if (!route.getTargetHost().equals(newTarget)) {
+        targetAuthState.invalidate();
+        AuthScheme authScheme = proxyAuthState.getAuthScheme();
+        if (authScheme != null && authScheme.isConnectionBased()) {
+          proxyAuthState.invalidate();
+        }
+      }
+
+      HttpRedirect redirect = new HttpRedirect(request.getMethod(), uri);
+      HttpRequest orig = request.getOriginal();
+      redirect.setHeaders(orig.getAllHeaders());
+
+      RequestWrapper wrapper = new RequestWrapper(redirect);
+      wrapper.setParams(params);
+
+      HttpRoute newRoute = determineRoute(newTarget, wrapper, context);
+      RoutedRequest newRequest = new RoutedRequest(wrapper, newRoute);
+
+      if (this.log.isDebugEnabled()) {
+        this.log.debug(""Redirecting to '"" + uri + ""' via "" + newRoute);
+      }
+
+      return newRequest;
+    }
+
+    CredentialsProvider credsProvider = (CredentialsProvider)
+      context.getAttribute(ClientContext.CREDS_PROVIDER);
+
+    if (credsProvider != null && HttpClientParams.isAuthenticating(params)) {
+
+      if (this.targetAuthHandler.isAuthenticationRequested(response, context)) {
+
+        HttpHost target = (HttpHost)
+          context.getAttribute(ExecutionContext.HTTP_TARGET_HOST);
+        if (target == null) {
+          target = route.getTargetHost();
+        }
+
+        this.log.debug(""Target requested authentication"");
+        Map<String, Header> challenges = this.targetAuthHandler.getChallenges(
+            response, context);
+        try {
+          processChallenges(challenges,
+              this.targetAuthState, this.targetAuthHandler,
+              response, context);
+        } catch (AuthenticationException ex) {
+          if (this.log.isWarnEnabled()) {
+            this.log.warn(""Authentication error: "" +  ex.getMessage());
+            return null;
+          }
+        }
+        updateAuthState(this.targetAuthState, target, credsProvider);
+
+        if (this.targetAuthState.getCredentials() != null) {
+          // Re-try the same request via the same route
+          return roureq;
+        } else {
+          return null;
+        }
+      } else {
+        // Reset target auth scope
+        this.targetAuthState.setAuthScope(null);
+      }
+
+      if (this.proxyAuthHandler.isAuthenticationRequested(response, context)) {
+
+        HttpHost proxy = route.getProxyHost();
+
+        this.log.debug(""Proxy requested authentication"");
+        Map<String, Header> challenges = this.proxyAuthHandler.getChallenges(
+            response, context);
+        try {
+          processChallenges(challenges,
+              this.proxyAuthState, this.proxyAuthHandler,
+              response, context);
+        } catch (AuthenticationException ex) {
+          if (this.log.isWarnEnabled()) {
+            this.log.warn(""Authentication error: "" +  ex.getMessage());
+            return null;
+          }
+        }
+        updateAuthState(this.proxyAuthState, proxy, credsProvider);
+
+        if (this.proxyAuthState.getCredentials() != null) {
+          // Re-try the same request via the same route
+          return roureq;
+        } else {
+          return null;
+        }
+      } else {
+        // Reset proxy auth scope
+        this.proxyAuthState.setAuthScope(null);
+      }
+    }
+    return null;
+  }","Analyzes a response to check need for a followup.
+
+@param roureq    the request and route.
+@param response  the response to analayze
+@param context   the context used for the current request execution
+
+@return  the followup request and route if there is a followup, or
+{@code null} if the response should be returned as is
+
+@throws HttpException    in case of a problem
+@throws IOException      in case of an IO problem"
+"public final <E extends Throwable> Flux<T> onErrorMap(Class<E> type,
+			Function<? super E, ? extends Throwable> mapper) {
+		@SuppressWarnings(""unchecked"")
+		Function<Throwable, Throwable> handler = (Function<Throwable, Throwable>)mapper;
+		return onErrorMap(type::isInstance, handler);
+	}","Transform an error emitted by this {@link Flux} by synchronously applying a function
+to it if the error matches the given type. Otherwise let the error pass through.
+<p>
+<img class=""marble"" src=""doc-files/marbles/onErrorMapWithClassPredicateForFlux.svg"" alt="""">
+
+@param type the class of the exception type to react to
+@param mapper the error transforming {@link Function}
+@param <E> the error type
+
+@return a {@link Flux} that transforms some source errors to other errors"
+"public static boolean checkListsEqual(List<?> l1, List<?> l2) {
+  
+    // TODO (jhl388): write a test case for this method.
+  
+    if (null != l1 && null == l2) {
+      return false;
+    }
+  
+    if (null == l1 && null != l2) {
+      return false;
+    }
+  
+    if (null != l1) {
+      for (Object e : l1) {
+        if (!l2.contains(e)) {
+          return false;
+        }
+      }
+  
+      for (Object e : l2) {
+        if (!l1.contains(e)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }","Checks that two lists are equal, specifically: they are both null or the both contain the same
+elements.
+
+@param l1
+The first list to check.
+@param l2
+The second list to check.
+@return True if one of the following conditions hold:
+<ol>
+<li>Both lists are null</li>
+<li>a) Neither list is null; b) for each element in list 1 an equivalent element
+exists in list 2; and c) for each element in list 2, an equivalent element exists in
+list 1</li>
+</ol>"
+"public static DocumentRoot<QName> makeSBOL2SequenceComponent()
+  {
+    TopLevelDocument<QName> pLac=TopLevelDocument(
+            Sbol2Terms.component.sequenceComponent,
+            sbolExample.namespacedUri(""sequenceComponent/pLac""),
+            NamedProperties(
+                    NamedProperty(Sbol2Terms.documented.name, ""pLac""),
+                    NamedProperty(Sbol2Terms.documented.displayId, ""pLac""),
+                    NamedProperty(RdfTerms.rdfType, URI.create(""DNA"")),
+                    NamedProperty(Sbol2Terms.component.sequenceType, URI.create(""http://purl.org/obo/owl/SO#SO_0000167""))
+            ));
+
+
+    NestedDocument<QName> instantiationpLac=NestedDocument(
+            Sbol2Terms.instantiation.componentInstantiation,
+            sbolExample.namespacedUri(""sequenceComponent/pLac/instantiation""),
+            NamedProperties(
+                    NamedProperty(Sbol2Terms.documented.name, ""pLac""),
+                    NamedProperty(Sbol2Terms.component.component, pLac.getIdentity())
+            ));
+
+    NestedDocument<QName> pLacAnnotation=NestedDocument(
+            Sbol2Terms.component.sequenceAnnotation,
+            sbolExample.namespacedUri(""sequenceComponent/UU_002/pLac_annotation""),
+            NamedProperties(
+                    NamedProperty(Sbol2Terms.component.orientation, ""inline""),
+                    NamedProperty(Sbol2Terms.instantiation.subComponentInstantiation, instantiationpLac)
+            ));
+
+
+    TopLevelDocument<QName> lacIRepressibleGeneSequence=TopLevelDocument(
+            Sbol2Terms.component.sequence,
+            sbolExample.namespacedUri(""sequenceComponent/UU_002/sequence""),
+            NamedProperties(
+                    NamedProperty(Sbol2Terms.component.elements, ""atg"")
+            ));
+
+    TopLevelDocument<QName> lacIRepressibleGene=TopLevelDocument(
+            Sbol2Terms.component.sequenceComponent,
+            sbolExample.namespacedUri(""sequenceComponent/UU_002""),
+            NamedProperties(
+                    NamedProperty(Sbol2Terms.documented.name, ""LacI Repressible Gene""),
+                    NamedProperty(Sbol2Terms.documented.displayId, ""UU_002""),
+                    NamedProperty(RdfTerms.rdfType, URI.create(""DNA"")),
+                    NamedProperty(Sbol2Terms.component.sequenceType, URI.create(""http://purl.org/obo/owl/SO#SO_0000774"")),
+                    NamedProperty(Sbol2Terms.component.annotation, pLacAnnotation),
+                    NamedProperty(Sbol2Terms.component.hasSequence, lacIRepressibleGeneSequence.getIdentity())
+            ));
+
+
+
+    return DocumentRoot(
+            NamespaceBindings(SbolTerms.sbol2),
+            TopLevelDocuments(lacIRepressibleGene,pLac,lacIRepressibleGeneSequence)
+    );
+  }","Creates an example {@link DocumentRoot} object with data from the SBOL2.0 proposed data model.
+Included SBOL objects from the data model are SequenceComponent, ComponentInstantiation, SequenceAnnotation and SequenceComponent.
+@return {@link DocumentRoot}"
+"public static Kryo addDefaultSerializers(Kryo kryo) {
+        ArrayListSubListSerializer.addDefaultSerializer(kryo);
+        AbstractListSubListSerializer.addDefaultSerializer(kryo);
+        JavaUtilSubListSerializer.addDefaultSerializer(kryo);
+        return kryo;
+    }",Adds appropriate sublist serializers as default serializers.
+"public DatabaseDataType toDatabaseDataType(Database database) {
+        if (database instanceof MSSQLDatabase) {
+            String name = database.escapeDataTypeName(getName());
+            int dataTypeMaxParameters = database.getDataTypeMaxParameters(getName());
+            Object[] parameters = getParameters();
+            if (dataTypeMaxParameters < parameters.length) {
+                parameters = Arrays.copyOfRange(parameters, 0, dataTypeMaxParameters);
+            }
+            return new DatabaseDataType(name, parameters);
+        }
+
+        DatabaseDataType type = new DatabaseDataType(name.toUpperCase(Locale.US), getParameters());
+        type.addAdditionalInformation(additionalInformation);
+
+        return type;
+    }","Transforms this data type into the native data type of the target DBMS.
+@param database the {@link Database} for which the native data type is to be constructed
+@return the new, native data type"
+"@Override
+	public void linkForRead(Activity context, SocializeAuthListener listener, String...permissions) {
+		facebookFacade.linkForRead(context, listener, permissions);
+	}","/*
+(non-Javadoc)
+@see com.socialize.networks.facebook.FacebookUtilsProxy#linkForRead(android.app.Activity, com.socialize.listener.SocializeAuthListener)"
+"protected static void failWithMessage(@Nullable String customErrorMessage, Throwable realCause) {
+    if (customErrorMessage != null) {
+      fail(customErrorMessage, realCause);
+    }
+  }","Throws an {@code AssertionError} only if the given custom message is not {@code null}.
+
+@param customErrorMessage the custom error message.
+@param realCause          cause of the error.
+@throws AssertionError only if the custom error message is not {@code null}.
+@since 1.2"
+"public static <E extends Enum<E>> EnumMultiset<E> create(Iterable<E> elements, Class<E> type) {
+    EnumMultiset<E> result = create(type);
+    Iterables.addAll(result, elements);
+    return result;
+  }","Returns a new {@code EnumMultiset} instance containing the given elements. Unlike {@link
+EnumMultiset#create(Iterable)}, this method does not produce an exception on an empty iterable.
+
+@since 14.0"
+"private void addFourEyesTaskListener(ActivityImpl activity) {
+    UserTaskActivityBehavior userTaskActivityBehavior = (UserTaskActivityBehavior) activity.getActivityBehavior();
+
+    boolean listenerAlreadyExists = false;
+
+    // check that the listener wasn't added in the XML explicitly
+    List<TaskListener> existingListeners = userTaskActivityBehavior.getTaskDefinition().getTaskListeners().get(""complete"");
+    for (TaskListener taskListener : existingListeners) {
+      if (taskListener instanceof ClassDelegate &&
+          ((ClassDelegate)taskListener).getClassName().equals(TaskCompletionListener.class.getName())) {
+        listenerAlreadyExists = true;
+        logger.info(TaskCompletionListener.class.getSimpleName() + "" was already explicitly added to usertask in the bpmn xml."");
+        break;
+      }
+    }
+
+    if (!listenerAlreadyExists) {
+      logger.info(""Adding "" + TaskCompletionListener.class.getSimpleName() + "" implicitly to usertask."");
+      ClassDelegate taskListener = new ClassDelegate(TaskCompletionListener.class, null);
+      userTaskActivityBehavior.getTaskDefinition().addTaskListener(""complete"", taskListener);
+    }
+
+  }","Add TaskListener on ""complete"" event generically every time, so we don't
+have to add it in the XML."
+"@Override
+    public void setAccessToken(@NonNull AccessToken accessToken) {
+        sharedPreferences.edit().putLong(accessTokenKey + DATE_KEY_SUFFIX, accessToken.getExpiresIn()).apply();
+        sharedPreferences.edit().putString(accessTokenKey + TOKEN_KEY_SUFFIX, accessToken.getToken()).apply();
+        sharedPreferences.edit().putStringSet(accessTokenKey + SCOPES_KEY_SUFFIX,
+                AuthUtils.scopeCollectionToStringSet(accessToken.getScopes())).apply();
+        sharedPreferences.edit().putString(accessTokenKey + REFRESH_TOKEN_KEY_SUFFIX, accessToken.getRefreshToken()).apply();
+        sharedPreferences.edit().putString(accessTokenKey + TOKEN_TYPE_KEY_SUFFIX, accessToken.getTokenType()).apply();
+    }",Stores the {@link AccessToken}.
+"public static NinjaMode determineModeFromSystemPropertiesOrProdIfNotSet() {
+        
+        Optional<NinjaMode> ninjaModeOptional = determineModeFromSystemProperties();
+        NinjaMode ninjaMode;
+        
+        if (!ninjaModeOptional.isPresent()) {
+            ninjaMode = NinjaMode.prod;
+        } else {
+            ninjaMode = ninjaModeOptional.get();
+        }
+        
+        logger.info(""Ninja is running in mode {}"", ninjaMode.toString());
+        
+        return ninjaMode;
+        
+    }","returns NinjaMode.dev if no mode is set. Or the valid mode
+set via a System Property called ""ninja.mode"".
+
+E.g. under mvn you can use mvn ... -Dninja.mode=prod or so. Valid values
+for ninja.mode are ""prod"", ""dev"", ""test"".
+
+@return The valid mode set via a System Property called ""ninja.mode""
+or NinjaMode.dev if it is not set."
+"public static BigInteger binomial(int n, int k) {
+    checkNonNegative(""n"", n);
+    checkNonNegative(""k"", k);
+    checkArgument(k <= n, ""k (%s) > n (%s)"", k, n);
+    if (k > (n >> 1)) {
+      k = n - k;
+    }
+    if (k < LongMath.biggestBinomials.length && n <= LongMath.biggestBinomials[k]) {
+      return BigInteger.valueOf(LongMath.binomial(n, k));
+    }
+
+    BigInteger accum = BigInteger.ONE;
+
+    long numeratorAccum = n;
+    long denominatorAccum = 1;
+
+    int bits = LongMath.log2(n, RoundingMode.CEILING);
+
+    int numeratorBits = bits;
+
+    for (int i = 1; i < k; i++) {
+      int p = n - i;
+      int q = i + 1;
+
+      // log2(p) >= bits - 1, because p >= n/2
+
+      if (numeratorBits + bits >= Long.SIZE - 1) {
+        // The numerator is as big as it can get without risking overflow.
+        // Multiply numeratorAccum / denominatorAccum into accum.
+        accum =
+            accum
+                .multiply(BigInteger.valueOf(numeratorAccum))
+                .divide(BigInteger.valueOf(denominatorAccum));
+        numeratorAccum = p;
+        denominatorAccum = q;
+        numeratorBits = bits;
+      } else {
+        // We can definitely multiply into the long accumulators without overflowing them.
+        numeratorAccum *= p;
+        denominatorAccum *= q;
+        numeratorBits += bits;
+      }
+    }
+    return accum
+        .multiply(BigInteger.valueOf(numeratorAccum))
+        .divide(BigInteger.valueOf(denominatorAccum));
+  }","Returns {@code n} choose {@code k}, also known as the binomial coefficient of {@code n} and
+{@code k}, that is, {@code n! / (k! (n - k)!)}.
+
+<p><b>Warning:</b> the result can take as much as <i>O(k log n)</i> space.
+
+@throws IllegalArgumentException if {@code n < 0}, {@code k < 0}, or {@code k > n}"
+"private static int getChartWindowHeight(final boolean fullPage) {
+		if (fullPage) {
+			return Math.max((int) (Page.getCurrent().getBrowserWindowHeight() * HEIGHT_PERCENTAGE_FULL_PAGE) ,MINIMUM_CHART_HEIGHT_FULL_PAGE);
+		} else {
+			return Math.max((int) (Page.getCurrent().getBrowserWindowHeight() * HEIGHT_PERCETAGE_HALF_PAGE),NINIMUM_CHART_HEIGHT_HALF_PAGE);
+		}
+	}","Gets the chart window height.
+
+@param fullPage the full page
+@return the chart window height"
+"@Override
+    public Try<T> orElse(Supplier<Try<T>> supplier) {
+        return supplier.get();
+    }","Always returns the value provided by the supplier. <br>
+As per definition this is a failure without any data to return.
+
+@since 1.0"
+"public ConnectionId withServerValue(final int serverValue) {
+        isTrue(""server value is null"", this.serverValue == null);
+        return new ConnectionId(serverId, localValue, serverValue);
+    }","Creates a new connectionId with the set server value
+
+@param serverValue the server value
+@return the new connection id
+@since 3.8"
+"public static void addCustomToLaunch(Properties ltiProps, Properties custom) 
+	{
+        Enumeration<?> e = custom.propertyNames();
+        while (e.hasMoreElements()) {
+            String keyStr = (String) e.nextElement();
+            String value =  custom.getProperty(keyStr);
+            setProperty(ltiProps,""custom_""+keyStr,value);
+        }           
+	}",Place the custom values into the launch
+"public final <X> TypeToken<T> where(TypeParameter<X> typeParam, Class<X> typeArg) {
+    return where(typeParam, of(typeArg));
+  }","Returns a new {@code TypeToken} where type variables represented by {@code typeParam} are
+substituted by {@code typeArg}. For example, it can be used to construct {@code Map<K, V>} for
+any {@code K} and {@code V} type:
+
+<pre>{@code
+static <K, V> TypeToken<Map<K, V>> mapOf(
+Class<K> keyType, Class<V> valueType) {
+return new TypeToken<Map<K, V>>() {}
+.where(new TypeParameter<K>() {}, keyType)
+.where(new TypeParameter<V>() {}, valueType);
+}
+}</pre>
+
+@param <X> The parameter type
+@param typeParam the parameter type variable
+@param typeArg the actual type to substitute"
+"public static Bson mul(final String fieldName, final Number number) {
+        notNull(""number"", number);
+        return new SimpleUpdate<Number>(fieldName, number, ""$mul"");
+    }","Creates an update that multiplies the value of the field with the given name by the given number.
+
+@param fieldName the non-null field name
+@param number    the non-null number
+@return the update
+@mongodb.driver.manual reference/operator/update/mul/ $mul"
+"@XmlElementDecl(namespace = ""http://www.tibco.com/xmlns/ApplicationManagement"", name = ""im"", substitutionHeadNamespace = ""http://www.tibco.com/xmlns/ApplicationManagement"", substitutionHeadName = ""baseService"")
+    public JAXBElement<Im> createIm(Im value) {
+        return new JAXBElement<Im>(_Im_QNAME, Im.class, null, value);
+    }",Create an instance of {@link JAXBElement }{@code <}{@link Im }{@code >}}
+"public static void registerSerializers(final Kryo kryo) {
+
+        // ImmutableMap is used by ImmutableMultimap. However,
+        // we already have a separate serializer class for ImmutableMap,
+        // ImmutableMapSerializer. If it is not already being used, register it.
+        Serializer immutableMapSerializer = getSerializer(kryo, ImmutableMap.class);
+        if (!(immutableMapSerializer instanceof ImmutableMapSerializer)) {
+            ImmutableMapSerializer.registerSerializers(kryo);
+        }
+
+        // ImmutableList is used by ImmutableListMultimap. However,
+        // we already have a separate serializer class for ImmutableList,
+        // ImmutableListSerializer. If it is not already being used, register it.
+        Serializer immutableListSerializer = getSerializer(kryo, ImmutableList.class);
+        if (!(immutableListSerializer instanceof ImmutableListSerializer)) {
+            ImmutableListSerializer.registerSerializers(kryo);
+        }
+
+        // ImmutableSet is used by ImmutableSetMultimap. However,
+        // we already have a separate serializer class for ImmutableSet,
+        // ImmutableSetSerializer. If it is not already being used, register it.
+        Serializer immutableSetSerializer = getSerializer(kryo, ImmutableSet.class);
+        if (!(immutableSetSerializer instanceof ImmutableSetSerializer)) {
+            ImmutableSetSerializer.registerSerializers(kryo);
+        }
+
+        final ImmutableMultimapSerializer serializer = new ImmutableMultimapSerializer();
+
+        // ImmutableMultimap (abstract class)
+        //  +- EmptyImmutableListMultimap
+        //  +- ImmutableListMultimap
+        //  +- EmptyImmutableSetMultimap
+        //  +- ImmutableSetMultimap
+
+        kryo.register(ImmutableMultimap.class, serializer);
+        kryo.register(ImmutableListMultimap.of().getClass(), serializer);
+        kryo.register(ImmutableListMultimap.of(""A"", ""B"").getClass(), serializer);
+        kryo.register(ImmutableSetMultimap.of().getClass(), serializer);
+        kryo.register(ImmutableSetMultimap.of(""A"", ""B"").getClass(), serializer);
+    }","Creates a new {@link ImmutableMultimapSerializer} and registers its serializer
+for the several ImmutableMultimap related classes.
+
+@param kryo the {@link Kryo} instance to set the serializer on"
+"@SafeVarargs
+    public final static Observable<WatchEvent<?>> from(final File file, Kind<?>... kinds) {
+        return from(file, null, kinds);
+    }","If file does not exist at subscribe time then is assumed to not be a
+directory. If the file is not a directory (bearing in mind the aforesaid
+assumption) then a {@link WatchService} is set up on its parent and
+{@link WatchEvent}s of the given kinds are filtered to concern the file
+in question. If the file is a directory then a {@link WatchService} is
+set up on the directory and all events are passed through of the given
+kinds.
+
+@param file
+file to watch
+@param kinds
+event kinds to watch for and emit
+@return observable of watch events"
+"@Override
+    public void onPopulateAccessibilityEvent(@NonNull AccessibilityEvent event) {
+        super.onPopulateAccessibilityEvent(event);
+        List<CharSequence> textList = event.getText();
+        CharSequence mentionLessText = getTextWithoutMentions();
+        for (int i = 0; i < textList.size(); i++) {
+            CharSequence text = textList.get(i);
+            if (text instanceof MentionsEditable) {
+                textList.set(i, mentionLessText);
+            }
+        }
+    }","Populate an {@link AccessibilityEvent} with information about this text view. Note that this implementation uses
+a copy of the text that is explicitly not an instance of {@link MentionsEditable}. This is due to the fact that
+AccessibilityEvent will use the default system classloader when unparcelling the data within the event. This
+results in a ClassNotFoundException. For more details, see: https://github.com/linkedin/Spyglass/issues/10
+
+@param event the populated AccessibilityEvent"
+"public final Flux<T> sort(Comparator<? super T> sortFunction) {
+		return collectSortedList(sortFunction).flatMapIterable(identityFunction());
+	}","Sort elements from this {@link Flux} using a {@link Comparator} function, by
+collecting and sorting elements in the background then emitting the sorted sequence
+once this sequence completes.
+
+<p>Note that calling {@code sort} with long, non-terminating or infinite sources
+might cause {@link OutOfMemoryError}
+<p>
+<img class=""marble"" src=""doc-files/marbles/sort.svg"" alt="""">
+
+@param sortFunction a function that compares two items emitted by this {@link Flux}
+to indicate their sort order
+@return a sorted {@link Flux}"
+"@Override
+    protected String doRender(final RenderConfiguration config, final Statements statements) {
+
+        final StringBuilder builder = new StringBuilder(config.getIndent());
+
+        // #1) Render the AttributeStatements plus comment, if they exist.
+        final boolean hasAttributeStatements = statements.getCommonGraphAttributes() != null
+                || statements.getCommonNodeAttributes() != null
+                || statements.getCommonEdgeAttributes() != null;
+
+        if (hasAttributeStatements) {
+
+            // Add the comment first.
+            builder.append(commentRenderer.render(config, statements.getCommonAttributesComment()));
+
+            // Add the attributes in order
+            if (statements.getCommonGraphAttributes() != null) {
+                builder.append(commonGraphAttributesRenderer.render(config, statements.getCommonGraphAttributes()));
+            }
+
+            if (statements.getCommonNodeAttributes() != null) {
+                builder.append(commonNodeAttributesRenderer.render(config, statements.getCommonNodeAttributes()));
+            }
+
+            if (statements.getCommonEdgeAttributes() != null) {
+                builder.append(commonEdgeAttributesRenderer.render(config, statements.getCommonEdgeAttributes()));
+            }
+        }
+
+        // #2) Render the other Statements in order, namely
+        //
+        //     Node statements
+        //     Identifier statements
+        //     Edge statements
+        //     Subgraph statements
+        final List<Node> nodes = statements.getNodes();
+        if (!nodes.isEmpty()) {
+
+            builder.append(commentRenderer.render(config, statements.getNodesComment()));
+
+            // Render all Nodes in order.
+            nodes.forEach(n -> builder.append(nodeRenderer.render(config, n)));
+        }
+
+        final List<Identifier> identifiers = statements.getIdentifiers();
+        if (!identifiers.isEmpty()) {
+
+            builder.append(commentRenderer.render(config, statements.getIdentifiersComment()));
+
+            // Render all Identifiers in order.
+            identifiers.forEach(i -> builder.append(identifierRenderer.render(config, i)));
+        }
+
+        final List<Edge> edges = statements.getEdges();
+        if (edges != null && !edges.isEmpty()) {
+
+            builder.append(commentRenderer.render(config, statements.getEdgesComment()));
+
+            // Render all Edges in order.
+            edges.forEach(i -> builder.append(edgeRenderer.render(config, i)));
+        }
+
+        final List<Subgraph> subgraphs = statements.getSubgraphs();
+        if (!subgraphs.isEmpty()) {
+
+            builder.append(commentRenderer.render(config, statements.getSubgraphComment()));
+
+            // Render all Subgraphs in order.
+            subgraphs.forEach(s -> builder.append(subgraphRenderer.render(config, s)));
+        }
+
+        // All Done.
+        return builder.toString();
+    }",{@inheritDoc}
+"@DoesServiceRequest
+    public void uploadPermissions(final FileSharePermissions permissions, final AccessCondition accessCondition,
+            FileRequestOptions options, OperationContext opContext) throws StorageException {
+        assertNoSnapshot();
+
+        if (opContext == null) {
+            opContext = new OperationContext();
+        }
+
+        opContext.initialize();
+        options = FileRequestOptions.populateAndApplyDefaults(options, this.fileServiceClient);
+
+        ExecutionEngine.executeWithRetry(this.fileServiceClient, this,
+                uploadPermissionsImpl(permissions, accessCondition, options), options.getRetryPolicyFactory(),
+                opContext);
+    }","Uploads the share's permissions using the specified request options and operation context.
+
+@param permissions
+A {@link FileSharePermissions} object that represents the permissions to upload.
+@param accessCondition
+An {@link AccessCondition} object that represents the access conditions for the share.
+@param options
+A {@link FileRequestOptions} object that specifies any additional options for the request. Specifying
+<code>null</code> will use the default request options from the associated service client (
+{@link CloudFileClient}).
+@param opContext
+An {@link OperationContext} object that represents the context for the current operation. This object
+is used to track requests to the storage service, and to provide additional runtime information about
+the operation.
+
+@throws StorageException
+If a storage service error occurred."
+"private void addChildren(final UIClassification _parent,
+                             final Set<Classification> _children,
+                             final Set<UUID> _selectedUUID,
+                             final Instance _instance)
+        throws EFapsException
+    {
+        for (final Classification child : _children) {
+            boolean access;
+            if (!child.isAbstract()) {
+                final Instance inst = AbstractInstanceObject.getInstance4Create(child);
+                access = child.hasAccess(inst, getMode() == TargetMode.CREATE
+                                || getMode() == TargetMode.EDIT ? AccessTypeEnums.CREATE.getAccessType()
+                                : AccessTypeEnums.SHOW.getAccessType());
+            } else {
+                access = true;
+            }
+            if (access) {
+                final UIClassification childUI = new UIClassification(child.getUUID(), _parent.mode, false);
+                if (_selectedUUID.contains(child.getUUID())) {
+                    childUI.selected = true;
+                }
+                childUI.addChildren(childUI, child.getChildClassifications(), _selectedUUID, _instance);
+                _parent.children.add(childUI);
+                childUI.setParent(_parent);
+            }
+        }
+        Collections.sort(_parent.children, new Comparator<UIClassification>()
+        {
+            @Override
+            public int compare(final UIClassification _class0,
+                               final UIClassification _class2)
+            {
+                return _class0.getLabel().compareTo(_class2.getLabel());
+            }
+        });
+    }","Recursive method used to add the children to this UIClassification.
+
+@param _parent parent
+@param _children children
+@param _selectedUUID set of selected classification uuids
+@param _instance instance the classifcation belongs to
+@throws EFapsException on error"
+"@Override
+  public ImmutableSortedMap<K, V> subMap(
+      K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) {
+    checkNotNull(fromKey);
+    checkNotNull(toKey);
+    checkArgument(
+        comparator().compare(fromKey, toKey) <= 0,
+        ""expected fromKey <= toKey but %s > %s"",
+        fromKey,
+        toKey);
+    return headMap(toKey, toInclusive).tailMap(fromKey, fromInclusive);
+  }","This method returns a {@code ImmutableSortedMap}, consisting of the entries whose keys ranges
+from {@code fromKey} to {@code toKey}, inclusive or exclusive as indicated by the boolean
+flags.
+
+<p>The {@link SortedMap#subMap} documentation states that a submap of a submap throws an {@link
+IllegalArgumentException} if passed a {@code fromKey} less than an earlier {@code fromKey}.
+However, this method doesn't throw an exception in that situation, but instead keeps the
+original {@code fromKey}. Similarly, this method keeps the original {@code toKey}, instead of
+throwing an exception, if passed a {@code toKey} greater than an earlier {@code toKey}.
+
+@since 12.0"
+"public static StorageException generateNewUnexpectedStorageException(final Exception cause) {
+        final StorageException exceptionRef = new StorageException(StorageErrorCode.NONE.toString(),
+                ""Unexpected internal storage client error."", 306, // unused
+                null, null);
+        exceptionRef.initCause(cause);
+        return exceptionRef;
+    }","Returns an unexpected storage exception.
+
+@param cause
+An <code>Exception</code> object that represents the initial exception that caused the unexpected
+error.
+
+@return A {@link StorageException} object that represents the unexpected storage exception being thrown."
+"@Override
+    public BuildExecutionSession startBuilding(
+            BuildExecutionConfiguration buildExecutionConfiguration,
+            Consumer<BuildExecutionStatusChangedEvent> onBuildExecutionStatusChangedEvent,
+            String accessToken)
+            throws ExecutorException {
+
+        log.info(""Starting mock build execution for buildExecutionConfiguration.id {}"", buildExecutionConfiguration.getId());
+
+        BuildExecutionSession buildExecutionSession = new BuildExecutionSessionMock(buildExecutionConfiguration, onBuildExecutionStatusChangedEvent);
+        buildExecutionSession.setStatus(BuildExecutionStatus.NEW);
+
+        runningExecutions.put(buildExecutionConfiguration.getId(), buildExecutionSession);
+        Consumer<BuildExecutionStatus> onCompleteInternal = (buildStatus) -> {
+            log.debug(""Removing buildExecutionConfiguration.id ["" + buildExecutionConfiguration.getId() + ""] form list of running tasks."");
+            runningExecutions.remove(buildExecutionConfiguration.getId());
+            buildExecutionSession.setStatus(buildStatus);
+        }",}
+"public static <T> UnmodifiableIterator<List<T>> partition(Iterator<T> iterator, int size) {
+    return partitionImpl(iterator, size, false);
+  }","Divides an iterator into unmodifiable sublists of the given size (the final list may be
+smaller). For example, partitioning an iterator containing {@code [a, b, c, d, e]} with a
+partition size of 3 yields {@code [[a, b, c], [d, e]]} -- an outer iterator containing two
+inner lists of three and two elements, all in the original order.
+
+<p>The returned lists implement {@link java.util.RandomAccess}.
+
+@param iterator the iterator to return a partitioned view of
+@param size the desired size of each partition (the last may be smaller)
+@return an iterator of immutable lists containing the elements of {@code iterator} divided into
+partitions
+@throws IllegalArgumentException if {@code size} is nonpositive"
+"@Deprecated
+    public List<ServerDescription> getAnyPrimaryOrSecondary(final TagSet tagSet) {
+        return getServersByPredicate(new Predicate() {
+            public boolean apply(final ServerDescription serverDescription) {
+                return (serverDescription.isPrimary() || serverDescription.isSecondary()) && serverDescription.hasTags(tagSet);
+            }
+        });
+    }","Gets a list of all the primaries and secondaries in this cluster that match the given replica set tags.
+
+@param tagSet a Set of replica set tags
+@return a list of ServerDescriptions for all primary and secondary servers that contain all of the given tags
+@deprecated Replace with a filter on ServerDescription in the caller"
+"@Deprecated
+  // com.google.common.math.DoubleUtils
+  @GwtIncompatible
+  public static double mean(double... values) {
+    checkArgument(values.length > 0, ""Cannot take mean of 0 values"");
+    long count = 1;
+    double mean = checkFinite(values[0]);
+    for (int index = 1; index < values.length; ++index) {
+      checkFinite(values[index]);
+      count++;
+      // Art of Computer Programming vol. 2, Knuth, 4.2.2, (15)
+      mean += (values[index] - mean) / count;
+    }
+    return mean;
+  }","Returns the <a href=""http://en.wikipedia.org/wiki/Arithmetic_mean"">arithmetic mean</a> of
+{@code values}.
+
+<p>If these values are a sample drawn from a population, this is also an unbiased estimator of
+the arithmetic mean of the population.
+
+@param values a nonempty series of values
+@throws IllegalArgumentException if {@code values} is empty or contains any non-finite value
+@deprecated Use {@link Stats#meanOf} instead, noting the less strict handling of non-finite
+values."
+"public static Display getDefaultDisplay() {
+    WindowManager windowManager =
+        (WindowManager) RuntimeEnvironment.application.getSystemService(Context.WINDOW_SERVICE);
+    return windowManager.getDefaultDisplay();
+  }","Returns the default display.
+
+@return the default display"
+"public String consumeToAny(final char... chars) {
+        bufferUp();
+        final int start = bufPos;
+        final int remaining = bufLength;
+        final char[] val = charBuf;
+
+        OUTER:
+        while (bufPos < remaining) {
+            for (char c : chars) {
+                if (val[bufPos] == c)
+                    break OUTER;
+            }
+            bufPos++;
+        }
+
+        return bufPos > start ? cacheString(charBuf, stringCache, start, bufPos - start) : """";
+    }","Read characters until the first of any delimiters is found.
+
+@param chars delimiters to scan for
+@return characters read up to the matched delimiter."
+"@DoesServiceRequest
+    public void uploadServiceProperties(final ServiceProperties properties, QueueRequestOptions options,
+            OperationContext opContext) throws StorageException {
+        if (!Utility.isNullOrEmpty(properties.getDefaultServiceVersion())) {
+            throw new IllegalArgumentException(SR.DEFAULT_SERVICE_VERSION_ONLY_SET_FOR_BLOB_SERVICE);
+        }
+
+        if (opContext == null) {
+            opContext = new OperationContext();
+        }
+
+        opContext.initialize();
+        options = QueueRequestOptions.populateAndApplyDefaults(options, this);
+
+        Utility.assertNotNull(""properties"", properties);
+
+        ExecutionEngine.executeWithRetry(this, null,
+                this.uploadServicePropertiesImpl(properties, options, opContext, false),
+                options.getRetryPolicyFactory(), opContext);
+    }","Uploads a new {@link ServiceProperties} configuration to the given storage service. This includes Logging,
+HourMetrics, MinuteMetrics and CORS configurations.
+
+@param properties
+The {@link ServiceProperties} to upload.
+@param options
+A {@link BlobRequestOptions} object that specifies any additional options for the request. Specifying
+<code>null</code> will use the default request options from the associated service client (
+{@link CloudBlobClient}).
+@param opContext
+An {@link OperationContext} object that represents the context for the current operation. This object
+is used to track requests to the storage service, and to provide additional runtime information about
+the operation.
+@throws StorageException
+If a storage service error occurred."
+"public Session renew(final String sessionId, final String datacenter) {
+
+        final URI uri = createURI(""/renew/"" + sessionId);
+        final HttpRequestBuilder httpRequestBuilder = RequestUtils
+                .getHttpRequestBuilder(datacenter, null, null, """");
+
+
+        HTTP.Response httpResponse = HTTP.jsonRestCallViaPUT(uri.toString() + ""?"" + httpRequestBuilder.paramString(),
+                """");
+
+        if (httpResponse == null || httpResponse.code() != 200) {
+            die(""Unable to renew the session"", uri, httpResponse);
+        }
+
+        return fromJsonArray(httpResponse.body(), Session.class).get(0);
+    }","/v1/session/renew: Renews a TTL-based session
+
+@param sessionId  session id
+@param datacenter datacenter
+@return session"
+"public List<TransferPerformanceSummary> getTransferPerformance (String stop_id, LocalDate date) {
+        List<StopTime> stopTimes = feed.getStopTimesForStop(stop_id);
+
+        Map<String, List<StopTime>> routeStopTimeMap  = new HashMap<>();
+        List<TransferPerformanceSummary> transferPerformanceMap = new ArrayList<>();
+        // TODO: do we need to handle interpolated stop times???
+
+        // first stream stopTimes for stop into route -> list of stopTimes map
+        stopTimes.stream()
+                .forEach(st -> {
+                    Trip trip = feed.trips.get(st.trip_id);
+                    Service service = feed.services.get(trip.service_id);
+                    // only add to map if trip is active on given date
+                    if (service != null && service.activeOn(date)) {
+                        Route route = feed.routes.get(trip.route_id);
+
+                        List<StopTime> times = new ArrayList<>();
+                        if (routeStopTimeMap.containsKey(route.route_id)) {
+                            times.addAll(routeStopTimeMap.get(route.route_id));
+                        }
+                        times.add(st);
+                        routeStopTimeMap.put(route.route_id, times);
+                    }
+                });
+        Map<Fun.Tuple2<String, String>, TIntList> waitTimesByRoute = new HashMap<>();
+        Map<Fun.Tuple2<String, String>, Set<Fun.Tuple2<StopTime, StopTime>>> missedTransfers = new HashMap<>();
+        // iterate over every entry in route -> list of stopTimes map
+        for (Map.Entry<String, List<StopTime>> entry : routeStopTimeMap.entrySet()) {
+            final int MISSED_TRANSFER_THRESHOLD = 60 * 10;
+            List<StopTime> currentTimes = entry.getValue();
+
+            String currentRoute = entry.getKey();
+
+            for (StopTime currentTime : currentTimes) {
+                if (currentTime.arrival_time > 0) {
+                    // cycle through all other routes that stop here.
+                    for (Map.Entry<String, List<StopTime>> entry2 : routeStopTimeMap.entrySet()) {
+
+                        List<StopTime> compareTimes = entry2.getValue();
+                        String compareRoute = entry2.getKey();
+                        Fun.Tuple2<String, String> routeKey = new Fun.Tuple2(currentRoute, compareRoute);
+                        if (compareRoute.equals(currentRoute)) {
+                            continue;
+                        }
+                        if (!waitTimesByRoute.containsKey(routeKey)) {
+                            waitTimesByRoute.put(routeKey, new TIntArrayList());
+                        }
+
+                        int shortestWait = Integer.MAX_VALUE;
+                        // compare current time against departure times for route
+                        for (StopTime compareTime : compareTimes) {
+                            if (compareTime.departure_time > 0) {
+                                int waitTime = compareTime.departure_time - currentTime.arrival_time;
+
+                                // if non-negative and shortest, save for later
+                                if (waitTime >= 0 && waitTime < shortestWait){
+                                    shortestWait = waitTime;
+                                }
+                                // otherwise, check for missed near-transfer opportunities
+                                else {
+                                    if (waitTime < 0 && waitTime * -1 <= MISSED_TRANSFER_THRESHOLD) {
+                                        Fun.Tuple2<StopTime, StopTime> missedTransfer = new Fun.Tuple2(compareTime, currentTime);
+//                                        missedTransfer.add(currentTime);
+//                                        missedTransfer.add(compareTime);
+                                        if (!missedTransfers.containsKey(routeKey)) {
+                                            missedTransfers.put(routeKey, new HashSet<>());
+                                        }
+                                        missedTransfers.get(routeKey).add(missedTransfer);
+                                    }
+                                }
+                            }
+                        }
+                        // add shortestWait for currentTime to map
+                        if (shortestWait < Integer.MAX_VALUE)
+                            waitTimesByRoute.get(routeKey).add(shortestWait);
+                    }
+                }
+            }
+        }
+        for (Map.Entry<Fun.Tuple2<String, String>, TIntList> entry : waitTimesByRoute.entrySet()) {
+            Fun.Tuple2<String, String> routeKey = entry.getKey();
+            TIntList waitTimes = entry.getValue();
+            if (waitTimes.isEmpty()) {
+                continue;
+            }
+            int min = waitTimes.min();
+            int max = waitTimes.max();
+            waitTimes.sort();
+            int median = waitTimes.get(waitTimes.size() / 2);
+            TransferPerformanceSummary routeTransferPerformance = new TransferPerformanceSummary(routeKey.a, routeKey.b, min, max, median, missedTransfers.get(routeKey));
+            transferPerformanceMap.add(routeTransferPerformance);
+        }
+
+        return transferPerformanceMap;
+    }","Returns a list of transfer performance summaries (max, min, and median wait times between routes)
+for each route pair at a stop for the specified date of service.
+@param stop_id
+@param date
+@return"
+"public QueryStringBuilder addParameterLists(final Map<String, List<String>> params)
+   {
+      if (params != null)
+      {
+         for (Entry<String, List<String>> entry : params.entrySet())
+         {
+            List<String> values = null;
+            if (entry.getValue() != null)
+            {
+               values = new ArrayList<String>(entry.getValue());
+            }
+            parameters.put(entry.getKey(), values);
+         }
+      }
+      return this;
+   }","Add parameters from the given map of name=value pairs. For parameters with more than one value, each value will be
+appended using the same name. If a parameter already exists, append new values to the existing list of values for
+that parameter."
+"static Class<? extends Standalone> resolveStandaloneClass(String standaloneClassNameSystemProperty,
+                                                              ForwardingServiceLoader<Standalone> standaloneServiceLoader,
+                                                              String standaloneClassNameDefaultValue) {
+        Class<? extends Standalone> resolvedStandaloneClass = null;
+        
+        // 1. System property for 'ninja.standalone.class'
+        if (standaloneClassNameSystemProperty != null) {
+            try {
+                resolvedStandaloneClass
+                    = (Class<Standalone>)Class.forName(standaloneClassNameSystemProperty);
+            } catch (Exception e) {
+                throw new RuntimeException(""Unable to find standalone class '"" + standaloneClassNameSystemProperty + ""' (class does not exist)"");
+            }
+        }
+        
+        // 2. Implementation on classpath that's registered as service?
+        if (resolvedStandaloneClass == null) {
+            try {
+                Iterator<Standalone> standaloneIterator = standaloneServiceLoader.iterator();
+                // first one wins
+                if (standaloneIterator.hasNext()) {
+                    resolvedStandaloneClass = standaloneIterator.next().getClass();
+                }
+                // more than one triggers warning
+                if (standaloneIterator.hasNext()) {
+                    log.warn(""More than one implementation of {} on classpath! Using {} which was the first"", Standalone.class, resolvedStandaloneClass);
+                }
+            } finally {
+                // always kill cache (since ServiceLoader actually instantiates an instance)
+                standaloneServiceLoader.reload();
+            }
+        }
+        
+        // 3. Fallback to ninja default
+        if (resolvedStandaloneClass == null) {
+            try {
+                resolvedStandaloneClass
+                    = (Class<Standalone>)Class.forName(standaloneClassNameDefaultValue);
+            } catch (Exception e) {
+                throw new RuntimeException(""Unable to find standalone class '"" + standaloneClassNameDefaultValue + ""' (class does not exist)"");
+            }
+        }
+        
+        return resolvedStandaloneClass;
+    }",used for testing (so we can inject mocks of system static methods)
+"private PreparedStatement createPreparedUpdate(
+        Integer id,
+        boolean isCreating,
+        ObjectNode jsonObject,
+        Table table,
+        Connection connection,
+        boolean batch
+    ) throws SQLException {
+        String statementString;
+        if (isCreating) {
+            statementString = table.generateInsertSql(tablePrefix, true);
+        } else {
+            statementString = table.generateUpdateSql(tablePrefix, id);
+        }
+        // Set the RETURN_GENERATED_KEYS flag on the PreparedStatement because it may be creating new rows, in which
+        // case we need to know the auto-generated IDs of those new rows.
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                statementString,
+                Statement.RETURN_GENERATED_KEYS);
+        if (!batch) {
+            setStatementParameters(jsonObject, table, preparedStatement, connection);
+        }
+        return preparedStatement;
+    }","Creates a prepared statement for an entity create or update operation. If not performing a batch operation, the
+method will set parameters for the prepared statement with values found in the provided JSON ObjectNode. The Table
+object here is provided as a positional argument (rather than provided via the JdbcTableWriter instance field)
+because this method is used to update both the specTable for the primary entity and any relevant child entities."
+"public static JodaTime matches(final TimeCondition condition, final DateTimeZone zone)
+   {
+      return new JodaTime(condition, zone) {
+         @Override
+         public String toString()
+         {
+            return ""JodaTime.matches("" + condition + "", "" + zone + "")"";
+         }
+      };
+   }","Create a new {@link JodaTime} condition that, for each {@link org.ocpsoft.rewrite.event.Rewrite}, evaluates the
+given {@link TimeCondition} again the system's current {@link DateTime} using the provided {@link DateTimeZone}"
