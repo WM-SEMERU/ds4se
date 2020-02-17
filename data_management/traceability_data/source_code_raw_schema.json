@@ -1,0 +1,44 @@
+{
+  "type":"object",
+  "properties": {
+    "project": {"type": "string"},
+    "identifier": {"type": "string"},
+    "text": {"type": "string"},
+    "associated_tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "collection": {"type": "string"},
+          "document_id": {"type": "object"}
+        }
+      }
+    },
+    "associated_requirements": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "collection": {"type": "string"},
+            "document_id": {"type": "object"}
+          }
+        }
+      }
+    },
+    "applied_transformations": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "collection": {"type": "string"},
+            "document_id": {"type": "object"}
+          }
+        }
+      }
+    }
+  }
+}
