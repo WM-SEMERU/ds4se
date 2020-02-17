@@ -1,6 +1,6 @@
 #! /bin/sh
 
-TAG=template
+TAG=ds4se
 
 if [ $# -eq 1 ]; then
 	if [ "$1" = "--build" ]; then
@@ -14,4 +14,5 @@ fi
 # you need to mount more volumes into the container
 # Also, make sure to edit the ports to fix your needs.
 docker run -d --runtime=nvidia -v $(pwd):/tf/main \
-	-p 0.0.0.0:6008:6006 -p 8002:8888  $TAG
+	-v /mnt/data/ds4se:/tf/data \
+	-p 8004:8888  $TAG
