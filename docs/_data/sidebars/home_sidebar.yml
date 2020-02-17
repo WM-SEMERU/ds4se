@@ -20,13 +20,16 @@ entries:
       url: /data.management
     - output: web,pdf
       title: Data Representation
-      url: /benchmark.traceability
+      url: /data.representation
     - output: web,pdf
       title: Example Template
       url: /templates.example
     - output: web,pdf
       title: Example Blog
       url: /blog.example
+    - output: web,pdf
+      title: Traceability Benchmark
+      url: /benchmark.traceability
     - output: web,pdf
       title: Training
       url: /model.train

@@ -4,9 +4,10 @@
     "preprocessing": "/data.preprocessing",
     "Exploration of your data": "/data.exploratory",
     "Data Management": "/data.management",
-    "Data Representation": "/benchmark.traceability",
+    "Data Representation": "/data.representation",
     "Example Template": "/templates.example",
     "Example Blog": "/blog.example",
+    "Traceability Benchmark": "/benchmark.traceability",
     "Training": "/model.train"
   }
 }
