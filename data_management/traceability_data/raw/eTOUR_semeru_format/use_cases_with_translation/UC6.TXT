@@ -1,0 +1,33 @@
+Use case name ELIMINAPUNTODIRISTORO
+Delete a refreshment from the system.
+Partecipating
+Actor initialization Operator Agency.
+Entry
+Operator conditions � The agency has logged.
+Flow of events User System
+1. View a list of points of rest as a result of the use case RicercaBeneCulturale, it selects and activates a function of elimination.
+2 Asks for confirmation of the transaction.
+3 Confirm the deletion.
+4 Deletes the selected point of rest.
+Exit conditions � The system shall notify the successful elimination of the point of rest.
+� Operator Agency cancels the operation.
+� Interruption ETOUR connection to the server.
+Quality
+requirements
+
+Usa il nome del caso ELIMINAPUNTODIRISTORO
+Elimina un rinfresco dal sistema.
+Partecipare
+Agenzia di inizializzazione degli attori.
+Iscrizione
+Condizioni dell'operatore L'agenzia ha effettuato l'accesso.
+Flusso di eventi Sistema utente
+1. Visualizza una lista di punti di riposo come risultato del caso d'uso RicercaBeneCulturale, seleziona e attiva una funzione di eliminazione.
+2 Chiede conferma della transazione.
+3 Confermare la cancellazione.
+4 Elimina il punto di riposo selezionato.
+Condizioni di uscita Il sistema notifica l'avvenuta eliminazione del punto di sosta.
+L'agenzia dell'operatore annulla l'operazione.
+Connessione ETOUR di interruzione al server.
+Qualità
+requisiti

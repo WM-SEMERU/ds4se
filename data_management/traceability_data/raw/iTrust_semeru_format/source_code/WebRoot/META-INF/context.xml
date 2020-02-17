@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is the Tomcat Context Setup File 
+("Context" = "this web application") -->
+<Context>
+	<!-- This configures the "Production Instance" of our connection pool. 
+		 Change the following when you are developing:
+		 
+		 Username:  (usually your unity id)
+		 Password:  (db password, probably not your unity password)
+		 URL: 	    jdbc:mysql://<server name>/<database name>
+		 			+ Use "localhost" or "aramis.csc.ncsu.edu" depending on which server you're using
+		 			+ Change the database name to the correct name (depending on which server you're using)
+		
+		Nothing else here needs to change during development.
+		Do NOT change the "name=jdbc/itrust"
+		-->
+<Resource
+	username="root"
+	password=""
+	url="jdbc:mysql://localhost:3306/itrust?createDatabaseIfNotExist=true"		
+	name="jdbc/itrust"
+	auth="Container"
+	type="javax.sql.DataSource"
+	driverClassName="com.mysql.jdbc.Driver"
+	maxActive="15" 
+	maxIdle="4"
+	validationQuery="Show Tables"/>
+		
+    <!-- Authentication Realms uses the above resource to handle credentials
+    	 Do not edit. -->
+	<Realm
+		className="org.apache.catalina.realm.DataSourceRealm" 
+		localDataSource="true"
+		debug="99"
+	    dataSourceName="jdbc/itrust"
+		userTable="Users"
+		userNameCol="MID"
+		userCredCol="Password"
+		userRoleTable="Users"
+		roleNameCol="Role" />
+</Context>

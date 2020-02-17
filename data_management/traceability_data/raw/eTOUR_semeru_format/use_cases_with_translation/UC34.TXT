@@ -1,0 +1,31 @@
+Use case name SEARCH
+Research and cultural heritage for all.
+Participating
+Actor initialized by Guest User
+Entry
+conditions � Guest User logs on.
+Flow of events User System
+1. Activate the search functionality.
+2 Displays the corresponding form.
+3 Fill out the form and submit.
+4 Gets the position dell'Utente Guest citing the case of use location and process research.
+Exit conditions � The system displays a list of sites that meet the search criteria.
+� Interruption of the connection to the server ETOUR.
+Quality
+requirements
+
+Usa il nome del caso CERCA
+Ricerca e patrimonio culturale per tutti.
+partecipante
+Attore inizializzato dall'utente ospite
+Iscrizione
+condizioni Utente ospite accede.
+Flusso di eventi Sistema utente
+1. Attivare la funzionalità di ricerca.
+2 Visualizza il modulo corrispondente.
+3 Compila il modulo e invia.
+4 Ottiene la posizione dell'Utente Guest citando il caso di utilizzo location e ricerca di processo.
+Condizioni di uscita Il sistema visualizza un elenco di siti che soddisfano i criteri di ricerca.
+Interruzione della connessione al server ETOUR.
+Qualità
+requisiti

@@ -1,0 +1,25 @@
+Use case name ERROREMODIFICAPASSWORD
+E 'was asked to enter a password but is not confirmed in a correct way.
+Participating
+Actor
+Entry
+conditions � It has been pressed the button to confirm the password change
+Flow of events User System
+4 Notify an error message.
+5 Confirmation of the reading of the notification.
+6. Back to change your password.
+Exit conditions � The system returns control to the user interaction.
+Quality requirements
+
+Usa il nome del caso ERROREMODIFICAPASSWORD
+E 'stato chiesto di inserire una password ma non è stata confermata in modo corretto.
+partecipante
+Attore
+Iscrizione
+condizioni È stato premuto il pulsante per confermare la modifica della password
+Flusso di eventi Sistema utente
+4 Notifica un messaggio di errore.
+5 Conferma della lettura della notifica.
+6. Indietro per cambiare la password.
+Condizioni di uscita Il sistema restituisce il controllo all'interazione dell'utente.
+Requisiti di qualità

@@ -1,0 +1,41 @@
+Use case name MODIFICAMEN�
+Change the daily menu of a restaurant.
+Partecipating
+Actor initialization Operator Point Of Restaurants
+Entry
+conditions � The Point Of Restaurant Operator has successfully authenticated to the system.
+Flow of events User System
+1. Activate the editing functionality of the menu.
+2 Displays a form with seven days of the week.
+3 Select a day of the week and submit the form.
+4 Upload the data menu for the selected day and loads them into a form.
+5 Edit menu of the selected day and submit the form.
+6. Verify the data entered and asks for confirmation of the edit menu. Where the data are insufficient or invalid, the active use case Errored.
+7 Confirm the operation.
+8 Saves changes to the menu selected.
+Exit conditions � The system shall notify the successful modification of the menu.
+� Restaurant Point Of Operator cancels the operation.
+� Interruption of the connection to the server ETOUR.
+Quality
+requirements
+
+Usa il nome del caso MODIFICAMEN
+Cambia il menu del giorno di un ristorante.
+Partecipare
+Inizializzazione degli attori Operator Point Of Restaurants
+Iscrizione
+condizioni L'operatore Point Of Restaurant è stato autenticato correttamente nel sistema.
+Flusso di eventi Sistema utente
+1. Attivare la funzionalità di modifica del menu.
+2 Visualizza un modulo con sette giorni della settimana.
+3 Selezionare un giorno della settimana e inviare il modulo.
+4 Carica il menu dati per il giorno selezionato e li carica in un modulo.
+5 Modifica il menu del giorno selezionato e invia il modulo.
+6. Verifica i dati inseriti e chiede conferma del menu di modifica. Dove i dati sono insufficienti o non validi, il caso di utilizzo attivo è Errored.
+7 Confermare l'operazione.
+8 Salva le modifiche al menu selezionato.
+Condizioni di uscita Il sistema notifica la corretta modifica del menu.
+Restaurant Point Of Operator annulla l'operazione.
+Interruzione della connessione al server ETOUR.
+Qualità
+requisiti

@@ -1,0 +1,27 @@
+Use case name VISUALIZZASCHEDAPUNTODIRISTORO
+View the details of a selected point of rest.
+Partecipating
+Actor initialization Agency Operator
+Entry
+Operator conditions � The agency has logged.
+Flow of events User System
+1. View the list of points of rest as a result of the use case RicercaPuntoDiRistoro, it selects and activates a function to view the card.
+2 Upload data to a selected restaurant.
+Exit conditions � The system displays the details of the selected point of rest.
+� Interruption of the connection to the server ETOUR.
+Quality
+requirements
+
+Utilizzare il nome del caso VISUALIZZASCHEDAPUNTODIRISTORO
+Visualizza i dettagli di un punto di riposo selezionato.
+Partecipare
+Operatore di inizializzazione degli attori
+Iscrizione
+Condizioni dell'operatore L'agenzia ha effettuato l'accesso.
+Flusso di eventi Sistema utente
+1. Visualizza l'elenco dei punti di riposo come risultato del caso d'uso RicercaPuntoDiRistoro, seleziona e attiva una funzione per visualizzare la scheda.
+2 Carica dati in un ristorante selezionato.
+Condizioni di uscita Il sistema visualizza i dettagli del punto di riposo selezionato.
+Interruzione della connessione al server ETOUR.
+Qualità
+requisiti

@@ -1,0 +1,29 @@
+Use case name INSERISCITAG
+Inserts a new tag search.
+Partecipating
+Actor initialization Agency Operator
+Entry
+Operator conditions � The agency has logged.
+Flow of events User System
+1. Access the functionality of inserting new tag search.
+2 Show the form for entering a tag.
+3 Fill out the form with the required information and submit.
+4 Verify the data entered and check if the tag is already present in the system. In the latter case the active use case ErroreTagEsistente. Instead, if the data is invalid or insufficient, the system activates the use case Errored.
+Exit conditions � The notification about the inclusion of the tag.
+� Interruption of the connection to the server ETOUR.
+Quality requirements
+
+Usa il nome del caso INSERISCITAG
+Inserisce una nuova ricerca di tag.
+Partecipare
+Operatore di inizializzazione degli attori
+Iscrizione
+Condizioni dell'operatore L'agenzia ha effettuato l'accesso.
+Flusso di eventi Sistema utente
+1. Accedi alla funzionalità di inserire una nuova ricerca di tag.
+2 Mostra il modulo per inserire un tag.
+3 Compila il modulo con le informazioni richieste e invia.
+4 Verificare i dati inseriti e controllare se il tag è già presente nel sistema. In quest'ultimo caso il caso di uso attivo ErroreTagEsistente. Invece, se i dati non sono validi o insufficienti, il sistema attiva il caso d'uso Errored.
+Condizioni di uscita La notifica sull'inclusione del tag.
+Interruzione della connessione al server ETOUR.
+Requisiti di qualità

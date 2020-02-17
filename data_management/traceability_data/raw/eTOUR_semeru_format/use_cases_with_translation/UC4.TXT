@@ -1,0 +1,31 @@
+Use case name RICERCABENECULTURALE
+Returns the list of cultural objects in the system according to certain parameters.
+Partecipating
+Actor
+Entry
+conditions
+Flow of events User System
+1. Activate the search functionality of a cultural object.
+2 Show the form for research.
+3 Fill in the search form and submit.
+4 Processing the request.
+Exit conditions � The system returns a list of cultural goods that meet the search criteria.
+� Interruption of the connection to the server ETOUR.
+Quality
+The system requirements should return the results within a set time.
+
+Usa il nome del caso RICERCABENECULTURALE
+Restituisce l'elenco degli oggetti culturali nel sistema in base a determinati parametri.
+Partecipare
+Attore
+Iscrizione
+condizioni
+Flusso di eventi Sistema utente
+1. Attiva la funzionalità di ricerca di un oggetto culturale.
+2 Mostra il modulo per la ricerca.
+3 Compila il modulo di ricerca e invia.
+4 Elaborazione della richiesta.
+Condizioni di uscita Il sistema restituisce un elenco di beni culturali che soddisfano i criteri di ricerca.
+Interruzione della connessione al server ETOUR.
+Qualità
+I requisiti di sistema dovrebbero restituire i risultati entro un tempo prestabilito.

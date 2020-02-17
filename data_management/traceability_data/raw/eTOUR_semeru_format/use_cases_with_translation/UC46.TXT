@@ -1,0 +1,37 @@
+Use case name MODIFICAPREFERENZEDIRICERCA
+Edit your personal search preferences.
+Partecipating
+Actor initialized by Tourist
+Entry
+conditions � The Tourist has successfully authenticated to the system.
+Flow of events User System
+1. Access to functionality for the modification of personal search preferences.
+2 Upload your search preferences and displays them in a form.
+3 Edit the fields in the form and submit.
+4 Asks confirmation.
+5 Confirmation for changing search preferences.
+6. Memorize search preferences changed.
+Exit conditions � The system shall notify the successful modification of search preferences.
+� The Tourist cancels the operation.
+� Interruption of the connection to the server ETOUR.
+Quality
+requirements
+
+Usa il nome del caso MODIFICAPREFERENZEDIRICERCA
+Modifica le tue preferenze di ricerca personali.
+Partecipare
+Attore inizializzato da Tourist
+Iscrizione
+condizioni Il Tourist è stato autenticato con successo nel sistema.
+Flusso di eventi Sistema utente
+1. Accesso alle funzionalità per la modifica delle preferenze di ricerca personali.
+2 Carica le preferenze di ricerca e le visualizza in una forma.
+3 Modifica i campi nel modulo e invia.
+4 Chiede conferma.
+5 Conferma per modificare le preferenze di ricerca.
+6. Memorizza le preferenze di ricerca cambiate.
+Condizioni di uscita Il sistema notificherà la corretta modifica delle preferenze di ricerca.
+The Tourist annulla l'operazione.
+Interruzione della connessione al server ETOUR.
+Qualità
+requisiti

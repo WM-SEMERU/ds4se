@@ -1,0 +1,27 @@
+Use case name VISUALIZZASCHEDASITO
+View the details of a particular site.
+Partecipating
+Actor initialized by Tourist
+Entry
+conditions � The Tourist has successfully authenticated to the system and is located in one of the following areas: Research Results, List of Sites Visited Sites and List of Favorites
+Flow of events User System
+1. Select the function for displaying the card on a site chosen.
+2 Upload data from the database.
+Exit conditions � The system displays the details of the selected site.
+� Interruption of the connection to the server ETOUR.
+Quality
+requirements
+
+Utilizzare il nome del caso VISUALIZZASCHEDASITO
+Visualizza i dettagli di un determinato sito.
+Partecipare
+Attore inizializzato da Tourist
+Iscrizione
+condizioni Il Tourist è stato autenticato con successo nel sistema e si trova in una delle seguenti aree: Risultati della ricerca, Elenco dei siti Siti visitati e Elenco dei preferiti
+Flusso di eventi Sistema utente
+1. Selezionare la funzione per visualizzare la carta su un sito scelto.
+2 Carica i dati dal database.
+Condizioni di uscita Il sistema visualizza i dettagli del sito selezionato.
+Interruzione della connessione al server ETOUR.
+Qualità
+requisiti

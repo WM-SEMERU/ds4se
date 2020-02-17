@@ -1,0 +1,37 @@
+Use case name MODIFICADATIPUNTODIRISTOROAGENZIA
+Edit the data pertaining to a designated point of rest.
+Partecipating
+Actor initialization Agency Operator
+Entry
+Operator conditions � The agency has logged.
+Flow of events User System
+1. View a list of points of rest as a result of the use case RicercaPuntoDiRistoro, it selects an active and functional data changes.
+2 Upload data from the point of rest and displays the form of change.
+3 Change data in the form and submit.
+4 Verify the data entered in form and asks for confirmation of the transaction. Where the data is invalid or insufficient, the system activates the use case Errored.
+5 Confirm the operation.
+6. Stores the modified data of the point of rest.
+Exit conditions � The system has been reporting the information required by the point of rest.
+� Operator Agency cancels the operation.
+� Interruption of the connection to the server ETOUR.
+Quality
+The system requirements blocks of input controls in the form once we receive confirmation of the change to avoid multiple submissions before the end of the operation.
+
+Usa il nome del caso MODIFICADATIPUNTODIRISTOROAGENZIA
+Modifica i dati relativi a un punto di riposo designato.
+Partecipare
+Operatore di inizializzazione degli attori
+Iscrizione
+Condizioni dell'operatore L'agenzia ha effettuato l'accesso.
+Flusso di eventi Sistema utente
+1. Visualizza un elenco di punti di riposo come risultato del caso d'uso RicercaPuntoDiRistoro, seleziona una modifica dei dati attiva e funzionale.
+2 Carica i dati dal punto di riposo e visualizza la forma di modifica.
+3 Cambia i dati nel modulo e invia.
+4 Verificare i dati inseriti nel modulo e chiede conferma della transazione. Laddove i dati non sono validi o insufficienti, il sistema attiva il caso d'uso Errored.
+5 Confermare l'operazione.
+6. Memorizza i dati modificati del punto di riposo.
+Condizioni di uscita Il sistema ha riportato le informazioni richieste dal punto di sosta.
+L'agenzia dell'operatore annulla l'operazione.
+Interruzione della connessione al server ETOUR.
+Qualità
+I blocchi di requisiti di sistema dei controlli di input nel modulo una volta ricevuta la conferma della modifica per evitare più invii prima della fine dell'operazione.

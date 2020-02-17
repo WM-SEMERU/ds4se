@@ -1,0 +1,27 @@
+Use case name VISUALIZZAFEEDBACK
+View all feedback for a particular site.
+Participating
+Actor initialization Agency Operator
+Entry
+Operator conditions � The agency has logged.
+Flow of events User System
+1. View the list of sites as a result of the use case RicercaSito, it selects and activates a function to view the feedback.
+2 Upload Site Feedback selected.
+Exit conditions � The system displays all feedback regarding the site selected.
+� Interruption of the connection to the server
+Quality
+requirements
+
+Utilizzare il nome del caso VISUALIZZAFEEDBACK
+Visualizza tutti i feedback per un sito particolare.
+partecipante
+Operatore di inizializzazione degli attori
+Iscrizione
+Condizioni dell'operatore L'agenzia ha effettuato l'accesso.
+Flusso di eventi Sistema utente
+1. Visualizza l'elenco dei siti come risultato del caso d'uso RicercaSito, seleziona e attiva una funzione per visualizzare il feedback.
+2 Caricare il feedback sul sito selezionato.
+Condizioni di uscita Il sistema visualizza tutti i feedback relativi al sito selezionato.
+Interruzione della connessione al server
+Qualità
+requisiti

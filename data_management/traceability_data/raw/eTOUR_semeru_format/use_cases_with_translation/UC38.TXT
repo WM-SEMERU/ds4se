@@ -1,0 +1,39 @@
+Use case name INSERISCIBANNER
+Inserting a new banner associated with the point of rest.
+Partecipating
+Actor initialization Operator Point Of Restaurants
+Entry
+conditions � The Point Of Restaurant Operator has successfully authenticated to the system.
+Flow of events User System
+1. Select the feature for the insertion of a new banner.
+2 Displays a form for the selection of an image.
+3 Select an image and sends the request for entering the system.
+4 Check the characteristics of the inserted, check that the number of banner did not exceed the maximum point of the restaurant and asks for confirmation of the insertion of the banner. In the event that the inserted image is not valid, enable the use case Errored.
+
+5 Confirm the operation of insertion.
+6. Remember the banners associated with the point of rest.
+Exit conditions � The notification about the insertion of new banner.
+� The Point Of Operator Restaurant cancels the operation.
+� The point of eating has already entered the maximum number of banners allowed.
+� Interruption of the connection to the server ETOUR.
+Quality requirements
+
+Utilizzare il nome del caso INSERISCIBANNER
+Inserimento di un nuovo banner associato al punto di sosta.
+Partecipare
+Inizializzazione degli attori Operator Point Of Restaurants
+Iscrizione
+condizioni L'operatore Point Of Restaurant è stato autenticato correttamente nel sistema.
+Flusso di eventi Sistema utente
+1. Seleziona la funzione per l'inserimento di un nuovo banner.
+2 Visualizza un modulo per la selezione di un'immagine.
+3 Selezionare un'immagine e invia la richiesta di accesso al sistema.
+4 Verificare le caratteristiche dell'inserimento, verificare che il numero di banner non superi il punto massimo del ristorante e richieda la conferma dell'inserimento del banner. Nel caso in cui l'immagine inserita non sia valida, abilitare il caso d'uso Errored.
+
+5 Confermare l'operazione di inserimento.
+6. Ricorda gli stendardi associati al punto di riposo.
+Condizioni di uscita La notifica sull'inserimento di un nuovo banner.
+Il Point Of Operator Restaurant annulla l'operazione.
+Il punto di mangiare ha già inserito il numero massimo di banner consentito.
+Interruzione della connessione al server ETOUR.
+Requisiti di qualità

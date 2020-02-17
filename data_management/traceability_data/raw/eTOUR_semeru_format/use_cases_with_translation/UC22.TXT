@@ -1,0 +1,37 @@
+Use case name ELIMINANEWS
+Delete a news in the system.
+Partecipating
+Actor initialization Agency Operator
+Entry
+Operator conditions � The agency has logged.
+Flow of events User System
+1. Activate the function of elimination of a news.
+2 View all news in a form.
+3 Select a news from the list and submit the form.
+4 Asks for confirmation of the transaction.
+5 Confirm the deletion of the news.
+6. Delete the data news.
+Exit conditions � The system shall notify the successful elimination of the news.
+� The Operator Agency cancels the operation.
+� Interruption of the connection to the server ETOUR.
+Quality
+requirements
+
+Usa il nome del caso ELIMINANEWS
+Elimina una notizia nel sistema.
+Partecipare
+Operatore di inizializzazione degli attori
+Iscrizione
+Condizioni dell'operatore L'agenzia ha effettuato l'accesso.
+Flusso di eventi Sistema utente
+1. Attivare la funzione di eliminazione di una notizia.
+2 Visualizza tutte le notizie in un modulo.
+3 Selezionare una notizia dall'elenco e inviare il modulo.
+4 chiede conferma della transazione.
+5 Confermare la cancellazione delle notizie.
+6. Elimina le notizie sui dati.
+Condizioni di uscita Il sistema notificherà l'avvenuta eliminazione delle notizie.
+L'agenzia di gestione annulla l'operazione.
+Interruzione della connessione al server ETOUR.
+Qualità
+requisiti

@@ -1,0 +1,37 @@
+Use case name REGISTRATION
+Requires the creation of a new system.
+Partecipating
+Actor initialized by Guest User
+Entry
+conditions � Guest User have access to the system.
+Flow of events User System
+1. Enable the logging feature.
+2 View the registration form.
+3 Fill out the form and submit.
+4 Verify the data entered and asks for confirmation of the transaction. Where the data is invalid or insufficient, the system activates the use case Errored.
+5 Confirm the operation.
+6. Create a new account with the data entered.
+Exit conditions � The system shall notify the successful operation of recording.
+� Guest User cancels the operation.
+� Interruption of the connection to the server ETOUR.
+Quality
+requirements
+
+Usa il nome del caso REGISTRAZIONE
+Richiede la creazione di un nuovo sistema.
+Partecipare
+Attore inizializzato dall'utente ospite
+Iscrizione
+condizioni Utente ospite ha accesso al sistema.
+Flusso di eventi Sistema utente
+1. Abilitare la funzione di registrazione.
+2 Visualizza il modulo di registrazione.
+3 Compila il modulo e invia.
+4 Verificare i dati inseriti e chiede conferma della transazione. Laddove i dati non sono validi o insufficienti, il sistema attiva il caso d'uso Errored.
+5 Confermare l'operazione.
+6. Crea un nuovo account con i dati inseriti.
+Condizioni di uscita Il sistema deve notificare il corretto funzionamento della registrazione.
+Utente ospite annulla l'operazione.
+Interruzione della connessione al server ETOUR.
+Qualità
+requisiti

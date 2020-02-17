@@ -1,0 +1,37 @@
+Use case name MODIFICADATIPUNTODIRISTORO
+Change data point associated refreshment.
+Partecipating
+Actor initialization Operator Point Of Restaurants
+Entry
+conditions � The Point Restaurant Operator has successfully authenticated to the system.
+Flow of events User System
+1. Enable the functionality of the information required by the point of rest.
+2 Upload data point Refreshments and displays them in a form.
+3 Change data in the form and submit.
+4 Verify the data entered and asks for confirmation of the change. Where the data is invalid or insufficient, the system activates the use case Errored.
+5 Confirm the operation.
+6. Stores the modified data of the point of rest.
+Exit conditions � The notification system has been changing the data point selected restaurants.
+� Restaurant Point Of Operator cancels the operation.
+� Interruption of the connection to the server ETOUR.
+Quality
+requirements
+
+Usa il nome del caso MODIFICADATIPUNTODIRISTORO
+Cambia il rinfresco associato al punto dati.
+Partecipare
+Inizializzazione degli attori Operator Point Of Restaurants
+Iscrizione
+condizioni L'operatore del ristorante Point è stato autenticato correttamente nel sistema.
+Flusso di eventi Sistema utente
+1. Abilitare la funzionalità delle informazioni richieste dal punto di riposo.
+2 Carica punto dati Rinfreschi e li visualizza in un modulo.
+3 Cambia i dati nel modulo e invia.
+4 Verificare i dati inseriti e chiede conferma della modifica. Laddove i dati non sono validi o insufficienti, il sistema attiva il caso d'uso Errored.
+5 Confermare l'operazione.
+6. Memorizza i dati modificati del punto di riposo.
+Condizioni di uscita Il sistema di notifica ha modificato i ristoranti selezionati per il punto dati.
+Restaurant Point Of Operator annulla l'operazione.
+Interruzione della connessione al server ETOUR.
+Qualità
+requisiti

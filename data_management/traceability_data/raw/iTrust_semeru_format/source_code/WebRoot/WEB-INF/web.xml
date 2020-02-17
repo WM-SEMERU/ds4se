@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<display-name>iTrust Medical Records</display-name>
+
+	<!-- The Welcome File List -->
+	<welcome-file-list>
+		<welcome-file>/redirect.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- Define our custom tag library -->
+	<taglib>
+		<taglib-uri>/WEB-INF/tags.tld</taglib-uri>
+		<taglib-location>/WEB-INF/tags.tld</taglib-location>
+	</taglib>
+
+	<!-- Define our listener for session timeout -->
+	<listener>
+		<listener-class>edu.ncsu.csc.itrust.server.SessionTimeoutListener</listener-class>
+	</listener>
+
+	<!-- Define the type of login, and what page is called when credentials are challenged-->
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<realm-name>AuthenticatedRealm</realm-name>
+		<form-login-config>
+			<form-login-page>/login.jsp</form-login-page>
+			<!-- "Error" usually means that the password doesn't match -->
+			<form-error-page>/login.jsp?loginError=true</form-error-page>
+		</form-login-config>
+	</login-config>
+
+	<!-- 400 means authorization error -->
+	<error-page>
+		<error-code>400</error-code>
+		<location>/errors/badredirect.jsp</location>
+	</error-page>
+
+	<!-- 403 means authorization error -->
+	<error-page>
+		<error-code>403</error-code>
+		<location>/errors/noaccess.jsp</location>
+	</error-page>
+
+	<!-- 404 means page not found -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/errors/notfound.jsp</location>
+	</error-page>
+
+	<!-- 503 means "service unavailable", we'll use it when the DB can't be accessed -->
+	<error-page>
+		<error-code>503</error-code>
+		<location>/errors/nodb.jsp</location>
+	</error-page>
+
+	<!-- Define all of the roles here -->
+	<security-role>
+		<role-name>hcp</role-name>
+	</security-role>
+	<security-role>
+		<role-name>pha</role-name></security-role>
+	<security-role>
+		<role-name>er</role-name>
+	</security-role>
+	<security-role>
+		<role-name>patient</role-name>
+	</security-role>
+	<security-role>
+		<role-name>admin</role-name>
+	</security-role>
+	<security-role>
+		<role-name>uap</role-name>
+	</security-role>
+	<security-role>
+		<role-name>tester</role-name>
+	</security-role>		
+
+
+	<!-- Define all role-based authorization folders
+		For iTrust, the role-based realms are organized as follows:
+		/auth/*               - JSPs for all user types being logged in. Also for fragments and resources.
+		/auth/hcp/*           - JSPs for HCP's only
+		/auth/hcp-uap/*       - JSPs for HCP's and UAP's only (note that there is no uap "only" folder
+		/auth/admin/*         - JSPs for Administrators only
+		/auth/staff/*         - JSPs for only hospital staff (hcps, uaps, admin)
+		/auth/patient/*       - JSPs for patients only
+		
+		If any user attempts to access a folder that their role is not authorized for, 
+		an HTTP 403 error is thrown, which is defined above as responding with noaccess.jsp (which
+		automatically logs out the user for security reasons).
+	-->
+	<security-constraint>
+		<display-name>Authenticated Users</display-name>
+		<web-resource-collection>
+			<web-resource-name>
+				All Authenticated Users
+			</web-resource-name>
+			<!-- Define the context-relative URL(s) to be protected -->
+			<url-pattern>/auth/*</url-pattern>
+			<!-- 
+			Lauren adding this to modify it so that you must be modified 
+			to view the getUser.jsp page
+			-->
+			<!-- url-pattern>/resources/frames/getUser.jsp</url-pattern -->
+			<url-pattern>/util/getUser.jsp</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<!-- Anyone with one of the listed roles may access this area -->
+			<role-name>admin</role-name>
+			<role-name>uap</role-name>
+			<role-name>patient</role-name>
+			<role-name>hcp</role-name>
+			<role-name>er</role-name>
+			<role-name>tester</role-name>
+			<role-name>pha</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-constraint>
+		<display-name>HCP Only</display-name>
+		<web-resource-collection>
+			<web-resource-name>Only HCPs are Allowed</web-resource-name>
+			<!-- Define the context-relative URL(s) to be protected -->
+			<url-pattern>/auth/hcp/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<!-- Anyone with one of the listed roles may access this area -->
+			<role-name>hcp</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<display-name>UAP Only</display-name>
+		<web-resource-collection>
+			<web-resource-name>Only UAPs are Allowed</web-resource-name>
+			<!-- Define the context-relative URL(s) to be protected -->
+			<url-pattern>/auth/uap/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<!-- Anyone with one of the listed roles may access this area -->
+			<role-name>uap</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<display-name>HCPs and UAPs Only</display-name>
+		<web-resource-collection>
+			<web-resource-name>
+				Only HCPs and UAPs are Allowed
+			</web-resource-name>
+			<!-- Define the context-relative URL(s) to be protected -->
+			<url-pattern>/auth/hcp-uap/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<!-- Anyone with one of the listed roles may access this area -->
+			<role-name>hcp</role-name>
+			<role-name>uap</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+		
+	<security-constraint>
+		<display-name>ER Only</display-name>
+		<web-resource-collection>
+			<web-resource-name>Only ERs are Allowed</web-resource-name>
+			<!-- Define the context-relative URL(s) to be protected -->
+			<url-pattern>/auth/er/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<!-- Anyone with one of the listed roles may access this area -->
+			<role-name>er</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-constraint>
+		<display-name>HCPs and ERs Only</display-name>
+		<web-resource-collection>
+			<web-resource-name>
+				Only HCPs and ERs are Allowed
+			</web-resource-name>
+			<!-- Define the context-relative URL(s) to be protected -->
+			<url-pattern>/auth/hcp-er/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<!-- Anyone with one of the listed roles may access this area -->
+			<role-name>hcp</role-name>
+			<role-name>er</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+
+	<security-constraint>
+		<display-name>Admin Only</display-name>
+		<web-resource-collection>
+			<web-resource-name>
+				Only Administrators are Allowed
+			</web-resource-name>
+			<!-- Define the context-relative URL(s) to be protected -->
+			<url-pattern>/auth/admin/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<!-- Anyone with one of the listed roles may access this area -->
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-constraint>
+		<display-name>Staff Only</display-name>
+		<web-resource-collection>
+			<web-resource-name>
+				Only HCPs, UAPs, and Admins are Allowed
+			</web-resource-name>
+			<!-- Define the context-relative URL(s) to be protected -->
+			<url-pattern>/auth/staff/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<!-- Anyone with one of the listed roles may access this area -->
+			<role-name>hcp</role-name>
+			<role-name>uap</role-name>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-constraint>
+		<display-name>Patient Only</display-name>
+		<web-resource-collection>
+			<web-resource-name>
+				Only Patients are Allowed
+			</web-resource-name>
+			<!-- Define the context-relative URL(s) to be protected -->
+			<url-pattern>/auth/patient/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<!-- Anyone with one of the listed roles may access this area -->
+			<role-name>patient</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<display-name>PHA Only</display-name>
+		<web-resource-collection>
+			<web-resource-name>Only PHAs are allowed</web-resource-name>
+			<url-pattern>/auth/pha/*</url-pattern></web-resource-collection>
+		<auth-constraint>
+			<role-name>pha</role-name></auth-constraint></security-constraint>
+
+	<security-constraint>
+		<display-name>Tester Only</display-name>
+		<web-resource-collection>
+			<web-resource-name>
+				Only Testers are Allowed
+			</web-resource-name>
+			<!-- Define the context-relative URL(s) to be protected -->
+			<url-pattern>/auth/tester/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<!-- Anyone with one of the listed roles may access this area -->
+			<role-name>tester</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<!-- Servlet for CeWolf charting -->
+	<servlet>
+		<servlet-name>CewolfServlet</servlet-name>
+		<servlet-class>de.laures.cewolf.CewolfRenderer</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<!-- Servlet mapping for CeWolf charting -->
+	<servlet-mapping>
+	    <servlet-name>CewolfServlet</servlet-name>  
+  		<url-pattern>/charts/*</url-pattern>
+  	</servlet-mapping>
+  	
+  	<!-- Define the CeWolf tag library -->
+	<taglib>
+		<taglib-uri>/WEB-INF/cewolf.tld</taglib-uri>
+		<taglib-location>/WEB-INF/cewolf.tld</taglib-location>
+	</taglib>
+	
+</web-app>
+

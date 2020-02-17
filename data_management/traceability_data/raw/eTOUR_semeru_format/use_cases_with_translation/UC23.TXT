@@ -1,0 +1,41 @@
+Use case name MODIFICANEWS
+Change data of a news on the computer.
+Participating
+Actor initialization Agency Operator
+Entry
+Operator conditions � The agency has logged.
+Flow of events User System
+1. Activate the editing functionality of a news.
+2 View all news in a form.
+3 Select a news from the list and submit the form.
+4 Load the data of news and displays them in a form for editing.
+5 Change data in the form and submit.
+6. Check the modified information and asks for confirmation of the transaction. Where the data is invalid or insufficient, the system activates the use case Errored.
+7 Confirm the operation of changing the data news.
+8 Stores data modified news.
+Exit conditions � The system shall notify the successful amendment of news.
+� The Operator Agency cancels the operation.
+� Interruption of the connection to the server ETOUR.
+Quality
+requirements
+
+Usa il nome del caso MODIFICANEWS
+Cambia i dati di una notizia sul computer.
+partecipante
+Operatore di inizializzazione degli attori
+Iscrizione
+Condizioni dell'operatore L'agenzia ha effettuato l'accesso.
+Flusso di eventi Sistema utente
+1. Attivare la funzionalità di modifica di una notizia.
+2 Visualizza tutte le notizie in un modulo.
+3 Selezionare una notizia dall'elenco e inviare il modulo.
+4 Carica i dati delle notizie e li visualizza in un modulo per la modifica.
+5 Cambia i dati nel modulo e invia.
+6. Controllare le informazioni modificate e chiedere conferma della transazione. Laddove i dati non sono validi o insufficienti, il sistema attiva il caso d'uso Errored.
+7 Confermare l'operazione di modifica delle notizie dei dati.
+8 Memorizza le notizie modificate dai dati.
+Condizioni di uscita Il sistema notificherà l'avvenuta modifica delle notizie.
+L'agenzia di gestione annulla l'operazione.
+Interruzione della connessione al server ETOUR.
+Qualità
+requisiti

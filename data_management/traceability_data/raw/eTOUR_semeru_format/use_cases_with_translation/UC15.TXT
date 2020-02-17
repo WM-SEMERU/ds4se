@@ -1,0 +1,33 @@
+Use case name MODIFICADATIACCOUNTTURISTA
+Change data of a selected account Turista.
+Partecipating
+Actor initialization Agency Operator
+Entry
+Operator conditions � The agency has logged.
+Flow of events User System
+1. Tourists from the list obtained by activating the use case RicercaTurista it selects and activates a function to modify data.
+2 Loads the data selected and displays them in a form allowing the change.
+3 Edit the fields in the form and submit.
+4 Verify the information and asks for confirmation of the change. Where the data is invalid or insufficient, the system activates the use case Errored.
+5 Confirm the operation.
+6. Stores the modified data selected account.
+Exit conditions � The system has been reporting the information required by the selected account Turista.
+� Interruption of the connection to the server ETOUR.
+Quality requirements
+
+Usa il nome del caso MODIFICADATIACCOUNTTURISTA
+Cambia i dati di un account selezionato Turista.
+Partecipare
+Operatore di inizializzazione degli attori
+Iscrizione
+Condizioni dell'operatore L'agenzia ha effettuato l'accesso.
+Flusso di eventi Sistema utente
+1. I turisti dalla lista ottenuta attivando il caso d'uso RicercaTurista seleziona e attiva una funzione per modificare i dati.
+2 Carica i dati selezionati e li visualizza in un modulo che consente la modifica.
+3 Modifica i campi nel modulo e invia.
+4 Verificare le informazioni e chiedere conferma del cambiamento. Laddove i dati non sono validi o insufficienti, il sistema attiva il caso d'uso Errored.
+5 Confermare l'operazione.
+6. Memorizza l'account selezionato dati modificati.
+Condizioni di uscita Il sistema ha riportato le informazioni richieste dall'account Turista selezionato.
+Interruzione della connessione al server ETOUR.
+Requisiti di qualità

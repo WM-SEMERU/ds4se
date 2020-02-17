@@ -1,0 +1,31 @@
+Use case name RICERCAPUNTIDIRISTORO
+Returns the list of points of rest in the system according to certain parameters.
+Partecipating
+Actor
+Entry
+conditions
+Flow of events User System
+1. Activate the search functionality of a point of rest.
+2 Show the form for research.
+3 Fill in the search form and submit.
+4 Processing the request.
+Exit conditions � The system returns a list of points of rest which meet your search criteria.
+� Interruption of the connection to the server ETOUR.
+
+Quality requirements � The system performs the operation in 15 seconds maximum
+
+Usa il nome del caso RICERCAPUNTIDIRISTORO
+Restituisce l'elenco dei punti di riposo nel sistema in base a determinati parametri.
+Partecipare
+Attore
+Iscrizione
+condizioni
+Flusso di eventi Sistema utente
+1. Attivare la funzionalità di ricerca di un punto di riposo.
+2 Mostra il modulo per la ricerca.
+3 Compila il modulo di ricerca e invia.
+4 Elaborazione della richiesta.
+Condizioni di uscita Il sistema restituisce un elenco di punti di riposo che soddisfano i criteri di ricerca.
+Interruzione della connessione al server ETOUR.
+
+Requisiti di qualità Il sistema esegue l'operazione in massimo 15 secondi
