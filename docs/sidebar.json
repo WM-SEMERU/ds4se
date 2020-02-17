@@ -6,6 +6,7 @@
     "Data Management": "/data.management",
     "Data Representation": "/benchmark.traceability",
     "Example Template": "/templates.example",
-    "Example Blog": "/blog.example"
+    "Example Blog": "/blog.example",
+    "Training": "/model.train"
   }
 }

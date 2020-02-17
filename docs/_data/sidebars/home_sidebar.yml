@@ -27,6 +27,9 @@ entries:
     - output: web,pdf
       title: Example Blog
       url: /blog.example
+    - output: web,pdf
+      title: Training
+      url: /model.train
     output: web
     title: ds4se
   output: web
