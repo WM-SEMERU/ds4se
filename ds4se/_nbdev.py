@@ -2,10 +2,17 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"df_to_txt_file": "00_data.preprocessing.ipynb",
-         "gen_sp_model": "00_data.preprocessing.ipynb"}
+index = {"jsonl_list_to_dataframe": "00_data.preprocessing.ipynb",
+         "get_dfs": "00_data.preprocessing.ipynb",
+         "df_to_txt_file": "00_data.preprocessing.ipynb",
+         "gen_sp_model": "00_data.preprocessing.ipynb",
+         "gen_hugface_model": "00_data.preprocessing.ipynb",
+         "Vectorizor": "03_data.representation.ipynb",
+         "BertVectorizor": "03_data.representation.ipynb"}
 
-modules = ["data/preprocessing.py"]
+modules = ["data/preprocessing.py",
+           "data/representation.py",
+           "model/train.py"]
 
 git_url = "https://github.com/ncoop57/ds4se/tree/master/"
 
