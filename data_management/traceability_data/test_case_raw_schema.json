@@ -4,26 +4,13 @@
     "project": {"type": "string"},
     "identifier": {"type": "string"},
     "text": {"type": "string"},
-    "associated_requirements": {
+    "ground_truth": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
           "collection": {"type": "string"},
           "document_id": {"type": "object"}
-        }
-      }
-    },
-    "associated_source": {
-      "type": "array",
-      "items": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "collection": {"type": "string"},
-            "document_id": {"type": "object"}
-          }
         }
       }
     },
@@ -35,7 +22,8 @@
           "type": "object",
           "properties": {
             "collection": {"type": "string"},
-            "document_id": {"type": "object"}
+            "document_id": {"type": "object"},
+            "transformation_identifier": {"type": "object"}
           }
         }
       }
