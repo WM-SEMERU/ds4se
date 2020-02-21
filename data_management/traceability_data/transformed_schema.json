@@ -1,9 +1,9 @@
 {
   "type":"object",
   "properties": {
-    "project": {"type": "string"},
-    "identifier": {"type": "string"},
-    "transformed_text": {"type": "string"},
+    "system": {"type": "string"},
+    "name": {"type": "string"},
+    "contents": {"type": "string"},
     "transformation_identifier": {"type": "object"},
     "transformed_from": {
       "type": "array",
