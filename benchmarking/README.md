@@ -5,3 +5,5 @@ This module comprises all possible benchmarks product of software research probl
 - The pre-processed and organized testbed(s)
 - The methodology to run and reproduce the experiment
 
+This component creates the bechmarks, help to organize the benchmarks, run the metrics on the dataset. 
+
