@@ -20,9 +20,9 @@ def create_documents_from_albergate(ground_truth_file, req_dir, source_dir, db):
     for requirement in pairs.keys():
 
         req_path = os.path.join(".", req_dir, requirement)
+        req_collection = db["requirement_raw"]
 
         with open(req_path, encoding= "ISO-8859-1") as req_file:
-            req_collection = db["requirement_raw"]
             requirement_contents = req_file.read()
 
         req_document = {"name": requirement, "system": "Albergate", "applied_transformations": [],
