@@ -2,73 +2,59 @@ from pymongo import MongoClient
 import os
 
 
-def create_documents_from_albergate(ground_truth_file, req_dir, source_dir, db):
+def create_documents_from_EBT(code_ground, tests_ground, req_file, test_file, source_dir, db):
 
-    pairs = dict()
+    # pair requirements with source_code files
+    requirements_to_source = create_requirement_to_source_or_test_dicts(code_ground, " ")
 
-    with open(ground_truth_file) as f:
+    # pair requirements with source_code files
+    requirements_to_test = create_requirement_to_source_or_test_dicts(tests_ground, " ")
+
+    # Read in the requirement file
+    requirements = parse_requirement_or_test_file(req_file, "\t")
+
+    # Read in the test file
+    tests = parse_requirement_or_test_file(test_file, " ")
+
+
+def create_requirement_to_source_or_test_dicts(ground_file, split_on):
+
+    requirement_associations = dict()
+
+    # pair requirements with source_code or test files
+    with open(ground_file) as f:
         for line in f:
             line = line.rstrip()
-            line_pair = line.split(" ")
+            files = line.split(split_on)
 
-            if line_pair[0] in pairs.keys():
-                pairs[line_pair[0]].append(line_pair[1])
-            else:
-                pairs[line_pair[0]] = list()
-                pairs[line_pair[0]].append(line_pair[1])
+            requirement_associations[files[0]] = files[1:]
 
-    print(pairs)
+    print(requirement_associations)
+    return requirement_associations
 
-    for requirement in pairs.keys():
 
-        print(requirement)
-        
-        req_path = os.path.join(".", req_dir, requirement)
+def parse_requirement_or_test_file(file, split_on):
 
-        with open(req_path, encoding= "ISO-8859-1") as req_file:
-            req_collection = db["requirement_raw"]
-            requirement_contents = req_file.read()
+    req_or_test = dict()
 
-        req_document = {"identifier": requirement, "project": "Albergate", "applied_transformations": [],
-                        "ground_truth": [], "file_contents": requirement_contents}
+    # read in the lines and split
+    with open(file) as f:
+        for line in f:
+            line = line.rstrip()
+            req_or_test_id = line.split(split_on)[0]
+            req_or_test[req_or_test_id] = line
 
-        req_id = req_collection.insert_one(req_document).inserted_id
-        
-        for source in pairs[requirement]:
-
-            print(source)
-
-            source_path = os.path.join(".", source_dir, source)
-
-            with open(source_path, encoding="ISO-8859-1") as source_file:
-                source_collection = db["source_raw"]
-                source_contents = source_file.read()
-            source_document = {"identifier": source, "project": "Albergate", "applied_transformations": [],
-                               "ground_truth": [], "file_contents": source_contents}
-
-            source_id = source_collection.insert_one(source_document).inserted_id
-
-            # print(req_document, source_document)
-            req_query = {"_id": req_id}
-            new_req_values = {"$addToSet": {"ground_truth": source_id}}
-
-            source_query = {"_id": source_id}
-            new_source_values = {"$addToSet": {"ground_truth": req_id}}
-
-            req_collection.update_one(req_query, new_req_values)
-            source_collection.update_one(source_query, new_source_values)
+    print(req_or_test)
+    return req_or_test
 
 
 def main():
-
     client = MongoClient('localhost', 27017)
     db = client.test
-    create_documents_from_albergate('ground.txt', 'requirements', 'source_code', db)
+    create_documents_from_EBT('code_ground.txt', 'tests_ground.txt', 'requirements.txt', 'test_cases.txt',
+                              'source_code', db)
 
 
 if __name__ == "__main__":
     main()
-
-
-
 
