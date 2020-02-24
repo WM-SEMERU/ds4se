@@ -18,26 +18,28 @@ def create_documents_from_eTour(ground_truth_file, req_dir, source_dir, db):
         req_document = {"name": requirement, "system": "eTour", "applied_transformations": [],
                         "ground_truth": [], "contents": requirement_contents}
 
-        req_id = req_collection.insert_one(req_document).inserted_id
+        print(req_document)
 
-        for source in requirements_to_source[requirement]:
-            source_path = os.path.join(".", source_dir, source)
-
-            with open(source_path, encoding="ISO-8859-1") as source_file:
-                source_contents = source_file.read()
-            source_document = {"name": source, "system": "eTour", "applied_transformations": [],
-                               "ground_truth": [], "contents": source_contents}
-
-            source_id = source_collection.insert_one(source_document).inserted_id
-
-            req_query = {"_id": req_id}
-            new_req_values = {"$addToSet": {"ground_truth": ("source_raw", source_id)}}
-
-            source_query = {"_id": source_id}
-            new_source_values = {"$addToSet": {"ground_truth": ("requirement_raw", req_id)}}
-
-            req_collection.update_one(req_query, new_req_values)
-            source_collection.update_one(source_query, new_source_values)
+        # req_id = req_collection.insert_one(req_document).inserted_id
+        #
+        # for source in requirements_to_source[requirement]:
+        #     source_path = os.path.join(".", source_dir, source)
+        #
+        #     with open(source_path, encoding="ISO-8859-1") as source_file:
+        #         source_contents = source_file.read()
+        #     source_document = {"name": source, "system": "eTour", "applied_transformations": [],
+        #                        "ground_truth": [], "contents": source_contents}
+        #
+        #     source_id = source_collection.insert_one(source_document).inserted_id
+        #
+        #     req_query = {"_id": req_id}
+        #     new_req_values = {"$addToSet": {"ground_truth": ("source_raw", source_id)}}
+        #
+        #     source_query = {"_id": source_id}
+        #     new_source_values = {"$addToSet": {"ground_truth": ("requirement_raw", req_id)}}
+        #
+        #     req_collection.update_one(req_query, new_req_values)
+        #     source_collection.update_one(source_query, new_source_values)
 
 
 def create_requirement_to_source_or_test_dicts(ground_file, split_on):
