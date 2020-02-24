@@ -28,12 +28,32 @@ class SemeruCollection(Collection):
         # if the document is raw, then insert it into the database
         # NOTE:
         if document_type == "raw":
-            self.insert_raw_document(document)
+            self.insert_raw_document(document, bypass_document_validation, session)
         else:
             self.insert_transform_document(document)
 
-    def __insert_raw_document(self, document):
-        pass
+    def __insert_raw_document(self, document, bypass_document_validation=False, session=None):
+
+        db = self.database
+        associated_files = document["ground_truth"]
+
+        for file in associated_files:
+
+            # Check
+            if "document_id" in file.keys:
+                if db[file["collection"]].find({"_id": file["document_id"]}) is None:
+                    raise Warning("Document references file with document id \'{}\', which cannot be found in "
+                                  "collection \'{}\'".format(file["document_id"],
+                                                             file["collection"]))
+            elif "name_and_system" in file.keys:
+                if db[file["collection"]].find({"name": file["name_and_system"][0],
+                                                "system": file["name_and_system"][1]}) is None:
+                    raise Warning("Document references file with system \'{}\' and name \'{}\', which cannot be found "
+                                  "in collection \'{}\'".format(file["name_and_system"][1],
+                                                                file["name_and_system"][0],
+                                                                file["collection"]))
+
+        super().insert_one(document, bypass_document_validation, session)
 
     def __insert_transform_document(self, document):
         pass
