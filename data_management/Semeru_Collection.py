@@ -3,6 +3,7 @@ from pymongo.collection import Collection
 from jsonschema import validate
 from jsonschema import exceptions as json_exceptions
 from json import loads
+import warnings
 
 
 class SemeruCollection(Collection):
@@ -28,9 +29,9 @@ class SemeruCollection(Collection):
         # if the document is raw, then insert it into the database
         # NOTE:
         if document_type == "raw":
-            self.insert_raw_document(document, bypass_document_validation, session)
+            self.__insert_raw_document(document, bypass_document_validation, session)
         else:
-            self.insert_transform_document(document)
+            self.__insert_transform_document(document)
 
     def __insert_raw_document(self, document, bypass_document_validation=False, session=None):
 
@@ -38,20 +39,23 @@ class SemeruCollection(Collection):
         associated_files = document["ground_truth"]
 
         for file in associated_files:
+            print(file)
 
-            # Check
-            if "document_id" in file.keys:
-                if db[file["collection"]].find({"_id": file["document_id"]}) is None:
-                    raise Warning("Document references file with document id \'{}\', which cannot be found in "
-                                  "collection \'{}\'".format(file["document_id"],
-                                                             file["collection"]))
-            elif "name_and_system" in file.keys:
-                if db[file["collection"]].find({"name": file["name_and_system"][0],
-                                                "system": file["name_and_system"][1]}) is None:
-                    raise Warning("Document references file with system \'{}\' and name \'{}\', which cannot be found "
-                                  "in collection \'{}\'".format(file["name_and_system"][1],
-                                                                file["name_and_system"][0],
-                                                                file["collection"]))
+            with warnings.catch_warnings():
+                warnings.simplefilter('always')
+                # Check
+                if "document_id" in file.keys():
+                    if db[file["collection"]].find_one({"_id": file["document_id"]}) is None:
+                        raise Warning("Document references file with document id \'{}\', which cannot be found in "
+                                      "collection \'{}\'. \n Please add related document to collection \'{}\'".format(file["document_id"],
+                                                                 file["collection"], file["collection"]))
+                elif "name_and_system" in file.keys():
+                    if db[file["collection"]].find_one({"name": file["name_and_system"][0],
+                                                    "system": file["name_and_system"][1]}) is None:
+                        raise Warning("Document references file with system \'{}\' and name \'{}\', which cannot be found "
+                                      "in collection \'{}\'. \n Please add related document to collection \'{}\'".format(file["name_and_system"][1],
+                                                                    file["name_and_system"][0],
+                                                                    file["collection"], file["collection"]))
 
         super().insert_one(document, bypass_document_validation, session)
 
@@ -93,13 +97,40 @@ class SemeruCollection(Collection):
         # a delete can only be run if the document is a child node.
         pass
 
-    def run_transformation(self, query, function):
+    def run_transformation(self, query, function, transformation_collection_name):
 
-        # Takes a function, and runs the transformation on each document which matches the query, then constructs
-        # and stores new transformed versions of the document
-        pass
+        import datetime
+        transformation_identifier = {"function_name": function.__name__, "timestamp":  datetime.datetime.now()}
 
+        # Takes a function, and runs the transformation on each document which matches the query
+        for document in self.find(query):
+            transformed_text = function(document["contents"])
 
+            # construct and stores new transformed version of the document with transformed from field
+            transform_document = {"name": document["name"],
+                                  "system": document["system"],
+                                  "applied_transformations": [],
+                                  "contents": transformed_text,
+                                  "transformation_identifier": transformation_identifier,
+                                  "transformed_from": [{"collection": self.full_name,
+                                                        "document_id": document["_id"]}]
+                                  }
+
+            # update the document with the applied transformation
+            db = self.database
+            transformation_collection = db[transformation_collection_name]
+            transform_doc_id = transformation_collection.insert_one(transform_document)
+
+            update_applied_transform = {"$addToSet": {"applied_transformations": {
+                "collection": transformation_collection_name,
+                "document_id": transform_doc_id,
+                "transformation_identifier": transformation_identifier}}}
+
+            self.update_one({"_id": document["_id"]}, update_applied_transform)
+
+            # transformation_identifier [(date, function_string)]
+            # applied transformation [(collection, document_id, transformation_identifier), ... ]
+            # transformed from [(collection, document_id), ... ]
 
 
 client = MongoClient('localhost', 27017)
@@ -107,7 +138,11 @@ db = client.test
 test = SemeruCollection(database=db, name="source_raw", raw_schema="./traceability_data/raw_schema.json",
                         transform_schema="./traceability_data/transformed_schema.json")
 
-sample = {'name': 'UC58.TXT', 'system': 'eTour', 'applied_transformations': [], 'ground_truth': [{"collection": "Collection_name", "name_and_system": ["eTour", "ground.txt"]}],
+sample = {'name': 'UC58.TXT', 'system': 'eTour', 'applied_transformations': [], 'ground_truth': [{"collection":
+                                                                                                      "Collection_name",
+                                                                                                  "name_and_system":
+                                                                                                      ["eTour", "ground.txt"]
+                                                                                                  }],
           'contents': 'Use case name VISUALIZZASCHEDASITO \nView the details of a particular site. \nPartecipating '
                       '\nActor initialized by Tourist \nEntry \nconditions \x95 The Tourist has successfully '
                       'authenticated to the system and is located in one of the following areas: Research Results, '
@@ -115,7 +150,5 @@ sample = {'name': 'UC58.TXT', 'system': 'eTour', 'applied_transformations': [], 
                       'function for displaying the card on a site chosen. \n2 Upload data from the database. \nExit '
                       'conditions \x95 The system displays the details of the selected site. \n\x95 Interruption of '
                       'the connection to the server ETOUR. \nQuality \nrequirements'}
-
-sample = {"blah": "cool"}
 
 test.insert_one(sample)

@@ -11,17 +11,10 @@
         "type": "object",
         "properties": {
           "collection": {"type": "string"},
-          "document_id": {"type": "object"},
-          "name_and_system": {
-            "type": "array",
-            "items": [
-              {"type":  "string"},
-              {"type":  "string"}
-            ]
+          "document_id": {"type": "object"}
           }
         },
-        "required": ["collection"],
-        "minProperties": 2
+        "required": ["collection", "document_id"]
       }
     },
     "applied_transformations": {
@@ -36,8 +29,7 @@
           }
         }
       }
-    }
-  },
+    },
   "required": ["system", "name", "contents", "transformation_identifier", "transformed_from"],
   "additionalProperties": false
 }
