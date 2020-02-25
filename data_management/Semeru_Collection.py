@@ -29,9 +29,9 @@ class SemeruCollection(Collection):
         # if the document is raw, then insert it into the database
         # NOTE:
         if document_type == "raw":
-            self.__insert_raw_document(document, bypass_document_validation, session)
+            return self.__insert_raw_document(document, bypass_document_validation, session)
         else:
-            self.__insert_transform_document(document)
+            return self.__insert_transform_document(document, bypass_document_validation, session)
 
     def __insert_raw_document(self, document, bypass_document_validation=False, session=None):
 
@@ -42,25 +42,64 @@ class SemeruCollection(Collection):
             print(file)
 
             with warnings.catch_warnings():
+
+                # Turn on warnings for this section of code, regardless of user preferences
                 warnings.simplefilter('always')
-                # Check
+
+                # Default to using a document_id.
                 if "document_id" in file.keys():
                     if db[file["collection"]].find_one({"_id": file["document_id"]}) is None:
                         raise Warning("Document references file with document id \'{}\', which cannot be found in "
-                                      "collection \'{}\'. \n Please add related document to collection \'{}\'".format(file["document_id"],
-                                                                 file["collection"], file["collection"]))
+                                      "collection \'{}\'. \n Please add related document to collection \'{}\'".format(
+                                        file["document_id"],
+                                        file["collection"],
+                                        file["collection"]))
+
+                # But use the name/system pair if necessary
                 elif "name_and_system" in file.keys():
                     if db[file["collection"]].find_one({"name": file["name_and_system"][0],
-                                                    "system": file["name_and_system"][1]}) is None:
-                        raise Warning("Document references file with system \'{}\' and name \'{}\', which cannot be found "
-                                      "in collection \'{}\'. \n Please add related document to collection \'{}\'".format(file["name_and_system"][1],
-                                                                    file["name_and_system"][0],
-                                                                    file["collection"], file["collection"]))
+                                                        "system": file["name_and_system"][1]}) is None:
+                        raise Warning(
+                            "Document references file with system \'{}\' and name \'{}\', which cannot be found "
+                            "in collection \'{}\'. \n Please add related document to collection \'{}\'".format(
+                                file["name_and_system"][1],
+                                file["name_and_system"][0],
+                                file["collection"],
+                                file["collection"]))
 
-        super().insert_one(document, bypass_document_validation, session)
+        raw_id = super().insert_one(document, bypass_document_validation, session)
+        return raw_id
 
-    def __insert_transform_document(self, document):
-        pass
+    def __insert_transform_document(self, document, bypass_document_validation, session):
+
+        db = self.database
+
+        # The document needs to have a valid transformation history to be inserted
+        if document["transformed_from"].len() == 0:
+            raise Exception("Transformation Document has no \"transformed_from\" field.")
+
+        # The transformed_from fields must map to valid documents in the database
+        for transformed_from in document["transformed_from"]:
+            transformed_from_collection = db[transformed_from["collection"]]
+            if transformed_from_collection.find_one({"_id": transformed_from["document_id"]}) is None:
+                raise Exception("Cannot locate document with id {} in collection \'{}\'".format(
+                    transformed_from["document_id"], transformed_from_collection))
+
+        transformation_identifier = document["transformation_identifier"]
+        transform_id = super().insert_one(document, bypass_document_validation, session)
+
+        # Add the new transformed document to the applied transformation fields of the transformed_from documents
+        for transformed_from in document["transformed_from"]:
+            transformed_from_collection = db[transformed_from["collection"]]
+
+            update_applied_transform = {"$addToSet": {"applied_transformations": {
+                "collection": self.full_name,
+                "document_id": transform_id,
+                "transformation_identifier": transformation_identifier}}}
+
+            transformed_from_collection.update_one({"_id": transformed_from["document_id"]}, update_applied_transform)
+
+        return transform_id
 
     def __validate_document(self, document):
         # try to validate against raw schema
@@ -100,7 +139,7 @@ class SemeruCollection(Collection):
     def run_transformation(self, query, function, transformation_collection_name):
 
         import datetime
-        transformation_identifier = {"function_name": function.__name__, "timestamp":  datetime.datetime.now()}
+        transformation_identifier = {"function_name": function.__name__, "timestamp": datetime.datetime.now()}
 
         # Takes a function, and runs the transformation on each document which matches the query
         for document in self.find(query):
@@ -138,10 +177,11 @@ db = client.test
 test = SemeruCollection(database=db, name="source_raw", raw_schema="./traceability_data/raw_schema.json",
                         transform_schema="./traceability_data/transformed_schema.json")
 
-sample = {'name': 'UC58.TXT', 'system': 'eTour', 'applied_transformations': [], 'ground_truth': [{"collection":
+sample = {'name': 'UC58.TXT', 'system': 'test_system', 'applied_transformations': [], 'ground_truth': [{"collection":
                                                                                                       "Collection_name",
                                                                                                   "name_and_system":
-                                                                                                      ["eTour", "ground.txt"]
+                                                                                                      ["eTour",
+                                                                                                       "ground.txt"]
                                                                                                   }],
           'contents': 'Use case name VISUALIZZASCHEDASITO \nView the details of a particular site. \nPartecipating '
                       '\nActor initialized by Tourist \nEntry \nconditions \x95 The Tourist has successfully '
