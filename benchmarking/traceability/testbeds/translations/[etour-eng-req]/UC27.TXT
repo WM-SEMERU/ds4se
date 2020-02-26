@@ -1,0 +1,31 @@
+Use case name RICERCASITO
+Searching for a specific site on the computer.
+Partecipating
+Actor
+Entry
+conditions
+Flow of events User System
+1. Activate the search functionality of a site.
+2 Show the form for research
+3 Fill in the form of research and submit
+4 Processing the request
+Exit conditions � The system returns a list of sites found
+� Interruption of the connection to the server ETOUR.
+Quality
+The system requirements should return the results within a time limit set
+
+Usa il nome del caso RICERCASITO
+Ricerca di un sito specifico sul computer.
+Partecipare
+Attore
+Iscrizione
+condizioni
+Flusso di eventi Sistema utente
+1. Attiva la funzionalità di ricerca di un sito.
+2 Mostra il modulo per la ricerca
+3 Compila il modulo di ricerca e invia
+4 Elaborazione della richiesta
+Condizioni di uscita Il sistema restituisce un elenco di siti trovati
+Interruzione della connessione al server ETOUR.
+Qualità
+I requisiti di sistema dovrebbero restituire i risultati entro un limite di tempo

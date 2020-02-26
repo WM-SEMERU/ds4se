@@ -1,0 +1,29 @@
+Use case name RICERCATURISTA
+Returns the list of tourist account in the system according to certain parameters.
+Partecipating
+Actor initialization Agency Operator
+Entry
+Operator conditions � The agency has logged.
+Flow of events User System
+1. Access the search functionality of a tourist.
+2 Show the form.
+3 Fill out the form and submit.
+4 Processing the request.
+Exit conditions � The system returns a list of accounts that meet Turista your search criteria.
+� Interruption of the connection to the server ETOUR.
+Quality requirements
+
+Usa il nome del caso RICERCATURISTA
+Restituisce l'elenco dei conti turistici nel sistema in base a determinati parametri.
+Partecipare
+Operatore di inizializzazione degli attori
+Iscrizione
+Condizioni dell'operatore L'agenzia ha effettuato l'accesso.
+Flusso di eventi Sistema utente
+1. Accedi alla funzionalità di ricerca di un turista.
+2 Mostra il modulo.
+3 Compila il modulo e invia.
+4 Elaborazione della richiesta.
+Condizioni di uscita Il sistema restituisce un elenco di account che soddisfano i criteri di ricerca di Turista.
+Interruzione della connessione al server ETOUR.
+Requisiti di qualità
