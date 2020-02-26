@@ -1,0 +1,37 @@
+Use case name INSERISCIFEEDBACK
+Inserts a feedback for the selected site.
+Partecipating
+Actor initialized by Tourist
+Entry
+conditions � The tourist card is in a particular site.
+Flow of events User System
+1. Activate the feature on the issue of feedback.
+2 Verify that the visitor has not already issued a feedback for the site and displays a form for entering the feedback for the selected site. In case the visitor has already issued a feedback for the site selected, activates the use case FeedbackGi�Rilasciato.
+3 Fill out the form, selecting one vote and inserting a comment, then submit.
+4 Verify the data entered and confirm the cheide. Where the data is invalid or insufficient, the system activates the use case Errored.
+5 Confirming the issue of feedback.
+6. Remember feedback and inserts the selected site in the list of sites visited.
+Exit conditions � The system shall notify the successful combination of feedback to the site
+� The Tourist cancel the operation
+� Interruption of the connection to the server ETOUR.
+Quality
+requirements
+
+Usa il nome del caso INSERISCIFEEDBACK
+Inserisce un feedback per il sito selezionato.
+Partecipare
+Attore inizializzato da Tourist
+Iscrizione
+condizioni La carta turistica si trova in un determinato sito.
+Flusso di eventi Sistema utente
+1. Attivare la funzione sul problema del feedback.
+2 Verificare che il visitatore non abbia già inviato un feedback per il sito e visualizza un modulo per inserire il feedback per il sito selezionato. Nel caso in cui il visitatore abbia già emesso un feedback per il sito selezionato, attiva il caso d'uso FeedbackGi Rilasciato.
+3 Compila il modulo, selezionando un voto e inserendo un commento, quindi invia.
+4 Verificare i dati inseriti e confermare la guida. Laddove i dati non sono validi o insufficienti, il sistema attiva il caso d'uso Errored.
+5 Confermare il problema del feedback.
+6. Ricorda il feedback e inserisce il sito selezionato nell'elenco dei siti visitati.
+Condizioni di uscita Il sistema notificherà la riuscita combinazione del feedback al sito
+Il turista annulla l'operazione
+Interruzione della connessione al server ETOUR.
+Qualità
+requisiti

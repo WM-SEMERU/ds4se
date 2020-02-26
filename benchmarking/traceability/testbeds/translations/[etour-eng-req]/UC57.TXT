@@ -1,0 +1,31 @@
+Use case name RICERCAAVANZATA
+The tourist searching for a site using the potential offered by the Advanced Search.
+Partecipating
+Actor initialized by Tourist
+Entry
+conditions � The Tourist has successfully authenticated to the system.
+Flow of events User System
+1. Enable the advanced search feature from your personal area.
+2 View the advanced search form.
+3 Fill in the form of advanced search and submit.
+4 Gets the position of relying on the tourist event of the use location and process the request.
+Exit conditions � The system displays a list of results.
+� Interruption of the connection to the server ETOUR.
+Quality
+The system requirements into the transaction in more than 15 seconds.
+
+Usa il nome del caso RICERCAAVANZATA
+Il turista alla ricerca di un sito sfruttando le potenzialità offerte dalla Ricerca Avanzata.
+Partecipare
+Attore inizializzato da Tourist
+Iscrizione
+condizioni Il Tourist è stato autenticato con successo nel sistema.
+Flusso di eventi Sistema utente
+1. Abilitare la funzione di ricerca avanzata dalla propria area personale.
+2 Visualizza il modulo di ricerca avanzato.
+3 Compila il modulo di ricerca avanzata e invia.
+4 Ottiene la posizione di fare affidamento sull'evento turistico del luogo di utilizzo ed elaborare la richiesta.
+Condizioni di uscita Il sistema visualizza un elenco di risultati.
+Interruzione della connessione al server ETOUR.
+Qualità
+I requisiti di sistema nella transazione in più di 15 secondi.

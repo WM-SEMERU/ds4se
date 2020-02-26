@@ -1,0 +1,25 @@
+Use case name VISUALIZZASCHEDATURISTA
+View the details of a selected account Turista.
+Partecipating
+Actor initialization Agency Operator
+Entry
+Operator conditions � The agency has logged.
+Flow of events User System
+1. Tourists from the list obtained by activating the use case RicercaTurista will select and activate a function for displaying the card.
+2 Upload data to the selected account.
+Exit conditions � The system displays the card's Tourist selected.
+� Interruption of the connection to the server ETOUR.
+Quality requirements
+
+Utilizzare il nome del caso VISUALIZZASCHEDATURISTA
+Visualizza i dettagli di un account selezionato Turista.
+Partecipare
+Operatore di inizializzazione degli attori
+Iscrizione
+Condizioni dell'operatore L'agenzia ha effettuato l'accesso.
+Flusso di eventi Sistema utente
+1. I turisti dalla lista ottenuta attivando il caso d'uso RicercaTurista selezioneranno e attiveranno una funzione per la visualizzazione della carta.
+2 Carica i dati sull'account selezionato.
+Condizioni di uscita Il sistema visualizza Turista selezionato della carta.
+Interruzione della connessione al server ETOUR.
+Requisiti di qualità
