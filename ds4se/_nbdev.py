@@ -11,6 +11,8 @@ index = {"jsonl_list_to_dataframe": "00_data.preprocessing.ipynb",
          "BertVectorizor": "03_data.representation.ipynb"}
 
 modules = ["data/preprocessing.py",
+           "data/exploratory/information.py",
+           "data/exploratory.py",
            "data/representation.py",
            "model/train.py"]
 
