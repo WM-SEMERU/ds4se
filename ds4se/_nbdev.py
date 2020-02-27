@@ -5,16 +5,26 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 index = {"jsonl_list_to_dataframe": "00_data.preprocessing.ipynb",
          "get_dfs": "00_data.preprocessing.ipynb",
          "df_to_txt_file": "00_data.preprocessing.ipynb",
-         "gen_sp_model": "00_data.preprocessing.ipynb",
+         "sp_model_from_df": "00_data.preprocessing.ipynb",
+         "sp_model_from_glob": "00_data.preprocessing.ipynb",
          "gen_hugface_model": "00_data.preprocessing.ipynb",
+         "tokenize_fns": "00_data.preprocessing.ipynb",
          "Vectorizor": "03_data.representation.ipynb",
-         "BertVectorizor": "03_data.representation.ipynb"}
+         "BertVectorizor": "03_data.representation.ipynb",
+         "encode_text": "08_data.exploratory.information.ipynb",
+         "shared_entropy": "08_data.exploratory.information.ipynb",
+         "get_desc_stats": "09_data.exploratory.stats.ipynb",
+         "confidence_interval": "09_data.exploratory.stats.ipynb",
+         "report_stats": "09_data.exploratory.stats.ipynb",
+         "visualize": "10_data.exploratory.visualize.ipynb"}
 
 modules = ["data/preprocessing.py",
-           "data/exploratory/information.py",
-           "data/exploratory.py",
            "data/representation.py",
-           "model/train.py"]
+           "benchmark/traceability.py",
+           "model/train.py",
+           "data/exploratory/information.py",
+           "data/exploratory/stats.py",
+           "data/exploratory/visualize.py"]
 
 git_url = "https://github.com/ncoop57/ds4se/tree/master/"
 

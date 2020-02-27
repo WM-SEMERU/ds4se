@@ -10,11 +10,11 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: preprocessing
+      title: Preprocessing
       url: /data.preprocessing
     - output: web,pdf
       title: Exploration of your data
-      url: /data.exploratory
+      url: /data.exploratory.visualize
     - output: web,pdf
       title: Data Management
       url: /data.management
@@ -33,6 +33,12 @@ entries:
     - output: web,pdf
       title: Training
       url: /model.train
+    - output: web,pdf
+      title: Exploration of your data using Information Theory
+      url: /data.exploratory.information
+    - output: web,pdf
+      title: Exploration Statistics
+      url: /data.exploratory.stats
     output: web
     title: ds4se
   output: web

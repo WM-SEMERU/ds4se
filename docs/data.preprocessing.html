@@ -1,6 +1,6 @@
 ---
 
-title: preprocessing
+title: Preprocessing
 
 keywords: fastai
 sidebar: home_sidebar
@@ -23,6 +23,19 @@ summary: "This module comprises all preprocessing techniques applied to software
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> pip install dit
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
@@ -37,7 +50,7 @@ summary: "This module comprises all preprocessing techniques applied to software
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="jsonl_list_to_dataframe" class="doc_header"><code>jsonl_list_to_dataframe</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/data/preprocessing.py#L15" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>jsonl_list_to_dataframe</code>(<strong><code>file_list</code></strong>, <strong><code>columns</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="jsonl_list_to_dataframe" class="doc_header"><code>jsonl_list_to_dataframe</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/data/preprocessing.py#L16" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>jsonl_list_to_dataframe</code>(<strong><code>file_list</code></strong>, <strong><code>columns</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Load a list of jsonl.gz files into a pandas DataFrame.</p>
 
@@ -61,7 +74,7 @@ summary: "This module comprises all preprocessing techniques applied to software
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_dfs" class="doc_header"><code>get_dfs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/data/preprocessing.py#L24" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_dfs</code>(<strong><code>path</code></strong>)</p>
+<h4 id="get_dfs" class="doc_header"><code>get_dfs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/data/preprocessing.py#L25" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_dfs</code>(<strong><code>path</code></strong>)</p>
 </blockquote>
 <p>Grabs the different data splits and converts them into dataframes.
 Expects format from Code Search Net Challenge.</p>
@@ -194,7 +207,7 @@ Expects format from Code Search Net Challenge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="df_to_txt_file" class="doc_header"><code>df_to_txt_file</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/data/preprocessing.py#L38" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>df_to_txt_file</code>(<strong><code>df</code></strong>, <strong><code>output</code></strong>, <strong><code>cols</code></strong>)</p>
+<h4 id="df_to_txt_file" class="doc_header"><code>df_to_txt_file</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/data/preprocessing.py#L39" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>df_to_txt_file</code>(<strong><code>df</code></strong>, <strong><code>output</code></strong>, <strong><code>cols</code></strong>)</p>
 </blockquote>
 <p>Converts a dataframe and converts it into a text file that SentencePiece can use to train a BPE model</p>
 
@@ -218,7 +231,7 @@ Expects format from Code Search Net Challenge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="gen_sp_model" class="doc_header"><code>gen_sp_model</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/data/preprocessing.py#L48" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>gen_sp_model</code>(<strong><code>df</code></strong>, <strong><code>output</code></strong>, <strong><code>model_name</code></strong>, <strong><code>cols</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="sp_model_from_df" class="doc_header"><code>sp_model_from_df</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/data/preprocessing.py#L49" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sp_model_from_df</code>(<strong><code>df</code></strong>, <strong><code>output</code></strong>, <strong><code>model_name</code></strong>, <strong><code>cols</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Trains a SentencePiece BPE model from a pandas dataframe</p>
 
@@ -242,7 +255,30 @@ Expects format from Code Search Net Challenge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="gen_hugface_model" class="doc_header"><code>gen_hugface_model</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/data/preprocessing.py#L54" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>gen_hugface_model</code>(<strong><code>df</code></strong>, <strong><code>output</code></strong>, <strong><code>tokenizer</code></strong>=<em><code>Tokenizer(vocabulary_size=0, model=ByteLevelBPE, add_prefix_space=False)</code></em>, <strong><code>vocab_sz</code></strong>=<em><code>30000</code></em>, <strong><code>min_freq</code></strong>=<em><code>3</code></em>, <strong><code>cols</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="sp_model_from_glob" class="doc_header"><code>sp_model_from_glob</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/data/preprocessing.py#L55" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sp_model_from_glob</code>(<strong><code>path</code></strong>, <strong><code>glob</code></strong>, <strong><code>model_name</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="gen_hugface_model" class="doc_header"><code>gen_hugface_model</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/data/preprocessing.py#L61" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>gen_hugface_model</code>(<strong><code>df</code></strong>, <strong><code>output</code></strong>, <strong><code>tokenizer</code></strong>=<em><code>Tokenizer(vocabulary_size=0, model=ByteLevelBPE, add_prefix_space=False)</code></em>, <strong><code>vocab_sz</code></strong>=<em><code>30000</code></em>, <strong><code>min_freq</code></strong>=<em><code>3</code></em>, <strong><code>cols</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 
 </div>
@@ -579,7 +615,7 @@ Expects format from Code Search Net Challenge.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gen_sp_model</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sp_model_from_dfs</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -640,6 +676,70 @@ Expects format from Code Search Net Challenge.</p>
 <pre>[&#39;▁&#39;, &#39;Hello,&#39;, &#39;▁&#39;, &#39;world!&#39;]</pre>
 </div>
 
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="tokenize_fns" class="doc_header"><code>tokenize_fns</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/data/preprocessing.py#L74" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>tokenize_fns</code>(<strong><code>fns</code></strong>, <strong><code>tokenizer</code></strong>, <strong><code>exts</code></strong>, <strong><code>output</code></strong>, <strong><code>data_type</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nbdev.export</span> <span class="k">import</span> <span class="n">notebook2script</span>
+<span class="n">notebook2script</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Converted 00_data.preprocessing.ipynb.
+This cell doesn&#39;t have an export destination and was ignored:
+e
+Converted 01_data.exploratory.ipynb.
+Converted 02_data.management.ipynb.
+Converted 03_data.representation.ipynb.
+Converted 04_templates.example.ipynb.
+Converted 05_blog.example.ipynb.
+Converted 06_benchmark.traceability.ipynb.
+Converted 07_model.train.ipynb.
+Converted 08_data.exploratory.information.ipynb.
+Converted 09_data.exploratory.stats.ipynb.
+Converted 10_data.exploratory.visualize.ipynb.
+Converted index.ipynb.
+</pre>
+</div>
 </div>
 
 </div>

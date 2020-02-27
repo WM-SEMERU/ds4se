@@ -1,13 +1,15 @@
 {
   "ds4se": {
     "Overview": "/",
-    "preprocessing": "/data.preprocessing",
-    "Exploration of your data": "/data.exploratory",
+    "Preprocessing": "/data.preprocessing",
+    "Exploration of your data": "/data.exploratory.visualize",
     "Data Management": "/data.management",
     "Data Representation": "/data.representation",
     "Example Template": "/templates.example",
     "Example Blog": "/blog.example",
     "Traceability Benchmark": "/benchmark.traceability",
-    "Training": "/model.train"
+    "Training": "/model.train",
+    "Exploration of your data using Information Theory": "/data.exploratory.information",
+    "Exploration Statistics": "/data.exploratory.stats"
   }
 }
