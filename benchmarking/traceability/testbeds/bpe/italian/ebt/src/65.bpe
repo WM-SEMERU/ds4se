@@ -1,0 +1,1 @@
+▁ 65 ▁" About ▁ Dialog ▁public ▁AboutDialog ( JFrame ▁parent , ▁boolean ▁modal ) ▁{ ▁super ▁( ▁parent , ▁modal ); ▁get ContentPane ▁() . ▁ setLayout ▁( ▁new ▁BorderLayout ▁()); ▁setTitle ▁("" About ""); ▁setName ▁("" ▁about Dialog ""); ▁private ▁JTextArea ▁text ; "
