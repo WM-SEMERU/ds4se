@@ -706,6 +706,185 @@ Expects format from Code Search Net Challenge.</p>
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="read_bpe_files" class="doc_header"><code>read_bpe_files</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/data/preprocessing.py#L93" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>read_bpe_files</code>(<strong><code>path</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="split_lines_to_files" class="doc_header"><code>split_lines_to_files</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/data/preprocessing.py#L102" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>split_lines_to_files</code>(<strong><code>lines</code></strong>, <strong><code>fn_pattern</code></strong>, <strong><code>output_path</code></strong>, <strong><code>tokenizer</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../benchmarking/traceability/&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spm</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">SentencePieceProcessor</span><span class="p">()</span>
+<span class="n">spm</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="o">/</span><span class="s1">&#39;datasets/italian/italian_bpe.model&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebt_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">/</span><span class="s1">&#39;datasets/italian/ebt&#39;</span><span class="p">;</span> <span class="n">ebt_path</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>PosixPath(&#39;../benchmarking/traceability/datasets/italian/ebt&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ebt_path</span><span class="o">/</span><span class="s1">&#39;[ebt-raw-req].txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">split_lines_to_files</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">/</span><span class="s1">&#39;testbeds/bpe/italian/ebt/req&#39;</span><span class="p">,</span> <span class="n">spm</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">ebt_path</span><span class="o">/</span><span class="s1">&#39;[ebt-raw-tc].txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">split_lines_to_files</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;case:&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">/</span><span class="s1">&#39;testbeds/bpe/italian/ebt/tc&#39;</span><span class="p">,</span> <span class="n">spm</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>00_data.preprocessing.ipynb	 07_model.train.ipynb
+01_data.exploratory.ipynb	 08_data.exploratory.information.ipynb
+02_data.management.ipynb	 09_data.exploratory.stats.ipynb
+03_data.representation.ipynb	 10_data.exploratory.visualize.ipynb
+04_templates.example.ipynb	 index.ipynb
+05_blog.example.ipynb		 test_data
+06_benchmark.traceability.ipynb
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
@@ -725,8 +904,6 @@ Expects format from Code Search Net Challenge.</p>
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Converted 00_data.preprocessing.ipynb.
-This cell doesn&#39;t have an export destination and was ignored:
-e
 Converted 01_data.exploratory.ipynb.
 Converted 02_data.management.ipynb.
 Converted 03_data.representation.ipynb.
