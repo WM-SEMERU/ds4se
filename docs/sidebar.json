@@ -1,15 +1,19 @@
 {
   "ds4se": {
     "Overview": "/",
-    "Preprocessing": "/data.preprocessing",
-    "Exploration of your data": "/data.exploratory.visualize",
-    "Data Management": "/data.management",
-    "Data Representation": "/data.representation",
-    "Example Template": "/templates.example",
-    "Example Blog": "/blog.example",
-    "Traceability Benchmark": "/benchmark.traceability",
-    "Training": "/model.train",
-    "Exploration of your data using Information Theory": "/data.exploratory.information",
-    "Exploration Statistics": "/data.exploratory.stats"
+    "Preprocessing": "/mgmnt.prep.bpe",
+    "Exploration of your data": "/vis",
+    "Data Management": "/mgmnt.db.mongo",
+    "Data Representation": "/repr.word2vec.eval",
+    "Inference Causal": "/inf.causal",
+    "Software Data Mining (Traceability)": "/mining.ir.i",
+    "Traceability Benchmark": "/benchmark.codegen",
+    "Training": "/repr.doc2vec.train",
+    "Exploration of your data using Information Theory": "/exp.info",
+    "Exploration Statistics": "/desc.metrics.se",
+    "Inference Interface": "/inf.i",
+    "Inference Bayesian": "/inf.bayesian",
+    "Example Blog": "/aa_blog.example",
+    "Example Template": "/af_emp.eval.pp1.rq4"
   }
 }

@@ -11,34 +11,46 @@ entries:
       url: /
     - output: web,pdf
       title: Preprocessing
-      url: /data.preprocessing
+      url: /mgmnt.prep.bpe
     - output: web,pdf
       title: Exploration of your data
-      url: /data.exploratory.visualize
+      url: /vis
     - output: web,pdf
       title: Data Management
-      url: /data.management
+      url: /mgmnt.db.mongo
     - output: web,pdf
       title: Data Representation
-      url: /data.representation
+      url: /repr.word2vec.eval
     - output: web,pdf
-      title: Example Template
-      url: /templates.example
+      title: Inference Causal
+      url: /inf.causal
     - output: web,pdf
-      title: Example Blog
-      url: /blog.example
+      title: Software Data Mining (Traceability)
+      url: /mining.ir.i
     - output: web,pdf
       title: Traceability Benchmark
-      url: /benchmark.traceability
+      url: /benchmark.codegen
     - output: web,pdf
       title: Training
-      url: /model.train
+      url: /repr.doc2vec.train
     - output: web,pdf
       title: Exploration of your data using Information Theory
-      url: /data.exploratory.information
+      url: /exp.info
     - output: web,pdf
       title: Exploration Statistics
-      url: /data.exploratory.stats
+      url: /desc.metrics.se
+    - output: web,pdf
+      title: Inference Interface
+      url: /inf.i
+    - output: web,pdf
+      title: Inference Bayesian
+      url: /inf.bayesian
+    - output: web,pdf
+      title: Example Blog
+      url: /aa_blog.example
+    - output: web,pdf
+      title: Example Template
+      url: /af_emp.eval.pp1.rq4
     output: web
     title: ds4se
   output: web
