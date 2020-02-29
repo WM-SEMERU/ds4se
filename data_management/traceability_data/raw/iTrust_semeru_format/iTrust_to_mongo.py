@@ -2,27 +2,29 @@ from pymongo import MongoClient
 import os
 
 
-def create_documents_from_albergate(ground_truth_file, req_dir, source_dir, db):
-
-    req_to_source = create_requirement_to_source_or_test_dicts(ground_truth_file, " ")
+def create_documents_from_iTrust(ground_truth_file, use_dir, source_dir, db):
+    # pair requirements with source_code files
+    use_to_source = create_requirement_to_source_or_test_dicts(ground_truth_file, " ")
+    use_to_source = clean_iTrust_paths(use_to_source, source_dir)
 
     use_collection = db["requirement_raw"]
     source_collection = db["source_raw"]
 
-    for requirement in req_to_source.keys():
-        use_path = os.path.join(".", req_dir, requirement)
+    for use in use_to_source.keys():
 
-        with open(use_path, encoding="ISO-8859-1") as req_file:
-            req_contents = req_file.read()
+        use_path = os.path.join(".", use_dir, use)
 
-        req_document = {"name": requirement, "system": "Albergate", "applied_transformations": [],
-                        "ground_truth": [], "contents": req_contents}
+        with open(use_path, encoding="ISO-8859-1") as use_file:
+            use_contents = use_file.read()
 
-        req_id = use_collection.insert_one(req_document).inserted_id
-        req_query = {"_id": req_id}
+        use_document = {"name": use, "system": "iTrust", "applied_transformations": [],
+                        "ground_truth": [], "contents": use_contents}
 
-        create_and_link_source_documents(requirement, req_to_source, source_dir, source_collection, req_id,
-                                         use_collection, req_query)
+        use_id = use_collection.insert_one(use_document).inserted_id
+        use_query = {"_id": use_id}
+
+        create_and_link_source_documents(use, use_to_source, source_dir, source_collection, use_id,
+                                         use_collection, use_query)
 
 
 def create_and_link_source_documents(requirement, requirements_to_source, source_dir, source_collection,
@@ -40,7 +42,7 @@ def create_and_link_source_documents(requirement, requirements_to_source, source
                 with open(source_path, encoding="ISO-8859-1") as source_file:
                     source_contents = source_file.read()
 
-                source_document = {"name": source, "system": "Albergate", "applied_transformations": [],
+                source_document = {"name": source, "system": "iTrust", "applied_transformations": [],
                                    "ground_truth": [], "contents": source_contents}
 
                 # Check if a source_document of this name already exists
@@ -77,11 +79,28 @@ def create_requirement_to_source_or_test_dicts(ground_file, split_on):
     return requirement_associations
 
 
-def main():
+def clean_iTrust_paths(use_to_source, source_dir):
 
+    for use_case in use_to_source.keys():
+        for i in range(len(use_to_source[use_case])):
+            split_path = use_to_source[use_case][i].split(".")
+            path = ""
+
+            for j in range(0, len(split_path)-2):
+                path = os.path.join(path, split_path[j])
+
+            file_name = split_path[-2] + "." + split_path[-1]
+            path = os.path.join(path, file_name)
+
+            use_to_source[use_case][i] = path
+
+    return use_to_source
+
+
+def main():
     client = MongoClient('localhost', 27017)
     db = client.test
-    create_documents_from_albergate('ground.txt', 'requirements', 'source_code', db)
+    create_documents_from_iTrust('ground.txt', 'use_cases', 'source_code', db)
 
 
 if __name__ == "__main__":
