@@ -29,7 +29,7 @@ entries:
       url: /mining.ir.i
     - output: web,pdf
       title: Traceability Benchmark
-      url: /benchmark.codegen
+      url: /benchmark.traceability
     - output: web,pdf
       title: Training
       url: /repr.doc2vec.train
@@ -42,6 +42,9 @@ entries:
     - output: web,pdf
       title: BPE Preprocessing
       url: /mgmnt.prep.bpe
+    - output: web,pdf
+      title: CodeGen Benchmark
+      url: /benchmark.codegen
     - output: web,pdf
       title: Inference Interface
       url: /inf.i
