@@ -1,0 +1,1 @@
+▁<%@ ▁page ▁is Error Page =" true "%> ▁<% ▁if ( exception != null ){ ▁exception . print Stack T race (); ▁request . getSession (). set Attribute (" errorMessage ", exception . getClass (). get Simple Name () ▁+ ▁" : ▁"+ ▁exception . getMessage ()); ▁} ▁response . send Redirect ("/ iTrust / auth / forward User . jsp "); ▁%>

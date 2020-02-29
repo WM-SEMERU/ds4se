@@ -23,8 +23,8 @@ RQ35.txt us1864.c us901.c us1005.c us1159.c us1883.c us2174.c us3496.c us3512.c 
 RQ36.txt us1005.c us1159.c us1883.c us2174.c us3496.c us3512.c us3612.c us4020.c us748.c us893.c us895.c us896.c us897.c us898.c us899.c us900.c
 RQ37.txt us894.c us1159.c us1883.c us2174.c us3512.c us3612.c us4020.c us748.c us893.c us898.c us899.c
 RQ38.txt us1005.c us1159.c us1883.c us2174.c us3512.c us3612.c us4020.c us748.c us893.c us898.c us899.c
-RQ40.txt us1005.c us1159.c us3512.c us3612.c us748.c us893.c us898.c   us899.c
-RQ41.txt us1005.c us1159.c us3512.c us3612.c us748.c us893.c us898.c   us899.c
+RQ40.txt us1005.c us1159.c us3512.c us3612.c us748.c us893.c us898.c us899.c
+RQ41.txt us1005.c us1159.c us3512.c us3612.c us748.c us893.c us898.c us899.c
 RQ42.txt us894.c
 RQ47.txt us1159.c us1883.c us2174.c us3512.c us3612.c us4020.c us748.c us898.c us899.c
 RQ48.txt us1159.c us3512.c us3612.c us748.c us893.c us896.c us898.c us899.c us900.c
