@@ -11,7 +11,7 @@ entries:
       url: /
     - output: web,pdf
       title: Preprocessing
-      url: /mgmnt.prep.bpe
+      url: /mgmnt.prep.nltk
     - output: web,pdf
       title: Exploration of your data
       url: /vis
@@ -39,6 +39,9 @@ entries:
     - output: web,pdf
       title: Exploration Statistics
       url: /desc.metrics.se
+    - output: web,pdf
+      title: BPE Preprocessing
+      url: /mgmnt.prep.bpe
     - output: web,pdf
       title: Inference Interface
       url: /inf.i

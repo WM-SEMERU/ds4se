@@ -1,6 +1,6 @@
 ---
 
-title: Preprocessing
+title: BPE Preprocessing
 
 keywords: fastai
 sidebar: home_sidebar
@@ -36,6 +36,38 @@ summary: "This module comprises all preprocessing techniques applied to software
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> pip install fastprogress
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting fastprogress
+  Downloading https://files.pythonhosted.org/packages/41/67/347d73405b8612e436a4278f577186a8b783fe757df549ba1a82a2986727/fastprogress-0.2.2-py3-none-any.whl
+Installing collected packages: fastprogress
+Successfully installed fastprogress-0.2.2
+<span class="ansi-yellow-fg">WARNING: You are using pip version 19.2.3, however version 20.0.2 is available.
+You should consider upgrading via the &#39;pip install --upgrade pip&#39; command.</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
@@ -50,7 +82,7 @@ summary: "This module comprises all preprocessing techniques applied to software
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="jsonl_list_to_dataframe" class="doc_header"><code>jsonl_list_to_dataframe</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L16" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>jsonl_list_to_dataframe</code>(<strong><code>file_list</code></strong>, <strong><code>columns</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="jsonl_list_to_dataframe" class="doc_header"><code>jsonl_list_to_dataframe</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L18" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>jsonl_list_to_dataframe</code>(<strong><code>file_list</code></strong>, <strong><code>columns</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Load a list of jsonl.gz files into a pandas DataFrame.</p>
 
@@ -74,7 +106,7 @@ summary: "This module comprises all preprocessing techniques applied to software
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_dfs" class="doc_header"><code>get_dfs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L25" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_dfs</code>(<strong><code>path</code></strong>)</p>
+<h4 id="get_dfs" class="doc_header"><code>get_dfs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L27" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_dfs</code>(<strong><code>path</code></strong>)</p>
 </blockquote>
 <p>Grabs the different data splits and converts them into dataframes.
 Expects format from Code Search Net Challenge.</p>
@@ -207,7 +239,7 @@ Expects format from Code Search Net Challenge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="df_to_txt_file" class="doc_header"><code>df_to_txt_file</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L39" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>df_to_txt_file</code>(<strong><code>df</code></strong>, <strong><code>output</code></strong>, <strong><code>cols</code></strong>)</p>
+<h4 id="df_to_txt_file" class="doc_header"><code>df_to_txt_file</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L41" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>df_to_txt_file</code>(<strong><code>df</code></strong>, <strong><code>output</code></strong>, <strong><code>cols</code></strong>)</p>
 </blockquote>
 <p>Converts a dataframe and converts it into a text file that SentencePiece can use to train a BPE model</p>
 
@@ -231,7 +263,7 @@ Expects format from Code Search Net Challenge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="sp_model_from_df" class="doc_header"><code>sp_model_from_df</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L49" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sp_model_from_df</code>(<strong><code>df</code></strong>, <strong><code>output</code></strong>, <strong><code>model_name</code></strong>, <strong><code>cols</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="sp_model_from_df" class="doc_header"><code>sp_model_from_df</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L51" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sp_model_from_df</code>(<strong><code>df</code></strong>, <strong><code>output</code></strong>, <strong><code>model_name</code></strong>, <strong><code>cols</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Trains a SentencePiece BPE model from a pandas dataframe</p>
 
@@ -255,7 +287,7 @@ Expects format from Code Search Net Challenge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="sp_model_from_glob" class="doc_header"><code>sp_model_from_glob</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L55" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sp_model_from_glob</code>(<strong><code>path</code></strong>, <strong><code>glob</code></strong>, <strong><code>model_name</code></strong>)</p>
+<h4 id="sp_model_from_glob" class="doc_header"><code>sp_model_from_glob</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L57" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>sp_model_from_glob</code>(<strong><code>path</code></strong>, <strong><code>glob</code></strong>, <strong><code>model_name</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -278,7 +310,7 @@ Expects format from Code Search Net Challenge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="gen_hugface_model" class="doc_header"><code>gen_hugface_model</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L61" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>gen_hugface_model</code>(<strong><code>df</code></strong>, <strong><code>output</code></strong>, <strong><code>tokenizer</code></strong>=<em><code>Tokenizer(vocabulary_size=0, model=ByteLevelBPE, add_prefix_space=False)</code></em>, <strong><code>vocab_sz</code></strong>=<em><code>30000</code></em>, <strong><code>min_freq</code></strong>=<em><code>3</code></em>, <strong><code>cols</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="gen_hugface_model" class="doc_header"><code>gen_hugface_model</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L63" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>gen_hugface_model</code>(<strong><code>df</code></strong>, <strong><code>output</code></strong>, <strong><code>tokenizer</code></strong>=<em><code>Tokenizer(vocabulary_size=0, model=ByteLevelBPE, add_prefix_space=False)</code></em>, <strong><code>vocab_sz</code></strong>=<em><code>30000</code></em>, <strong><code>min_freq</code></strong>=<em><code>3</code></em>, <strong><code>cols</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 
 </div>
@@ -694,7 +726,7 @@ Expects format from Code Search Net Challenge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="tokenize_fns" class="doc_header"><code>tokenize_fns</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L74" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>tokenize_fns</code>(<strong><code>fns</code></strong>, <strong><code>tokenizer</code></strong>, <strong><code>exts</code></strong>, <strong><code>output</code></strong>, <strong><code>data_type</code></strong>)</p>
+<h4 id="tokenize_fns" class="doc_header"><code>tokenize_fns</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L76" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>tokenize_fns</code>(<strong><code>fns</code></strong>, <strong><code>tokenizer</code></strong>, <strong><code>exts</code></strong>, <strong><code>output</code></strong>, <strong><code>data_type</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -717,7 +749,7 @@ Expects format from Code Search Net Challenge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="read_bpe_files" class="doc_header"><code>read_bpe_files</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L93" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>read_bpe_files</code>(<strong><code>path</code></strong>)</p>
+<h4 id="read_bpe_files" class="doc_header"><code>read_bpe_files</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L95" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>read_bpe_files</code>(<strong><code>path</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -740,7 +772,7 @@ Expects format from Code Search Net Challenge.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="split_lines_to_files" class="doc_header"><code>split_lines_to_files</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L102" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>split_lines_to_files</code>(<strong><code>lines</code></strong>, <strong><code>fn_pattern</code></strong>, <strong><code>output_path</code></strong>, <strong><code>tokenizer</code></strong>)</p>
+<h4 id="split_lines_to_files" class="doc_header"><code>split_lines_to_files</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L104" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>split_lines_to_files</code>(<strong><code>lines</code></strong>, <strong><code>fn_pattern</code></strong>, <strong><code>output_path</code></strong>, <strong><code>tokenizer</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -852,32 +884,68 @@ Expects format from Code Search Net Challenge.</p>
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls
-</pre></div>
-
-    </div>
 </div>
-</div>
+<div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
 <div class="output">
 
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>00_data.preprocessing.ipynb	 07_model.train.ipynb
-01_data.exploratory.ipynb	 08_data.exploratory.information.ipynb
-02_data.management.ipynb	 09_data.exploratory.stats.ipynb
-03_data.representation.ipynb	 10_data.exploratory.visualize.ipynb
-04_templates.example.ipynb	 index.ipynb
-05_blog.example.ipynb		 test_data
-06_benchmark.traceability.ipynb
-</pre>
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_ground_truth" class="doc_header"><code>get_ground_truth</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L114" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_ground_truth</code>(<strong><code>path</code></strong>, <strong><code>language</code></strong>)</p>
+</blockquote>
+
 </div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_non_ground_truth" class="doc_header"><code>get_non_ground_truth</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L150" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_non_ground_truth</code>(<strong><code>path</code></strong>, <strong><code>language</code></strong>, <strong><code>gt_english</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="gen_gt_ngt" class="doc_header"><code>gen_gt_ngt</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/mgmnt/prep/bpe.py#L185" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>gen_gt_ngt</code>(<strong><code>path</code></strong>, <strong><code>lang</code></strong>)</p>
+</blockquote>
+
+</div>
+
 </div>
 
 </div>
@@ -903,17 +971,35 @@ Expects format from Code Search Net Challenge.</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Converted 00_data.preprocessing.ipynb.
-Converted 01_data.exploratory.ipynb.
-Converted 02_data.management.ipynb.
-Converted 03_data.representation.ipynb.
-Converted 04_templates.example.ipynb.
-Converted 05_blog.example.ipynb.
+<pre>Converted 00_mgmnt.prep.i.ipynb.
+Converted 01_exp.i.ipynb.
+Converted 02_mgmnt.db.mongo.ipynb.
+Converted 03_repr.i.ipynb.
+Converted 04_mining.ir.model.ipynb.
+Converted 05_mining.ir.i.ipynb.
 Converted 06_benchmark.traceability.ipynb.
-Converted 07_model.train.ipynb.
-Converted 08_data.exploratory.information.ipynb.
-Converted 09_data.exploratory.stats.ipynb.
-Converted 10_data.exploratory.visualize.ipynb.
+Converted 07_repr.roberta.train.ipynb.
+Converted 08_exp.info.ipynb.
+Converted 09_desc.stats.ipynb.
+Converted 10_vis.ipynb.
+Converted 11_mgmnt.prep.nltk.ipynb.
+Converted 12_repr.roberta.eval.ipynb.
+Converted 14_mgmnt.prep.bpe.ipynb.
+Converted 15_desc.metrics.se.ipynb.
+Converted 16_repr.word2vec.train.ipynb.
+Converted 17_repr.doc2vec.train.ipynb.
+Converted 18_repr.doc2vec.eval.ipynb.
+Converted 19_repr.word2vec.eval.ipynb.
+Converted 20_benchmark.codegen.ipynb.
+Converted 21_inf.i.ipynb.
+Converted 22_inf.bayesian.ipynb.
+Converted 23_inf.causal.ipynb.
+Converted aa_blog.example.ipynb.
+Converted ab_templates.example.ipynb.
+Converted ac_emp.eval.pp1.rq1.ipynb.
+Converted ad_emp.eval.pp1.rq2.ipynb.
+Converted ae_emp.eval.pp1.rq3.ipynb.
+Converted af_emp.eval.pp1.rq4.ipynb.
 Converted index.ipynb.
 </pre>
 </div>

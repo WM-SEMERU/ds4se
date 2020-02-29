@@ -1,7 +1,7 @@
 {
   "ds4se": {
     "Overview": "/",
-    "Preprocessing": "/mgmnt.prep.bpe",
+    "Preprocessing": "/mgmnt.prep.nltk",
     "Exploration of your data": "/vis",
     "Data Management": "/mgmnt.db.mongo",
     "Data Representation": "/repr.word2vec.eval",
@@ -11,6 +11,7 @@
     "Training": "/repr.doc2vec.train",
     "Exploration of your data using Information Theory": "/exp.info",
     "Exploration Statistics": "/desc.metrics.se",
+    "BPE Preprocessing": "/mgmnt.prep.bpe",
     "Inference Interface": "/inf.i",
     "Inference Bayesian": "/inf.bayesian",
     "Example Blog": "/aa_blog.example",
