@@ -10,12 +10,15 @@ import matplotlib.pyplot as plt
 def visualize_gt_ngt(gt, ngt):
     plt.xlim(2, 10)
     plt.ylim(2, 10)
-    plt.scatter(gt[0], gt[1], c='b', alpha = 0.5)
-    plt.scatter(ngt[0], ngt[1], c='r', alpha = 0.5)
+    plt.scatter(gt[0], gt[1], c='b', label='groundtruth', alpha = 0.5)
+    plt.scatter(ngt[0], ngt[1], c='r', label='non-groundtruth', alpha = 0.5)
+    plt.legend()
     plt.show()
 
 # Cell
-def visualize_events(events, color):
+def visualize_events(events, color, label):
     plt.hlines(1,0,1)  # Draw a horizontal line
-    plt.eventplot(events, orientation='horizontal', colors=color, alpha = 0.5)
+    plt.gca().yaxis.set_major_locator(plt.NullLocator())
+    plt.eventplot(events, orientation='horizontal', colors=color, alpha = 0.5, label=label)
+    plt.legend()
     plt.show()
