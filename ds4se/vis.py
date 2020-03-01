@@ -8,8 +8,10 @@ import matplotlib.pyplot as plt
 
 # Cell
 def visualize_gt_ngt(gt, ngt):
-    plt.scatter(gt[0], gt[1], c='b')
-    plt.scatter(ngt[0], ngt[1], c='r')
+    plt.xlim(2, 10)
+    plt.ylim(2, 10)
+    plt.scatter(gt[0], gt[1], c='b', alpha = 0.5)
+    plt.scatter(ngt[0], ngt[1], c='r', alpha = 0.5)
     plt.show()
 
 # Cell
