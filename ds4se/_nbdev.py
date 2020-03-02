@@ -33,6 +33,7 @@ index = {"jsonl_list_to_dataframe": "14_mgmnt.prep.bpe.ipynb",
          "get_desc_stats": "15_desc.metrics.se.ipynb",
          "confidence_interval": "15_desc.metrics.se.ipynb",
          "report_stats": "15_desc.metrics.se.ipynb",
+         "get_contours": "10_vis.ipynb",
          "visualize_gt_ngt": "10_vis.ipynb",
          "visualize_events": "10_vis.ipynb",
          "get_ground_truth": "14_mgmnt.prep.bpe.ipynb",
@@ -46,7 +47,7 @@ modules = ["mgmnt/prep/i.py",
            "exp/info.py",
            "desc/stats.py",
            "vis.py",
-           "mgmnt/prep/nltk.py",
+           "mgmnt/prep/conv.py",
            "repr/roberta/eval.py",
            "mgmnt/prep/bpe.py",
            "desc/metrics/se.py",
@@ -54,7 +55,8 @@ modules = ["mgmnt/prep/i.py",
            "repr/doc2vec/train.py",
            "repr/doc2vec/eval.py",
            "repr/word2vec/eval.py",
-           "benchmark/codegen.py"]
+           "benchmark/codegen.py",
+           "mgmnt/corpus.py"]
 
 git_url = "https://github.com/ncoop57/ds4se/tree/master/"
 

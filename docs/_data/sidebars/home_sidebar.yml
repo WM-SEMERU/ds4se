@@ -11,7 +11,7 @@ entries:
       url: /
     - output: web,pdf
       title: Preprocessing
-      url: /mgmnt.prep.nltk
+      url: /mgmnt.prep.i
     - output: web,pdf
       title: Exploration of your data
       url: /vis
@@ -40,6 +40,9 @@ entries:
       title: Exploration Statistics
       url: /desc.metrics.se
     - output: web,pdf
+      title: Conventional Preprocessing
+      url: /mgmnt.prep.conv
+    - output: web,pdf
       title: BPE Preprocessing
       url: /mgmnt.prep.bpe
     - output: web,pdf
@@ -51,6 +54,9 @@ entries:
     - output: web,pdf
       title: Inference Bayesian
       url: /inf.bayesian
+    - output: web,pdf
+      title: Corpus Representation
+      url: /mgmnt.corpus
     - output: web,pdf
       title: Example Blog
       url: /aa_blog.example

@@ -1,7 +1,7 @@
 {
   "ds4se": {
     "Overview": "/",
-    "Preprocessing": "/mgmnt.prep.nltk",
+    "Preprocessing": "/mgmnt.prep.i",
     "Exploration of your data": "/vis",
     "Data Management": "/mgmnt.db.mongo",
     "Data Representation": "/repr.word2vec.eval",
@@ -11,10 +11,12 @@
     "Training": "/repr.doc2vec.train",
     "Exploration of your data using Information Theory": "/exp.info",
     "Exploration Statistics": "/desc.metrics.se",
+    "Conventional Preprocessing": "/mgmnt.prep.conv",
     "BPE Preprocessing": "/mgmnt.prep.bpe",
     "CodeGen Benchmark": "/benchmark.codegen",
     "Inference Interface": "/inf.i",
     "Inference Bayesian": "/inf.bayesian",
+    "Corpus Representation": "/mgmnt.corpus",
     "Example Blog": "/aa_blog.example",
     "Example Template": "/af_emp.eval.pp1.rq4"
   }
