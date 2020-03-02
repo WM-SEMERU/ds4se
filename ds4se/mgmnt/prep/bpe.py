@@ -7,6 +7,7 @@ __all__ = ['jsonl_list_to_dataframe', 'get_dfs', 'df_to_txt_file', 'sp_model_fro
 # Cell
 # Imports
 import pandas as pd
+import random
 import sentencepiece as sp
 
 from fastprogress.fastprogress import master_bar
@@ -154,12 +155,15 @@ def get_non_ground_truth(path, language, gt_english):
 #     ])
 
     existing_links = ['->'.join(link) for link in zip(gt_english['from_file'].to_list(), gt_english['to_file'].to_list())]
-    for i in master_bar(list(path.glob('**/*.bpe'))[:500]):
+    bpe_files = list(path.glob('**/*.bpe'))
+    random.shuffle(bpe_files)
+    for i in master_bar(bpe_files[:500]):
         sys = i.parent.parent.name
         from_type = i.parent.name
         with open(i) as f:
             i_content = f.read().split(' ')
-        for j in list(path.glob('**/*.bpe'))[:500]:
+        random.shuffle(bpe_files)
+        for j in bpe_files[:500]:
             if i == j: continue
             if '->'.join([i.name, j.name]) in existing_links: continue
             to_type = j.parent.name

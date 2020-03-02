@@ -53,12 +53,12 @@ def get_freqs(token_counts):
 # Cell
 def get_dist(token_counts):
     '''Takes in a counter object of token occurrences, computes the entropy of the corpus that produced it'''
-    outcomes = list(set(token_counts.elements()))
+    alphabet = list(set(token_counts.elements()))
     frequencies = get_freqs(token_counts)
 #     for token in token_counts:
 #         frequencies.append((token_counts[token])/num_tokens)
 
-    return dit.ScalarDistribution(outcomes, frequencies)
+    return dit.ScalarDistribution(alphabet, frequencies)
 
 # Cell
 def get_entropies_from_docs(docs):
@@ -171,4 +171,4 @@ def get_shared_probs_from_docs(sys_docs):
         if tok in overlap:
             freqs.append(freq)
 
-    return sum(freqs), info_content(freqs) / len(freqs)
+    return sum(freqs), info_content(freqs) / len(freqs) if len(freqs) != 0 else 0
