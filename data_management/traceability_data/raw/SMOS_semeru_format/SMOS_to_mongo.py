@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 import os
 import glob
-from data_management.Semeru_Collection import SemeruCollection
+from nbs.DatabaseManagement import SemeruCollection
 
 
 def create_documents_from_SMOS(ground, source_dir, use_dir, source_collection, use_collection):
