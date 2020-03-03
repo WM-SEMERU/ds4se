@@ -1,0 +1,155 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+a {
+	color: #CC0000;
+	font-size: 14px;
+}
+
+
+/* Formated table stuff */
+.fTable {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.fTable tr {
+	border: 1px solid black;
+}
+
+.fTable tr th {
+	border: 1px solid black;
+	background-color: silver;
+	font-size: 16px;
+	padding-left: 4px;
+	padding-right: 4px;
+	white-space: nowrap;
+}
+
+.fTable tr td {
+	border: 1px solid black;
+	font-size: 16px;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.fTable .subHeader td {
+	background: #EEEEFF;
+	font-weight: bold;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.fTable .subHeader th {
+	background: #EEEEFF;
+	font-weight: bold;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.fTable .subHeaderVertical {
+	background: #EEEEFF;
+	font-weight: bold;
+	text-align: left;
+}
+
+/* General iTrust classes */
+.iTrustContent {
+	background-color: #FFFFFF;
+	border: 1px solid black;
+	float: left; 
+	margin: 10px;
+	padding: 5px;
+	padding-left: 15px;
+	width:100%;
+}
+
+.iTrustError {
+	color: #FF0000;
+	font-weight: bold;
+}
+
+.iTrustFooter {
+	border-top: 1px solid #336699;
+}
+
+.iTrustMenu {
+	background-color: #F9F9F9;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	float: left; 
+	margin: 0px;
+	margin-left: 10px;
+	margin-bottom: 30px;
+	padding: 5px;
+	width: 199px;
+	
+}
+
+
+.iTrustMenu a {
+	color: 336699;
+	font-weight: normal;
+	font-size: 14px;
+	padding-top: 5px;
+	text-decoration: underline;
+}
+
+.iTrustMenu input {
+	margin-left: 10px;
+	padding-top: 5px;
+}
+
+.iTrustMessage {
+	color: #00AA88;
+	font-weight: bold;
+}
+
+/* Menu formatting */
+.menu_category {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+			
+.menu_category a {
+	font-size: 14px;
+	margin-left: 10px;
+}
+
+.menu_category span {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+/* Main navigation formatting */
+.iTrustNav {
+	border-bottom: 1px solid #336699;
+	margin-bottom: 10px;
+}
+
+.iTrustNavlink {
+	color: #AA0000;
+	font-size: small;
+	text-decoration: none;
+}
+
+/* These links are only for testing purposes and are indicated such */
+a.iTrustTestNavlink {
+	color: #AAAA00;
+	font-size: small;
+	text-decoration: none;
+}
+
+.iTrustPage {
+	background-color: #DD8888;
+	background-image:url('/iTrust/image/teamred/redborder.gif');
+	border: 1px solid black;
+	margin: 10px;
+	margin-top: 0;
+	overflow: hidden;
+	padding: 0;
+	padding-right: 45px;
+}

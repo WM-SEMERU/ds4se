@@ -1,0 +1,25 @@
+Use case name VISUALIZZASTATISTICHEPERSONALI
+Viewing statistics for Point Of Restaurants
+Partecipating
+Actor initialization Operator Point Of Restaurants
+Entry
+conditions � The Point Of Restaurant Operator has successfully authenticated to the system.
+Flow of events User System
+1. Select the feature to display personal statistics.
+2 Displays a form that shows data for the statistics associated refreshment point.
+Exit conditions � The system displays the data on the screen.
+� Interruption of the connection to the server.
+Quality requirements
+
+Utilizzare il nome del caso VISUALIZZASTATISTICHEPERSONALI
+Visualizza le statistiche per Point Of Restaurants
+Partecipare
+Inizializzazione degli attori Operator Point Of Restaurants
+Iscrizione
+condizioni L'operatore Point Of Restaurant è stato autenticato correttamente nel sistema.
+Flusso di eventi Sistema utente
+1. Selezionare la funzione per visualizzare le statistiche personali.
+2 Visualizza un modulo che mostra i dati per il punto di ristoro associato alle statistiche.
+Condizioni di uscita Il sistema visualizza i dati sullo schermo.
+Interruzione della connessione al server.
+Requisiti di qualità

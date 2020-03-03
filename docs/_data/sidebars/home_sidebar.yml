@@ -7,24 +7,63 @@ entries:
 - folders:
   - folderitems:
     - output: web,pdf
-      title: Export to modules
-      url: /export.html
+      title: Overview
+      url: /
     - output: web,pdf
-      title: Convert to html
-      url: /export2html.html
+      title: Preprocessing
+      url: /mgmnt.prep.i
     - output: web,pdf
-      title: Show doc
-      url: /showdoc.html
+      title: Exploration of your data
+      url: /vis
     - output: web,pdf
-      title: Test functions
-      url: /test.html
+      title: Data Management
+      url: /mgmnt.db.mongo
     - output: web,pdf
-      title: Core functions
-      url: /core.html
+      title: Data Representation
+      url: /repr.word2vec.eval
     - output: web,pdf
-      title: Command line functions
-      url: /cli.html
+      title: Inference Causal
+      url: /inf.causal
+    - output: web,pdf
+      title: Software Data Mining (Traceability)
+      url: /mining.ir.i
+    - output: web,pdf
+      title: Traceability Benchmark
+      url: /benchmark.traceability
+    - output: web,pdf
+      title: Training
+      url: /repr.doc2vec.train
+    - output: web,pdf
+      title: Exploration of your data using Information Theory
+      url: /exp.info
+    - output: web,pdf
+      title: Exploration Statistics
+      url: /desc.metrics.se
+    - output: web,pdf
+      title: Conventional Preprocessing
+      url: /mgmnt.prep.conv
+    - output: web,pdf
+      title: BPE Preprocessing
+      url: /mgmnt.prep.bpe
+    - output: web,pdf
+      title: CodeGen Benchmark
+      url: /benchmark.codegen
+    - output: web,pdf
+      title: Inference Interface
+      url: /inf.i
+    - output: web,pdf
+      title: Inference Bayesian
+      url: /inf.bayesian
+    - output: web,pdf
+      title: Corpus Representation
+      url: /mgmnt.corpus
+    - output: web,pdf
+      title: Example Blog
+      url: /aa_blog.example
+    - output: web,pdf
+      title: Example Template
+      url: /af_emp.eval.pp1.rq4
     output: web
-    title: Notebook
+    title: ds4se
   output: web
   title: Sidebar

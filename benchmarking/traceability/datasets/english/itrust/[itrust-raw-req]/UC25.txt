@@ -1,0 +1,16 @@
+"A user chooses to view physician satisfaction survey results. The user provides a zip code [E1] Or a hospital code and an (optional) physician type (from a pull-down list: see data format 6.2 - general, surgeon, heart specialist, pediatrician, OB/GYN). The patient is provided with the following for each physician of that type that practices in a zip code (based upon the address/zipcode provided in UC2) that match the first three digits of the provided zip code:
+
+
+Name
+
+Address
+
+Average number of minutes patients wait in waiting room
+
+Average number of minutes patients wait in examination room prior to seeing physician
+
+Average office visit satisfaction
+
+Average satisfaction with treatment/information
+
+Percentage of office visits for which satisfaction information is available"

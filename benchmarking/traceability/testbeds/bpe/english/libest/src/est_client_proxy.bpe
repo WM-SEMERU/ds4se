@@ -1,0 +1,1 @@
+▁t cw _ err _ t ▁t cw _ connect ( t cw _ sock _ t ▁* sock , ▁t cw _ opts _ t ▁* opts , ▁const ▁char ▁* host , ▁un signed ▁short ▁int ▁port , ▁SOCK _ TYPE ▁* fd ); ▁t cw _ err _ t ▁t cw _ close ( t cw _ sock _ t ▁* sock );
