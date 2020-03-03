@@ -4,31 +4,18 @@ import glob
 from data_management.Semeru_Collection import SemeruCollection
 
 
-def create_documents_from_LibEST(code_ground, tests_ground, test_to_code_ground, req_dir, test_dir, source_dir,
-                                 req_collection, test_collection, source_collection):
+def create_documents_from_SMOS(ground, source_dir, use_dir, source_collection, use_collection):
 
     # pair requirements with source_code files
-    requirements_to_source = create_requirement_to_source_or_test_dicts(code_ground, " ")
-
-    # pair requirements with source_code files
-    requirements_to_test = create_requirement_to_source_or_test_dicts(tests_ground, " ")
-
-    # pair tests with source_code files
-    test_to_source = create_requirement_to_source_or_test_dicts(test_to_code_ground, " ")
+    requirements_to_source = create_requirement_to_source_or_test_dicts(ground, " ")
 
     # Insert all the requirements
-    req_to_id = insert_raw(dict(), req_dir, req_collection, "*.txt", "LibEST")
+    req_to_id = insert_raw(dict(), use_dir, use_collection, "*.txt", "SMOS")
 
     # Insert all of the source
-    source_to_id = insert_raw(dict(), source_dir, source_collection, "*.c", "LibEST")
-    source_to_id = insert_raw(source_to_id, source_dir, source_collection, "*.h", "LibEST")
+    source_to_id = insert_raw(dict(), source_dir, source_collection, "*.java", "SMOS")
 
-    # Insert all of the tests
-    test_to_id = insert_raw(dict(), test_dir, test_collection, "*.c", "LibEST")
-
-    link_docs(requirements_to_source, req_to_id, req_collection, source_to_id, source_collection)
-    link_docs(requirements_to_test, req_to_id, req_collection, test_to_id, test_collection)
-    link_docs(test_to_source, test_to_id, test_collection, source_to_id, source_collection)
+    link_docs(requirements_to_source, req_to_id, use_collection, source_to_id, source_collection)
 
 
 def link_docs(ground_dict, key_ids, key_collection, value_ids, value_collection):
@@ -88,17 +75,12 @@ def create_requirement_to_source_or_test_dicts(ground_file, split_on):
 def main():
     client = MongoClient('localhost', 27017)
     db = client.test
-    req_collection = SemeruCollection(database=db, name="requirement_raw", raw_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/raw_schema.json",
-                        transform_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/transformed_schema.json")
-    test_collection = SemeruCollection(database=db, name="test_raw", raw_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/raw_schema.json",
+    use_collection = SemeruCollection(database=db, name="requirement_raw", raw_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/raw_schema.json",
                         transform_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/transformed_schema.json")
     source_collection = SemeruCollection(database=db, name="source_raw", raw_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/raw_schema.json",
                         transform_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/transformed_schema.json")
 
-
-    create_documents_from_LibEST('req_to_code_ground.txt', 'req_to_test_ground.txt', 'test_to_code_ground.txt',
-                                 'requirements', 'test', 'source_code', req_collection, test_collection,
-                                 source_collection)
+    create_documents_from_SMOS("ground.txt", "source_code", "use_cases", source_collection, use_collection)
 
 
 if __name__ == "__main__":
