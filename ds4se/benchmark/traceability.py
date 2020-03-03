@@ -10,6 +10,8 @@ import sentencepiece as sp
 
 from abc import ABC, abstractmethod
 
+from collections import Counter
+
 # ds4se
 from ..exp.info import *
 from ..desc.stats import *

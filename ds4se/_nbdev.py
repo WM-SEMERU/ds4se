@@ -36,6 +36,7 @@ index = {"jsonl_list_to_dataframe": "14_mgmnt.prep.bpe.ipynb",
          "get_contours": "10_vis.ipynb",
          "visualize_gt_ngt": "10_vis.ipynb",
          "visualize_events": "10_vis.ipynb",
+         "plot_counts": "10_vis.ipynb",
          "get_ground_truth": "14_mgmnt.prep.bpe.ipynb",
          "get_non_ground_truth": "14_mgmnt.prep.bpe.ipynb",
          "gen_gt_ngt": "14_mgmnt.prep.bpe.ipynb"}

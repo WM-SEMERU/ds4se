@@ -23,6 +23,45 @@ summary: "This module comprises corpus representation from a file or Mongo DB"
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> pip install nltk
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting nltk
+  Downloading https://files.pythonhosted.org/packages/f6/1d/d925cfb4f324ede997f6d47bea4d9babba51b49e87a767c170b77005889d/nltk-3.4.5.zip (1.5MB)
+     |████████████████████████████████| 1.5MB 3.7MB/s eta 0:00:01
+Requirement already satisfied: six in /usr/lib/python3/dist-packages (from nltk) (1.11.0)
+Building wheels for collected packages: nltk
+  Building wheel for nltk (setup.py) ... done
+  Created wheel for nltk: filename=nltk-3.4.5-cp36-none-any.whl size=1450716 sha256=df506b56c0ffd02787fa55b4a93de88f9ecbc6e5e6568333dd200433c572382f
+  Stored in directory: /root/.cache/pip/wheels/96/86/f6/68ab24c23f207c0077381a5e3904b2815136b879538a24b483
+Successfully built nltk
+Installing collected packages: nltk
+Successfully installed nltk-3.4.5
+<span class="ansi-yellow-fg">WARNING: You are using pip version 19.2.3, however version 20.0.2 is available.
+You should consider upgrading via the &#39;pip install --upgrade pip&#39; command.</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
@@ -54,9 +93,17 @@ summary: "This module comprises corpus representation from a file or Mongo DB"
 <span class="sd">        _filetype_blacklist(list of str): See __init__ documentation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">corpus_root</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="s1">&#39;requirements&#39;</span><span class="p">,</span> <span class="n">target_path</span><span class="o">=</span><span class="s1">&#39;source_code&#39;</span><span class="p">,</span> <span class="n">truth_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-                 <span class="n">execution_traces</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">corpus_code</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">languages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;english&#39;</span><span class="p">],</span> <span class="n">filetype_whitelist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-                 <span class="n">filetype_blacklist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">corpus_root</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> 
+                 <span class="n">source_path</span><span class="o">=</span><span class="s1">&#39;requirements&#39;</span><span class="p">,</span> 
+                 <span class="n">target_path</span><span class="o">=</span><span class="s1">&#39;source_code&#39;</span><span class="p">,</span> 
+                 <span class="n">stop_words_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">truth_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                 <span class="n">execution_traces</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">corpus_code</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                 <span class="n">languages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;english&#39;</span><span class="p">],</span> 
+                 <span class="n">filetype_whitelist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                 <span class="n">filetype_blacklist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                 <span class="n">blank</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            name (str): The identifier of the corpus dataset</span>
@@ -163,8 +210,8 @@ summary: "This module comprises corpus representation from a file or Mongo DB"
         <span class="k">if</span> <span class="n">languages</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">language</span> <span class="ow">in</span> <span class="n">languages</span><span class="p">:</span>
                 <span class="c1"># check if there&#39;s a stop word list</span>
-                <span class="n">stop_words_path</span> <span class="o">=</span>  <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> 
-                                                <span class="s2">&quot;input/&quot;</span> <span class="o">+</span> <span class="n">language</span> <span class="o">+</span> <span class="s2">&quot;_stop_words.txt&quot;</span><span class="p">)</span>
+                <span class="n">stop_words_path</span> <span class="o">=</span>  <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;test_data/config_corpus/&#39;</span> <span class="o">+</span> 
+                                                <span class="n">language</span> <span class="o">+</span> <span class="s1">&#39;_stop_words.txt&#39;</span><span class="p">)</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">stop_words_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">stop_words_file</span><span class="p">:</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">_stop_words</span> <span class="o">+=</span>         <span class="n">stop_words_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
@@ -249,6 +296,7 @@ summary: "This module comprises corpus representation from a file or Mongo DB"
                 <span class="n">sub_element</span> <span class="o">=</span> <span class="n">element</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">sub_element</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_parse_artifacts_recur</span><span class="p">(</span><span class="n">subroot</span><span class="p">,</span> <span class="n">sub_element</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">store</span><span class="p">)</span>
 
+    <span class="c1">#Getters            </span>
     <span class="k">def</span> <span class="nf">get_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span>
 
@@ -648,10 +696,487 @@ summary: "This module comprises corpus representation from a file or Mongo DB"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Exploring!</span>
+<span class="n">dirpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current directory is : &quot;</span> <span class="o">+</span> <span class="n">dirpath</span><span class="p">)</span>
+<span class="n">foldername</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">dirpath</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Directory name is : &quot;</span> <span class="o">+</span> <span class="n">foldername</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Current directory is : /tf/main/nbs
+Directory name is : nbs
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirpath</span><span class="p">,</span> <span class="s2">&quot;test_data&quot;</span><span class="p">)</span>
+<span class="n">data_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_folder</span><span class="p">,</span> <span class="s2">&quot;LibEST_semeru_format/&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">language</span> <span class="o">=</span> <span class="s1">&#39;english&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">corpus</span> <span class="o">=</span> <span class="n">Corpus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;libest&#39;</span><span class="p">,</span> <span class="n">corpus_root</span><span class="o">=</span><span class="n">data_folder</span><span class="p">,</span> 
+                        <span class="n">source_path</span><span class="o">=</span><span class="s1">&#39;requirements&#39;</span><span class="p">,</span> <span class="n">target_path</span><span class="o">=</span><span class="s1">&#39;source_code&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Finding artifacts in: /tf/main/nbs/test_data/LibEST_semeru_format/requirements
+Getting artifacts by file from directory
+Read 52 artifacts from directory
+
+Finding artifacts in: /tf/main/nbs/test_data/LibEST_semeru_format/source_code
+Getting artifacts by file from directory
+Read 14 artifacts from directory
+
+Found stop words file: english_stop_words.txt
+Detected natural language: [english], generating stemmer
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">corpus</span><span class="o">.</span><span class="n">get_sources</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>52</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;test_data/config_corpus/&#39;</span> <span class="o">+</span> <span class="n">language</span> <span class="o">+</span> <span class="s1">&#39;_stop_words.txt&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>a
+about
+above
+across
+after
+afterwards
+again
+against
+all
+almost
+alone
+along
+already
+also
+although
+always
+am
+among
+amongst
+amoungst
+amount
+an
+and
+another
+any
+anyhow
+anyone
+anything
+anyway
+anywhere
+are
+around
+as
+at
+back
+be
+became
+because
+become
+becomes
+becoming
+been
+before
+beforehand
+behind
+being
+below
+beside
+besides
+between
+beyond
+bill
+both
+bottom
+but
+by
+call
+can
+cannot
+cant
+co
+computer
+con
+could
+couldnt
+cry
+de
+describe
+detail
+do
+done
+down
+due
+during
+each
+eg
+eight
+either
+eleven
+else
+elsewhere
+empty
+enough
+etc
+even
+ever
+every
+everyone
+everything
+everywhere
+except
+few
+fifteen
+fify
+fill
+find
+fire
+first
+five
+for
+former
+formerly
+forty
+found
+four
+from
+front
+full
+further
+get
+give
+go
+had
+has
+hasnt
+have
+he
+hence
+her
+here
+hereafter
+hereby
+herein
+hereupon
+hers
+herself
+him
+himself
+his
+how
+however
+hundred
+i
+ie
+if
+in
+inc
+indeed
+interest
+into
+is
+it
+its
+itself
+keep
+last
+latter
+latterly
+least
+less
+ltd
+made
+many
+may
+me
+meanwhile
+might
+mill
+mine
+more
+moreover
+most
+mostly
+move
+much
+must
+my
+myself
+name
+namely
+neither
+never
+nevertheless
+next
+nine
+no
+nobody
+none
+noone
+nor
+not
+nothing
+now
+nowhere
+of
+off
+often
+on
+once
+one
+only
+onto
+or
+other
+others
+otherwise
+our
+ours
+ourselves
+out
+over
+own
+part
+per
+perhaps
+please
+put
+rather
+re
+same
+see
+seem
+seemed
+seeming
+seems
+serious
+several
+she
+should
+show
+side
+since
+sincere
+six
+sixty
+so
+some
+somehow
+someone
+something
+sometime
+sometimes
+somewhere
+still
+such
+system
+take
+ten
+than
+that
+the
+their
+them
+themselves
+then
+thence
+there
+thereafter
+thereby
+therefore
+therein
+thereupon
+these
+they
+thick
+thin
+third
+this
+those
+though
+three
+through
+throughout
+thru
+thus
+to
+together
+too
+top
+toward
+towards
+twelve
+twenty
+two
+un
+under
+until
+up
+upon
+us
+very
+via
+was
+we
+well
+were
+what
+whatever
+when
+whence
+whenever
+where
+whereafter
+whereas
+whereby
+wherein
+whereupon
+wherever
+whether
+which
+while
+whither
+who
+whoever
+whole
+whom
+whose
+why
+will
+with
+within
+without
+would
+yet
+you
+your
+yours
+yourself
+yourselves
+may
+require
+shall
+recommended
+optional
+figure
+
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -663,9 +1188,14 @@ summary: "This module comprises corpus representation from a file or Mongo DB"
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">TestCorpus</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">dirpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirpath</span><span class="p">,</span> <span class="s2">&quot;test_data&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_folder</span><span class="p">,</span> <span class="s2">&quot;LibEST_semeru_format/&quot;</span><span class="p">)</span>
         <span class="k">pass</span>
     <span class="k">def</span> <span class="nf">test_corpus_creation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">corpus</span> <span class="o">=</span> <span class="n">Corpus</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">corpus_root</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">source_path</span><span class="o">=</span><span class="s1">&#39;requirements&#39;</span><span class="p">,</span> <span class="n">target_path</span><span class="o">=</span><span class="s1">&#39;source_code&#39;</span><span class="p">)</span>
+        <span class="n">corpus</span> <span class="o">=</span> <span class="n">Corpus</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">corpus_root</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_data_folder</span><span class="p">,</span> 
+                        <span class="n">source_path</span><span class="o">=</span><span class="s1">&#39;requirements&#39;</span><span class="p">,</span> <span class="n">target_path</span><span class="o">=</span><span class="s1">&#39;source_code&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">corpus</span><span class="o">.</span><span class="n">get_sources</span><span class="p">(),</span> <span class="mi">52</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -678,11 +1208,101 @@ summary: "This module comprises corpus representation from a file or Mongo DB"
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>python -m unittest
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+----------------------------------------------------------------------
+Ran 0 tests in 0.000s
+
+OK
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
     <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>E</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>hello
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+======================================================================
+ERROR: /root/ (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+AttributeError: module &#39;__main__&#39; has no attribute &#39;/root/&#39;
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+An exception has occurred, use %tb to see the full traceback.
+
+<span class="ansi-red-fg">SystemExit</span><span class="ansi-red-fg">:</span> True
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/local/lib/python3.6/dist-packages/IPython/core/interactiveshell.py:3334: UserWarning: To exit: use &#39;exit&#39;, &#39;quit&#39;, or Ctrl-D.
+  warn(&#34;To exit: use &#39;exit&#39;, &#39;quit&#39;, or Ctrl-D.&#34;, stacklevel=1)
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
