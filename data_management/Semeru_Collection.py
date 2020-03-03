@@ -67,8 +67,8 @@ class SemeruCollection(Collection):
                                 file["collection"],
                                 file["collection"]))
 
-        raw_id = super().insert_one(document, bypass_document_validation, session)
-        return raw_id
+        raw_doc = super().insert_one(document, bypass_document_validation, session)
+        return raw_doc
 
     def __insert_transform_document(self, document, bypass_document_validation, session):
 
@@ -86,7 +86,8 @@ class SemeruCollection(Collection):
                     transformed_from["document_id"], transformed_from_collection))
 
         transformation_identifier = document["transformation_identifier"]
-        transform_id = super().insert_one(document, bypass_document_validation, session)
+        transform_doc = super().insert_one(document, bypass_document_validation, session)
+        transform_id = transform_doc.inserted_id
 
         # Add the new transformed document to the applied transformation fields of the transformed_from documents
         for transformed_from in document["transformed_from"]:
@@ -99,7 +100,7 @@ class SemeruCollection(Collection):
 
             transformed_from_collection.update_one({"_id": transformed_from["document_id"]}, update_applied_transform)
 
-        return transform_id
+        return transform_doc
 
     def __validate_document(self, document):
         # try to validate against raw schema
@@ -158,7 +159,7 @@ class SemeruCollection(Collection):
             # update the document with the applied transformation
             db = self.database
             transformation_collection = db[transformation_collection_name]
-            transform_doc_id = transformation_collection.insert_one(transform_document)
+            transform_doc_id = transformation_collection.insert_one(transform_document).inserted_id
 
             update_applied_transform = {"$addToSet": {"applied_transformations": {
                 "collection": transformation_collection_name,
@@ -171,24 +172,35 @@ class SemeruCollection(Collection):
             # applied transformation [(collection, document_id, transformation_identifier), ... ]
             # transformed from [(collection, document_id), ... ]
 
+    @staticmethod
+    def link_ground_truth(id_1, collection_1, id_2, collection_2):
 
-client = MongoClient('localhost', 27017)
-db = client.test
-test = SemeruCollection(database=db, name="source_raw", raw_schema="./traceability_data/raw_schema.json",
-                        transform_schema="./traceability_data/transformed_schema.json")
+        query_1 = {"_id": id_1}
+        new_query_1_value = {"$addToSet": {"ground_truth": (collection_2.full_name, id_2)}}
 
-sample = {'name': 'UC58.TXT', 'system': 'test_system', 'applied_transformations': [], 'ground_truth': [{"collection":
-                                                                                                      "Collection_name",
-                                                                                                  "name_and_system":
-                                                                                                      ["eTour",
-                                                                                                       "ground.txt"]
-                                                                                                  }],
-          'contents': 'Use case name VISUALIZZASCHEDASITO \nView the details of a particular site. \nPartecipating '
-                      '\nActor initialized by Tourist \nEntry \nconditions \x95 The Tourist has successfully '
-                      'authenticated to the system and is located in one of the following areas: Research Results, '
-                      'List of Sites Visited Sites and List of Favorites \nFlow of events User System \n1. Select the '
-                      'function for displaying the card on a site chosen. \n2 Upload data from the database. \nExit '
-                      'conditions \x95 The system displays the details of the selected site. \n\x95 Interruption of '
-                      'the connection to the server ETOUR. \nQuality \nrequirements'}
+        query_2 = {"_id": id_2}
+        new_query_2_value = {"$addToSet": {"ground_truth": (collection_1.full_name, id_1)}}
 
-test.insert_one(sample)
+        collection_1.update_one(query_1, new_query_1_value)
+        collection_2.update_one(query_2, new_query_2_value)
+
+# client = MongoClient('localhost', 27017)
+# db = client.test
+# test = SemeruCollection(database=db, name="source_raw", raw_schema="./traceability_data/raw_schema.json",
+#                         transform_schema="./traceability_data/transformed_schema.json")
+#
+# sample = {'name': 'UC58.TXT', 'system': 'test_system', 'applied_transformations': [], 'ground_truth': [{"collection":
+#                                                                                                       "Collection_name",
+#                                                                                                   "name_and_system":
+#                                                                                                       ["eTour",
+#                                                                                                        "ground.txt"]
+#                                                                                                   }],
+#           'contents': 'Use case name VISUALIZZASCHEDASITO \nView the details of a particular site. \nPartecipating '
+#                       '\nActor initialized by Tourist \nEntry \nconditions \x95 The Tourist has successfully '
+#                       'authenticated to the system and is located in one of the following areas: Research Results, '
+#                       'List of Sites Visited Sites and List of Favorites \nFlow of events User System \n1. Select the '
+#                       'function for displaying the card on a site chosen. \n2 Upload data from the database. \nExit '
+#                       'conditions \x95 The system displays the details of the selected site. \n\x95 Interruption of '
+#                       'the connection to the server ETOUR. \nQuality \nrequirements'}
+#
+# test.insert_one(sample)
