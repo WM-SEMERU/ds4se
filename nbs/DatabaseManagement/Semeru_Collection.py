@@ -7,6 +7,43 @@ import warnings
 
 
 class SemeruCollection(Collection):
+    """
+        Get / create a Mongo collection, with overriden insertion and deletion rules.
+        ...
+
+        :Parameters:
+          - `database`: the database to get a collection from
+          - `name`: the name of the collection to get
+          - `raw_schema`: the path to a json schema for raw documents
+          - `transform_schema`: the path to a json schema for transformed documents
+          - `create` (optional): if ``True``, force collection
+            creation even without options being set
+          - `codec_options` (optional): An instance of
+            :class:`~bson.codec_options.CodecOptions`. If ``None`` (the
+            default) database.codec_options is used.
+          - `read_preference` (optional): The read preference to use. If
+            ``None`` (the default) database.read_preference is used.
+          - `write_concern` (optional): An instance of
+            :class:`~pymongo.write_concern.WriteConcern`. If ``None`` (the
+            default) database.write_concern is used.
+          - `read_concern` (optional): An instance of
+            :class:`~pymongo.read_concern.ReadConcern`. If ``None`` (the
+            default) database.read_concern is used.
+          - `collation` (optional): An instance of
+            :class:`~pymongo.collation.Collation`. If a collation is provided,
+            it will be passed to the create collection command. This option is
+            only supported on MongoDB 3.4 and above.
+          - `session` (optional): a
+            :class:`~pymongo.client_session.ClientSession` that is used with
+            the create collection command
+          - `**kwargs` (optional): additional keyword arguments will
+            be passed as options for the create collection command
+
+        Methods
+        -------
+        says(sound=None)
+            Prints the animals name and what sound it makes
+        """
 
     def __init__(self, database, name, raw_schema, transform_schema, create=False, codec_options=None,
                  read_preference=None, write_concern=None, read_concern=None, session=None, **kwargs):
@@ -27,7 +64,6 @@ class SemeruCollection(Collection):
         document_type = self.__validate_document(document)
 
         # if the document is raw, then insert it into the database
-        # NOTE:
         if document_type == "raw":
             return self.__insert_raw_document(document, bypass_document_validation, session)
         else:
