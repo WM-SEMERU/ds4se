@@ -1,0 +1,178 @@
+PS1.1.1.1,Process Traffic Sensor Data
+PS1.1.1.1,Process Traffic Sensor Data
+PS1.1.1.2,Collect and Process Sensor Fault Data
+PS1.1.1.3,Process Environmental Sensor Data
+PS1.1.1.4,Manage Data Collection and Monitoring
+PS1.1.2.1,Process Traffic Data for Storage
+PS1.1.2.2,Process Traffic Data
+PS1.1.2.3,Update Data Source Static Data
+PS1.1.2.4,Monitor HOV lane use
+PS1.1.2.5,Process Tag/AVL Data for Link Time Data
+PS1.1.2.6,Process Collected Vehicle Smart Probe Data
+PS1.1.2.7,Monitor Reversible Lanes
+PS1.1.3,Generate Predictive Traffic Model
+PS1.1.4.1,Retrieve Traffic Data
+PS1.1.4.2,Provide Traffic Operations Personnel Traffic Data Interface
+PS1.1.4.3,Provide Direct Media Traffic Data Interface
+PS1.1.4.4,Update Traffic Display Map Data
+PS1.1.4.5,Provide Media System Traffic Data Interface
+PS1.1.4.6,Provide Traffic Data Retrieval Interface
+PS1.1.4.7,Manage Traffic Archive Data
+PS1.1.5,Exchange data with Other Traffic Centers
+PS1.1.6,Collect Vehicle Tag Data for Link Time Calculations
+PS1.1.7,Collect Vehicle Smart Probe Data
+PS1.2.1,Select Strategy
+PS1.2.2.1,Determine Indicator State for Freeway Management
+PS1.2.2.2,Determine Indicator State for Road Management
+PS1.2.3,Determine Ramp State
+PS1.2.4.1,Output Control Data for Roads
+PS1.2.4.2,Output Control Data for Freeways
+PS1.2.4.3,Output In-vehicle Signage Data
+PS1.2.5.1,Determine Parking Lot State
+PS1.2.5.2,Coordinate Other Parking Data
+PS1.2.5.3,Provide Parking Lot Operator Interface
+PS1.2.5.4,Determine P+R needs for Transit Management
+PS1.2.5.5,Manage Parking Archive Data
+PS1.2.5.6,Calculate Parking Lot Occupancy
+PS1.2.6.1,Maintain Traffic and Sensor Static Data
+PS1.2.6.2,Provide Static Data Store Output Interface
+PS1.2.7.1,Process Indicator Output Data for Roads
+PS1.2.7.2,Monitor Roadside Equipment Operation for Faults
+PS1.2.7.3,Manage Indicator Preemptions
+PS1.2.7.4,Process In-vehicle Signage Data
+PS1.2.7.5,Process Indicator Output Data for Freeways
+PS1.2.7.6,Provide Intersection Collision Avoidance Data
+PS1.2.7.7,Process Vehicle Smart Probe Data for Output
+PS1.2.8.1,Collect Indicator Fault Data
+PS1.2.8.2,Maintain Indicator Fault Data Store
+PS1.2.8.3,Provide Indicator Fault Interface for C and M
+PS1.2.8.4,Provide Traffic Operations Personnel Indicator Fault Interface
+PS1.3.1.1,Analyze Traffic Data for Incidents
+PS1.3.1.2,Maintain Static Data for Incident Management
+PS1.3.1.3,Process Traffic Images
+PS1.3.2.1,Store Possible Incident Data
+PS1.3.2.2,Review and Classify Possible Incidents
+PS1.3.2.3,Review and Classify Planned Events
+PS1.3.2.4,Provide Planned Events Store Interface
+PS1.3.2.5,Provide Current Incidents Store Interface
+PS1.3.3,Respond to Current Incidents
+PS1.3.4.1,Retrieve Incident Data
+PS1.3.4.2,Provide Traffic Operations Personnel Incident Data Interface
+PS1.3.4.3,Provide Media Incident Data Interface
+PS1.3.4.4,Update Incident Display Map Data
+PS1.3.4.5,Manage Resources for Incidents
+PS1.3.5,Manage Possible Predetermined Responses Store
+PS1.3.6,Manage Predetermined Incident Response Data
+PS1.3.7,Analyze Incident Response Log
+PS1.4.1,Provide Traffic Operations Personnel Demand Interface
+PS1.4.2,Collect Demand Forecast Data
+PS1.4.3,Update Demand Display Map Data
+PS1.4.4,Implement Demand Management Policy
+PS1.4.5,Calculate Forecast Demand
+PS1.5.1,Provide Traffic Operations Personnel Pollution Data Interface
+PS1.5.2,Process Pollution Data
+PS1.5.3,Update Pollution Display Map Data
+PS1.5.4,Manage Pollution State Data Store
+PS1.5.5,Process Vehicle Pollution Data
+PS1.5.6,Detect Roadside Pollution Levels
+PS1.5.8,Manage Parking Lot Financial Processing
+PS1.5.8,Manage Parking Lot Financial Processing
+PS1.5.8,Update Parking Lot Data
+PS1.5.8,Update Parking Lot Data
+PS1.5.8,Update Parking Lot Data
+PS1.5.8,Update Parking Lot Data
+PS1.5.8,Update Parking Lot Data
+PS1.5.9,Register for Advanced Parking Lot Payment
+PS1.5.9,Register for Advanced Parking Lot Payment
+PS1.5.9,Register for Advanced Parking Lot Payment
+PS1.5.9,Register for Advanced Parking Lot Payment
+PS1.5.9,Register for Advanced Parking Lot Payment
+PS1.5.9,Register for Advanced Parking Lot Payment
+PS1.5.9,Register for Advanced Parking Lot Payment
+PS3.2.3.3,Process data for Vehicle Actuators
+PS3.2.3.4.1,Provide Speed Servo Control
+PS3.2.3.4.2,Provide Headway Servo Control
+PS3.2.3.4.3,Provide Lane Servo Control
+PS3.2.3.4.4,Provide Change Lane Servo Control
+PS3.2.3.4.5,Provide Vehicle Control Data Interface
+PS3.2.3.5,Process Vehicle Sensor Data
+PS3.2.3.6,Communicate with other Platoon Vehicles
+PS3.2.4,Process Sensor Data for AHS input
+PS3.2.5,Check Vehicle for AHS eligibility
+PS3.2.6,Manage AHS Check-in and Check-out
+PS3.2.7,Manage AHS Operations
+PS3.3.1,Provide Cargo Data for Incident Notification
+PS3.3.2,Provide Communications Function
+PS3.3.3,Build Automatic Collision Notification Message
+PS4.1.1,Process Transit Vehicle Sensor Trip Data
+PS4.1.2.1,Determine Transit Vehicle Deviation and ETA
+PS4.1.2.2,Determine Transit Vehicle Corrective Instructions
+PS4.1.2.3,Provide Transit Vehicle Driver Interface
+PS4.1.2.4,Provide Transit Vehicle Correction Data Output Interface
+PS4.1.2.5,Request Transit Vehicle Preemptions
+PS4.1.3,Provide Transit Vehicle Location Data
+PS4.1.4,Manage Transit Vehicle Deviations
+PS4.1.5,Provide Transit Vehicle Status Information
+PS4.1.6,Manage Transit Vehicle Operations Data
+PS4.1.7,Provide Transit Vehicle Deviation Data Output Interface
+PS4.1.8,Provide Transit Operations Data Distribution Interface
+PS4.1.9,Process Transit Vehicle Sensor Maintenance Data
+PS4.2.1.1,Process Demand Responsive Transit Trip Request
+PS4.2.1.2,Compute Demand Responsive Transit Vehicle Availability
+PS4.2.1.3,Generate Demand Responsive Transit Schedule and Routes
+PS4.2.1.4,Confirm Demand Responsive Transit Schedule and Route
+PS4.2.1.5,Process Demand Responsive Transit Vehicle Availability Data
+PS4.2.1.6,Provide Demand Responsive Transit Driver Interface
+PS4.2.2,Provide Transit Plans Store Interface
+PS4.2.3.1,Generate Transit Routes
+PS4.2.3.2,Generate Schedules
+PS4.2.3.3,Produce Transit Service Data for External Use
+PS4.2.3.4,Provide Transit Fleet Manager Interface for Services Generation
+PS4.2.3.5,Manage Transit Operational Data Store
+PS4.2.3.6,Produce Transit Service Data for Manage Transit Use
+PS4.2.3.7,Provide Interface for Other TRM Data
+PS4.2.3.8,Provide Interface for Transit Service Raw Data
+PS4.2.3.9,Update Transit Map Data
+PS4.2.4,Manage Transit Archive Data
+PS4.3.1,Monitor Transit Vehicle Condition
+PS4.3.2,Generate Transit Vehicle Maintenance Schedules
+PS4.3.3,Generate Technician Work Assignments
+PS4.3.4,Monitor And Verify Maintenance Activity
+PS4.3.5,Report Transit Vehicle Information
+PS4.3.6,Update Transit Vehicle Information
+PS4.3.7,Manage Transit Vehicle Operations Data Store
+PS4.4.1.1,Manage Transit Security
+PS7.1.3,Obtain Toll Violator Image
+PS7.1.4,Provide Driver Toll Payment Interface
+PS7.1.5,Detect Vehicle for Tolls
+PS7.1.6,Distribute Advanced Charges and Fares
+PS7.1.7,Provide Payment Instrument Interface for Tolls
+PS7.2.1.1,Read Parking Lot Tag Data
+PS7.2.1.10,Determine Advanced Charges
+PS7.2.1.2,Calculate Vehicle Parking Lot Charges
+PS7.2.1.3,Collect Bad Charge Payment Data
+PS7.2.1.4,Check for Advanced Parking Lot Payment
+PS7.2.1.5,Bill Driver for Parking Lot Charges
+PS7.2.1.6,Manage Parking Lot Financial Processing
+PS7.2.1.7,Update Parking Lot Data
+PS7.2.1.8,Register for Advanced Parking Lot Payment
+PS7.2.1.9,Manage Parking Lot Reservations
+PS7.2.2,Produce Parking Lot Displays
+PS7.2.3,Obtain Parking Lot Violator Image
+PS7.2.4,Provide Driver Parking Lot Payment Interface
+PS7.2.5,Detect Vehicle for Parking Lot Payment
+PS7.2.6,Distribute Advanced Tolls and Fares
+PS7.2.7,Provide Payment Instrument Interface for Parking
+PS7.3.1.1,Register for Advanced Transit Fare Payment
+PS7.3.1.2,Determine Advanced Transit Fares
+PS7.3.1.3,Manage Transit Fare Financial Processing
+PS7.3.1.4,Check for Advanced Transit Fare Payment
+PS7.3.1.5,Bill Transit User for Transit Fare
+PS7.3.1.6,Collect Bad Transit Fare Payment Data
+PS7.3.1.7,Update Transit Fare Data
+PS7.3.2,Distribute Advanced Tolls and Parking Lot Charges
+PS7.3.3,Get Transit User Image for Violation
+PS7.3.4,Provide Remote Terminal Payment Instrument Interface
+PS7.3.5,Provide Transit Vehicle Payment Instrument Interface
+PS7.4.1.1,Process Commercial Vehicle Payments
+PS7.4.1.2,Process Yellow Pages Services Provider Payments

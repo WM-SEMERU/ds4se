@@ -1,0 +1,201 @@
+9001,WeatherStations
+9002,The weather monitor shall accept readings from valid WeatherStations.
+9003,Road temperature readings shall be recorded.
+9004, Air temperature readings shall be recorded.
+9005,Humidity readings shall be recorded.
+9006,Precipitation readings shall be recorded.
+9007,Weather forecast update
+9010,Weather forecasts data history shall be recorded.
+9011,Historical forecast data shall be retrieved as needed.
+9012,Weather forecasts shall be updated as received by the weather bureau.
+9013,All weather data shall be validated on receipt
+9014,Data received from WeatherStations shall be updated regularly
+9015,Data received from road sensors shall be validated by road engineers
+9016,Data received from the road sensors shall be updated regularly
+9017,De-icing scheduling
+9018,De-icing shall not be scheduled further than two days in advance.
+9019,A warning shall be issued if the scheduled de-icing date is further than one day in the future.
+9020,The scheduled de-icing shall be for a valid district.
+9021,The scheduler shall accept a valid district identifier.
+9022,Thermal map readings shall be recorded.
+9023,The system shall predict areas of the district for which it is predicted to freeze
+9024,Road sections passing through areas that are predicted to freeze shall be identified.
+9025,Product shall maintain road condition status.
+9026,A road sections list shall be maintained.
+9027,A road  network list shall be maintained.
+9028,Product shall determine when the road sections will freeze.
+9029,Road compositions details shall be stored for each road type composition in the district.
+9030,Conditions under which each road type composition freezes shall be maintained.
+9031,A list of potential contact services shall be maintained for the selected district.
+9033,The system shall analyze the weather data and road conditions in order to determine driving conditions.
+9034,Alerts shall be issued when hazardous driving conditions exist.
+9036,A schedule shall be maintained showing the de-icing treatments for each district.
+9039,Untreated road reminder
+9040,The system shall report on untreated roads that were not treated as scheduled.
+9041,All scheduled treatments within the next four hours shall be displayed upon request.
+9042,The system shall provide a list of contact services.
+9043,Primary personnel shall be maintained on alert status.
+9044,Truck Management
+9045,A list of trucks in the fleet shall be maintained.
+9046,Truck capabilities shall be maintained for each type of truck.
+9047,The WorkOrder shall specify the correct amount of de-icing material needed to de-ice the scheduled road sections.
+9049,Product shall be able to track truck location.
+9050,The system shall match the dispatched truck capability to selected road characteristics.
+9051,The system shall display a map of the district.
+9052,Product shall determine number of trucks needed for a given schedule.
+9054,An alert shall be issued if a WeatherStation fails to transmit readings
+9058,An alert shall be issued if a dispatched truck breaks down.
+9060,The truck list shall be updated when trucks are added to the fleet.
+9061,Truck records shall be updated regularly.
+9062,The inventory status of all de-icing materials shall be updated regularly.
+9063,System maintenance
+9064,The system shall be maintained on a regular schedule.
+9065,An alert shall be issued for maintenance scheduling time.
+9066,Users shall not be able to access a main server while  maintenance is in progress
+9067,Product shall produce report status for the selected data
+9068,Product shall produce maintenance log
+9069,Product shall maintain backup server
+9070,Weather data shall be stored in secondary storage.
+9071,Inventory records shall be stored in secondary storage
+9072,WorkOrder data shall be stored in secondary storage.
+9073,The system shall not allow partial transmission of weather data
+9074,The system shall handle all exceptions.
+9075,The system shall be protected by a virus filter
+9076,Security
+9077,Only authorized users shall access the system.
+9082,A list of authorized users shall be maintained.
+9083,Users shall be authenticated via a valid password and user name combination
+9084,Authorized access shall support three levels of security.
+9087,The map shall be updated when changes are made to the physical roads.
+9092,Road maps shall be updated regularly.
+9094,Road maps shall be validated by road engineers
+9095,Usability
+9096,Reports shall comply with standard style sheets.
+9097,Online help shall be provided.
+9098,Online tutorial shall be provided.
+9099,All screens shall comply with standardized look-and-feel style sheets.
+9100,"The system's interface shall minimize text input from a user by using drop-down menus, radio buttons, etc."
+9101,System specifications
+9102,The system shall provide access to multiple users.
+9105,All transactions shall be atomic.
+9106,A WeatherStation shall be validated through its unique WeatherStation identifier.
+9107,WeatherStations shall be added to the system.
+9108,WeatherStations shall be removed from the system.
+9109,Weather data shall be backed up in secondary storage.
+9111,The system shall report on road temperature readings.
+9112,The system shall report on air temperature readings
+9113,The system shall report on humidity readings.
+9114,The system shall report on precipitation readings.
+9115,WorkOrders
+9116,A WorkOrder shall be issued for each de-icing job.
+9117,The WorkOrder shall specify the date and time of the job.
+9118,The WorkOrder shall assign the task to a specific driver and truck.
+9119,The WorkOrder shall specify the type of de-icing material needed to de-ice the scheduled road sections.
+9120,The WorkOrder shall track costs.
+9121,WorkOrder data shall be backed up frequently.
+9122,When the WorkOrder has been completed it shall be designated as complete.
+9123,The manager shall track the status of each WorkOrder.
+9124,The system shall validate that all scheduled de-icing treatments for each district.
+9125,The truck list shall be updated when trucks are removed from the fleet.
+9126,The truck list shall mark as unavailable any trucks that are temporarily out of service.
+9127,The material storing capacity of each truck shall be documented.
+9128,The distance capacity of each truck shall be documented.
+9129,Inventory
+9130,A product list of all de-icing materials shall be maintained.
+9131,The product list shall be stored in uncompressed format.
+9132,The inventory shall be indexed according to common retrieval keys.
+9133,Chemical and physical properties of all de-icing materials shall be available for engineers to reference.
+9134,PurchaseOrders shall be automatically generated when de-icing material stocks fall under a predetermined limit.
+9135,Road Network Maps
+9136,The district map shall display all the roads in the district.
+9137,"Each road shall be designated as major, average or minor usage."
+9138,Update Road Data
+9139,Update Thermal Map Data
+9140,"When new road sensors are added, the thermal map shall be updated to reflect the new weather data."
+9141,Thermal maps data shall be validated by department clerk
+9142,A truck shall be categorized as dispatched or home.
+9143,Regular maintenance may be rescheduled in the event of inclement weather.
+9144,Inventory records shall be frequently backed up.
+9145,Inventory records shall be frequently backed up.
+9146,The system shall be protected by a fire wall
+9150,Road conditions shall be monitored during a storm
+9151,If road conditions make the road impassable the road shall be closed.
+9152,Critical contacts shall be  notified when a road is closed.
+9153,Trucks shall be maintained according to a regular maintenance schedule.
+9154,Trucks shall be regularly inspected for needed repairs.
+9155,Inventory shall be decremented to reflect the de-icing materials assigned to the WorkOrder.
+9156,If a WeatherStation goes offline for over one hour than the system shall infer weather conditions for its coverage area from the data received from adjacent WeatherStations.
+9157,The operator shall also have the option of manually entering readings into the system.
+9158,The operator shall establish a default de-icing schedule.
+9159,The operator shall have the ability to customize the de-icing schedule.
+9160,The operator shall have the ability to customize the de-icing schedule generated by the system.
+9161,All transactions shall be managed by a transaction manager.
+9162,The system shall validate that all WeatherStations are transmitting data according to their regularly scheduled transmissions.
+9163,The system shall validate that all road sensors are functioning correctly and transmitting data.
+9164,If a WeatherStation fails to transmit data an alert shall be issued.
+9165,If a road sensor fails to transmit data an alert shall be issued.
+9166,Inventory shall be updated on receipt of a shipment.
+9167,"If de-icing material is unused and returned to the depot, then the inventory shall be incremented to reflect the return."
+9168,A record shall be kept of observed major discrepancies between predicted and actual freezing conditions.
+9169,Road sensors shall be periodically tested to ensure their accurate measurements.
+9170,Road maps shall be automatically validated against standardized digital maps.
+9171,The scheduler shall minimize the total mileage of the de-icing schedule.
+9172,The scheduler shall generate WorkOrders to match the scheduled de-icing.
+9173,"Departmental clerks shall have access to inventory, WorkOrders, truck tracking, and schedules."
+9174,The number of drivers  needed to fulfill the schedule shall be calculated.
+9175,The system shall display a thermal map of the district showing temperatures of each road section.
+9176,All maps shall be zoomable.
+9177, All trucks shall be equipped with onboard verbal direction providers.
+9178,The GPS system shall track progress through the designated route.
+9179,All trucks shall display a  map of the de-icing route.
+9180,Completed route sections shall be clearly displayed on the onboard map.
+9181,The WorkOrder shall include route directions.
+9182,All data entry shall use a GUI
+9183,Inventory shall be managed through an inventory GUI
+9184,WeatherStations data shall be managed through a weather data GUI
+9185,Truck data shall be managed through a truck GUI.
+9186,Contact information shall be managed through a contact TUI
+9187,Drivers data shall be managed through a drivers GUI
+9188,Road sections shall be added.
+9189,Road sections shall be removed.
+9190,Road sections shall be assigned to road sensors.
+9191,Data from the new WeatherStation shall be incorporated into the weather forecast for its surrounding area.
+9192,The clerk shall unmark roads that are reopened.
+9193,Road closings
+9200,Inventory files shall be backed up in secondary storage.
+9201,If a truck needs a critical repair it shall immediately be taken out of service until the repair has been made.
+9206,The system shall provide a summary report of weather conditions over a specified period of time.
+9207,Accuracy
+9208,Cost
+9209,Scheduling
+9210,De-icing shall be scheduled for a specific date.
+9211, A route shall be placed for each WorkOrder.
+9300,Weather Readings
+9301,WeatherStation Transmissions
+9302,Road Sensors
+9303,Weather Station Management
+9304,Weather forecasts
+9305,Schedule
+9306,Freeze prediction
+9307,Treated / treatment
+9308,Driving alerts
+9309,Contacts
+9310,Truck dispatch
+9311,Thermal Maps
+9312,Truck Maintenance
+9313,Real time tracking
+9314,Transaction Management
+9315,Routes
+9316,Emergency Contacts
+9317,The position of all trucks shall be tracked in real-time.
+9318,Thermal Maps
+9400,The user shall be able to print a report showing weather data over a specified period.
+9401,The dispatcher shall communicate with truck drivers through onboard computers.
+9402,The system shall receive transmission from road sensors.
+9403,The clerk shall mark road closings on the map.
+9404,Road maps shall be updated by importing data from an external source.
+9405,The system shall poll the personnel schedule to obtain a list of available drivers.
+9406,Drivers
+9407,Engineers shall have access to weather data and sensor information.
+9408,Administrators shall have access to all modules.
+9409,The system shall maintain a current list of valid WeatherStations.

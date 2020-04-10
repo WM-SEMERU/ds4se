@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launchConfiguration type="org.eclipse.jdt.junit.launchconfig">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/iTrust/httptests/edu/ncsu/csc/itrust/http/AllHTTPTests.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.debug.core.appendEnvironmentVariables" value="true"/>
+<listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+<listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
+<listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.junit.CONTAINER" value=""/>
+<booleanAttribute key="org.eclipse.jdt.junit.KEEPRUNNING_ATTR" value="false"/>
+<stringAttribute key="org.eclipse.jdt.junit.TESTNAME" value=""/>
+<stringAttribute key="org.eclipse.jdt.junit.TEST_KIND" value="org.eclipse.jdt.junit.loader.junit3"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="edu.ncsu.csc.itrust.http.AllHTTPTests"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="iTrust"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xbootclasspath/a:&quot;C:\Jazz Client with WTP v1.0M6a\jazz\client\eclipse\configuration\org.eclipse.osgi\bundles\56\1\.cp\lib\emma.jar&quot;  -Drt.control=true -Drt.control.host=localhost -Drt.control.port=4616 -Demma.verbosity.level=silent -Demma.coverage.out.file=&quot;C:\workspaces\jazz-M6a-workspace\.metadata\.plugins\com.ibm.team.coverage.ide.core\.coverage\1211386382875-iTrust HTTP Tests-org.eclipse.jdt.junit.launchconfig.launch&quot;"/>
+</launchConfiguration>

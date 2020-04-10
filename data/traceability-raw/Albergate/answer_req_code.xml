@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<answer_set>
+<answer_info>
+	<source_artifacts_collection>Requirements</source_artifacts_collection>
+	<target_artifacts_collection>CC</target_artifacts_collection>
+</answer_info>
+<links>
+	<link><source_artifact_id>F-GES-01</source_artifact_id><target_artifact_id>DescrittoreStanze</target_artifact_id></link>
+	<link><source_artifact_id>F-GES-01</source_artifact_id><target_artifact_id>ModificaStanze</target_artifact_id></link>
+	<link><source_artifact_id>F-GES-01</source_artifact_id><target_artifact_id>SubStanze</target_artifact_id></link>
+	<link><source_artifact_id>F-GES-01</source_artifact_id><target_artifact_id>CancellaStanze</target_artifact_id></link>
+	<link><source_artifact_id>F-GES-01</source_artifact_id><target_artifact_id>VediStanza</target_artifact_id></link>
+	<link><source_artifact_id>F-GES-02</source_artifact_id><target_artifact_id>AggiungiBeneServizio</target_artifact_id></link>
+	<link><source_artifact_id>F-GES-02</source_artifact_id><target_artifact_id>CancellaBeniServizi</target_artifact_id></link>
+	<link><source_artifact_id>F-GES-02</source_artifact_id><target_artifact_id>InserisciBeniServizi</target_artifact_id></link>
+	<link><source_artifact_id>F-GES-02</source_artifact_id><target_artifact_id>VediBeniServizi</target_artifact_id></link>
+	<link><source_artifact_id>F-GES-02</source_artifact_id><target_artifact_id>MascheraBeneServizio</target_artifact_id></link>
+	<link><source_artifact_id>F-GES-02</source_artifact_id><target_artifact_id>ModificaBeniServizi</target_artifact_id></link>
+	<link><source_artifact_id>F-GES-02</source_artifact_id><target_artifact_id>SubBeniServizi</target_artifact_id></link>
+	<link><source_artifact_id>F-GES-03</source_artifact_id><target_artifact_id>SubStorico</target_artifact_id></link>
+	<link><source_artifact_id>F-GES-03</source_artifact_id><target_artifact_id>MascheraRicercaStorico</target_artifact_id></link>
+	<link><source_artifact_id>F-GES-04</source_artifact_id><target_artifact_id>SubGestione</target_artifact_id></link>
+	<link><source_artifact_id>F-GES-04</source_artifact_id><target_artifact_id>ConfigurazioneSistema</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-01</source_artifact_id><target_artifact_id>MascheraDisponibilita</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-02</source_artifact_id><target_artifact_id>MascheraRicercaStanza</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-02</source_artifact_id><target_artifact_id>ControllaPrenotazione</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-02</source_artifact_id><target_artifact_id>VediPrenotazione</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-02</source_artifact_id><target_artifact_id>MascheraPrenotazione</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-02</source_artifact_id><target_artifact_id>SubPrenotazione</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-02</source_artifact_id><target_artifact_id>InserisciPrenotazione</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-02</source_artifact_id><target_artifact_id>RicercaPrenotazione</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-03</source_artifact_id><target_artifact_id>PrenotazioniScadute</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-04</source_artifact_id><target_artifact_id>VediCommissione</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-04</source_artifact_id><target_artifact_id>CancellaCommissioni</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-04</source_artifact_id><target_artifact_id>MascheraCommissioni</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-04</source_artifact_id><target_artifact_id>InserisciCommissioni</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-04</source_artifact_id><target_artifact_id>ModificaCommissioni</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-04</source_artifact_id><target_artifact_id>SubCommissioni</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-04</source_artifact_id><target_artifact_id>AskChiudiSingoloConAgenzia</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-04</source_artifact_id><target_artifact_id>MascheraRicercaStanza</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-05</source_artifact_id><target_artifact_id>CancellaPrenotazione</target_artifact_id></link>
+	<link><source_artifact_id>F-PRE-06</source_artifact_id><target_artifact_id>ModificaPrenotazione</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-01</source_artifact_id><target_artifact_id>AggiungiSoggiornante</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-01</source_artifact_id><target_artifact_id>MascheraSoggiorno</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-01</source_artifact_id><target_artifact_id>InserisciSoggiornante</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-01</source_artifact_id><target_artifact_id>MascheraRicercaSoggiornante</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-01</source_artifact_id><target_artifact_id>SubSoggiorno</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-01</source_artifact_id><target_artifact_id>VediSoggiornante</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-01</source_artifact_id><target_artifact_id>VediCliente</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-02</source_artifact_id><target_artifact_id>VediAddebito</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-02</source_artifact_id><target_artifact_id>MascheraAddebiti</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-02</source_artifact_id><target_artifact_id>MascheraPerAddebitare</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-03</source_artifact_id><target_artifact_id>RicercaTelefonate</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-03</source_artifact_id><target_artifact_id>MascheraTelefonate</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-04</source_artifact_id><target_artifact_id>MascheraCalcoloConto</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-04</source_artifact_id><target_artifact_id>MascheraVisualizzazioneConto</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-04</source_artifact_id><target_artifact_id>RicercaAddebiti</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-04</source_artifact_id><target_artifact_id>AskChiudiConto</target_artifact_id></link>
+	<link><source_artifact_id>F-SOG-06</source_artifact_id><target_artifact_id>MascheraCambio</target_artifact_id></link>
+	<link><source_artifact_id>F-RIS-01</source_artifact_id><target_artifact_id>MascheraContoRistorazione</target_artifact_id></link>
+	<link><source_artifact_id>F-RIS-01</source_artifact_id><target_artifact_id>SubRistorazione</target_artifact_id></link>
+</links>
+</answer_set>

@@ -1,0 +1,2773 @@
+46	"private JPanel center  Panel = null  ;
+
+ private JLabel des  Label = null  ;
+ private JLabel change  Label = null  ;
+ private JLabel from  Label = null  ;
+ private JLabel to  Label = null  ;
+ private JText  Area des  Text = null  ;
+ private JText  Field c Speculate Gui public Speculate  Gui  ()
+ {
+
+  super  (""  Speculate GUI  "");
+
+  container = get  Content  Pane  ();
+
+  set  Size  (  800  , 600  );
+
+  this  . event  Server  IP =
+   JOption  Pane
+    . show  Input  Dialog  (""  Please Enter the IP Address of eventserver  Submit Listener public void action  Performed  (  Action  Event e  ) {
+
+   if ( e  . get  Source  () == submit  Button  ) {
+
+    send  Query  TO Server  ();
+
+   }
+
+   if ( e  . get  Source  () == fetch  Button  ) {
+
+
+    System  . out  . println  (""  Fetch Button Pressed void send  Query  TO Server  ()
+ {
+
+  String ip = this  . event  Server  IP  ;
+  int Port  No = 1701  ;
+
+  Socket socket  ;
+  try {
+
+   socket = new Socket  ( ip  , Port  No  );
+
+   Output  Stream os = socket  . get  Output  Stream  ();
+   Output  Stream  public void pull  Value  From  DOORS  ()
+ {
+
+  String server  IP = new String  ( doors server  IP  ); //""  140  .  192  .  37  .  150  "";
+
+  String  [] attribute = { ""  Value  "", ""  Attribute  "" };
+
+  String project  Name = this  . proj  Name  Text  . get public static void main  (  String  [] args  )
+ {
+  new Speculate  Gui  ();
+ }"
+47	"Impact Report private String server  IP = "" local host  "";
+ private JPanel center  Panel = null  ;
+
+ private JPanel driver  Panel = new JPanel  ();
+
+ private JPanel driver  Inner  Panel = null  ;
+
+ private JPanel impact  Panel = null  ;
+ private JPanel impact  Inner  P public Impact  Report  ()
+ {
+
+  super  (""  Search Result GUI  "");
+
+  container = get  Content  Pane  ();
+
+  set  Size  (  800  , 250  );
+
+  panel = new JPanel  ();
+
+  panel  . set  Layout  ( null  );
+
+  this  . server  IP =
+   JOption  Pane
+    . show  In public static void main  (  String [] args  )
+ {
+
+  Impact  Report im = new Impact  Report  ();
+
+
+
+ } public Vector search  Date  ()
+ {
+
+  date  Vector = new Vector  ();
+  date  Vector  . add  (""  Select Query Date  "");
+  Socket server  ;
+  String line = new String  ();
+
+
+  try
+  {
+
+   server = new Socket  ( server  IP  ,  1701  );
+   if ( server  . is  C public void search  Query  ID  (  String date  )
+ {
+
+  pair  Vector = new Vector  ();
+
+  query  String  Combo  . remove  All  Items  ();
+
+  query  String  Combo  . add  Item  (""  Select Query String  "");
+
+  Socket server  ;
+  String line = new String  (); Select Actions public void action  Performed  (  Action  Event e  )
+  {
+
+   if ( date  Combo == (  JCombo  Box  ) e  . get  Source  ())
+   {
+    date = (  String  ) date  Combo  . get  Selected  Item  ();
+    search  Query  ID  ( date  );
+   }
+  } Button Actions  public void action  Performed  (  Action  Event e  ) {
+
+   if ( submit  Button == e  . get  Source  ()) {
+
+    for ( int i = 0  ; i < pair  Vector  . size  (); i  ++) {
+
+     Pair pair = (  Pair  ) pair  Vector  . get  ( i  );
+
+     if ( pair
+      . get public void impact  Report  (  String id  )
+ {
+
+  // super  (""  Impact Report  "");
+
+  container = get  Content  Pane  ();
+
+  set  Size  (  1020  , 740  );
+
+  this  . query  ID = id  ;
+
+  System  . out  . println  (""  Impact Report Constructor ..... ID "" + public Vector get  Constraint  From  Data  Base  ()
+ {
+
+  Vector v = new Vector  ();
+
+  Socket server  ;
+  String line = new String  ();
+
+
+  try
+  {
+   server = new Socket  ( server  IP  ,  1701  );
+
+   if ( server  . is  Connected  () )
+   {
+    Buffered  public Vector get  Driver  From  Data  Base  ()
+ {
+
+  Vector v = new Vector  ();
+
+     Socket server  ;
+  String line = new String  ();
+
+
+  try
+  {
+   server = new Socket  ( server  IP  ,  1701  );
+
+   if ( server  . is  Connected  () )
+   {
+    Buffered"
+48	"Constraint Inner Panel  private String server  IP = "" local host  "";
+ private JLabel performance  Model  Label = null  ;
+ private JLabel project  Name  Label = null  ;
+ private JLabel module  Path  Label = null  ;
+ private JLabel requirement  Id  Label = null  ;
+ private JLabel public Constraint  Inner  Panel  (
+  String performance  Model  Name  ,
+  String project  Name  ,
+  String module  Path  ,
+  String requirement  Id  ,
+  String description  ,
+  String logic  ,
+  String units  ,
+  String value  ,
+  String impacted  Value    private void set goal  Label  Values  (
+  String attribute  ,
+  String logic  ,
+  String value  ,
+  String units  )
+ {
+  goal  Label  . set  Text  (
+   ""  Goal : "" + attribute + ""  "" + logic + ""  "" + value + "" "" + units  );
+
+ }  public Vector get  Values  From  Data  Base  ()
+ {
+
+  Vector v = new Vector  ();
+
+  Socket server  ;
+  String line = new String  ();
+
+
+  try
+  {
+   server = new Socket  ( server  IP  ,  1701  );
+
+   if ( server  . is  Connected  () )
+   {
+    Buffered  R  private void set impacted  Label  Value  (
+  String attribute  ,
+  String value  ,
+  String impacted  Value  ,
+  String units  ,
+  String logic  )
+ {
+
+  if ( impacted  Value !  = null  )
+  {
+
+   double value  1 = Double  . parse  Double  ( value  );
+   d  public JPanel get  Panel  ()
+ {
+  return panel  ;
+ }"
+49	"Constraints Description private String project  Name = null  ;
+ private String module  Path = null  ;
+ private String requirement  ID = null  ;
+
+ private String value = null  ;
+ private String logic = null  ;
+ private String units = null  ;
+ private String description = null  ;
+ public Constraints  Description  (
+  String project  Name  ,
+  String module  Path  ,
+  String requirement  ID  )
+ {
+
+  this  . project  Name = project  Name  ;
+  this  . module  Path = module  Path  ;
+  this  . requirement  ID = requirement  ID  ;
+
+ }  public String get  Description  () {
+  return this  . description  ;
+ }  public String get  Logic  () {
+  return this  . logic  ;
+ }  public String get  Module  Path  () {
+  return this  . module  Path  ;
+ }  public String get  Project  Name  () {
+  return this  . project  Name  ;
+ }  public String get  Requirement  ID  () {
+  return this  . requirement  ID  ;
+ }  public String get  Units  () {
+  return this  . units  ;
+ }  public String get  Value  () {
+  return this  . value  ;
+ }  public void set  Description  (  String description  ) {
+  this  . description = description  ;
+ }  public void set  Logic  (  String logic  ) {
+  this  . logic = logic  ;
+ }  public void set  Module  Path  (  String module  Path  ) {
+  this  . module  Path = module  Path  ;
+ }  public void set  Project  Name  (  String project  Name  ) {
+  this  . project  Name = project  Name  ;
+ }  public void set  Requirement  ID  (  String requirement  ID  ) {
+  this  . requirement  ID = requirement  ID  ;
+ }  public void set  Units  (  String units  ) {
+  this  . units = units  ;
+ }  public void set  Value  (  String units  ) {
+  this  . value = units  ;
+ }  public String get  Impacted  Constraint  () {
+  return this  . impacted  Constraint  ;
+ }  public void set  Impacted  Constraint  (  String impacted  Constraint  ) {
+  this  . impacted  Constraint = impacted  Constraint  ;
+ }  public String get  Attribute  () {
+  return this  . attribute  ;
+ }  public void set  Attribute  (  String attribute  ) {
+  this  . attribute = attribute  ;
+ }  public String get  Performance  Model  Name  () {
+  return this  . performance  Model  Name  ;
+ }  public void set  Performance  Model  Name  (  String performance  Model  Name  ) {
+  this  . performance  Model  Name = performance  Model  Name  ;
+ } public String to  String  () {
+
+  String str =
+   ""\ n  Project Name = ""
+    + this  . project  Name
+    + ""\ n  ""
+    + ""  Module Path = ""
+    + this  . module  Path
+    + ""\ n  ""
+    + ""  Requirement ID = ""
+    + this  . requirement  ID
+    + ""\ n  ""
+   public boolean equals  (  Object o  ) {
+
+  if (!( o instance of Constraints  Description  ))
+   return false  ;
+
+  Constraints  Description cd = (  Constraints  Description  ) o  ;
+
+  if ( cd  . project  Name  . equals  Ignore  Case  ( this  . project  Na  public int hash  Code  () {
+
+  int hash  Code = 0  ;
+
+  if ( hash  Code == 0  ) {
+   int result = 17  ;
+   result = 37 * result + this  . project  Name  . hash  Code  ();
+   result = 37 * result + this  . module  Path  . hash  Code  ();
+   result = 37 * "
+50	"Driver Description private String project  Name = null  ;
+ private String module  Path = null  ;
+ private String requirement  ID = null  ;
+
+ private String description = null  ; // Description of the requirement  .
+ private String changed  Arrtibute = null  ;
+ private Strin  public Driver  Description  (
+  String project  Name  ,
+  String module  Path  ,
+  String requirement  ID  ,
+  String description  ,
+  String changed  Attribute  ,
+  String from  Attribute  ,
+  String to  Attribute  )
+ {
+
+  this  . project  Name = projec  public String get  Changed  Attribute  ()
+ {
+  return changed  Attribute  ;
+ }  public String get  Description  ()
+ {
+  return description  ;
+ }  public String get  From  Attribute  ()
+ {
+  return from  Attribute  ;
+ } public String get  Module  Path  ()
+ {
+  return module  Path  ;
+ }  public String get  Project  Name  ()
+ {
+  return project  Name  ;
+ } public String get  Requirement  ID  ()
+ {
+  return requirement  ID  ;
+ } public String get  To  Attribute  ()
+ {
+  return to  Attribute  ;
+ } public void set  Changed  Attribute  (  String changed  Attribute  )
+ {
+  this  . changed  Attribute = changed  Attribute  ;
+ } public void set  Description  (  String description  )
+ {
+  this  . description = description  ;
+ } public void set  From  Attribute  (  String from  Attribute  )
+ {
+  this  . from  Attribute = from  Attribute  ;
+ } public void set  Module  Path  (  String module  Path  )
+ {
+  this  . module  Path = module  Path  ;
+ } public void set  Project  Name  (  String project  Name  )
+ {
+  this  . project  Name = project  Name  ;
+ } public void set  Requirement  ID  (  String requirement  ID  )
+ {
+  this  . requirement  ID = requirement  ID  ;
+ } public void set  To  Attribute  (  String to  Attribute  )
+ {
+  this  . to  Attribute = to  Attribute  ;
+ } public String create  Key  ()
+ {
+  String key =
+   this  . project  Name + this  . module  Path + ""\\"" + this  . requirement  ID  ;
+
+  return key  . to  Lower  Case  ();
+
+ } public boolean equals  (  Object o  )
+ {
+  if (!( o instance of Driver  Description  ))
+   return false  ;
+
+  Driver  Description dd = (  Driver  Description  ) o  ;
+
+  if ( dd  . project  Name  . equals  Ignore  Case  ( this  . project  Name  )
+   && dd  public String to  String  ()
+ {
+
+  String str =
+   ""\ n  Project Name = ""
+    + this  . project  Name
+    + ""\ n  ""
+    + ""  Module Path = ""
+    + this  . module  Path
+    + ""\ n  ""
+    + ""  Requirement ID = ""
+    + this  . requirement  ID
+    + ""\ n  ""
+  public int hash  Code  ()
+ {
+
+  int hash  Code = 0  ;
+
+  if ( hash  Code == 0  )
+  {
+   int result = 17  ;
+   result = 37 * result + this  . project  Name  . hash  Code  ();
+   result = 37 * result + this  . module  Path  . hash  Code  ();
+   result = 37 "
+51	"Driver Inner Panel private JLabel project  Name  Label = null  ;
+ private JLabel module  Path  Label = null  ;
+ private JLabel requirement  Id  Label = null  ;
+ private JLabel des  Label = null  ;
+ private JLabel change  Label = null  ;
+ private JLabel from  Label = null  ;  String project  Name  ,
+  String module  Path  ,
+  String requirement  ID  ,
+  String description  ,
+  String change  Attribute  ,
+  String from  Value  ,
+  String to  Value  ) {
+
+  panel = new JPanel  ();
+
+  panel  . set  Background  (  Color  .  LIGHT  public JPanel create  Panel  () {
+
+  return panel  ;
+ }"
+52	"Pair private String query  ID  ;
+ private String query  String  ; public Pair  (  String query  ID  , String query  String  ) {
+
+  this  . query  ID = query  ID  ;
+  this  . query  String = query  String  ;
+
+ } public String get  Query  ID  () {
+  return this  . query  ID  ;
+ } public String get  Query  String  () {
+  return this  . query  String  ;
+ } public void set  Query  ID  (  String query  ID  ) {
+  this  . query  ID = query  ID ;
+ } public void set  Query  String  (  String query  String  ) {
+  this  . query  String = query  String  ;
+ } public String to  String  (){
+
+
+  return ""  Query ID  : ""
+    + this  . query  ID
+    + ""\ n  ""
+    +""  Query String : ""
+    + this  . query  String
+    + ""\ n  "";
+
+
+ }"
+53	"Performance Model  private String name = null  ;
+ private Vector driver  Vector = null  ;
+ private Vector constraint  Vector = null  ;
+
+ private long query  ID = 0  ;
+
+ public static int count = 0  ; public Performance  Model  (  String name  , long query  ID  )
+ {
+  this  . name = name  ;
+  this  . query  ID = query  ID  ;
+
+  this  . driver  Vector = new Vector  ();
+  this  . constraint  Vector = new Vector  ();
+ } public Vector get  Constraints  ()
+ {
+  return constraint  Vector  ;
+ } public Vector get  Drivers  ()
+ {
+  return driver  Vector  ;
+ } public String get  Name  ()
+ {
+  return name  ;
+ } public void set  Name  (  String name  )
+ {
+  this  . name = name  ;
+ } public void add  Driver  (  Driver  Description driver  )
+ {
+
+  if ( driver  Vector  . contains  ( driver  ))
+  {
+  }
+  else
+   this  . driver  Vector  . add  ( driver  );
+
+ } public void remove  Driver  (  Driver  Description driver  )
+ {
+  this  . driver  Vector  . remove  ( driver  );
+ } public boolean contains  Driver  (  Driver  Description driver  )
+ {
+  return this  . driver  Vector  . contains  ( driver  );
+ } public void add  Constraint  (  Constraints  Description constraint  )
+ {
+  this  . constraint  Vector  . add  ( constraint  );
+ } public boolean contains  Constraint  (  Constraints  Description constraint  )
+ {
+  return this  . constraint  Vector  . contains  ( constraint  );
+ } public void remove  Constraint  (  Constraints  Description constraint  )
+ {
+  this  . constraint  Vector  . remove  ( constraint  );
+ } public Driver  Description get  Driver  (  Driver  Description driver  )
+ {
+  Driver  Description dd = null  ;
+
+  for ( int i = 0  ; i < this  . driver  Vector  . size  (); i  ++)
+  {
+   dd = (  Driver  Description  ) this  . driver  Vector  . get  ( i  ) public Constraints  Description get  Constraint  (  Constraints  Description constraint  )
+ {
+  Constraints  Description cd = null  ;
+
+  for ( int i = 0  ; i < this  . constraint  Vector  . size  (); i  ++)
+  {
+   cd = (  Constraints  Description  ) this  public long get  Query  ID  ()
+ {
+  return this  . query  ID  ;
+ } public void set  Query  ID  ( long id  )
+ {
+  this  . query  ID = id  ;
+ } public String to  String  ()
+ {
+  return ""  performance modelName = ""
+   + this  . name
+   + ""\ n  ""
+   + ""  Query ID = ""
+   + this  . query  ID
+   + ""\ n  ""
+   + ""  Drivers = ""
+   + this  . driver  Vector
+   + ""\ n  ""
+   + ""  Constraints = ""
+   + this  ."
+54	"eventserver public static void main  (  String args  [])
+ {
+
+    Thread  Pool pool = new Thread  Pool  (  1  );
+
+     int port = default  Port  ;
+     try
+     {
+   Server  Socket ss = new Server  Socket  ( port  );
+   for  ( int i  =0  ; i  <  4  ; i  ++)
+   {
+    p public final static int default  Port = 1701  ;
+ Server  Socket the  Server  ;"
+55	"eventserver Thread  static private int count = 0  ;
+ private int task  Number  ;
+ protected Done done  ;
+ Server  Socket the  Server  ;
+
+ private Connection conn  ;
+ private Statement stmt  ;
+ private Result  Set rs  ;
+
+ private Event  Parser ep  ;
+ private int id  ; Event  Server  Thread  (  Server  Socket ss  )
+ {
+ the  Server = ss  ;
+   count  ++;
+   task  Number = count  ;
+   ep = new Event  Parser  ();
+ } public void run  ()
+ {
+
+ while  ( true  )
+ {
+   try
+   {
+
+    Socket client = the  Server  . accept  ();
+    Buffered  Reader input = new Buffered  Reader  ( new Input  Stream  Reader  ( client  . get  Input  Stream  ()));
+    Print  Writer output = new P public String get  Next  ID  ()
+ {
+
+  try
+  {
+      Class  . for  Name  ("" sun  . jdbc  . odbc  .  jdbc  odbc  Driver  "");
+      this  . conn = Driver  Manager  . get  Connection  ("" jdbc  : odbc  :  EBT  "",""  EBT  "",""  EBT  "");
+      this  . stmt = conn  public String search  Date  ()
+ {
+
+  String date  String = new String  ();
+  Vector date  Vector = new Vector  ();
+
+  try
+  {
+
+   Class  . for  Name  ("" sun  . jdbc  . odbc  .  jdbc  odbc  Driver  "");
+   Connection conn = Driver  Manager  . get  Connectio public String search  Query  ID  (  String date  )
+ {
+  Vector query  Vector = new Vector  ();
+
+  String search  Query = new String  ();
+
+  try
+  {
+   Class  . for  Name  ("" sun  . jdbc  . odbc  .  Jdbc  Odbc  Driver  "");
+   conn = Driver  Manager  . get  public String get  Constraint  From  Data  Base  (  String query  ID  )
+ {
+
+  String Const  String = new String  ();
+
+
+  try
+  {
+
+   Class  . for  Name  ("" sun  . jdbc  . odbc  .  Jdbc  Odbc  Driver  "");
+
+   conn = Driver  Manager  . get  Connection  ("" j public String get  Driver  From  Data  Base  (  String query  ID  )
+ {
+
+  String driver  String = new String  ();
+
+  try
+  {
+
+   Class  . for  Name  ("" sun  . jdbc  . odbc  .  Jdbc  Odbc  Driver  "");
+
+   conn = Driver  Manager  . get  Connection  ("" jdbc "
+56	"Event Parser private Connection conn  ;
+ private Result  Set rs  ;
+ private Statement stmt  ; //  Event  Parser Constructor
+ // initializes the Database connection
+ public Event  Parser  ()
+ {
+  try
+  {
+   Class  . for  Name  ("" sun  . jdbc  . odbc  .  Jdbc  Odbc  Driver  "");
+   this  . conn = Driver  Manager  . get  Connection  ("" jdbc  : odbc  : public void update  Event  (  String str  , String ID  )
+ {
+
+  String m  Project  ;
+  String m  Event  ;
+  String m  Type  ;
+  String m  Num  ;
+  String m  requirement ;
+  String m  Module  ;
+  String m  SQL  ;
+  String m  Date  ;
+  String m  Reqtext  ;
+  //  Check if a subscription exists
+ public boolean Check  Subscription  (  String str  )
+ {
+
+  String  Tokenizer tokens = new String  Tokenizer  ( str  , ""|"");
+  String Message type = tokens  . next  Token  ();
+  String Subscriber  Name = tokens  . next   //  Insert a subscription into the ""  Subscription  "" table
+ public void Add  Subscription  (  String str  , int ID  )
+ {
+
+  // Parse the message string and get the fields
+
+  String  Tokenizer tokens = new String  Tokenizer  ( str  , ""|"");
+  String Messag //  Delete  Subscription from the ""  Subscription  "" table
+ public void Delete  Subscription  (  String str  , int ID  )
+ {
+  // Parse the message string and get the fields
+  String  Tokenizer tokens = new String  Tokenizer  ( str  , ""|"");
+  String Messag //  Speculate method will receive a string from the Speculative GUI
+ // tool and parse it using Call  Back class to identify the
+ // performance models
+ public void speculate  (  String str  )
+ {
+  System  . out  . println  (""  Speculate  "");
+  Call  Back public void impact  Report  (  String str  )
+ {
+  Call  Back cb = new Call  Back  ();
+  cb  . parse  Impact  Report  ( str  );
+ }// end impact  Report  ()"
+57	"Event Notifier // Variables to process the requirement
+ private String requirement No  ;          //  Requirement No  .
+ private String Proj  Name  ;       //  Project name
+ private String Mod  Path  ;        //  Modular path
+ private String requirement Text  ;        / public Event  Notifier  (  String rno  , String proj  , String mod  , String rtext  ,  String e  ID  , String em  , String event  Type  )
+ {
+  requirement No = rno  ;        //  Requirement number
+  Proj  Name = proj  ;    // project name
+  Mod  Path = mo // finds the subscribers for this requirement
+ public void Identify  Subscribers  ()
+ {
+  String m  SQL  ;
+  // Create an SQL statement that will limit the selection as much as possible
+  // If a subscription is to a specific requirement - check for requi //  Reads the result from Identify  Subscribers method selection
+ // and adds each result into Actual  Subscribers Vector  .
+ void Process  Result  Set  ()
+ {
+
+  String s  Name  , s  Reqno  , s  Module  , s  Key  1  , s  Key  2  ;
+  try
+  {
+   System  . o // Send messages to all subscribers listed in Actual  Subscriber Vector
+// Possible that a sort routine can be added later so that all notification to
+// the same subscribermanager can be batched  .  This is not implemented yet  .
+
+ public void Dispatch   public String get  Error  Message  ()
+ {
+     return err  Msg  ;
+
+ } public boolean Contains  (  String Context  String  , String Search  String  )
+ {
+  int c  Len = Context  String  . length  ();
+  int s  Len = Search  String  . length  ();
+  if (  Search  String  . length  () == 0  )
+   return false  ;
+
+  for ( int i = 0"
+58	"Subscribed Model private String Subscriber  Name  ;
+    private String Subscriber  Reqno  ;
+    private String Subscriber  Module  ;
+    private String Subscriber  Keyword  1  ;
+    private String Subscriber  Keyword  2  ;  public Subscribed  Model  (  String sn  , String sr  , String sm  , String sk  1  , String sk  2  )
+    {
+  Subscriber  Name = sn  ;
+  Subscriber  Reqno = sr  ;
+  Subscriber  Module = sm  ;
+  Subscriber  Keyword  1 = sk  1  ;
+  Subscriber  Keyword  2 = s public String Get  Subscriber  Name  () { return Subscriber  Name  ;} public String Get  Subscriber  Reqno  () { return Subscriber  Reqno  ;} public String Get  Subscriber  Module  () { return Subscriber  Module  ;} public String Get  Subscriber  Keyword  1  () { return Subscriber  Keyword  1  ;} public String Get  Subscriber  Keyword  2  () { return Subscriber  Keyword  2  ;}"
+59	"Done /**
+  * The number of Worker object
+  * threads that are currently working
+  * on something  .
+  */
+ private int _ active  Threads = 0  ;
+
+ /**
+  * This boolean keeps track of if
+  * the very first thread has started
+  * or not  . This prevents this objec /**
+  * This method can be called to block
+  * the current thread until the Thread  Pool
+  * is done  .
+  */
+
+ synchronized public void wait  Done  ()
+ {
+  try {
+   while ( _ active  Threads  >  0 ) {
+    wait  ();
+   }
+  } catch ( Interrupted  Exception  /**
+  * Called to wait for the first thread to
+  * start  . Once this method returns the
+  * process has begun  .
+  */
+
+ synchronized public void wait  Begin  ()
+ {
+  try {
+   while ( !_ started ) {
+    wait  ();
+   }
+  } catch ( Interrupted  Exception e  /**
+  * Called by a Worker object
+  * to indicate that it has begun
+  * working on a workload  .
+  */
+ synchronized public void worker  Begin  ()
+ {
+  _ active  Threads  ++;
+  _ started = true  ;
+  notify  ();
+ } /**
+  * Called by a Worker object to
+  * indicate that it has completed a
+  * workload  .
+  */
+ synchronized public void worker  End  ()
+ {
+  _ active  Threads  --  ;
+  notify  ();
+ } /**
+  * Called to reset this object to
+  * its initial state  .
+  */
+ synchronized public void reset  ()
+ {
+  _ active  Threads = 0  ;
+ }"
+60	"Thread Pool /**
+  * The threads in the pool  .
+  */
+  protected Thread threads  [] = null  ;
+  /**
+  * The backlog of assignments  , which are waiting
+  * for the thread pool  .
+  */
+  Collection assignments = new Array  List  (  3  );
+  /**
+  * A Done object that is /**
+   * The constructor  .
+   *
+   * @param size  How many threads in the thread pool  .
+   */
+  public Thread  Pool  ( int size  )
+  {
+
+    threads = new Worker  Thread  [ size  ];
+
+    for ( int i  =0  ; i  < threads  . length  ; i  ++)
+    {
+      thr /**
+  * Add a task to the thread pool  . Any class
+  * which implements the Runnable interface
+  * may be assigned  . When this task runs  , its
+  * run method will be called  .
+  *
+  * @param r   An object that implements the Runnable interface
+  */
+ pub /**
+  * Get a new work assignment  .
+  *
+  * @return A new assignment
+  */
+ public synchronized Runnable get  Assignment  ()
+ {
+  try {
+   while ( ! assignments  . iterator  (). has  Next  () )
+    wait  ();
+
+   Runnable r = (  Runnable  ) assignments  .  /**
+  * Called to block the current thread until
+  * the thread pool has no more work  .
+  */
+ public void complete  ()
+ {
+  done  . wait  Begin  ();
+  done  . wait  Done  ();
+ } protected void finalize  ()
+ {
+  done  . reset  ();
+  for ( int i  =0  ; i  < threads  . length  ; i  ++) {
+   threads  [ i  ]. interrupt  ();
+   done  . worker  Begin  ();
+   threads  [ i  ]. destroy  ();
+  }
+  done  . wait  Done  ();
+ }
+}"
+61	"Worker Thread /**
+  * True if this thread is currently processing  .
+   */
+  public boolean busy  ;
+  /**
+   * The thread pool that this object belongs to  .
+   */
+  public Thread  Pool owner  ; /**
+   * The constructor  .
+   *
+   * @param o the thread pool
+   */
+  Worker  Thread  (  Thread  Pool o  )
+  {
+    owner = o  ;
+  } /**
+   * Scan for and execute tasks  .
+   */
+  public void run  ()
+  {
+    Runnable target = null  ;
+
+    do
+    {
+      target = owner  . get  Assignment  ();
+      if ( target  !  =null  )
+      {
+       target  . run  ();
+       owner  . done  . worker"
+62	"Call Back private Hash table requirement  Desc  Table = new Hash table  ();
+
+ private Hash table constraint  Desc  Table = new Hash table  ();
+
+ private Hash table performance  Model  Table = new Hash table  ();
+
+ private Performance  Model performance model= null  public void parse  Speculate  Information  (  String str  )
+ {
+
+  System  . out  . println  (""  Received String   = "" + str  );
+
+  Connection conn = null  ;
+
+  Statement stmt = null  ;
+
+  Driver  Description dd = null  ;
+
+  String event  Type = null  ; // public void identify  Performance  Models  ()
+ {
+
+  Connection conn = null  ;
+  Result  Set rs = null  ;
+  Statement stmt = null  ;
+
+  String subscriber  Name = null  ;
+
+  Driver  Description dd = null  ;
+
+  Enumeration subscriber  Table  Enumeration = nu public void pull  Information  From  Doors  ()
+ {
+
+  String server  IP = ""  140  .  192  .  37  .  150  "";
+
+  String  [] attribute = { ""  Value  "", ""  Logic  "", ""  Units  "", ""  Attribute  "" };
+
+  String subscriber  Name = null  ;
+
+  Vector constraints = n public void insert  Values  In  Data  Base  ()
+ {
+
+  Connection conn = null  ;
+
+  Statement stmt = null  ;
+
+  String subscriber  Name = null  ;
+
+  Driver  Description dd = null  ;
+  Vector driver  Vector = null  ;
+
+  Constraints  Description cd = null  ;
+ public void create  Execute  String  ()
+ {
+
+  Connection conn = null  ;
+
+  Statement stmt = null  ;
+
+  Result  Set rs = null  ;
+
+  String  Buffer sb = null  ;
+
+  String subscriber  Name = null  ;
+
+  Driver  Description dd = null  ;
+  Vector driver  Vector public void parse  Impact  Report  (  String str  )
+ {
+
+  Connection conn = null  ;
+
+  Statement stmt = null  ;
+
+  Vector constraints  Vector = null  ;
+  Vector drivers  Vector = null  ;
+
+  Constraints  Description constraint = null  ;
+
+  int driver  Loop"
+63	"Doors Thread static private int count = 0  ;
+ private int task  Number  ;
+ protected Done done  ;
+ Server  Socket the  Server  ;
+
+ private Connection conn  ;
+ private Statement stmt  ;
+ private Result  Set rs  ; DOORs  Thread  (  Server  Socket ss  )
+ {
+ the  Server = ss  ;
+   count  ++;
+   task  Number = count  ;
+ } public void run  ()
+ {
+
+ while  ( true  )
+ {
+   try
+   {
+
+    Socket client = the  Server  . accept  ();
+    Buffered  Reader input = new Buffered  Reader  ( new Input  Stream  Reader  ( client  . get  Input  Stream  ()));
+    Print  Writer output = new P"
+64	"DOORs Thread Pool public final static int default  Port = 2347  ;
+ Server  Socket the  Server  ;
+   // static int number  Of  Threads = 3  ; //  @param args  No arguments are used  .
+ public static void main  (  String args  [])
+ {
+
+    Thread  Pool pool = new Thread  Pool  (  1  );
+
+     int port = default  Port  ;
+     try
+     {
+   Server  Socket ss = new Server  Socket  ( port  );
+   for  "
+65	"About Dialog public About  Dialog  (  JFrame parent  , boolean modal  ) {
+    
+     super ( parent  , modal  );
+     
+       get  Content  Pane (). set  Layout ( new Border  Layout ());
+       set  Title (""  About  "");
+       set  Name ("" about  Dialog  "");
+       
+   private JText  Area text  ;"
+66	"Config Dialog public Config  Dialog  (  Notification  _  Processing parent  , boolean modal  ) {
+     
+        super ( parent  , modal  );
+     set  Title  (""  Config Dialog Box  "");
+       get  Content  Pane (). set  Layout ( new Grid  Layout  (  5  ,  2  ));
+
+        private void close  Dialog  (  Window  Event evt  ) {
+        set  Visible ( false  );
+        dispose ();
+    }  // event listener for ""  Ok  "" button   
+    private void ok  Button  Action  Performed (  Action  Event evt  ) {
+     
+     if  ( User  Name  . get  Text  (). equals  ("""") || DSN  . get  Text  (). equals  ("""") || Event  Server  IP  . get  Text  (). equa  // event listener for ""  Cancel  "" button  
+    private void cancel  Button  Action  Performed (  Action  Event evt  ) {
+        set  Visible ( false  );
+        dispose ();     
+    } // configuration entries
+    private JLabel User  Name  Label  ; 
+    private JText  Field User  Name  ;    
+    private JLabel DSN Label  ; 
+    private JText  Field DSN  ;
+    private JLabel Event  Server  IP Label  ; 
+    private JText  Field Event  Se"
+67	"Event Detail Dialog private Grid  Bag  Layout grid bag  ;
+    private Grid  Bag  Constraints c  ;
+
+    // objects in top panel
+    private JPanel top  Panel  ;
+    private JLabel model  Label  ;
+    private JLabel type  Label  ;
+    private JText  Field model  Field  ;
+    p public Event  Detail  Dialog  (  Events  Processor parent  , boolean modal  ,  Notification  _  Event n  Evt  , boolean mode  )
+    {
+
+        super ( parent  , modal  );
+     set  Title  (""  Event Details  "");
+       get  Content  Pane (). set  Layout (  private void close  Dialog  (  Window  Event evt  )
+    {
+        set  Visible ( false  );
+        dispose ();
+    } // event listener for ""  Ok  /  Update  "" button
+    private void ok  Button  Action  Performed (  Action  Event evt  )
+    {
+
+     if ( display  Mode == true  )
+     {
+
+      // m  _ parent  .  Delete  Event  ( m  _  Evt  . m  _  Subscriber  Name  , m  _ // event listener for ""  Cancel  "" button
+    private void cancel  Button  Action  Performed (  Action  Event evt  )
+    {
+        set  Visible ( false  );
+        dispose ();
+    } private void Left  List  Clicked  (  Mouse  Event e  ){
+
+     if (!  Left  List  . is  Selection  Empty  ()) {
+
+         int index = Left  List  . get  Selected  Index  ();
+         Requirement requirement= (  Requirement  ) m  _  Evt  . m  _  Left  Side  private void Right  List  Clicked  (  Mouse  Event e  ){
+
+     if (!  Right  List  . is  Selection  Empty  ()) {
+
+         int index = Right  List  . get  Selected  Index  ();
+         Requirement requirement= (  Requirement  ) m  _  Evt  . m  _  Right  S"
+68	"Events Processor // event list
+ private JList event  List  ;
+ private Default  List  Model list  Model  ;
+ private Array  List events  ;
+
+ // popup menu
+ private JPopup  Menu popup  ;
+
+ // Subscriber name
+ String m  _  Subscriber  Name  ;
+
+ // list of requirements to be d public Events  Processor  (  Notification  _  Processing parent  , boolean modal  , String Subs  Name  )
+ {
+
+     set  Title  (""  Events  Processor  "");
+
+  add  Window  Listener  ( new Window  Adapter  ()
+  {
+   public void window  Closing  (  Window  Eve void exit  Application  () {
+    m  _ parent  .  Update  Display  List  ();
+     this  . set  Visible  ( false  );
+     this  . dispose  ();
+    } // action for "" double click on Event List  ""
+ private void double  Click  Event  List (  Mouse  Event evt  )
+ {
+
+  int index = event  List  . get  Selected  Index  ();
+        if ( index !  = -1  )
+        {
+         try
+         {
+          Notification // action for ""  Open First Record  "" in popup menu
+ private void popup  Open  Action  Performed (  Action  Event evt  )
+ {
+  if (! list  Model  . is  Empty  ())
+  {
+   int index =0  ;
+   try
+   {
+          Notification  _  Event n  Evt  1 = (  Notificati / action for ""  View Current Record  "" in popup menu
+ private void popup  View  Action  Performed (  Action  Event evt  )
+ {
+  int index = event  List  . get  Selected  Index  ();
+        if ( index !  = -1  )
+        {
+         try
+         {
+          N void Delete  Event  (  String Subscriber  Name  , String Event  ID  )
+ {
+
+  try
+  {
+
+   int i  , j  =-1  ;
+   for ( i  =0  ; i  < events  . size  (); i  ++)
+   {
+    Notification  _  Event n  Evt = (  Notification  _  Event  ) events  . get  ( i  );
+    i void Delete  Related  Events  ()
+ {
+
+  while ( m  _  Delete  requirement List  . size  ()!  =0  )
+  {
+
+   Requirement requirement= (  Requirement  )( m  _  Delete  requirement List  . get  (  0  ));
+
+   m  _  Delete  requirement List  . remove  (  0  );
+  void Add  Subscription  (  String Subscriber  Name  , Requirement requirement )
+ {
+
+  String Subscriber  Dependency = ""  Requirements  "";
+
+  String Message = ""  ADD  _  SUBSCRIPTION  ""+""|"";
+  Message +  = m  _  User  Name + ""|"";
+  Message +  = Subscriber  void Delete  Subscription  (  String Subscriber  Name  , Requirement requirement )
+ {
+  String Message = ""  REMOVE  _  SUBSCRIPTION  ""+""|"";
+  Message +  = Subscriber  Name + ""|"";
+  Message +  = requirement . m  _  Requirement  ID + "","";
+  Message +  = req void Update  Display  List  ()
+ {
+
+        list  Model  . remove  All  Elements  ();
+
+  for ( int j  =0  ; j  < events  . size  (); j  ++)
+  {
+
+   Notification  _  Event n  Evt = (  Notification  _  Event  ) events  . get  ( j  );
+
+   String display  Stri // Passes a CHECK  _  SUBSCRIPTION message to the eventserver and waits for a response
+    private boolean Check  _  Subscription  (  String ip  ,
+               int Port  No  ,
+               String Subscriber  Name  ,
+               String Requirement   // Takes an event string returned from the eventserver and
+    // extracts True or False response
+    private boolean Analyze  _  Check  Subscription  (  String str  )
+    {
+  String  Tokenizer tokens = new String  Tokenizer  ( str  ,""|"");
+  String Messag"
+69	"Notification Event public String m  _  Subscriber  Name = """";
+    public String m  _  Event  ID = """";
+    public String m  _  Message type = """";
+    public String m  _  Event  Type = """";
+    public int m  _  Number  Of  Requirements = 0  ;
+    public String m  _  Event  Tim public Notification  _  Event  ()
+    {
+     m  _  Left  Side = new Array  List  ();
+     m  _  Right  Side = new Array  List  ();
+    } public Object clone  () throws Clone  Not  Supported  Exception
+ {
+
+  Notification  _  Event n  Evt = (  Notification  _  Event  ) super  . clone  ();
+     n  Evt  . m  _  Left  Side = new Array  List  ();
+     n  Evt  . m  _  Right  Side = new Array  Lis public void Parse  Event  (  String Text  Line  )
+ {
+
+     String  Tokenizer Line  St  ; // Tokenizer for the line
+
+        int i  =0  ;
+
+  Line  St = new String  Tokenizer  (  Text  Line  , ""|"");
+
+        m  _  Subscriber  Name = Line  St  . next  Token  // Set the other members before calling this function
+
+ public void Parse  Left  And  Right  Lists  (  String Left  Line  , String Right  Line  )
+ {
+
+  m  _  Left  Side = new Array  List  ();
+     m  _  Right  Side = new Array  List  ();
+
+  if ( m  _  Eve public void Display  Values  ()
+    {
+     System  . out  . println  (""\ r  \ n  Values of the event  :\ r  \ n  "");
+     System  . out  . println  ("" m  _  Subscriber  Name  : ""+ m  _  Subscriber  Name  );
+     System  . out  . println  ("" m  _  Event  I"
+70	"Notification Processing // member variables for menu
+ private JMenu  Bar menu  Bar  ;
+
+ // subscriber list
+ private JList Subscriber  List  ;
+ private Default  List  Model list  Model  ;
+
+ // popup menu
+
+ private JPopup  Menu popup  ;
+
+ // database and eventserver information
+ S public Notification  _  Processing  ()
+ {
+
+  set  Default  Close  Operation  (  JFrame  .  DO  _  NOTHING  _  ON  _  CLOSE  );
+
+  add  Window  Listener  ( new Window  Adapter  ()
+  {
+   public void window  Closing  (  Window  Event evt  )
+   {
+    try
+    public static void main  (  String args  [])
+ {
+  try
+  {
+   Notification  _  Processing main  Frame = new Notification  _  Processing  ();
+   main  Frame  . set  Size  (  600  , 400  );
+   main  Frame  . set  Location  (  100  , 100  );
+   main  Frame  . void exit  Application  ()
+  {
+    try
+    {
+        int reply = JOption  Pane  . show  Confirm  Dialog  ( this  ,
+                                                  ""  Do you really want to exit  ?"",
+                                                  ""  No // action for ""  Open log database  ""
+ private void open  Menu  Item  Action  Performed (  Action  Event evt  )
+ {
+  new Config  Dialog  ( this  , true  ). show  ();
+
+     if  ( m  _  DSN  . equals  ("""") || m  _  Event  Server  IP  . equals  ("""") || m  _  // action for ""  Close log database  ""
+ private void save  Menu  Item  Action  Performed (  Action  Event evt  )
+ {
+      try
+      {
+       m  _ conn  . close  ();
+   m  _  DSN=  """";
+   m  _  Event  Server  IP=  """";
+   m  _  Event  Server  Port  =  """";
+
+ // action for "" exit  ""
+ private void exit  Menu  Item  Action  Performed (  Action  Event evt  )
+ {
+  exit  Application  ();
+ } // action for ""  Open Events  "" in popup menu
+ private void popup  Open  Action  Performed (  Action  Event evt  )
+ {
+  open  Events  Menu  Item  Action  Performed  ( evt  );
+ } // action for ""  Open Events  ""
+ private void open  Events  Menu  Item  Action  Performed (  Action  Event evt  )
+ {
+  if (! list  Model  . is  Empty  ())
+  {
+   int index = Subscriber  List  . get  Selected  Index  ();
+         if ( index !  = -1  )
+     // action for "" double click on Subscriber List  ""
+ private void double  Click  Subscriber  List (  Mouse  Event evt  )
+ {
+  if (! list  Model  . is  Empty  ())
+  {
+   int index = Subscriber  List  . get  Selected  Index  ();
+         if ( index !  = -1   // action for ""  About  ""
+ private void about  Menu  Item  Action  Performed (  Action  Event evt  )
+ {
+  new About  Dialog ( this  , true  ). show  ();
+ } void Update  Display  List  ()
+ {
+        list  Model  . remove  All  Elements  ();
+
+     String m  SQL = ""  SELECT distinct Subscriber  Name FROM Event  Details  "";
+
+  try
+  {
+   rs = stmt  . execute  Query  ( m  SQL  );
+   while ( rs  . next  ())
+   {
+ "
+71	"Requirement  public String m  _  Requirement  ID =  """";
+    public String m  _  Project =  """";
+    public String m  _  Module  Path  =  """";
+    public String m  _  Content = """";
+    public String m  _  Reg  Flag = ""  N  ""; public Requirement  ()
+    {
+
+    } public Object clone  () throws Clone  Not  Supported  Exception
+ {
+
+  Requirement requirement= (  Requirement  ) super  . clone  ();
+  return requirement ;
+ } public void Read  Values  (  String Requirement  ID  , String Project  , String Module  Path  , String Content  , String Reg  Flag  )
+ {
+  this  . m  _  Requirement  ID = Requirement  ID  ;
+  this  . m  _  Project = Project  ;
+  this  . m  _  Module  Path public void Parse  Requirement  (  String Text  Line  )
+ {
+
+     String  Tokenizer Line  St  ;
+        Line  St = new String  Tokenizer  (  Text  Line  , "","");
+        m  _  Requirement  ID=Line  St  . next  Token  ();
+        m  _  Project  =Line  St  . "
+72	"Balance /**
+     * Symbol represents what will be placed on the stack  .
+     */
+    private static class Symbol
+    {
+        public char  token  ;
+        public int   the  Line  ;
+
+        public Symbol  ( char tok  , int line )
+        {
+            token   =   /**
+     * Constructor  .
+     * @param in  Stream the stream containing a program  .
+     */
+    public Balance  ( Reader in  Stream )
+    {
+        errors = 0  ;
+        tok = new Tokenizer  ( in  Stream );
+    }  /**
+     * Print an error message for unbalanced symbols  .
+     * @return number of errors detected  .
+     */
+    public int check  Balance  ( )
+    {
+        char ch  ;
+        Symbol match = null  ;
+        Stack pending  Tokens = new Stack  ( );
+
+   private Tokenizer tok  ;
+    private int errors  ; /**
+     * Print an error message if cl  Sym does not match op  Sym  .
+     * Update errors  .
+     */
+    private void check  Match  ( Symbol op  Sym  , Symbol cl  Sym )
+    {
+        if  ( op  Sym  . token == '  (  ' && cl  Sym  . token !  = '  )  ' ||
+ /**
+     * main routine for balanced symbol checker  .
+     * Slightly different from text  .
+     * If no command line parameters  , standard input is used  .
+     * Otherwise  , files in command line are used  .
+     */
+    public static void main  ( St"
+73	"Constraints String id  ;
+ String name  ;
+ double value  ;
+ String logic  ; Constraints  (  String id  , String name  , double value  , String logic  ){
+  this  . id = id  ;
+  this  . name = name  ;
+  this  . value = value  ;
+  this  . logic = logic  ;
+ } public String to  String  (){
+ String temp  ;
+ temp = ""  ID = "" + id + "", Name = "" + name +  "", value = "" + value + "", Logic = "" + logic  ;
+ return temp  ;
+ } /**
+  * Returns the id  .
+  * @return int
+  */
+ public String get  Id  () {
+  return id  ;
+ } /**
+  * Returns the logic  .
+  * @return String
+  */
+ public String get  Logic  () {
+  return logic  ;
+ } /**
+  * Returns the name  .
+  * @return String
+  */
+ public String get  Name  () {
+  return name  ;
+ } /**
+  * Returns the value  .
+  * @return double
+  */
+ public double get  Value  () {
+  return value  ;
+ } /**
+  * Sets the id  .
+  * @param id The id to set
+  */
+ public void set  Id  (  String id  ) {
+  this  . id = id  ;
+ } **
+  * Sets the logic  .
+  * @param logic The logic to set
+  */
+ public void set  Logic  (  String logic  ) {
+  this  . logic = logic  ;
+ } /**
+  * Sets the name  .
+  * @param name The name to set
+  */
+ public void set  Name  (  String name  ) {
+  this  . name = name  ;
+ } /**
+  * Sets the value  .
+  * @param value The value to set
+  */
+ public void set  Value  ( double value  ) {
+  this  . value = value  ;
+ }"
+74	"database Query  Connection conn  =null  ;
+ Result  Set rs  =null  ;
+ Statement stmt  =null  ;
+ String m  SQL=  """";
+
+ Vector struct  Vector = new Vector  (); // for holding the dummy variable objects used in execute  Structure  ()
+ Variable v  ;// create this object and   /**
+     * Construct a connection object  .
+     * @param Returns an object of type Connection
+     */
+ public Connection get  Connection  ()
+ {
+  System  . out  . println  ("" in get Connection  "");
+  Connection connect  =null  ;
+  try
+  {
+   Class  . fo   /**
+    * Returns Graph  Id as int
+    * @param graph  Name performance modelHandler calls this method with graph  Name
+    * as parameter  , performance modelHandler parse the Event  Server message and get the
+    * graph  Name
+    */
+ public int get   /**
+* Copy data from one set of columns to other in table Variable
+* @param graph  Id is the id of graph for which you want to save the
+* current state of variables
+*/
+ public void save  Current  Model  ( int graph  Id  )
+ {
+
+  conn = this  . get  Connect  /**
+    * Injects new value into Variable table  , using Data stored in
+    * Vector of Variable object
+    * @param graph  Id is the id of graph
+    * @param Vector var is the Vector that stores the Object of type Variable
+    */
+ public void inject  Va /**
+  * this method will pick up the structure id from SPE Structure
+  * If Dependent  Structure  Id is 0 then select Structure  ID
+  * and invoke the execute  Structure method on Selected
+  * Structure  Id
+  * Who Invokes this method  : performance model // this method is about executing the structure
+ // based on Structure  Id find all the data related to given Structure  Id
+ // and using the equation in string format call the method equation  Parser  .
+ //  I am passing Vector that has all the data abou public void solve  Structure  ( int Structure  Id  , Vector vr  )
+ {
+  System  . out  . println  (""  Inside solve  Structure  ()  &&&&&&&&&&&&&&&&&&&&&&&"");
+
+  Connection conn  1 = this  . get  Connection  ();
+  System  . out  . println  ("" in solve  Stru public void solve  Structure  Equation  ()
+ {
+  System  . out  . println  (""  Inside solve  Structure  Equation  ()  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"");
+
+    //  Based on that result find out the equation and replace the name by its value
+    System   public void get  Track  Variable  Name  ()
+ {
+  System  . out  . println  (""  Inside get  Track  Variable  Name  ()  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  "");
+  //  This will get the variable name from SPE Graph and find the same name in variable
+  // and inse public void set  Calculated  Values  ()
+ {
+  System  . out  . println  (""  Inside set  Calculated  Values  ()  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"");
+    // and at matching location put the calculated values
+    System  . out  . println  ("" enter calc  Value // this method creates the token for each variable name in the string
+ // and store that variable into vector
+ // it also creates the vector called var  Values
+ // var  Values has values of each variable stored in var  Name
+ //  So equation has variable n public Vector get  Impact  Report  ()
+ {
+  //  This SPE Graph works on the assumption that each model tracks
+  // the effect of changes on one variable
+  Vector report = new Vector  ();
+  report  . add  ( track  Variable  Name  );
+  report  . add  (  Stri"
+75	"Driver String id  ;
+ double value  From  ;
+ double value  To  ;
+ String name  ; Driver  (  String id  , double value  From  , double value  To  , String name  )
+ {
+  this  . id = id  ;
+  this  . value  From = value  From  ;
+  this  . value  To = value  To  ;
+  this  . name = name  ;
+ } public String to  String  ()
+ {
+  String temp  ;
+  temp = ""  ID = "" + id + "", value  From = "" + value  From + "", value  To = "" + value  To + "", Name = "" + name  ;
+  return temp  ;
+ } /**
+  * Returns the id  .
+  * @return int
+  */
+ public String get  Id  ()
+ {
+  return id  ;
+ } /**
+  * Returns the name  .
+  * @return String
+  */
+ public String get  Name  ()
+ {
+  return name  ;
+ } /**
+  * Returns the value  .
+  * @return double
+  */
+ public double get  Value  From  ()
+ {
+  return value  From  ;
+ } public double get  Value  To  ()
+ {
+  return value  To  ;
+ } /**
+  * Sets the id  .
+  * @param id The id to set
+  */
+ public void set  Id  (  String id  )
+ {
+  this  . id = id  ;
+ } **
+  * Sets the name  .
+  * @param name The name to set
+  */
+ public void set  Name  (  String name  )
+ {
+  this  . name = name  ;
+ } **
+  * Sets the value  .
+  * @param value The value to set
+  */
+ public void set  Value  From  ( double value  )
+ {
+  this  . value  From = value  From  ;
+ } public void set  Value  To  ( double value  )
+ {
+  this  . value  To = value  To  ;
+ }"
+76	"Evaluator  private static final int EOL     = 0  ;
+    private static final int VALUE   = 1  ;
+    private static final int OPAREN  = 2  ;
+    private static final int CPAREN  = 3  ;
+    private static final int EXP     = 4  ;
+    private static final int MULT    = private static class Precedence
+    {
+
+        public int input  Symbol  ; // refers to the precedence level of operator
+        public int top  Of  Stack  ; // stores the operator in the form of integer
+
+        public Precedence  ( int in  Symbol  , int     // Prec  Table matches order of Token enumeration
+    private static Precedence [ ] prec  Table = new Precedence  [ ]
+    {
+
+        new Precedence  (   0  , -1 ),  // EOL
+        new Precedence  (   0  ,  0 ),  // VALUE
+        new Precedence  ( 100  private static class Token
+    {
+
+        public Token  ( ) { this  ( EOL ); }
+
+        public Token  ( int t ) { this  ( t  , 0 ); }
+
+        public Token  ( int t  , double v ) {
+
+         System  . out  . println  (""   INSIDE Token  .  Token  ()"");
+     private static class Eval  Tokenizer {
+
+        public Eval  Tokenizer  ( String  Tokenizer is ) {
+         System  . out  . println  (""  INSIDE Eval  Tokenizer  "");
+         str = is  ;
+        } /**
+         * Find the next token  , skipping blanks  , and return it  .
+         * For VALUE token  , place the processed value in current  Value  .
+         * Print error message if input is unrecognized  .
+         */
+        public Token get  Token   /**
+     * Construct an evaluator object  .
+     * @param s the string containing the expression  .
+     */
+    public Evaluator  ( String s ) {
+
+        op  Stack = new Stack  ( );
+        postfix  Stack = new Stack  ( );
+        str = new String  Tokeni // The only publicly visible routine
+    /**
+     * Public routine that performs the evaluation  .
+     * Examine the  postfix machine to see if a single result is
+     * left and if so  , return it  ; otherwise print error  .
+     * @return the result  . private Stack op  Stack  ;       // Operator stack for conversion
+    private Stack postfix  Stack  ;  // Stack for postfix machine that stores the numbers could be values or result
+    private String  Tokenizer str  ; // String  Tokenizer stream  , conte /**
+     * Internal method that hides type  -casting  .
+     * Changed the method to support double
+     */
+    private double post  Fix  Top  And  Pop  ( ) {
+     System  . out  . println  (""      INSIDE post  Fix  Top  And  Pop method  "");
+     System   /**
+     * Another internal method that hides type  -casting  .
+     */
+    private int op  Stack  Top  ( ) {
+        return ( (  Integer  ) ( op  Stack  . peek  ( ) ) ). int  Value  ( );
+    } /**
+     * After a token is read  , use operator precedence parsing
+     * algorithm to process it  ; missing opening parentheses
+     * are detected here  .
+     */
+    private void process  Token  ( Token last  Token ) {
+
+        System  . out  . printl /*
+     * top  And  Pop the postfix machine stack  ; return the result  .
+     * If the stack is empty  , print an error message  .
+     */
+    private double get  Top  ( ) { // change to support double
+     System  . out  . println  (""    INSIDE GET TOP  /**
+     * Internal routine to compute x  ^ n  .
+     */
+    private static double pow  ( double x  , double n ) {
+     System  . out  . println  (""      INSIDE pow  "");
+
+        if  ( x == 0 ) {
+             if  ( n == 0 ){
+              System  . out  . /**
+     * Process an operator by taking two items off the postfix
+     * stack  , applying the operator  , and pushing the result  .
+     * Print error if missing closing parenthesis or division by 0  .
+     */
+    private void binary  Op  ( int top  Op  /**
+     * Simple main to exercise Evaluator class  .
+     */
+    public static void main  ( String [ ] args ) {
+
+
+
+        String str  ;
+        Buffered  Reader in = new Buffered  Reader  ( new Input  Stream  Reader  ( System  . in ) );
+
+        try {
+ "
+77	"Model Driver String msg  =  """"; public   Model  Driver  (  String text  )
+ {
+  this  . msg = text  ;
+  init  ();
+ } public void init  ()
+ {
+
+  System  . out  . println  (""  MODEL DRIVER CLASS 1  /  10  "");
+  performance modelHandler pmh = new performance modelHandler  ( msg  );
+  System  . out  . println  (""  MODEL DRIVER CLASS 2  /  10  "");
+     pmh  . message  Parser"
+78	"Notification Event public String m  _  Subscriber  Name = """";
+    public String m  _  Event  ID = """";
+    public String m  _  Message type = """";
+    public String m  _  Event  Type = """";
+    public int m  _  Number  Of  Requirements = 0  ;
+    public String m  _  Event  Tim // constructor
+    public Notification  _  Event  ()
+    {
+     m  _  Left  Side = new Array  List  ();
+     m  _  Right  Side = new Array  List  ();
+    }// end of class Notification  _  Event public Object clone  () throws Clone  Not  Supported  Exception
+ {
+
+  // create new object with the same type
+  Notification  _  Event n  Evt = (  Notification  _  Event  ) super  . clone  ();
+     n  Evt  . m  _  Left  Side = new Array  List  ();
+     n  public void Parse  Event  (  String Text  Line  )
+ {
+
+  String msg = Text  Line  ;
+
+  if  ( msg  . starts  With  (""  Re  -execute  "") )
+  {
+
+   Model  Driver md = new Model  Driver  ( msg );
+   md  . init  ();
+
+  //  To  Do  :
+  // divert all the calls fo // Set the other members before calling this function
+
+ public void Parse  Left  And  Right  Lists  (  String Left  Line  , String Right  Line  )
+ {
+
+  m  _  Left  Side = new Array  List  ();
+     m  _  Right  Side = new Array  List  ();
+
+  if ( m  _  Eve //  Comment Added by Amit Uchat
+ //  This method displays the contents of two array list to console
+    public void Display  Values  ()
+    {
+     System  . out  . println  (""\ r  \ n  Values of the event  :\ r  \ n  "");
+     System  . out  . println  ("" "
+79	"performance model Handler String str  ES  ; // string received from eventserver
+ String impact  Report  ;// string to be send to event  Server
+
+ String command  Str  ; // represent the command ex  . execute  , re - execute etc
+ String event  Id  ;// refers to the event  Id
+ String performance model Handler  (  String msg  )
+ {
+  this  . str  ES = msg  ;
+ } public void message  Parser  ()
+ {
+  System  . out  . println  (""  INSIDE PARSER  "");
+
+  main  Sto = new String  Tokenizer  ( str  ES  ,""|""); // current ex will have 10 tokens in main  Sto
+
+
+  temp  Str  1 = main  Sto  . next  Token  ();
+  //  Re  -execut public String generate  Report  ()
+  {
+   System  . out  . println  (""  INSIDE generate  Report  "");
+
+   main  Sto = new String  Tokenizer  ( str  ES  ,""|""); // current ex will have 10 tokens in main  Sto
+   /*
+    ""  Impact  Report  |  1015818161020  |   int gr  Id  ; public int get  Id  (){
+ // get Graph  Id
+ System  . out  . println  (""  database start  "");
+ int gr  Id = database  . get  Graph  Id  ( model  Name  );
+ return gr  Id  ;
+ } public void save  Model  ( int id  )
+ {
+  // save current model
+  database  . save  Current  Model  ( id  );
+ } public void insert  Data  ( int id  ){
+  // inject data into model
+  database  . inject  Variables  ( id  , variable  );
+ } public void execute  ( int id  ){
+  // inject data into model
+  database  . execute  Model  ( id  , variable  );
+ }"
+80	"Requirement public String m  _  Requirement  ID =  """";
+    public String m  _  Project =  """";
+    public String m  _  Module  Path  =  """";
+    public String m  _  Content = """";
+    public String m  _  Reg  Flag = ""  N  "";  public Requirement  () {// empty constructor
+
+    } public Object clone  () throws Clone  Not  Supported  Exception {
+  
+  Requirement requirement= (  Requirement  ) super  . clone  ();
+  
+  return requirement ; 
+ } public void Read  Values  (  String Requirement  ID  , String Project  , String Module  Path  , String Content  , String Reg  Flag  ) {
+  this  . m  _  Requirement  ID = Requirement  ID  ;
+  this  . m  _  Project = Project  ;
+  this  . m  _  Module  Path  public void Parse  Requirement  (  String Text  Line  ) {
+
+     String  Tokenizer Line  St  ;        
+        Line  St = new String  Tokenizer  (  Text  Line  , "","");
+
+        m  _  Requirement  ID=Line  St  . next  Token  ();
+        m  _  Project  =Line"
+81	"subscribermanager Socket a  Socket  ;
+ int ID  ;
+ String Event  Log  ;
+
+ Connection conn  ;
+ Result  Set rs  ;
+ Statement stmt  ; // constructor  , this object will be created in the main method of these class
+ Subscriber  Listener  () { } // constructor  , this object will be created in the main method of these class
+ Subscriber  Listener  (  Socket socket  , int ID  , String ELog  )
+ {
+
+     this  . a  Socket = socket  ;
+  this  .  ID = ID  ;
+  this  .  Event  Log = ELog  ;
+
+  try
+  {
+    public void send  Impact  Report  To  Event  Server  (  String text  )
+ {
+
+  //  String impact  Report = text  ;
+  System  . out  . println  (""  WOW IN SEND REPORT  "");
+  System  . out  . println  (""  The IR = ""+ text  );
+  String server  IP = ""  140  .   // run method will be execute from the main method when u say Thread  . start  () in main
+ public void run  ()
+ {
+
+  System  . out  . println  (""  Inside Run method  "");
+
+  String str  =  """";
+  try
+  {
+   // set up for reading the byte data in to characte // start of class from here
+ public static void main  (  String  [] args  )
+ {
+  // default port number
+  int port = 1705  ;
+  // the message coming from eventserver
+  String Log  Name = ""  Event  Log  "";
+  //  Log  Name is the database name used to log t"
+82	"Tokenizer /**
+     * Constructor  .
+     * @param in  Stream the stream containing a program  .
+     */
+    public Tokenizer  ( Reader in  Stream )
+    {
+        errors = 0  ;
+        ch = '  \  0'  ;
+        current  Line = 1  ;
+        in = new Pushback  Reader   /**
+     * Gets current line number  .
+     * @return current line number  .
+     */
+    public int get  Line  Number  ( )
+    {
+        return current  Line  ;
+    } /**
+     * Gets error count  .
+     * @return error count  .
+     */
+    public int get  Error  Count  ( )
+    {
+        return errors  ;
+    } /**
+     * Get the next opening or closing symbol  .
+     * Return false if end of file  .
+     * Skip past comments and character and string constants
+     */
+    public char get  Next  Open  Close  ( )
+    {
+        while  ( next  Char  ( ) )
+        {
+ /**
+     * Return true if ch can be part of a Java identifier
+     */
+    private static final boolean is  Id  Char  ( char ch )
+    {
+        return Character  . is  Java  Identifier  Part  ( ch );
+    }  /**
+     * Return an identifier read from input stream
+     * First character is already read into ch
+     */
+    private String get  Remaining  String  ( )
+    {
+        String result = """" + ch  ;
+
+        for  ( ; next  Char  ( ); result +  = ch )
+     /**
+     * Return next identifier  , skipping comments
+     * string constants  , and character constants  .
+     * Place identifier in current  Id  Node  . word and return false
+     * only if end of stream is reached  .
+     */
+    public String get  Ne /**
+     * next  Char sets ch based on the next character in the input stream  .
+     * put  Back  Char puts the character back onto the stream  .
+     * It should only be used once after a next  Char  .
+     * Both routines adjust current  Line if necess private void put  Back  Char  ( )
+    {
+        if  ( ch == '  \ n  ' )
+            current  Line  --  ;
+        try
+          { in  . unread  ( ( int  ) ch ); }
+        catch  ( IO Exception e ) { }
+    } /**
+     * Precondition  : We are about to process a comment  ; have already seen
+     *                 comment  -start token
+     * Post condition  : Stream will be set immediately after
+     *                 comment  -ending token
+     */
+    private  /**
+     * Precondition  : We are about to process a quote  ; have already seen
+     *                   beginning quote  .
+     * Post condition  : Stream will be set immediately after
+     *                   matching quote
+     */
+    private void skip /**
+     * After the opening slash is seen deal with next character  .
+     * If it is a comment starter  , process it  ; otherwise put back
+     * the next character if it is not a new line  .
+     */
+    private void process  Slash  ( )
+    {
+        if  public static final int SLASH  _  SLASH = 0  ;
+    public static final int SLASH  _  STAR  = 1  ;
+
+    private Pushback  Reader in  ;    // The input stream
+    private char ch  ;              // Current character
+    private int current  Line  ;      //"
+83	"Variable String id = """"; // requirement id ex WB10
+ String type  = """"; // type of requirement ex Driver or Constraints
+ String name  = """"; // requirement name which is same as variable name in graph
+ double value  = 0  .  0  ; // value of variable
+ double speculat //  General Constructor to initialize all the members
+ Variable  (  String id  , String type  , String name  , double value  , double speculate  Value  , String logic  , String project  _ path  )
+ {
+  this  . id = id  ;
+  this  . type = type  ;
+  this  .  //  Constructor to Add driver related members
+ Variable  (  String id  , String type  , String name  , double value  , double speculate  Value  )
+ {
+  this  . id = id  ;
+  this  . type = type  ;
+  this  . name = name  ;
+  this  . value = value  ;
+  this   //  Constructor to Add constraints related members
+ Variable  (  String id  , String type  , String name  , double value  , String logic  ){
+  this  . id = id  ;
+  this  . type = type  ;
+  this  . name = name  ;
+  this  . value = value  ;
+  this  . logic  public String to  String  ()
+ {
+  String temp  ;
+  temp = ""  ID = "" + id + "", Type = "" + type + "", Name = "" + name +  "", value = "" + value +
+     "", Speculate  Value = "" + speculate  Value + "", Logic = "" + logic + "", Project  _  Path = "" + project  _ path /**
+  * Returns the id  .
+  * @return int
+  */
+ public String get  Id  ()
+ {
+  return id  ;
+ } /**
+  * Returns the logic  .
+  * @return String
+  */
+ public String get  Logic  ()
+ {
+  return logic  ;
+ } /**
+  * Returns the name  .
+  * @return String
+  */
+ public String get  Name  ()
+ {
+  return name  ;
+ } /**
+  * Returns the value  .
+  * @return double
+  */
+ public double get  Value  () {
+  return value  ;
+ } /**
+  * Sets the id  .
+  * @param id The id to set
+  */
+ public void set  Id  (  String id  ) {
+  this  . id = id  ;
+ } /**
+  * Sets the logic  .
+  * @param logic The logic to set
+  */
+ public void set  Logic  (  String logic  ) {
+  this  . logic = logic  ;
+ } /**
+  * Sets the name  .
+  * @param name The name to set
+  */
+ public void set  Name  (  String name  ) {
+  this  . name = name  ;
+ } /**
+  * Sets the value  .
+  * @param value The value to set
+  */
+ public void set  Value  ( double value  ) {
+  this  . value = value  ;
+ } /**
+  * Returns the speculate  Value  .
+  * @return double
+  */
+ public double get  Speculate  Value  () {
+  return speculate  Value  ;
+ } /**
+  * Sets the speculate  Value  .
+  * @param speculate  Value The speculate  Value to set
+  */
+ public void set  Speculate  Value  ( double speculate  Value  ) {
+  this  . speculate  Value = speculate  Value  ;
+ } /**
+  * Returns the type  .
+  * @return String
+  */
+ public String get  Type  () {
+  return type  ;
+ } /**
+  * Sets the type  .
+  * @param type The type to set
+  */
+ public void set  Type  (  String type  ) {
+  this  . type = type  ;
+ } /**
+  * Returns the project  _ path  .
+  * @return String
+  */
+ public String get  Project  _ path  () {
+  return project  _ path  ;
+ } /**
+  * Sets the project  _ path  .
+  * @param project  _ path The project  _ path to set
+  */
+ public void set  Project  _ path  (  String project  _ path  ) {
+  this  . project  _ path = project  _ path  ;
+ }"
+84	"White Board Execution Graph //  Driver data members
+ double avg  Shape  Size  _  Original  ;
+ double avg  Shape  Size  _  Speculate  ;
+
+ // constraints data members
+ double avg  Text  Size  ;
+ double write  Time  ;
+ double no  Shapes  ;
+ double no  Text  Items  ;
+ double band  Width public White  Board  Execution  Graph  (  Vector driver  , Vector constraints  ){
+  this  . driver = driver  ;
+  this  . constraints = constraints  ;
+ }// end of constructor public String to  String  (){
+ String result  ;
+
+ result = "" avg  Shape  Size  _  Original = "" + avg  Shape  Size  _  Original +
+    "",\ navg  Shape  Size  _  Speculate = "" + avg  Shape  Size  _  Speculate +
+    "",\ navg  Text  Size = "" + avg  Text  Size  public void inject  Drivers  (){
+  System  . out  . println  (""\ t  \ t  INSIDE INJECT DRIVERs METHOD  "");
+  //  To Do  : Run for loop for more then one drivers
+  //  To Do  : have a case insensitive check for driver name and then populate the data member public void inject  Constraints  (){
+  System  . out  . println  (""\ t  \ t  INSIDE INJECT CONSTRAINTs METHOD  "");
+
+  //  To Do  : have a case insensitive check for constraints name and then populate the data member
+  //  System  . out  . println  ( const public double time  To  Broadcast  Shape  Before  (){
+  System  . out  . println  (""\ t  \ t  \ t  INSIDE time  To  Broadcast  Shape  Before METHOD  "");
+
+  double target  Response time  _ temp = 0  .  00  ;
+
+   for  ( int i  =0  ; i  < no  Shapes  ; i  ++ public double time  To  Broadcast  Shape  After  (){
+  System  . out  . println  (""\ t  \ t  \ t  INSIDE time  To  Broadcast  Shape  After METHOD  "");
+
+  double target  Response time  _ temp = 0  .  00  ;
+
+   for  ( int i  =0  ; i  < no  Shapes  ; i  ++){ public double time  To  Broadcast  Text  (){
+  System  . out  . println  (""\ t  \ t  \ t  INSIDE time  To  Broadcast  Text METHOD  "");
+
+  double target  Response time  _ temp = 0  .  00  ;
+
+   for  ( int i  =0  ; i  < no  Text  Items  ; i  ++){
+
+   target public double write  Time  (){
+  System  . out  . println  (""\ t  \ t  \ t  INSIDE write  Time METHOD  "");
+
+  System  . out  . println  (""\ t  \ t  \ t  \ t  Total time to write = "" + write  Time  );
+
+  System  . out  . println  (""\ t  \ t  \ t  LEAVING w public double target  Response  Time  Before  (){
+  System  . out  . println  (""\ t  \ t  INSIDE target  Response  Time  Before METHOD  \ n  "");
+
+  target  Response time = time  To  Broadcast  Shape  Before  () +
+            time  To  Broadcast  Text  ()  public double target  Response  Time  After  (){
+  System  . out  . println  (""\ t  \ t  INSIDE target  Response  Time  After METHOD  \ n  "");
+
+  target  Response time = time  To  Broadcast  Shape  After  () +
+            time  To  Broadcast  Text  () + w"
+85	"Decompose Model public Decompose  Model  (  EBT em  )
+    {
+  super  ( em  );
+  Minimum  No  Rects = 3  ;
+ }  // Construct Visual model for Merge Event
+    public void Build  Event  ()
+    {
+     Clear  Vectors  ();
+  Add  Event  Rect  (  20  ,  20  ,  1  );
+  Add  Event  Rect  (  60  ,  70  ,  1  );
+  Add  Event  Rect  (  60  ,  120  ,  1  );
+  Add  Event  Rect public String  Buffer Generate  Event  ()
+    {
+  String  Buffer this  Event = new String  Buffer  ();
+  String  Buffer temp = new String  Buffer  ();
+  int Count = -1  ;
+  this  Event  . append  (""  Decompose  |"");
+
+  for ( int i = 0  ; i < Event  Shapes"
+86	"EB Shape private int x  , y  ;
+ private String requirement No  ;
+ private String Project  Name  , Module  Path  ;
+    private Color c  ; public EBShape  ( int xpos  , int ypos  , Color col  )
+ {
+  x = xpos  ;
+  y = ypos  ;
+            c = col  ;
+  requirement No = """";
+  Project  Name = """";
+  Module  Path = """";
+ } public void Update  requirement Info  (  String rno  , String pname  , String mname  )
+ {
+  requirement No = rno  . trim  ();
+  Project  Name = pname  . trim  ();
+  Module  Path = mname  . trim  ();
+ } public boolean match  ( int mx  , int my  )
+ {
+  return true  ;
+
+ } public int Get  X  ()
+ {
+  return x  ;
+ } public int Get  Y  ()
+ {
+  return y  ;
+ } public Color Get  C  ()
+    {
+  return c  ;
+ } public String Get  Reqno  ()
+ {
+  return requirement No  ;
+ } public String Get  Project  ()
+ {
+  return Project  Name  ;
+ } public String Get  Module  ()
+ {
+  return Module  Path  ;
+ }"
+87	"EBT  private JSplit  Pane split  Pane  ;
+    private JSplit  Pane split  Pane  2  ;
+    private Frame Frame  Parent  ;
+    private JPanel Menu  Panel  ;
+    private Text  Model Work  Area  ;
+    private Event  Model Visual  Panel  ;
+    private Merge  Model M public EBT  (  Frame f  )
+    {
+
+        Frame  Parent = f  ;
+    Current  Event = -1  ;
+
+  this  . server  IP =
+   JOption  Pane
+    . show  Input  Dialog  (""  Please Enter the IP Address of eventserver  "")
+  . trim  ();
+
+   // Set up JList Selection wid public void get  requirement Text  (  EBShape sh  )
+    {
+  Work  Area  . show  Text  ( sh  );
+ } public boolean mouse  Down  ( java  . awt  .  Event  e  , int x  , int y  )
+ {
+   return true  ;
+ }  public boolean mouse  Up  ( java  . awt  .  Event  e  , int x  , int y  )
+    {
+  return true  ;
+ } public void mouse  Clicked  ( java  . awt  . event  .  Mouse  Event  e  )
+    {
+  Visual  Panel  .  Clicked  ( e  . get  X  (), e  . get  Y  ());
+    } public void mouse  Exited  ( java  . awt  . event  .  Mouse  Event  e  ){} public void mouse  Pressed  ( java  . awt  . event  .  Mouse  Event  e  ){} public void mouse  Released  ( java  . awt  . event  .  Mouse  Event  e  ){}  public void mouse  Entered  ( java  . awt  . event  .  Mouse  Event  e  ){} public void paint  (  Graphics g  ) {} public void update  (  Graphics g  ) {} public JSplit  Pane get  Split  Pane  ()
+    {
+        return split  Pane  ;
+    } public void value  Changed  (  List  Selection  Event e  )
+    {
+        if ( e  . get  Value  Is  Adjusting  ())
+            return  ;
+    } private class Value  Reporter implements List  Selection  Listener
+    {
+
+  public void value  Changed  (  List  Selection  Event event  )
+  {
+   if (! event  . get  Value  Is  Adjusting  ())
+   {
+    switch  (  Event  List  . get  Selected  Index  ())
+    public void Redraw  All  (  EBShape sh  )
+    {
+  Visual  Panel  . draw  Model  ( sh  );
+  Visual  Panel  .  Check  Notify  Status  ();
+    } public static void main  (  String s  [])
+    {
+        JFrame mainframe = new JFrame  (""  Trigger an Event Notification  "");
+
+        mainframe  . add  Window  Listener  ( new Window  Adapter  ()
+        {
+            public void window  Closing  (  Wind"
+88	"Event Model 
+    protected Vector Event  Shapes = new Vector  ();
+    protected Vector Event  Lines = new Vector  ();
+    protected EB Shape ebs  , ebs  2  ;
+    protected Event  Line mline  ;
+    protected Color Shape  Color = new Color (  190  ,  190  ,  190  );
+   public Event  Model  (  EBT e  )
+    {
+  ebt = e  ;
+  Current  Event = -1  ;
+  Notify  Button = new JButton  (""  Notify  "");
+    set  Layout  ( null  );
+  Notify  Button  . set  Bounds  (  305  ,  265  ,  80  ,  25  );
+  Minimum  No  Rects = 1  ;
+
+  add   public void get  IP Server  ( String server  IP  )
+ {
+
+  this  . server  IP = server  IP  ;
+ } public void Clear  Vectors  ()
+    {
+  Event  Shapes  . remove  All  Elements  ();
+  Event  Lines  . remove  All  Elements  ();
+    }  public void draw  Model  ()
+    {
+  repaint  ();
+    } public void draw  Model  (  EBShape sh  )
+    {
+  Event  Shapes  . set  Element  At  ( sh  , ESCursor  );
+  repaint  ();
+    } private void Clear  Data  ()
+    {
+    for ( int i = 0  ; i < Event  Shapes  . size  (); i  ++)
+    {
+    ebs = (  EBShape  )  Event  Shapes  . element  At  ( i  );
+    ebs  .  Update  requirement Info  ("""","""","""");
+   }
+    }  public void Clicked ( int x  , int y  )
+    {
+    int Hit = 0  ;
+    for ( int i = 0  ; i < Event  Shapes  . size  (); i  ++)
+    {
+   ebs = (  EBShape  )  Event  Shapes  . element  At  ( i  );
+
+            if (( x >  = ebs  .  Get  X  () && ( x <  = ebs public void Check  Notify  Status  ()
+   {
+    //  Check if Minimum Standards have been met  .
+    int j = 0  ;
+    for ( j = 0  ; j < Minimum  No  Rects  ; j  ++)
+    {
+    ebs  2 = (  EBShape  )  Event  Shapes  . element  At  ( j  );
+
+         if (((((  protected void Build  Event  (){} protected void Add  Line  ( int t  , int l  , int r  , int b  )
+    {
+  Event  Lines  . add  Element  ( new Event  Line  ( t  , l  , r  , b  ));
+    } protected void Add  Event  Rect  ( int x  , int y  , int color  Status  )
+    {
+  if ( color  Status == 1  )
+  {
+   Event  Shapes  . add  Element  ( new EBShape  ( x  , y  , new Color (  100  ,  100  ,  100  )));
+       }
+       else
+       {
+        Even public String get  requirement Text  (  String r  , String p  , String m  )
+    {
+  return new String  (""  requirementwill go here  "");
+ } public String  Buffer Generate  Event  ()
+    {
+  return new String  Buffer  ("" "");
+ }// end of Generate  Event method protected void paint  Component  (  Graphics g  )
+    {
+        super  . paint  Component  ( g  );
+    for ( int i = 0  ; i < Event  Shapes  . size  (); i  ++)
+    {
+              ebs = (  EBShape  )  Event  Shapes  . element  At  ( i  );
+     g  . set  C"
+89	"Event Line protected int top  , left  , right  , bottom  ; public Event  Line ( int t  , int l  , int r  , int b  )
+    {
+  top = t  ;
+  left = l  ;
+  right = r  ;
+  bottom = b  ;
+    } public int Get  T  () { return top  ;} public int Get  L  () { return left  ;}  public int Get  R  () { return right  ;} public int Get  B  () { return bottom  ;}"
+90	"Merge Model public Merge  Model  (  EBT em  )
+ {
+  super  ( em  );
+   Minimum  No  Rects = 3  ;
+     } // Construct Visual model for Merge Event
+    public void Build  Event  ()
+    {
+     Clear  Vectors  ();
+  Add  Event  Rect  (  90  ,  220  ,  1  );
+       Add  Event  Rect  (  20  ,  20  ,  1  );
+  Add  Event  Rect  (  20  ,  70  ,  1  );
+  Add  Event   public String  Buffer Generate  Event  ()
+    {
+  String  Buffer this  Event = new String  Buffer  ();
+  String  Buffer temp = new String  Buffer  ();
+  int Merge  Count = -1  ;
+  this  Event  . append  (""  Merge  |"");
+
+  for ( int i = 0  ; i < Event  Sha"
+91	"Modify Model public Modify  Model  (  EBT em  )
+    {
+  super  ( em  );
+ } // Construct Visual model for Merge Event
+    public void Build  Event  ()
+    {
+     Clear  Vectors  ();
+  Add  Event  Rect  (  60  ,  80  ,  1  );
+  Current  Event = 4  ;
+    } public String  Buffer Generate  Event  ()
+    {
+  String  Buffer this  Event = new String  Buffer  ();
+  this  Event  . append  (""  Modify  |  0  |"");
+  this  Event  . append  ( new Date  (). to  String  ()+ ""|"");
+       ebs = (  EBShape  )  Event  Shapes protected void paint  Component  (  Graphics g  )
+    {
+  g  . draw  String  (""  TESTING MODIFY  "",  5  ,  5  );
+        super  . paint  Component  ( g  );
+ }"
+92	"New Model  public New  Model  (  EBT em  )
+    {
+  super  ( em  );
+ } // Construct Visual model for Merge Event
+    public void Build  Event  ()
+    {
+      Clear  Vectors  ();
+      Add  Event  Rect  (  60  ,  80  ,  1  );
+  Add  Arrow  (  35  ,  97  ,  59  ,  97  );
+  Current  Event = 0  ;
+    } public String  Buffer Generate  Event  ()
+    {
+  String  Buffer this  Event = new String  Buffer  ();
+  this  Event  . append  (""  New  |  0  |"");
+  this  Event  . append  ( new Date  (). to  String  ()+ ""|"");
+  ebs = (  EBShape  )  Event  Shapes  . elem"
+93	"Obsolete Model  public Obsolete  Model  (  EBT em  )
+    {
+  super  ( em  );
+ } // Construct Visual model for Merge Event
+    public void Build  Event  ()
+    {
+     Clear  Vectors  ();
+  Add  Event  Rect  (  60  ,  80  ,  1  );
+  Add  Line  (  60  ,  60  ,  225  ,  135  );
+  Add  Line  (  60  ,  135  ,  225  ,  60  );
+  Current  Eve public String  Buffer Generate  Event  ()
+   {
+  String  Buffer this  Event = new String  Buffer  ();
+  this  Event  . append  (""  Obsolete  |  0  |"");
+  this  Event  . append  ( new Date  (). to  String  ()+""|"");
+  ebs = (  EBShape  )  Event  Shapes  . e"
+94	"Refine Model  public Refine  Model  (  EBT em  )
+    {
+  super  ( em  );
+ } // Construct Visual model for Merge Event
+    public void Build  Event  ()
+    {
+     Clear  Vectors  ();
+  Add  Event  Rect  (  60  ,  80  ,  1  );
+  Current  Event = 3  ;
+    } public String  Buffer Generate  Event  ()
+    {
+  String  Buffer this  Event = new String  Buffer  ();
+  this  Event  . append  (""  Refine  |  0  |"");
+  this  Event  . append  ( new Date  (). to  String  ()+""|"");
+  ebs = (  EBShape  )  Event  Shapes  . el"
+95	"Text Model private int Current  Event  ;
+    private EBT ebt  ;
+    private JLabel lbl  requirement No  , lbl  Project  , lbl  Module  Path  ;
+    private JText  Field txt  requirement No  , txt  Project  , txt  Module  Path  ;
+    private boolean Hide  Msg  ;
+    p public Text  Model  (  EBT e  )
+    {
+ // System  . out  . println  (""  Trying to create text box  "");
+  ebt = e  ;
+  Current  Event = -1  ;
+  // set  Foreground  ( new Color ( 255  ,  255  ,  255  ) );
+   lbl  requirement No = new JLabel  (""  requirement public void show  Text  (  EBShape sh  )
+    {
+       // Hide message in bottom box  .
+       Hide  Msg = true  ;
+       repaint  ();
+  lbl  Project  . set  Visible  ( true  );
+  lbl  requirement No  . set  Visible  ( true  );
+  lbl  Module  Path  . set   public void Hide  Text  ()
+    {
+  lbl  Project  . set  Visible  ( false  );
+  lbl  requirement No  . set  Visible  ( false  );
+  lbl  Module  Path  . set  Visible  ( false  );
+  txt  Project  . set  Visible  ( false  );
+  txt  requirement No  . set  Visi public void Show  Info  ( int CE  )
+    {
+  Current  Event = CE  ;
+  Hide  Msg = false  ;
+  Hide  Text  ();
+       repaint  ();
+    } public void draw  Model  ()
+    {
+  repaint  ();
+    } protected void paint  Component  (  Graphics g  )
+    {
+     super  . paint  Component  ( g  );
+
+  if (  Hide  Msg == true  )
+  {
+   g  . draw  String  ("" "",  20  ,  25  );
+   g  . draw  String  ("" "",  20  ,  40  );
+   g  . draw  String  ("" "",  20  ,  55 "
+46	
+46	
+46	
+46	
+46	
+46	
+46	
+47	
+47	
+47	
+47	
+47	
+47	
+47	
+47	
+47	
+47	
+47	
+47	
+48	
+48	
+48	
+48	
+48	
+48	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+49	
+50	
+50	
+50	
+50	
+50	
+50	
+50	
+50	
+50	
+50	
+50	
+50	
+50	
+50	
+50	
+50	
+50	
+50	
+50	
+50	
+51	
+51	
+51	
+52	
+52	
+52	
+52	
+52	
+52	
+52	
+53	
+53	
+53	
+53	
+53	
+53	
+53	
+53	
+53	
+53	
+53	
+53	
+53	
+53	
+53	
+53	
+53	
+54	
+54	
+55	
+55	
+55	
+55	
+55	
+55	
+55	
+55	
+56	
+56	
+56	
+56	
+56	
+56	
+56	
+56	
+57	
+57	
+57	
+57	
+57	
+57	
+57	
+58	
+58	
+58	
+58	
+58	
+58	
+58	
+59	
+59	
+59	
+59	
+59	
+59	
+60	
+60	
+60	
+60	
+60	
+60	
+61	
+61	
+61	
+62	
+62	
+62	
+62	
+62	
+62	
+62	
+63	
+63	
+63	
+64	
+64	
+65	
+65	
+66	
+66	
+66	
+66	
+66	
+67	
+67	
+67	
+67	
+67	
+67	
+67	
+68	
+68	
+68	
+68	
+68	
+68	
+68	
+68	
+68	
+68	
+68	
+68	
+68	
+69	
+69	
+69	
+69	
+69	
+69	
+70	
+70	
+70	
+70	
+70	
+70	
+70	
+70	
+70	
+70	
+70	
+70	
+71	
+71	
+71	
+71	
+71	
+72	
+72	
+72	
+72	
+72	
+72	
+73	
+73	
+73	
+73	
+73	
+73	
+73	
+73	
+73	
+73	
+73	
+74	
+74	
+74	
+74	
+74	
+74	
+74	
+74	
+74	
+74	
+74	
+74	
+74	
+75	
+75	
+75	
+75	
+75	
+75	
+75	
+75	
+75	
+75	
+75	
+76	
+76	
+76	
+76	
+76	
+76	
+76	
+76	
+76	
+76	
+76	
+76	
+76	
+76	
+76	
+76	
+77	
+77	
+77	
+78	
+78	
+78	
+78	
+78	
+78	
+79	
+79	
+79	
+79	
+79	
+79	
+79	
+79	
+79	
+80	
+80	
+80	
+80	
+80	
+81	
+81	
+81	
+81	
+81	
+81	
+82	
+82	
+82	
+82	
+82	
+82	
+82	
+82	
+82	
+82	
+82	
+82	
+82	
+83	
+83	
+83	
+83	
+83	
+83	
+83	
+83	
+83	
+83	
+83	
+83	
+83	
+83	
+83	
+83	
+83	
+83	
+83	
+84	
+84	
+84	
+84	
+84	
+84	
+84	
+84	
+84	
+84	
+84	
+85	
+85	
+85	
+86	
+86	
+86	
+86	
+86	
+86	
+86	
+86	
+86	
+86	
+87	
+87	
+87	
+87	
+87	
+87	
+87	
+87	
+87	
+87	
+87	
+87	
+87	
+87	
+87	
+87	
+87	
+88	
+88	
+88	
+88	
+88	
+88	
+88	
+88	
+88	
+88	
+88	
+88	
+88	
+88	
+88	
+89	
+89	
+89	
+89	
+89	
+89	
+90	
+90	
+90	
+91	
+91	
+91	
+91	
+92	
+92	
+92	
+93	
+93	
+93	
+94	
+94	
+94	
+95	
+95	
+95	
+95	
+95	
+95	
+95	
+Document_No	

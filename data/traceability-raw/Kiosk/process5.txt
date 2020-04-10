@@ -1,0 +1,225 @@
+PS1.1.1.1  Process Traffic Sensor Data
+PS1.1.1.1  Process Traffic Sensor Data
+PS1.1.1.2  Collect and Process Sensor Fault Data
+PS1.1.1.3  Process Environmental Sensor Data
+PS1.1.2.1  Process Traffic Data for Storage
+PS1.1.2.2  Process Traffic Data
+PS1.1.2.3  Update Data Source Static Data
+PS1.1.2.4  Monitor HOV lane use
+PS1.1.2.5  Process Tag/AVL Data for Link Time Data
+PS1.1.2.6  Process Collected Vehicle Smart Probe Data
+PS1.1.2.7  Monitor Reversible Lanes
+PS1.1.3  Generate Predictive Traffic Model
+PS1.1.4.1  Retrieve Traffic Data
+PS1.1.4.2  Provide Traffic Operations Personnel Traffic Data Interface
+PS1.1.4.3  Provide Direct Media Traffic Data Interface
+PS1.1.4.4  Update Traffic Display Map Data
+PS1.1.4.6  Provide Traffic Data Retrieval Interface
+PS1.1.5  Exchange data with Other Traffic Centers
+PS1.1.6  Collect Vehicle Tag Data for Link Time Calculations
+PS1.1.7  Collect Vehicle Smart Probe Data
+PS1.2.1  Select Strategy
+PS1.2.2.1  Determine Indicator State for Freeway Management
+PS1.2.2.2  Determine Indicator State for Road Management
+PS1.2.3  Determine Ramp State
+PS1.2.4.1  Output Control Data for Roads
+PS1.2.4.2  Output Control Data for Freeways
+PS1.2.4.3  Output In-vehicle Signage Data
+PS1.2.5.1  Determine Parking Lot State
+PS1.2.5.2  Coordinate Other Parking Data
+PS1.2.5.3  Provide Parking Lot Operator Interface
+PS1.2.5.4  Determine P+R needs for Transit Management
+PS1.2.5.6  Calculate Parking Lot Occupancy
+PS1.2.6.1  Maintain Traffic and Sensor Static Data
+PS1.2.6.2  Provide Static Data Store Output Interface
+PS1.2.7.1  Process Indicator Output Data for Roads
+PS1.2.7.2  Monitor Roadside Equipment Operation for Faults
+PS1.2.7.3  Manage Indicator Preemptions
+PS1.2.7.4  Process In-vehicle Signage Data
+PS1.2.7.5  Process Indicator Output Data for Freeways
+PS1.2.7.6  Provide Intersection Collision Avoidance Data
+PS1.2.7.7  Process Vehicle Smart Probe Data for Output
+PS1.2.8.1  Collect Indicator Fault Data
+PS1.2.8.2  Maintain Indicator Fault Data Store
+PS1.2.8.3  Provide Indicator Fault Interface for C and M
+PS1.2.8.4  Provide Traffic Operations Personnel Indicator Fault Interface
+PS1.3.1.1  Analyze Traffic Data for Incidents
+PS1.3.1.3  Process Traffic Images
+PS1.3.2.1  Store Possible Incident Data
+PS1.3.2.2  Review and Classify Possible Incidents
+PS1.3.2.3  Review and Classify Planned Events
+PS1.3.2.4  Provide Planned Events Store Interface
+PS1.3.2.5  Provide Current Incidents Store Interface
+PS1.3.3  Respond to Current Incidents
+PS1.3.4.1  Retrieve Incident Data
+PS1.3.4.2  Provide Traffic Operations Personnel Incident Data Interface
+PS1.3.4.3  Provide Media Incident Data Interface
+PS1.3.4.4  Update Incident Display Map Data
+PS1.3.4.5  Manage Resources for Incidents
+PS1.3.5  Manage Possible Predetermined Responses Store
+PS1.3.6  Manage Predetermined Incident Response Data
+PS1.3.7  Analyze Incident Response Log
+PS1.4.1  Provide Traffic Operations Personnel Demand Interface
+PS1.4.2  Collect Demand Forecast Data
+PS1.4.3  Update Demand Display Map Data
+PS1.4.4  Implement Demand Management Policy
+PS1.4.5  Calculate Forecast Demand
+PS1.5.1  Provide Traffic Operations Personnel Pollution Data Interface
+PS1.5.2  Process Pollution Data
+PS1.5.3  Update Pollution Display Map Data
+PS1.5.4  Manage Pollution State Data Store
+PS1.5.5  Process Vehicle Pollution Data
+PS1.5.6  Detect Roadside Pollution Levels
+PS1.5.8  Manage Pollution Reference Data Store
+PS1.6.1.1  Detect Roadway Events
+PS1.6.1.2.1  Control HRI Traffic Signals
+PS1.6.1.2.2  Control HRI Warnings and Barriers
+PS1.6.1.2.3  Provide SSR Device Controls
+PS1.6.1.2.4  Provide HSR Device Controls
+PS1.6.1.2.5  Manage Device Control
+PS1.6.1.2.6  Maintain Device State
+PS1.6.1.3  Perform Equipment Self-Test
+PS1.6.1.4.1  Generate Alerts and Advisories
+PS1.6.1.4.2  Provide Closure Parameters
+PS1.6.1.4.3  Report Alerts and Advisories
+PS1.6.1.4.4  Report HRI Status on Approach
+PS1.6.1.5  Detect HRI Hazards
+PS1.6.1.6.1  Close HRI on Detection
+PS1.6.1.6.2  Detect Imminent Vehicle/Train Collision
+PS1.6.1.7.1  Control Vehicle Traffic at Passive HRI
+PS1.6.1.7.2  Control Vehicle Traffic at Active HRI
+PS1.6.1.7.3  Close HRI on Command
+PS1.6.2.1  Exchange Data with Rail Operations
+PS1.6.2.2  Manage Alerts and Advisories
+PS1.6.2.3  Manage Rail Traffic Control Data
+PS1.6.3.1  Interact with Wayside Systems
+PS1.6.3.2  Advise and Protect Train Crews
+PS1.6.3.3  Provide ATS Alerts
+PS1.6.4.1  Manage HRI Closures
+PS1.6.4.2  Exchange Data with Traffic Management
+PS1.6.5.1  Provide Interactive Interface
+PS1.6.5.2  Determine HRI Status
+PS1.6.5.3  Maintain HRI Closure Data
+PS3.1.3  Process Vehicle On-board Data
+PS4.1.1  Process Transit Vehicle Sensor Trip Data
+PS4.1.2.1  Determine Transit Vehicle Deviation and ETA
+PS4.1.2.2  Determine Transit Vehicle Corrective Instructions
+PS4.1.2.3  Provide Transit Vehicle Driver Interface
+PS4.1.2.4  Provide Transit Vehicle Correction Data Output Interface
+PS4.1.2.5  Request Transit Vehicle Preemptions
+PS4.1.3  Provide Transit Vehicle Location Data
+PS4.1.4  Manage Transit Vehicle Deviations
+PS4.1.5  Provide Transit Vehicle Status Information
+PS4.1.6  Manage Transit Vehicle Operations Data
+PS4.1.7  Provide Transit Vehicle Deviation Data Output Interface
+PS4.1.8  Provide Transit Operations Data Distribution Interface
+PS4.1.9  Process Transit Vehicle Sensor Maintenance Data
+PS4.2.1.1  Process Demand Responsive Transit Trip Request
+PS4.2.1.2  Compute Demand Responsive Transit Vehicle Availability
+PS4.2.1.3  Generate Demand Responsive Transit Schedule and Routes
+PS4.2.1.4  Confirm Demand Responsive Transit Schedule and Route
+PS4.2.1.5  Process Demand Responsive Transit Vehicle Availability Data
+PS4.2.1.6  Provide Demand Responsive Transit Driver Interface
+PS4.2.2  Provide Transit Plans Store Interface
+PS4.2.3.1  Generate Transit Routes
+PS4.2.3.2  Generate Schedules
+PS4.2.3.4  Provide Transit Fleet Manager Interface for Services Generation
+PS4.2.3.5  Manage Transit Operational Data Store
+PS4.2.3.6  Produce Transit Service Data for Manage Transit Use
+PS4.2.3.7  Provide Interface for Other TRM Data
+PS4.2.3.9  Update Transit Map Data
+PS4.3.1  Monitor Transit Vehicle Condition
+PS4.3.2  Generate Transit Vehicle Maintenance Schedules
+PS4.3.3  Generate Technician Work Assignments
+PS4.3.4  Monitor And Verify Maintenance Activity
+PS4.3.5  Report Transit Vehicle Information
+PS4.3.6  Update Transit Vehicle Information
+PS4.3.7  Manage Transit Vehicle Operations Data Store
+PS4.4.1.1  Manage Transit Security
+PS4.4.1.2  Manage Transit Emergencies
+PS4.4.1.3  Provide Transit System Operator Security Interface
+PS4.4.1.4  Provide Transit External Interface for Emergencies
+PS4.4.1.5  Provide Transit Driver Interface for Emergencies
+PS4.4.1.6  Collect Transit Vehicle Emergency Information
+PS4.4.1.7  Monitor Secure Area
+PS4.4.1.8  Report Traveler Emergencies
+PS4.4.2  Coordinate Multiple Agency Responses to Incidents
+PS4.4.3  Generate Responses for Incidents
+PS4.5.1  Assess Transit Driver Performance
+PS4.5.2  Assess Transit Driver Availability
+PS4.5.3  Access Transit Driver Cost Effectiveness
+PS4.5.4  Assess Transit Driver Eligibility
+PS4.5.5  Generate Transit Driver Route Assignments
+PS4.5.6  Update Transit Driver Information
+PS4.5.7  Report Transit Driver Information
+PS4.5.8  Provide Transit Driver Information Store Interface
+PS4.7.1.1  Provide Transit User Roadside Data Interface
+PS4.7.1.2  Provide Transit User Roadside Vehicle Data Interface
+PS5.1.5  Manage Emergency Service Allocation Store
+PS5.3.2  Dispatch Vehicle
+PS5.3.7  Provide Emergency Vehicle Route
+PS5.4.1  Process TM Detected Violations
+PS6.1.1  Provide Trip Planning Information to Traveler
+PS6.1.2  Confirm Traveler's Trip Plan
+PS6.1.3  Manage Multimodal Service Provider Interface
+PS6.1.4  Provide ISP Operator Interface for Trip Planning Parameters
+PS6.2.1.1  Collect Traffic Data for Advisory Messages
+PS6.2.1.2  Provide Traffic and Transit Advisory Messages
+PS6.2.1.3  Collect Transit Data for Advisory Messages
+PS6.2.1.4  Provide Traffic and Transit Broadcast Messages
+PS6.2.1.6  Provide Transit Advisory Data On Vehicle
+PS6.2.2  Prepare and Output In-vehicle Displays
+PS6.2.3  Provide Transit User Advisory Interface
+PS6.2.4  Collect Yellow Pages Data
+PS6.2.5  Provide Driver Interface
+PS6.2.6  Provide Yellow Pages Data and Reservations
+PS6.3.1  Get Traveler Request
+PS6.3.2  Inform Traveler
+PS6.3.3  Provide Traveler Kiosk Interface
+PS6.3.4  Update Traveler Display Map Data at Kiosk
+PS6.4.1  Screen Rider Requests
+PS6.4.2  Match Rider and Provider
+PS6.4.3  Report Ride Match Results to Requestor
+PS6.4.4  Confirm Traveler Rideshare Request
+PS6.5.1  Collect and Update Traveler Information
+PS6.5.2  Provide Traveler Yellow Pages Information and Reservations
+PS6.5.3  Register Yellow Pages Service Providers
+PS6.6.1  Provide Multimodal Route Selection
+PS6.6.2.1  Calculate Vehicle Route
+PS6.6.2.2  Provide Vehicle Route Calculation Data
+PS6.6.2.3  Provide Route Segment Data for Other Areas
+PS6.6.2.4  Update Vehicle Route Selection Map Data
+PS6.6.2.5  Provide ISP Operator Route Parameters Interface
+PS6.6.2.6  Calculate Vehicle Probe Data for Guidance
+PS6.6.3  Update Other Routes Selection Map Data
+PS6.6.4  Select Transit Route
+PS6.6.5  Select Other Routes
+PS6.7.2.1.1  Determine In-vehicle Guidance Method
+PS6.7.2.1.2  Provide Dynamic In-vehicle Guidance
+PS6.7.2.1.3  Provide Autonomous In-vehicle Guidance
+PS6.7.2.2  Process Vehicle Location Data
+PS6.7.2.3  Provide Driver Guidance Interface
+PS6.7.2.4  Update Vehicle Navigable Map Database
+PS6.8.1.1.1  Determine Personal Portable Device Guidance Method
+PS6.8.1.1.2  Provide Personal Portable Device Dynamic Guidance
+PS6.8.1.1.3  Provide Personal Portable Device Autonomous Guidance
+PS6.8.1.2  Provide Personal Portable Device Guidance Interface
+PS6.8.1.5  Provide Traveler Emergency Message Interface
+PS6.8.3.1  Get Traveler Personal Request
+PS6.8.3.2  Provide Traveler with Personal Travel Information
+PS6.8.3.3  Provide Traveler Personal Interface
+PS6.8.3.4  Update Traveler Personal Display Map Data
+PS7.1.1.1  Read Tag Data for Tolls
+PS7.1.1.2  Calculate Vehicle Toll
+PS7.1.1.3  Manage Bad Toll Payment Data
+PS7.1.1.9  Manage Toll Financial Processing
+PS7.2.1.2  Calculate Vehicle Parking Lot Charges
+PS7.2.1.6  Manage Parking Lot Financial Processing
+PS7.3.1.3  Manage Transit Fare Financial Processing
+PS7.4.1.1  Process Commercial Vehicle Payments
+PS7.4.1.2  Process Yellow Pages Services Provider Payments
+PS7.4.1.3  Process Driver Map Update Payments
+PS7.4.1.4  Process Traveler Map Update Payments
+PS7.4.1.5  Process Transit User Other Services Payments
+PS7.4.2  Collect Price Data for ITS Use
+																																																																														

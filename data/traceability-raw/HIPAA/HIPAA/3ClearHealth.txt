@@ -1,0 +1,11 @@
+AC,ch36f
+AL,ch37f
+AUD,ch35f
+AUD,ch39f
+AUD,ch41f
+AUD,ch44f
+IC,ch36f
+IC,ch40f
+SED,ch38f
+TED,ch43f
+UUI,ch35f

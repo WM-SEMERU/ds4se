@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<artifacts_collection>
+<collection_info>
+	<id>Requirements</id>
+	<name>Requirements</name>
+	<version>1.1</version>
+	<description>Requirements</description>
+	<content_location>external</content_location>
+</collection_info>
+<artifacts>
+	<artifact><id>F-GES-01</id><content>Requirements/F-GES-01.txt</content><parent_id/></artifact>
+	<artifact><id>F-GES-02</id><content>Requirements/F-GES-02.txt</content><parent_id/></artifact>
+	<artifact><id>F-GES-03</id><content>Requirements/F-GES-03.txt</content><parent_id/></artifact>
+	<artifact><id>F-GES-04</id><content>Requirements/F-GES-04.txt</content><parent_id/></artifact>
+	<artifact><id>F-PRE-01</id><content>Requirements/F-PRE-01.txt</content><parent_id/></artifact>
+	<artifact><id>F-PRE-02</id><content>Requirements/F-PRE-02.txt</content><parent_id/></artifact>
+	<artifact><id>F-PRE-03</id><content>Requirements/F-PRE-03.txt</content><parent_id/></artifact>
+	<artifact><id>F-PRE-04</id><content>Requirements/F-PRE-04.txt</content><parent_id/></artifact>
+	<artifact><id>F-PRE-05</id><content>Requirements/F-PRE-05.txt</content><parent_id/></artifact>
+	<artifact><id>F-PRE-06</id><content>Requirements/F-PRE-06.txt</content><parent_id/></artifact>
+	<artifact><id>F-RIS-01</id><content>Requirements/F-RIS-01.txt</content><parent_id/></artifact>
+	<artifact><id>F-SOG-01</id><content>Requirements/F-SOG-01.txt</content><parent_id/></artifact>
+	<artifact><id>F-SOG-02</id><content>Requirements/F-SOG-02.txt</content><parent_id/></artifact>
+	<artifact><id>F-SOG-03</id><content>Requirements/F-SOG-03.txt</content><parent_id/></artifact>
+	<artifact><id>F-SOG-04</id><content>Requirements/F-SOG-04.txt</content><parent_id/></artifact>
+	<artifact><id>F-SOG-05</id><content>Requirements/F-SOG-05.txt</content><parent_id/></artifact>
+	<artifact><id>F-SOG-06</id><content>Requirements/F-SOG-06.txt</content><parent_id/></artifact>
+</artifacts>
+</artifacts_collection>

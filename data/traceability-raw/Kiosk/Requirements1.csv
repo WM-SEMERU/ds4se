@@ -1,0 +1,178 @@
+R1.3.7,Analyze Incident Response Log
+R1.3.1.1,Analyze Traffic Data for Incidents
+R7.2.1.5,Bill Driver for Parking Lot Charges
+R7.3.1.5,Bill Transit User for Transit Fare
+R3.3.3,Build Automatic Collision Notification Message
+R1.4.5,Calculate Forecast Demand
+R1.2.5.6,Calculate Parking Lot Occupancy
+R7.2.1.2,Calculate Vehicle Parking Lot Charges
+R7.2.1.4,Check for Advanced Parking Lot Payment
+R7.3.1.4,Check for Advanced Transit Fare Payment
+R3.2.5,Check Vehicle for AHS eligibility
+R1.1.1.2,Collect and Process Sensor Fault Data
+R7.2.1.3,Collect Bad Charge Payment Data
+R7.3.1.6,Collect Bad Transit Fare Payment Data
+R1.4.2,Collect Demand Forecast Data
+R1.2.8.1,Collect Indicator Fault Data
+R1.1.7,Collect Vehicle Smart Probe Data
+R1.1.6,Collect Vehicle Tag Data for Link Time Calculations
+R3.2.3.6,Communicate with other Platoon Vehicles
+R4.2.1.2,Compute Demand Responsive Transit Vehicle Availability
+R4.2.1.4,Confirm Demand Responsive Transit Schedule and Route
+R1.2.5.2,Coordinate Other Parking Data
+R1.5.6,Detect Roadside Pollution Levels
+R7.2.5,Detect Vehicle for Parking Lot Payment
+R7.1.5,Detect Vehicle for Tolls
+R7.2.1.10,Determine Advanced Charges
+R7.3.1.2,Determine Advanced Transit Fares
+R1.2.2.1,Determine Indicator State for Freeway Management
+R1.2.2.2,Determine Indicator State for Road Management
+R1.2.5.4,Determine P+R needs for Transit Management
+R1.2.5.1,Determine Parking Lot State
+R1.2.3,Determine Ramp State
+R4.1.2.2,Determine Transit Vehicle Corrective Instructions
+R4.1.2.1,Determine Transit Vehicle Deviation and ETA
+R7.1.6,Distribute Advanced Charges and Fares
+R7.2.6,Distribute Advanced Tolls and Fares
+R7.3.2,Distribute Advanced Tolls and Parking Lot Charges
+R1.1.5,Exchange data with Other Traffic Centers
+R4.2.1.3,Generate Demand Responsive Transit Schedule and Routes
+R1.1.3,Generate Predictive Traffic Model
+R4.2.3.2,Generate Schedules
+R4.3.3,Generate Technician Work Assignments
+R4.2.3.1,Generate Transit Routes
+R4.3.2,Generate Transit Vehicle Maintenance Schedules
+R7.3.3,Get Transit User Image for Violation
+R1.4.4,Implement Demand Management Policy
+R1.2.8.2,Maintain Indicator Fault Data Store
+R1.3.1.2,Maintain Static Data for Incident Management
+R1.2.6.1,Maintain Traffic and Sensor Static Data
+R3.2.6,Manage AHS Check-in and Check-out
+R3.2.7,Manage AHS Operations
+R1.1.1.4,Manage Data Collection and Monitoring
+R1.2.7.3,Manage Indicator Preemptions
+R1.2.5.5,Manage Parking Archive Data
+R1.5.8,Manage Parking Lot Financial Processing
+R1.5.8,Manage Parking Lot Financial Processing
+R7.2.1.6,Manage Parking Lot Financial Processing
+R7.2.1.9,Manage Parking Lot Reservations
+R1.5.4,Manage Pollution State Data Store
+R1.3.5,Manage Possible Predetermined Responses Store
+R1.3.6,Manage Predetermined Incident Response Data
+R1.3.4.5,Manage Resources for Incidents
+R1.1.4.7,Manage Traffic Archive Data
+R4.2.4,Manage Transit Archive Data
+R7.3.1.3,Manage Transit Fare Financial Processing
+R4.2.3.5,Manage Transit Operational Data Store
+R4.4.1.1,Manage Transit Security
+R4.1.4,Manage Transit Vehicle Deviations
+R4.1.6,Manage Transit Vehicle Operations Data
+R4.3.7,Manage Transit Vehicle Operations Data Store
+R4.3.4,Monitor And Verify Maintenance Activity
+R1.1.2.4,Monitor HOV lane use
+R1.1.2.7,Monitor Reversible Lanes
+R1.2.7.2,Monitor Roadside Equipment Operation for Faults
+R4.3.1,Monitor Transit Vehicle Condition
+R7.2.3,Obtain Parking Lot Violator Image
+R7.1.3,Obtain Toll Violator Image
+R1.2.4.2,Output Control Data for Freeways
+R1.2.4.1,Output Control Data for Roads
+R1.2.4.3,Output In-vehicle Signage Data
+R1.1.2.6,Process Collected Vehicle Smart Probe Data
+R7.4.1.1,Process Commercial Vehicle Payments
+R3.2.3.3,Process data for Vehicle Actuators
+R4.2.1.1,Process Demand Responsive Transit Trip Request
+R4.2.1.5,Process Demand Responsive Transit Vehicle Availability Data
+R1.1.1.3,Process Environmental Sensor Data
+R1.2.7.5,Process Indicator Output Data for Freeways
+R1.2.7.1,Process Indicator Output Data for Roads
+R1.2.7.4,Process In-vehicle Signage Data
+R1.5.2,Process Pollution Data
+R3.2.4,Process Sensor Data for AHS input
+R1.1.2.5,Process Tag/AVL Data for Link Time Data
+R1.1.2.2,Process Traffic Data
+R1.1.2.1,Process Traffic Data for Storage
+R1.3.1.3,Process Traffic Images
+R1.1.1.1,Process Traffic Sensor Data
+R1.1.1.1,Process Traffic Sensor Data
+R4.1.9,Process Transit Vehicle Sensor Maintenance Data
+R4.1.1,Process Transit Vehicle Sensor Trip Data
+R1.5.5,Process Vehicle Pollution Data
+R3.2.3.5,Process Vehicle Sensor Data
+R1.2.7.7,Process Vehicle Smart Probe Data for Output
+R7.4.1.2,Process Yellow Pages Services Provider Payments
+R7.2.2,Produce Parking Lot Displays
+R4.2.3.3,Produce Transit Service Data for External Use
+R4.2.3.6,Produce Transit Service Data for Manage Transit Use
+R3.3.1,Provide Cargo Data for Incident Notification
+R3.2.3.4.4,Provide Change Lane Servo Control
+R3.3.2,Provide Communications Function
+R1.3.2.5,Provide Current Incidents Store Interface
+R4.2.1.6,Provide Demand Responsive Transit Driver Interface
+R1.1.4.3,Provide Direct Media Traffic Data Interface
+R7.2.4,Provide Driver Parking Lot Payment Interface
+R7.1.4,Provide Driver Toll Payment Interface
+R3.2.3.4.2,Provide Headway Servo Control
+R1.2.8.3,Provide Indicator Fault Interface for C and M
+R4.2.3.7,Provide Interface for Other TRM Data
+R4.2.3.8,Provide Interface for Transit Service Raw Data
+R1.2.7.6,Provide Intersection Collision Avoidance Data
+R3.2.3.4.3,Provide Lane Servo Control
+R1.3.4.3,Provide Media Incident Data Interface
+R1.1.4.5,Provide Media System Traffic Data Interface
+R1.2.5.3,Provide Parking Lot Operator Interface
+R7.2.7,Provide Payment Instrument Interface for Parking
+R7.1.7,Provide Payment Instrument Interface for Tolls
+R1.3.2.4,Provide Planned Events Store Interface
+R7.3.4,Provide Remote Terminal Payment Instrument Interface
+R3.2.3.4.1,Provide Speed Servo Control
+R1.2.6.2,Provide Static Data Store Output Interface
+R1.1.4.6,Provide Traffic Data Retrieval Interface
+R1.4.1,Provide Traffic Operations Personnel Demand Interface
+R1.3.4.2,Provide Traffic Operations Personnel Incident Data Interface
+R1.2.8.4,Provide Traffic Operations Personnel Indicator Fault Interface
+R1.5.1,Provide Traffic Operations Personnel Pollution Data Interface
+R1.1.4.2,Provide Traffic Operations Personnel Traffic Data Interface
+R4.2.3.4,Provide Transit Fleet Manager Interface for Services Generation
+R4.1.8,Provide Transit Operations Data Distribution Interface
+R4.2.2,Provide Transit Plans Store Interface
+R4.1.2.4,Provide Transit Vehicle Correction Data Output Interface
+R4.1.7,Provide Transit Vehicle Deviation Data Output Interface
+R4.1.2.3,Provide Transit Vehicle Driver Interface
+R4.1.3,Provide Transit Vehicle Location Data
+R7.3.5,Provide Transit Vehicle Payment Instrument Interface
+R4.1.5,Provide Transit Vehicle Status Information
+R3.2.3.4.5,Provide Vehicle Control Data Interface
+R7.2.1.1,Read Parking Lot Tag Data
+R1.5.9,Register for Advanced Parking Lot Payment
+R1.5.9,Register for Advanced Parking Lot Payment
+R1.5.9,Register for Advanced Parking Lot Payment
+R1.5.9,Register for Advanced Parking Lot Payment
+R1.5.9,Register for Advanced Parking Lot Payment
+R1.5.9,Register for Advanced Parking Lot Payment
+R1.5.9,Register for Advanced Parking Lot Payment
+R7.2.1.8,Register for Advanced Parking Lot Payment
+R7.3.1.1,Register for Advanced Transit Fare Payment
+R4.3.5,Report Transit Vehicle Information
+R4.1.2.5,Request Transit Vehicle Preemptions
+R1.3.3,Respond to Current Incidents
+R1.3.4.1,Retrieve Incident Data
+R1.1.4.1,Retrieve Traffic Data
+R1.3.2.3,Review and Classify Planned Events
+R1.3.2.2,Review and Classify Possible Incidents
+R1.2.1,Select Strategy
+R1.3.2.1,Store Possible Incident Data
+R1.1.2.3,Update Data Source Static Data
+R1.4.3,Update Demand Display Map Data
+R1.3.4.4,Update Incident Display Map Data
+R1.5.8,Update Parking Lot Data
+R1.5.8,Update Parking Lot Data
+R1.5.8,Update Parking Lot Data
+R1.5.8,Update Parking Lot Data
+R1.5.8,Update Parking Lot Data
+R7.2.1.7,Update Parking Lot Data
+R1.5.3,Update Pollution Display Map Data
+R1.1.4.4,Update Traffic Display Map Data
+R7.3.1.7,Update Transit Fare Data
+R4.2.3.9,Update Transit Map Data
+R4.3.6,Update Transit Vehicle Information

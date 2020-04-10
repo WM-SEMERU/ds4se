@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<artifacts_collection>
+<collection_info>
+	<id>CC</id>
+	<name>CC</name>
+	<version>1.1</version>
+	<description>Class code</description>
+	<content_location>external</content_location>
+</collection_info>
+<artifacts>
+	<artifact><id>AggiungiBeneServizio</id><content>to_be_traced_source_code/AggiungiBeneServizio.java</content><parent_id/></artifact>
+	<artifact><id>AggiungiSoggiornante</id><content>to_be_traced_source_code/AggiungiSoggiornante.java</content><parent_id/></artifact>
+	<artifact><id>AskChiudiConto</id><content>to_be_traced_source_code/AskChiudiConto.java</content><parent_id/></artifact>
+	<artifact><id>AskChiudiSingoloConAgenzia</id><content>to_be_traced_source_code/AskChiudiSingoloConAgenzia.java</content><parent_id/></artifact>
+	<artifact><id>CancellaBeniServizi</id><content>to_be_traced_source_code/CancellaBeniServizi.java</content><parent_id/></artifact>
+	<artifact><id>CancellaCommissioni</id><content>to_be_traced_source_code/CancellaCommissioni.java</content><parent_id/></artifact>
+	<artifact><id>CancellaPrenotazione</id><content>to_be_traced_source_code/CancellaPrenotazione.java</content><parent_id/></artifact>
+	<artifact><id>CancellaStanze</id><content>to_be_traced_source_code/CancellaStanze.java</content><parent_id/></artifact>
+	<artifact><id>ConfigurazioneSistema</id><content>to_be_traced_source_code/ConfigurazioneSistema.java</content><parent_id/></artifact>
+	<artifact><id>ControllaPrenotazione</id><content>to_be_traced_source_code/ControllaPrenotazione.java</content><parent_id/></artifact>
+	<artifact><id>DefinizioneStagionalita</id><content>to_be_traced_source_code/DefinizioneStagionalita.java</content><parent_id/></artifact>
+	<artifact><id>DescrittoreStanze</id><content>to_be_traced_source_code/DescrittoreStanze.java</content><parent_id/></artifact>
+	<artifact><id>InserisciBeniServizi</id><content>to_be_traced_source_code/InserisciBeniServizi.java</content><parent_id/></artifact>
+	<artifact><id>InserisciCommissioni</id><content>to_be_traced_source_code/InserisciCommissioni.java</content><parent_id/></artifact>
+	<artifact><id>InserisciPrenotazione</id><content>to_be_traced_source_code/InserisciPrenotazione.java</content><parent_id/></artifact>
+	<artifact><id>InserisciSoggiornante</id><content>to_be_traced_source_code/InserisciSoggiornante.java</content><parent_id/></artifact>
+	<artifact><id>InserisciStanze</id><content>to_be_traced_source_code/InserisciStanze.java</content><parent_id/></artifact>
+	<artifact><id>MascheraAddebiti</id><content>to_be_traced_source_code/MascheraAddebiti.java</content><parent_id/></artifact>
+	<artifact><id>MascheraBeneServizio</id><content>to_be_traced_source_code/MascheraBeneServizio.java</content><parent_id/></artifact>
+	<artifact><id>MascheraCalcoloConto</id><content>to_be_traced_source_code/MascheraCalcoloConto.java</content><parent_id/></artifact>
+	<artifact><id>MascheraCambio</id><content>to_be_traced_source_code/MascheraCambio.java</content><parent_id/></artifact>
+	<artifact><id>MascheraCommissioni</id><content>to_be_traced_source_code/MascheraCommissioni.java</content><parent_id/></artifact>
+	<artifact><id>MascheraContoRistorazione</id><content>to_be_traced_source_code/MascheraContoRistorazione.java</content><parent_id/></artifact>
+	<artifact><id>MascheraDisponibilita</id><content>to_be_traced_source_code/MascheraDisponibilita.java</content><parent_id/></artifact>
+	<artifact><id>MascheraPerAddebitare</id><content>to_be_traced_source_code/MascheraPerAddebitare.java</content><parent_id/></artifact>
+	<artifact><id>MascheraPrenotazione</id><content>to_be_traced_source_code/MascheraPrenotazione.java</content><parent_id/></artifact>
+	<artifact><id>MascheraRicercaSoggiornante</id><content>to_be_traced_source_code/MascheraRicercaSoggiornante.java</content><parent_id/></artifact>
+	<artifact><id>MascheraRicercaStanza</id><content>to_be_traced_source_code/MascheraRicercaStanza.java</content><parent_id/></artifact>
+	<artifact><id>MascheraRicercaStorico</id><content>to_be_traced_source_code/MascheraRicercaStorico.java</content><parent_id/></artifact>
+	<artifact><id>MascheraSoggiorno</id><content>to_be_traced_source_code/MascheraSoggiorno.java</content><parent_id/></artifact>
+	<artifact><id>MascheraTelefonate</id><content>to_be_traced_source_code/MascheraTelefonate.java</content><parent_id/></artifact>
+	<artifact><id>MascheraVisualizzazioneConto</id><content>to_be_traced_source_code/MascheraVisualizzazioneConto.java</content><parent_id/></artifact>
+	<artifact><id>ModificaBeniServizi</id><content>to_be_traced_source_code/ModificaBeniServizi.java</content><parent_id/></artifact>
+	<artifact><id>ModificaCommissioni</id><content>to_be_traced_source_code/ModificaCommissioni.java</content><parent_id/></artifact>
+	<artifact><id>ModificaPrenotazione</id><content>to_be_traced_source_code/ModificaPrenotazione.java</content><parent_id/></artifact>
+	<artifact><id>ModificaStanze</id><content>to_be_traced_source_code/ModificaStanze.java</content><parent_id/></artifact>
+	<artifact><id>PrenotazioniScadute</id><content>to_be_traced_source_code/PrenotazioniScadute.java</content><parent_id/></artifact>
+	<artifact><id>RicercaAddebiti</id><content>to_be_traced_source_code/RicercaAddebiti.java</content><parent_id/></artifact>
+	<artifact><id>RicercaPrenotazione</id><content>to_be_traced_source_code/RicercaPrenotazione.java</content><parent_id/></artifact>
+	<artifact><id>RicercaTelefonate</id><content>to_be_traced_source_code/RicercaTelefonate.java</content><parent_id/></artifact>
+	<artifact><id>SubBeniServizi</id><content>to_be_traced_source_code/SubBeniServizi.java</content><parent_id/></artifact>
+	<artifact><id>SubCommissioni</id><content>to_be_traced_source_code/SubCommissioni.java</content><parent_id/></artifact>
+	<artifact><id>SubGestione</id><content>to_be_traced_source_code/SubGestione.java</content><parent_id/></artifact>
+	<artifact><id>SubPrenotazione</id><content>to_be_traced_source_code/SubPrenotazione.java</content><parent_id/></artifact>
+	<artifact><id>SubRistorazione</id><content>to_be_traced_source_code/SubRistorazione.java</content><parent_id/></artifact>
+	<artifact><id>SubSoggiorno</id><content>to_be_traced_source_code/SubSoggiorno.java</content><parent_id/></artifact>
+	<artifact><id>SubStanze</id><content>to_be_traced_source_code/SubStanze.java</content><parent_id/></artifact>
+	<artifact><id>SubStorico</id><content>to_be_traced_source_code/SubStorico.java</content><parent_id/></artifact>
+	<artifact><id>VediAddebito</id><content>to_be_traced_source_code/VediAddebito.java</content><parent_id/></artifact>
+	<artifact><id>VediBeniServizi</id><content>to_be_traced_source_code/VediBeniServizi.java</content><parent_id/></artifact>
+	<artifact><id>VediCliente</id><content>to_be_traced_source_code/VediCliente.java</content><parent_id/></artifact>
+	<artifact><id>VediCommissione</id><content>to_be_traced_source_code/VediCommissione.java</content><parent_id/></artifact>
+	<artifact><id>VediPrenotazione</id><content>to_be_traced_source_code/VediPrenotazione.java</content><parent_id/></artifact>
+	<artifact><id>VediSoggiornante</id><content>to_be_traced_source_code/VediSoggiornante.java</content><parent_id/></artifact>
+	<artifact><id>VediStanza</id><content>to_be_traced_source_code/VediStanza.java</content><parent_id/></artifact>
+</artifacts>
+</artifacts_collection>

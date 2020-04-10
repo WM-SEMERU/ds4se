@@ -1,0 +1,10 @@
+HIPAA.xml, 3ClearHealth.xml, 3ClearHealth.txt
+HIPAA.xml, 1Care2x.xml, 1Care2x.txt
+HIPAA.xml, 2CCHIT.xml, 2CCHIT.txt
+HIPAA.xml, 4Consultations.xml, 4Consultations.txt
+HIPAA.xml, 5iTrust.xml, 5iTrust.txt
+HIPAA.xml, 6TrialImplementations.xml, 6TrialImplementations.txt
+HIPAA.xml, 7PatientOS.xml, 7PatientOS.txt
+HIPAA.xml, 8PracticeOne.xml, 8PracticeOne.txt
+HIPAA.xml, 9Soren.xml, 9Soren.txt
+HIPAA.xml, 10WorldVista.xml, 10WorldVista.txt

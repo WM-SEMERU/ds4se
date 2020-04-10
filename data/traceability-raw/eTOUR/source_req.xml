@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<artifacts_collection>
+<collection_info>
+	<id>UC</id>
+	<name>UC</name>
+	<version>1.1</version>
+	<description>Use cases</description>
+	<content_location>external</content_location>
+</collection_info>
+<artifacts>
+	<artifact><id>UC1</id><content>UC/UC1.TXT</content><parent_id/></artifact>
+	<artifact><id>UC10</id><content>UC/UC10.TXT</content><parent_id/></artifact>
+	<artifact><id>UC11</id><content>UC/UC11.TXT</content><parent_id/></artifact>
+	<artifact><id>UC12</id><content>UC/UC12.TXT</content><parent_id/></artifact>
+	<artifact><id>UC13</id><content>UC/UC13.TXT</content><parent_id/></artifact>
+	<artifact><id>UC14</id><content>UC/UC14.TXT</content><parent_id/></artifact>
+	<artifact><id>UC15</id><content>UC/UC15.TXT</content><parent_id/></artifact>
+	<artifact><id>UC16</id><content>UC/UC16.TXT</content><parent_id/></artifact>
+	<artifact><id>UC17</id><content>UC/UC17.TXT</content><parent_id/></artifact>
+	<artifact><id>UC18</id><content>UC/UC18.TXT</content><parent_id/></artifact>
+	<artifact><id>UC19</id><content>UC/UC19.TXT</content><parent_id/></artifact>
+	<artifact><id>UC2</id><content>UC/UC2.TXT</content><parent_id/></artifact>
+	<artifact><id>UC20</id><content>UC/UC20.TXT</content><parent_id/></artifact>
+	<artifact><id>UC21</id><content>UC/UC21.TXT</content><parent_id/></artifact>
+	<artifact><id>UC22</id><content>UC/UC22.TXT</content><parent_id/></artifact>
+	<artifact><id>UC23</id><content>UC/UC23.TXT</content><parent_id/></artifact>
+	<artifact><id>UC24</id><content>UC/UC24.TXT</content><parent_id/></artifact>
+	<artifact><id>UC25</id><content>UC/UC25.TXT</content><parent_id/></artifact>
+	<artifact><id>UC26</id><content>UC/UC26.TXT</content><parent_id/></artifact>
+	<artifact><id>UC27</id><content>UC/UC27.TXT</content><parent_id/></artifact>
+	<artifact><id>UC28</id><content>UC/UC28.TXT</content><parent_id/></artifact>
+	<artifact><id>UC29</id><content>UC/UC29.TXT</content><parent_id/></artifact>
+	<artifact><id>UC3</id><content>UC/UC3.TXT</content><parent_id/></artifact>
+	<artifact><id>UC30</id><content>UC/UC30.TXT</content><parent_id/></artifact>
+	<artifact><id>UC31</id><content>UC/UC31.TXT</content><parent_id/></artifact>
+	<artifact><id>UC32</id><content>UC/UC32.TXT</content><parent_id/></artifact>
+	<artifact><id>UC33</id><content>UC/UC33.TXT</content><parent_id/></artifact>
+	<artifact><id>UC34</id><content>UC/UC34.TXT</content><parent_id/></artifact>
+	<artifact><id>UC35</id><content>UC/UC35.TXT</content><parent_id/></artifact>
+	<artifact><id>UC36</id><content>UC/UC36.TXT</content><parent_id/></artifact>
+	<artifact><id>UC37</id><content>UC/UC37.TXT</content><parent_id/></artifact>
+	<artifact><id>UC38</id><content>UC/UC38.TXT</content><parent_id/></artifact>
+	<artifact><id>UC39</id><content>UC/UC39.TXT</content><parent_id/></artifact>
+	<artifact><id>UC4</id><content>UC/UC4.TXT</content><parent_id/></artifact>
+	<artifact><id>UC40</id><content>UC/UC40.TXT</content><parent_id/></artifact>
+	<artifact><id>UC41</id><content>UC/UC41.TXT</content><parent_id/></artifact>
+	<artifact><id>UC42</id><content>UC/UC42.TXT</content><parent_id/></artifact>
+	<artifact><id>UC43</id><content>UC/UC43.TXT</content><parent_id/></artifact>
+	<artifact><id>UC44</id><content>UC/UC44.TXT</content><parent_id/></artifact>
+	<artifact><id>UC45</id><content>UC/UC45.TXT</content><parent_id/></artifact>
+	<artifact><id>UC46</id><content>UC/UC46.TXT</content><parent_id/></artifact>
+	<artifact><id>UC47</id><content>UC/UC47.TXT</content><parent_id/></artifact>
+	<artifact><id>UC48</id><content>UC/UC48.TXT</content><parent_id/></artifact>
+	<artifact><id>UC49</id><content>UC/UC49.TXT</content><parent_id/></artifact>
+	<artifact><id>UC5</id><content>UC/UC5.TXT</content><parent_id/></artifact>
+	<artifact><id>UC50</id><content>UC/UC50.TXT</content><parent_id/></artifact>
+	<artifact><id>UC51</id><content>UC/UC51.TXT</content><parent_id/></artifact>
+	<artifact><id>UC52</id><content>UC/UC52.TXT</content><parent_id/></artifact>
+	<artifact><id>UC53</id><content>UC/UC53.TXT</content><parent_id/></artifact>
+	<artifact><id>UC54</id><content>UC/UC54.TXT</content><parent_id/></artifact>
+	<artifact><id>UC55</id><content>UC/UC55.TXT</content><parent_id/></artifact>
+	<artifact><id>UC56</id><content>UC/UC56.TXT</content><parent_id/></artifact>
+	<artifact><id>UC57</id><content>UC/UC57.TXT</content><parent_id/></artifact>
+	<artifact><id>UC58</id><content>UC/UC58.TXT</content><parent_id/></artifact>
+	<artifact><id>UC6</id><content>UC/UC6.TXT</content><parent_id/></artifact>
+	<artifact><id>UC7</id><content>UC/UC7.TXT</content><parent_id/></artifact>
+	<artifact><id>UC8</id><content>UC/UC8.TXT</content><parent_id/></artifact>
+	<artifact><id>UC9</id><content>UC/UC9.TXT</content><parent_id/></artifact>
+</artifacts>
+</artifacts_collection>

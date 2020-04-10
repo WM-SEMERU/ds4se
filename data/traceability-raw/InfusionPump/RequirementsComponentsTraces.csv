@@ -1,0 +1,130 @@
+R 2.4.0 (1),temperature range. The PCA pump should be able to operate within a temperature range of Tlo =10C to Thi =50C
+R2.4.0 (2),"atmospheric pressure. The pump should be able to operate under atmospheric pressure ranging from Pmin =20""Hg tp Pmax = 35""Hg"
+R2.4.0 (3),relative humidity. The (external) pump should be able to operate at relative humidity ranging from Hmin = 0% to Hmax =100% (non-condensing)
+R2.4.0 (4),splashing. The PCA pump should be able to withstand splashing (but not immersion) with water or bodily fluids
+R4.1.0 (1),basal flow rate. The basal flow rate  Fbasal  is prescribed by a physician  and entered into the PCA pump by scanning the prescription from the drug container label as it is loaded into the reservoir
+R4.1.0 (2),basal infusion flow range. The pump shall be able to deliver basal infusion at flows throughout the basal infusion flow range of Fbasal min = 1 to Fbasal max = 10 ml/hr
+R4.1.0 (3),basal infusion flow tolerance. The pump shall deliver basal infusion at the prescribed basal rate within a basal infusion flow tolerance of Fbasal tol = 0.5 ml/hr of the prescribed basal rate.
+R4.1.0 (5),minimum KVO flow rate. The pump shall maintain a minimum KVO flow rate of FKVO  = 1/ml at all times during infusion  even during alarms  unless the alarm also stops flow.  Table 4 defines which alarms also stop drug flow completely.
+R4.2.0 (2),patient-requested bolus. A patient-requested bolus shall be delivered at its prescribed rate  Fbolus  in addition to the prescribed basal flow rate Fbasal  but no more than the maximim flow rate for the pump  Fmax.
+R4.2.0 (5) ,max dose warning. Patient-requested bolus shall not be delivered if infusing prescribed VTBI will exceed hard limits retrieved from the drug library for the volume of drug infused over a period of time. Pump rate shall be reduced to KVO and a max dose warning be issued.
+R4.3.0 (2),clinician-requested bolus. A clinician-requested bolus shall be delivered at the rate Fccb  of VTBI divided by the duration chosen by the clinician  ?ccb  in addition to the prescribed basal flow rate  Fbasal  but no more than the maximum flow rate for the pump  Fmax.
+R4.3.0 (7),max dose warning. Clinician commanded bolus shall be halted when continuinh to infuse prescribed VTBI will exceed hard limits retrieved from the drug library for the volume of drug infused over a period of time. Pump rate shall be reduced to KVO and a max dose warning be issued.
+R5.1.0 (1),measure drug flow. The PCA pump shall measure drug flow within a tolerance of Fmdf tol = 0.1 ml/hr.
+R5.1.0 (2),detect downstream occlusion. The PCA pump shall detect downstream occlusion
+R5.1.0 (3),detect  upstream occlusion. The PCA pump shall detect upstream occlusion.
+R5.1.0 (4),detect air-in-line embolism. The PCA pump shall detect air-in-line embolism
+R5.2.0 (1) ,pump drug. The mechanical pump shall pump drug at precribed flow rates for basal  bolus  and KVO infusion when commanded.
+R5.2.0 (2),halt pumping. The mechanical pump shall halt pumping when commanded  or caused in response to an alarm condition (at end of pump stoke?)
+R5.2.0 (3),reverse flow. The mechanical pump shall not allow reverse flow from the patient into the pump.
+R5.3.0 (1),device parameters. The PCA pump shall use a physician's prescriptions as device parameters
+R5.4.0 (1),issue alarms and warnings. The PCA pump shall issue alarms and warnings that require clinician attention
+R5.4.0 (2),basal over-infusion alarm. IF delivered basal flow rate exceeds the prescribed basal rate setting by more than its allowered tolerance over a period of more than 5 minutes  or immediately if the pump goes into free flow  the pump shall issue a basal-overinfusion alarm. (EC3.2.7)
+R5.4.0 (3),basal under-infusion warning. If  delivered basal flow rate is less than the prescribed basal rate setting by more than its allowed tolerance over a period of more than 5 minutes  or immediately if the flow stops  the pump shall issue a basal under-infusion warning. (EC3.2.8)
+R5.4.0 (4),bolus over-infusion alarm. If delivered patient-requested bolus flow rate exceeds the prescribed patient-requested bolus rate setting by more than its allowed tolerance over a period of more than 1 minute or immediately if the pump goes into free flow  the pump shall issue a bolus over-infusion alarm. (EC 3.2.7).
+R5.4.0 (5),bolus under-infusion warning. If patient-requested bolus is less than the prescribed bolus rate setting by more than its allowed tolerance over a period of more than 1 minute  or immediately if the flow stops  the pump shall issue a bolus under-infusion warning. (EC3.2.8)
+R5.4.0 (6) ,square bolus over-infusion alarm. If delivered clinician-requested bolus flow rate exceeds the calculated square bolus rate by more than its allowed tolerance over a period of more than 5 minutes  or immediately if the pump goes into free flow  the pump shall issue a square bolus over-infusion alarm. (EC3.2.7)
+R5.4.0 (7) ,square bolus under-infusion warning. If delivered clinician-requested bolus flow rate is less than the calculated square bolus rate by more than its allowed tolerance over a period of more than 5 minutes  or immediately if the flow stops  the pump shall issue a square bolus under-infusion warning. (EC3.2.8)
+R5.4.0 (8),pump overheated alarm. If the pump gets overheated to more than Tpoh = 55 C  the pump shall issue a pump overloaded alarm
+R5.4.1 (1),priority. Alarm's and warning's priority shall be determined in accordance with standard IEC 60601-1-8 Medical electrical equipment- Part 1-8: General requirements for safety - Collateral standard: Alarm systems- General requirements tests and guidance for alarm systems in medical electrical equipment and medical electrical systems.
+R5.4.1 (2),"alarm pump rate. Priority for alarms and warnings is shown in Table 4; warnings are low-priority alarms. The last column show the alarm pump rate to be used while the alarm is in effect. For ""special"" flow rates for power malfunctions see Section 6.3."
+R5.4.1 (3),power and battery failure. Because with either working battery or power supply can operate the pump  if the battery failure alarm and either the voltage out-o-range or the power supply failure alarms  the the pump rate will be off  otherwise the pump rate will continue at its previous value.
+R5.4.2 (1),visual alarm signal. If a visual indicator is necessary for the clinicaian to identify the equipment or part of the equipment that requires clinician response or awareness  at least one visual alarm signal shall be provided that  1. indicated the priority of the highest priority alarm condition; and 2. can be perceived correctly at a distance of 4 m from the PCA pump.
+R5.4.2 (2),alarm indicator appearance. The alarm indicator appearance shall comply with color  flashing frequency  and duty cycle given in Table 5.
+R5.4.2 (3),see alarm signal. At least one visual alarm signal shall be provided that identifies the specific alarm condition and its priority.  This signal shall be perceived correctly (be legible) at a distance of 1m from the equipment or part of the equipment or from the clinician's position.
+R5.4.2 (4),alarm symbols. Visual alarm shall display alarm symbols  from Table D.201 Graphical symbols for ALARM SYSTEMS of standard IEC 60601-1-8.
+R5.4.3 (1),audible alarms signals. Alarms shall cause audible alarms signals  that meet the requirements of Tables 203 and 204 of standard IEC 60601-1-8 for alarm pulses  bursts  and harmonics.
+R5.4.3 (2) ,auditory volume. The auditory volume of audible alarms  signals shall conform to Selction 201.3.3.2 
+R5.4.3(3),"alarm melody. The alarm melody of audible alarms signals shall conform to Table AAA.1 of standard IEC 60601-1-8 for drug or fluid delivery. \C d g"" shall be used for medium priority alarms; \C d g - C d"" shall be used for high priority alarms; \e c"" shall be used for warnings and low priority alarms."
+R5.4.3(4),harmonic components. Each tone in the alarm melody shall be composed of a minimum of 4 harmonic components in the range 300 Hz to 4000 Hz comprising an inverted 9th jazz chord.
+R5.5.0(1),control panel. The control panel must display currently-programmed patient data and physician's prescription.
+R5.5.0 (2),start button. The PCA pump shall have a start button.
+R5.5.0 (3) ,start infusion. Upon the clinician's pressing of the start button  prescribed infusion shall commence
+R5.5.0 (5),stop button. The PCA pump shall have a stop button.
+R5.5.0 (6),stop infusion. Upon the clinician's pressing of the stop button  prescribed infusion shall halt
+R5.5.0 (7),clinician bolus request. The control panel shall allow authorized clinician bolus request and choice of duration.
+R5.5.0(8),prescription confirmation. Required when changing prescription during infusion
+R5.5.0 (8),clinician authentication. Required when changing prescription during infusion
+R5.5.0 (8),patient authenticaion. Required when changing prescription during infusion
+R5.5.0 (8),prescription authentication. Required when changing prescription during infusion (patient-to-drug match)
+R5.5.0 (8) ,drug authentication. Required when changing prescription during infusion (an authorized pharmacist filled the prescription)
+R5.5.0 (9),soft limit confirmation. Prescriptions that violate the soft limits of the drug in the drug library shall issue a visible and audible warning requiring a soft limit confirmation by the clinician.
+R5.5.0(10),hard limit. Prescriptions that violate a hard limit of the drug in the drug library shall be rejected with visible and audible indication when con rmation is attempted by the clinician.
+R5.5.0(11),show alarm. The Control Panel shall visually indicate the specific problem causing the alarm condition as described in Section 5.4.2.
+R5.5.0(12),sound alarm. The Control Panel shall audibly indicate the specific problem causing the alarm condition as described in Section 5.4.3.
+R5.5.0(13),stop silences alarms. Pressing the stop button confirms and silences all alarms and terminates any alarm signal inactivation.
+R5.5.0(14),inactivate audible alarms indefinitely. The Control Panel shal provide means to inactivate audible alarms indefinitely.
+R5.5.0(15),inactivate audible alarms temporarily. The Control Panel shall provide the means to inactivate audible alarms temporarily for a predefined period of time.
+R5.5.0 (16),cancel alarm signal inactivation. The Control Panel shall provide means to cancel alarm signal inactivation
+R5.5.0(17),inactive auditory alarm symbol. When auditory alarms are inactive the control panel shall display an inactive auditory alarm symbol from Table D.201 Graphical symbols for ALARM SYSTEMS of standard IEC 60601-1-8.
+R5.5.0(18),alert-stop-start sequence. If the same alert-stop-start sequence occurs 3 or more times in ten minutes  infusion will be stopped  and an audible alarm sounded.
+R5.5.0(19),sound of audible alarm. The Control Panel confirms operation during power-on self-test
+R5.5.0(20),display of visual information. The Control Panel confirms operation during power-on self-test
+R5.5.0 (21),tactile responses. The Control Panel confirms operation during power-on self-test
+R5.6.0 (1),event log. The PCA pump shall maintain an electronic event log to record each action taken by the pump and each event sensed of its environment.
+R5.6.0 (2),fault log. The PCA pump shall maintain an electronic fault log to record each fault condition  and the associated alarm and/or alert issued.
+R5.6.0 (3),time stamp. Each log entry shall have a time stamp with its time of occurrence.
+R5.6.0 (4),prescription retention. The patient's prescription shall be retained for at least ?data= 96 hours after the PCA pump is turned-off and unplugged.
+R5.6.0 (5),log retention. Information in event and Fault Logs shall be retained for at least ?log= 1000 hours after the PCA pump is turned-off  and unplugged.
+R5.6.0 (6),event log size. The event log shall record 30 days of typical events before overwriting oldest event records first
+R5.6.0 (7) ,fault log size. The fault log shall record at least 1000 faults before overwriting oldest fault records first
+R5.6.0(8) ,real-time clock. A real-time clock must produce timestamps accurate to 10 ms.
+R5.7.0(1),ICE operating status. The ICE Interface shall transmit encrypted and authenticated current operating status to the ICE system.
+R5.7.0 (2),ICE alarms. The ICE interface shall transmit encrypted and authenticated alarms and warnings to the ICE system.
+R5.7.0 (3),ICE bolus duration. The ICE interface shall allow an authorized clinician to set the duration of clinician-requested boluses through an ICE supervisor user interface.
+R5.7.0 (4),ICE KVO rate. The PCA pump shall switch to KVO infusion rate upon receiving an authenticated command through its ICE interface.
+R5.7.0 (5),ICE resume infusion. The PCA pump shall resume prescribed infusion upon receiving an authenticated command through its ICE interface.
+R5.8.0 (1),drug reservoir. The drug reservoir holds liquid pain-killer supplied by the hospital pharmacy and loaded into the PCA pump by the clinician.
+R5.8.0 (2),reservoir contents. The drug reservoir shall measure its contents.
+R5.8.0 (3) ,reservoir tolerance. The measured drug volume shall be within Vrt = 1 ml of the actual drug volume.
+R5.8.0 (4),drug label. All filled prescriptions (liquid  narcotic pain-killer dispensed by the hospital pharmacy) must be labeled at least visibly with a. Patient name b. Drug Code c. Name of Drug d. Concentration e. Initial volume of drug f. Basal flow rate g. VTBI h. Minimum time between bolus i. Date prescription filled j. Prescribing physician's name k. Pharmacist name. Labels may show additional information. Labels should be difficult to counterfeit or modify without detection  only created and attached to filled prescriptions by a pharmacist in the hospital pharmacy.
+R5.8.0 (5),enter prescription. Prior to  or coincident with  loading the drug reservoir must also enter prescription on the drug container's label using the scanner.
+R5.8.0 (6),prescription confirmation. An authorized clinician must personally confirm the prescription is authentic and meant for the patient to be infused. The routine procedures by which clinicians load the drug reservoir must ensure that the prescription  lled by an authorized pharmacist at the hospital pharmacy is meant for the patient (to be) connected to the PCA pump.
+R5.8.0 (8),drug in library. The drug loaded into the reservoir must also be found in the PCA pump's drug in library. The drug code of the prescription must match the drug code of a drug library entry. The drug library must pass authenticity and integrity checks.
+R5.8.0 (9),low-reservoir warning. If the drug volume in the reservoir measures less than Vlra = 1 ml  and an infusion is in progress  a low-reservoir warning shall be issued.
+R5.8.0 (10),empty-reservoir alarm. If the drug volume in the reservoir measures less than Vers =0.5 ml  and an infusion is in progress  an empty-reservoir alarm shall be issued stopping the pump.
+R5.9.0 (1),drug library. The drug library can be thought of as a lookup table that  given a drug name and a location  provides typical and safe limits of di erent infusion parameters. The drug library shall be determined by an authorized and authenticated hospital pharmacist  and loaded into the PCA pump via its communication port after verifying its authenticity and integrity.
+R5.9.0 (2),drug library entry. For each drug that may be infused with a PCA pump  the drug library entry for that drug shall have data elements listed in Table 6.
+R5.9.0 (3),drug library checking. After the clinician presses the start button  but before commencing infusion  the values of VTBI and Fbasal are checked against the drug library entry of the drug to be infused
+R5.9.0 (4),unknown drug. If the drug loaded into the drug reservoir is not present in the drug library or the library does not pass authentication and integrity checks  that the drug is unknown or drug library error has occurred is indicated by the user interface  and recorded in the Fault Log. Pump remains stopped.
+R5.9.0 (5),hard limit. If a drug library's hard limit is violated by the proposed settings  the limit violated is indicated by the user interface  and recorded in the Fault Log. Pump remains stopped.
+R5.9.0 (6),soft limit . If a drug library's soft limit is violated by the proposed settings  but not a hard limit  a warning is shown to the clinician by the user interface and a distinctive  irritating sound made and recorded in the Event Log. If the clinician again confirms proposed settings  then pump operation shall commence using them  otherwise typical values from the Drug Library.
+R5.10.0 (1),patient's wristband. The scanner shall read and authenticate information from the patient's wristband.
+R5.10.0 (2),clinician's badge. The scanner shall read and authenticate information from the clinician's badge.
+R5.10.0 (3),drug's package label. The scanner shall read and authenticate information from the drug's package label
+R6.1.0 (1),safety architecture. The PCA pump shall implement a safety architecture that separates normal operation from fault detection and response.
+R6.2.0 (1),complete pump stroke. When the stop button is pressed  the current pump stroke shall be completed prior to stopping the pump.
+R6.2.0 (2),continuous reverse delivery. During normal use and/or single fault condition of the equipment  continuous reverse delivery shall not be possible (from IEC 601-2-24).
+R6.2.0 (3),air-in-line alarm. An air-in-line alarm shall be triggered by the pump if detectable air bubbles are infused into the patient.
+R6.2.0 (4),upstream occlusion alarm. An upstream occlusion alarm shall be triggered when the pump senses an upstream (drug reservoir side) occlusion exceeding Puo = 1 psi.
+R6.2.0 (5),downstream occlusion alarm. A downstream occlusion alarm shall be triggered if the pump senses a downstream (patient side) occlusion exceeding Pdo = 10 psi.
+R6.2.0 (6),occlusion alarm. When an occlusion alarm occurs  the pump shall be stopped immediately without completing the current pump stroke.
+R6.2.0 (7),empty-reservoir alarm. When an empty-reservoir alarm occurs  the current pump stroke shall be completed prior to stopping the pump.
+R6.2.0 (8),open door alarm. A open door alarm shall be triggered when the reservoir door is opened while the pump is not stopped.
+R6.3.0 (1),battery backup. The PCA pump shall continue to infuse for 10 minutes during interruption of mains electricity supply using battery backup  either continuously or spread over an hour. (Five minutes to recharge per minute using battery.)
+R6.3.0 (2),remaining battery minutes. The user interface must show that the PCA pump is working on battery backup  and an estimate of the number of minutes of battery-powered infusion remain.
+R6.3.0 (3),remaining battery accuracy. The estimate of remaining battery energy must be accurate to within Xbtty = 25%.
+R6.3.0 (4),low-battery warning. If the estimated battery life remaining is less than ?lba = 3 minutes  the pump shall issue a low-battery warning.
+R6.3.0 (5),battery failure alarm. The PCA pump shall detect battery failure and issue a battery failure alarm.
+R6.4.0 (1),POST alarm. The PCA pump shall perform a power-on-self-test (POST) to assure system integrity after being turned on  yet before any infusion begins. Failure of POST shall raise a POST alarm  stop pump record it in the Fault Log  and display the reason for failure on the user interface.
+R6.4.0 (2),self-test alarm. The PCA pump shall perform periodic self-tests to assure system integrity during long periods of use. Failure of a self-test shall raise a self-test alarm  stop pump  record it in the Fault Log  and display the reason for failure on the user interface.
+R6.4.0 (3),continuous fault-detection. The PCA pump shall have continuous fault-detection and masking. Hardware monitors of thread heartbeat  memory error correction codes are examples.
+R6.4.0 (4),single-event upsets. Occurrence of unavoidable single-event upsets caused by cosmic-ray-induced high- and thermal-energy neutrons must be either masked  or detected to fail-stop.
+R6.4.0 (5),masked faults. Successfully masked faults shall be recorded in the Fault Log  but raise an alarm.
+R6.4.0 (6),unmasked faults. Hardware faults detected  but not masked  shall raise a fault alarm  stop pump  record it in the Fault Log  and display the reason for fault on the user interface.
+R6.4.0 (7),hardware fault indicator. Hardware faults that prevent operation of the Control Panel shall illuminate a hardware fault indicator (light-emitting diode).
+R6.5.0 (1),tamper-resistant door. Because the drugs used for analgesia are often narcotic  requiring Drug Enforcement Agency (DEA) tracking if used in the United States  the drug reservoir and means to change prescriptions during infusion must be inhibited with a locked  tamper-resistant door.
+R6.5.0 (2),door key. Hospital procedures must endow the attending clinician access to the door key  yet prevent other persons' access. Key-handling processes are beyond the scope of these requirements  but much depends on the attending clinician: it's the right drug  in the right patient  with the right prescription from a physician authorized to prescribe narcotics for those suffering great pain. If the key is electronic  some of this information may be automatically verified and authenticated.
+R6.5.0 (3),pump case. The PCA pump case must be at least difficult to breech as its tamper-resistant door. Breaking the case shall not be easier to access the drug reservoir than breeching the door.
+R6.5.0 (4),electronic tamper detection mechanisms. The PCA pump shall include electronic tamper detection mechanisms and shall record detected tampering attempts in the Fault Log and Event Log as well as issuing an authenticated ICE message.
+R6.6.0 (1),biocompatible. All materials that contact fluid shall be biocompatible.
+R6.6.0 (2),cleaned and disinfected. The PCA pump shall be cleaned and disinfected after use.
+R7.1.0 (1),clinician authentication. Clinicians authorization to operate the PCA pump must be authenticated.
+R7.1.0 (2),patient authentication. Patient's identity and admittance to the hospital must be authenticated.
+R7.1.0 (3),prescription authentication. Drug container must have a valid prescription  filled by an authorized pharmacist  for the particular patient to be infused by the PCA pump.
+R7.1.0 (4),drug library authentication. Drug library information shall be authenticated before it is accepted.
+R7.2.0 (1),confidentiality. Patient information must be restricted to those providing care for the patient  and the patient.
+R7.3.0 (1),provisioning jack. Provisioning of initial security keys which form a root of trust must require physical connection to a jack distinct from normal operation.
+R7.3.0 (2),protected jack. The provisioning jack must be physically inaccessible  except to authorized technical personnel. Jacks for test equipment must be similarly inaccessible.
+R7.3.0 (3),provisioning channel disjointness. Provisioning (or re-provisioning) shall not be possible through an ICE network.
+R7.3.0 (4),provisioning unitarily. Provisioning shall be a single  unitary block-transfer.

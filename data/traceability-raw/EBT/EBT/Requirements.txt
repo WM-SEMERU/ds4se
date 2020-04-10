@@ -1,0 +1,41 @@
+100	Requirements shall be managed in a 3rd party requirements management tool such as DOORS.
+101	Non-requirement artifacts shall be managed in 3rd party tools such as Rational Rose or Clear case
+102	Only registered subscribers shall be allowed to establish traces.
+103	A user shall register as a subscriber.
+104	On registration a subscriber shall register itself under the control of a subscriber manager
+105	The user shall establish traces between requirements and other types of artifacts by establishing a subscription from an artifact to the relevant requirement
+106	Each artifact shall be placed under the control of a subscriber manager
+107	The user shall be able to delete subscriptions.
+108	A subscriber manager shall register itself with the eventserver so that it may receive relevant event messages.
+109	If the subscriber manager is online; the push model shall be used to send it event notifications in real time.
+110	Whenever the subscriber manager first comes on line; it shall implement the pull model to retrieve outstanding event messages from the eventserver.
+111	A subscriber manager shall receive event notifications on behalf of the artifacts that it manages.
+112	A subscriber manager shall manage traces for one or more artifacts.
+113	On receipt of an event message; the subscriber manager shall differentiate between speculative and evolutionary events.
+114	The subscriber manager shall store information for evolutionary events in an eventlog.
+115	The user shall be able to construct speculative queries using a GUI.
+116	The subscriber manager shall immediately process speculative events.
+117	The subscriber manager shall re execute the model using the speculative values.
+118	The subscriber manager shall report results indicating whether the speculative change negatively impacts other requirements and constraints.
+119	The subscriber manager shall restore the executable model to its prior state.
+120	The prototype system shall utilize a driver to trigger events.
+121	Event types shall include adding new requirements.
+122	Event types shall include decomposing one requirement into two or more requirements.
+123	Event types shall include refining one requirement by adding an additional requirement to the existing one.
+124	Event types shall include modifying a requirement.
+125	Event types shall include deleting a requirement.
+126	Event types shall include merging requirements.
+127	The eventserver shall receive event messages when a requirement changes.
+128	On receipt of an event message the eventserver shall record the event in an eventlog.
+129	On receipt of an event; the eventserver shall identify all relevant subscribers for the event.
+130	The eventserver shall differentiate between evolutionary and speculative events.
+131	When an evolutionary event occurs; the eventserver shall notify subscribers of the event.
+132	For speculative events; the eventserver shall construct a composite event message.
+133	The eventserver shall identify all related requirements and constraints for each impacted executable model.
+134	The eventserver shall retrieve quantitative values related to these additional requirements and constraints through querying the requirements management tool.
+135	The eventserver shall create a composite speculative message which includes the speculative event plus all related requirements and constraint values for each impacted model.
+136	The eventserver shall send the customized message to each impacted executable model.
+137	The user shall view all evolutionary events received for a specific artifact in the order in which they were received.
+138	The user shall update related artifacts according to the information contained in the event messages.
+139	The user shall eliminate unnecessary traces that were temporarily constructed by the eventserver during initial event processing.
+140	The notification processing system shall automatically eliminate any events that are not longer valid as a result of the user eliminating temporary traces.
