@@ -1,6 +1,7 @@
 # Traceability Raw Datasets
 
-> This list corresponds to a filtered literature search in Traceability Datasets used for Automatic Traceability Recovery. *Last update:* April 11th 2020; *Maintaned by* @danaderp
+> This list corresponds to a filtered literature search in Traceability Datasets used for Automatic Traceability Recovery. 
+> *Last update:* April 11th 2020; *Maintaned by* @danaderp
 
 ## Simplief Raw Dataset List
 
