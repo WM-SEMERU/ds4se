@@ -6,6 +6,6 @@
 
 ## Simplief Raw Dataset List
 
-| Dataset | Description | Associated Paper | Year | Language | No Links |
-| --- | --- | --- | --- | --- | --- |
-| Albegate | Hotel management system | [Recovering traceability links between code and documentation (Antoniol, et al.)](https://ieeexplore.ieee.org/document/1041053) | 2002 | Java | 54 |
+| Dataset | Description | Associated Paper | Year | Language | Source Type | Target Type | No Links |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Albegate | Hotel management system | [Recovering traceability links between code and documentation (Antoniol, et al.)](https://ieeexplore.ieee.org/document/1041053) | 2002 | Java | High level requirements (55)| Classes(17) | 54 |
