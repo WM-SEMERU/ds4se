@@ -1,8 +1,10 @@
+import sys
+sys.path.append(".")
+
 from pymongo import MongoClient
 import os
 import glob
-from nbs.DB_Schema import SemeruCollection
-
+from nbs.DB_Schema.SemeruCollection import SemeruCollection
 
 def create_documents_from_SMOS(ground, source_dir, use_dir, source_collection, use_collection):
 
@@ -75,12 +77,12 @@ def create_requirement_to_source_or_test_dicts(ground_file, split_on):
 def main():
     client = MongoClient('localhost', 27017)
     db = client.test
-    use_collection = SemeruCollection(database=db, name="requirement_raw", raw_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/raw_schema.json",
-                        transform_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/transformed_schema.json")
-    source_collection = SemeruCollection(database=db, name="source_raw", raw_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/raw_schema.json",
-                        transform_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/transformed_schema.json")
+    use_collection = SemeruCollection(database=db, name="requirement_raw", raw_schema="nbs/DB_Schema/raw_schema.json",
+                        transform_schema="nbs/DB_Schema/transformed_schema.json")
+    source_collection = SemeruCollection(database=db, name="source_raw", raw_schema="nbs/DB_Schema/raw_schema.json",
+                        transform_schema="nbs/DB_Schema/transformed_schema.json")
 
-    create_documents_from_SMOS("ground.txt", "source_code", "use_cases", source_collection, use_collection)
+    create_documents_from_SMOS("data_management/traceability_data/raw/SMOS_semeru_format/ground.txt", "data_management/traceability_data/raw/SMOS_semeru_format/source_code", "data_management/traceability_data/raw/SMOS_semeru_format/use_cases", source_collection, use_collection)
 
 
 if __name__ == "__main__":
