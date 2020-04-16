@@ -13,10 +13,13 @@
     "Exploration Statistics": "/desc.metrics.se",
     "Conventional Preprocessing": "/mgmnt.prep.conv",
     "BPE Preprocessing": "/mgmnt.prep.bpe",
+    "Training Word2Vec for SE": "/repr.word2vec.train",
     "CodeGen Benchmark": "/benchmark.codegen",
     "Inference Interface": "/inf.i",
     "Inference Bayesian": "/inf.bayesian",
     "Corpus Representation": "/mgmnt.corpus",
+    "Traceability Preprocessing": "/mgmnt.prep.traceability",
+    "Title": "/mgmnt.prep.nltk",
     "Example Blog": "/aa_blog.example",
     "Example Template": "/af_emp.eval.pp1.rq4"
   }

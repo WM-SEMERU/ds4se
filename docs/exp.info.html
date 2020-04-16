@@ -30,6 +30,9 @@ summary: "This module comprises all functions for running a proper exploratory a
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
 <div class="output_wrapper">
 <div class="output">
 
@@ -37,7 +40,7 @@ summary: "This module comprises all functions for running a proper exploratory a
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_cnts" class="doc_header"><code>get_cnts</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L27" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_cnts</code>(<strong><code>toks</code></strong>)</p>
+<h4 id="get_cnts" class="doc_header"><code>get_cnts</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L37" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_cnts</code>(<strong><code>toks</code></strong>, <strong><code>vocab</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -60,7 +63,7 @@ summary: "This module comprises all functions for running a proper exploratory a
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="encode_text" class="doc_header"><code>encode_text</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L35" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>encode_text</code>(<strong><code>text</code></strong>, <strong><code>model_prefix</code></strong>)</p>
+<h4 id="encode_text" class="doc_header"><code>encode_text</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L45" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>encode_text</code>(<strong><code>text</code></strong>, <strong><code>model_prefix</code></strong>)</p>
 </blockquote>
 <p>Encodes text using a pre-trained sp model, returns the occurrences of each token in the text</p>
 
@@ -84,7 +87,7 @@ summary: "This module comprises all functions for running a proper exploratory a
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_freqs" class="doc_header"><code>get_freqs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L45" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_freqs</code>(<strong><code>token_counts</code></strong>)</p>
+<h4 id="get_freqs" class="doc_header"><code>get_freqs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L56" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_freqs</code>(<strong><code>token_counts</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -107,7 +110,7 @@ summary: "This module comprises all functions for running a proper exploratory a
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_dist" class="doc_header"><code>get_dist</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L54" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_dist</code>(<strong><code>token_counts</code></strong>)</p>
+<h4 id="get_dist" class="doc_header"><code>get_dist</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L65" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_dist</code>(<strong><code>token_counts</code></strong>)</p>
 </blockquote>
 <p>Takes in a counter object of token occurrences, computes the entropy of the corpus that produced it</p>
 
@@ -131,7 +134,7 @@ summary: "This module comprises all functions for running a proper exploratory a
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_entropies_from_docs" class="doc_header"><code>get_entropies_from_docs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L64" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_entropies_from_docs</code>(<strong><code>docs</code></strong>)</p>
+<h4 id="get_entropies_from_docs" class="doc_header"><code>get_entropies_from_docs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L75" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_entropies_from_docs</code>(<strong><code>docs</code></strong>, <strong><code>vocab</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -154,7 +157,7 @@ summary: "This module comprises all functions for running a proper exploratory a
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_entropy_from_docs" class="doc_header"><code>get_entropy_from_docs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L73" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_entropy_from_docs</code>(<strong><code>docs</code></strong>)</p>
+<h4 id="get_entropy_from_docs" class="doc_header"><code>get_entropy_from_docs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L84" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_entropy_from_docs</code>(<strong><code>docs</code></strong>, <strong><code>vocab</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -177,7 +180,7 @@ summary: "This module comprises all functions for running a proper exploratory a
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_doc_entropies_from_df" class="doc_header"><code>get_doc_entropies_from_df</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L82" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_doc_entropies_from_df</code>(<strong><code>df</code></strong>, <strong><code>col</code></strong>, <strong><code>model_path</code></strong>, <strong><code>data_types</code></strong>)</p>
+<h4 id="get_doc_entropies_from_df" class="doc_header"><code>get_doc_entropies_from_df</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L93" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_doc_entropies_from_df</code>(<strong><code>df</code></strong>, <strong><code>col</code></strong>, <strong><code>model_path</code></strong>, <strong><code>data_types</code></strong>)</p>
 </blockquote>
 <p>Returns a list of the entropies of each entry in a dataframe column</p>
 
@@ -201,7 +204,7 @@ summary: "This module comprises all functions for running a proper exploratory a
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_corpus_entropies_from_df" class="doc_header"><code>get_corpus_entropies_from_df</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L97" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_corpus_entropies_from_df</code>(<strong><code>df</code></strong>, <strong><code>col</code></strong>, <strong><code>model_path</code></strong>, <strong><code>data_types</code></strong>)</p>
+<h4 id="get_corpus_entropies_from_df" class="doc_header"><code>get_corpus_entropies_from_df</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L108" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_corpus_entropies_from_df</code>(<strong><code>df</code></strong>, <strong><code>col</code></strong>, <strong><code>model_path</code></strong>, <strong><code>data_types</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -224,7 +227,7 @@ summary: "This module comprises all functions for running a proper exploratory a
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_system_entropy_from_df" class="doc_header"><code>get_system_entropy_from_df</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L109" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_system_entropy_from_df</code>(<strong><code>df</code></strong>, <strong><code>col</code></strong>, <strong><code>model_path</code></strong>)</p>
+<h4 id="get_system_entropy_from_df" class="doc_header"><code>get_system_entropy_from_df</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L120" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_system_entropy_from_df</code>(<strong><code>df</code></strong>, <strong><code>col</code></strong>, <strong><code>model_path</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -246,7 +249,7 @@ summary: "This module comprises all functions for running a proper exploratory a
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../benchmarking/traceability/semeru-format/LibEST_semeru_format&#39;</span><span class="p">);</span> <span class="n">path</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../data/traceability/semeru-format/LibEST_semeru_format&#39;</span><span class="p">);</span> <span class="n">path</span>
 </pre></div>
 
     </div>
@@ -261,7 +264,7 @@ summary: "This module comprises all functions for running a proper exploratory a
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>PosixPath(&#39;../benchmarking/traceability/semeru-format/LibEST_semeru_format&#39;)</pre>
+<pre>PosixPath(&#39;../data/traceability/semeru-format/LibEST_semeru_format&#39;)</pre>
 </div>
 
 </div>
@@ -289,13 +292,63 @@ summary: "This module comprises all functions for running a proper exploratory a
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sp_processor</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">SentencePieceProcessor</span><span class="p">()</span>
+<span class="n">sp_processor</span><span class="o">.</span><span class="n">Load</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{path/&#39;_sp_bpe_modal&#39;}.model&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use the model to compute each file&#39;s entropy</span>
 <span class="n">LIB_doc_entropies</span> <span class="o">=</span> <span class="n">get_doc_entropies_from_df</span><span class="p">(</span><span class="n">LIB_corpus_df</span><span class="p">,</span> <span class="s1">&#39;contents&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">/</span><span class="s1">&#39;_sp_bpe_modal&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;req&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">])</span>
 
 <span class="c1"># Use the model to compute each file&#39;s entropy</span>
 <span class="n">LIB_corpus_entropies</span> <span class="o">=</span> <span class="n">get_corpus_entropies_from_df</span><span class="p">(</span><span class="n">LIB_corpus_df</span><span class="p">,</span> <span class="s1">&#39;contents&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">/</span><span class="s1">&#39;_sp_bpe_modal&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;req&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">])</span>
 
-<span class="c1"># # Use the model to compute each file&#39;s entropy</span>
+<span class="c1"># Use the model to compute each file&#39;s entropy</span>
+<span class="n">LIB_system_entropy</span> <span class="o">=</span> <span class="n">get_system_entropy_from_df</span><span class="p">(</span><span class="n">LIB_corpus_df</span><span class="p">,</span> <span class="s1">&#39;contents&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">/</span><span class="s1">&#39;_sp_bpe_modal&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use the model to compute each file&#39;s entropy</span>
+<span class="n">LIB_doc_entropies</span> <span class="o">=</span> <span class="n">get_doc_entropies_from_df</span><span class="p">(</span><span class="n">LIB_corpus_df</span><span class="p">,</span> <span class="s1">&#39;contents&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">/</span><span class="s1">&#39;_sp_bpe_modal&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;req&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">])</span>
+
+<span class="c1"># Use the model to compute each file&#39;s entropy</span>
+<span class="n">LIB_corpus_entropies</span> <span class="o">=</span> <span class="n">get_corpus_entropies_from_df</span><span class="p">(</span><span class="n">LIB_corpus_df</span><span class="p">,</span> <span class="s1">&#39;contents&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">/</span><span class="s1">&#39;_sp_bpe_modal&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;req&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">])</span>
+
+<span class="c1"># Use the model to compute each file&#39;s entropy</span>
 <span class="n">LIB_system_entropy</span> <span class="o">=</span> <span class="n">get_system_entropy_from_df</span><span class="p">(</span><span class="n">LIB_corpus_df</span><span class="p">,</span> <span class="s1">&#39;contents&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">/</span><span class="s1">&#39;_sp_bpe_modal&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -336,10 +389,43 @@ summary: "This module comprises all functions for running a proper exploratory a
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Max: 8.968470267401546
-Min: 4.004576449759753
+Min: 4.004576449759752
 Average: 6.891700509903166
 Median: 6.978609415282731
-Standard Deviation: 1.0969692502589146
+Standard Deviation: 1.0969692502589148
+Median Absolute Deviation: 1.0496675213283246
+95% of the data fall within 6.657904640431418 and 7.125496379374914
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">report_stats</span><span class="p">(</span><span class="n">flatten</span><span class="p">(</span><span class="n">LIB_doc_entropies</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Max: 8.968470267401546
+Min: 4.004576449759752
+Average: 6.891700509903166
+Median: 6.978609415282731
+Standard Deviation: 1.0969692502589148
 Median Absolute Deviation: 1.0496675213283246
 95% of the data fall within 6.657904640431418 and 7.125496379374914
 </pre>
@@ -457,7 +543,7 @@ Median Absolute Deviation: 1.0496675213283246
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="shared_cnts_from_docs" class="doc_header"><code>shared_cnts_from_docs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L117" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>shared_cnts_from_docs</code>(<strong><code>sys_docs</code></strong>)</p>
+<h4 id="shared_cnts_from_docs" class="doc_header"><code>shared_cnts_from_docs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L128" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>shared_cnts_from_docs</code>(<strong><code>sys_docs</code></strong>, <strong><code>vocab</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -480,7 +566,7 @@ Median Absolute Deviation: 1.0496675213283246
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="shared_entropy_from_docs" class="doc_header"><code>shared_entropy_from_docs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L128" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>shared_entropy_from_docs</code>(<strong><code>sys_docs</code></strong>)</p>
+<h4 id="shared_entropy_from_docs" class="doc_header"><code>shared_entropy_from_docs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L139" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>shared_entropy_from_docs</code>(<strong><code>sys_docs</code></strong>, <strong><code>vocab</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -503,7 +589,7 @@ Median Absolute Deviation: 1.0496675213283246
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="shared_entropy_from_df" class="doc_header"><code>shared_entropy_from_df</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L138" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>shared_entropy_from_df</code>(<strong><code>df</code></strong>, <strong><code>col</code></strong>, <strong><code>model_path</code></strong>, <strong><code>data_types</code></strong>)</p>
+<h4 id="shared_entropy_from_df" class="doc_header"><code>shared_entropy_from_df</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L149" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>shared_entropy_from_df</code>(<strong><code>df</code></strong>, <strong><code>col</code></strong>, <strong><code>model_path</code></strong>, <strong><code>data_types</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -590,7 +676,7 @@ Median Absolute Deviation: 1.0496675213283246
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="info_content" class="doc_header"><code>info_content</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L155" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>info_content</code>(<strong><code>freqs</code></strong>)</p>
+<h4 id="info_content" class="doc_header"><code>info_content</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L166" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>info_content</code>(<strong><code>freqs</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -613,7 +699,7 @@ Median Absolute Deviation: 1.0496675213283246
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_shared_probs_from_docs" class="doc_header"><code>get_shared_probs_from_docs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L162" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_shared_probs_from_docs</code>(<strong><code>sys_docs</code></strong>)</p>
+<h4 id="get_shared_probs_from_docs" class="doc_header"><code>get_shared_probs_from_docs</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/exp/info.py#L173" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_shared_probs_from_docs</code>(<strong><code>sys_docs</code></strong>, <strong><code>vocab</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -8680,7 +8766,7 @@ Converted 07_repr.roberta.train.ipynb.
 Converted 08_exp.info.ipynb.
 Converted 09_desc.stats.ipynb.
 Converted 10_vis.ipynb.
-Converted 11_mgmnt.prep.nltk.ipynb.
+Converted 11_mgmnt.prep.conv.ipynb.
 Converted 12_repr.roberta.eval.ipynb.
 Converted 14_mgmnt.prep.bpe.ipynb.
 Converted 15_desc.metrics.se.ipynb.
@@ -8692,6 +8778,9 @@ Converted 20_benchmark.codegen.ipynb.
 Converted 21_inf.i.ipynb.
 Converted 22_inf.bayesian.ipynb.
 Converted 23_inf.causal.ipynb.
+Converted 24_mgmnt.corpus.ipynb.
+Converted 25_mgmnt.prep.traceability.ipynb.
+Converted 26_mgmnt.prep.nltk.ipynb.
 Converted aa_blog.example.ipynb.
 Converted ab_templates.example.ipynb.
 Converted ac_emp.eval.pp1.rq1.ipynb.
