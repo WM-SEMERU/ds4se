@@ -1,1 +1,1 @@
-▁p ackage ▁smos . application . teaching Management ; ▁import ▁java x . s ervlet . http . HttpServlet ; ▁public ▁class ▁Servlet Pro va ▁ext ends ▁HttpServlet ▁{ ▁/** ▁* ▁*/ ▁private ▁static ▁final ▁long ▁s erial Version UID ▁= ▁- 8321 776 25 7763 007 83 L ; ▁}
+▁p ackage ▁smos . application . teaching Management ; ▁import ▁java x . s ervlet . http . HttpServlet ; ▁p ublic ▁class ▁Servlet Pro va ▁ext ends ▁HttpServlet ▁{ ▁/** ▁* ▁*/ ▁priv ate ▁static ▁final ▁long ▁s erial Version UID ▁= ▁- 8321 776 25 7763 007 83 L ; ▁}
