@@ -4,7 +4,7 @@ sys.path.append(".")
 from pymongo import MongoClient
 import os
 import glob
-from nbs.DB_Schema.SemeruCollection import SemeruCollection
+from ds4se.mgmnt.db.mongo import SemeruCollection
 
 def create_documents_from_SMOS(ground, source_dir, use_dir, source_collection, use_collection):
 
