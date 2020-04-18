@@ -11,8 +11,10 @@ index = {"jsonl_list_to_dataframe": "14_mgmnt.prep.bpe.ipynb",
          "tokenize_fns": "14_mgmnt.prep.bpe.ipynb",
          "read_bpe_files": "14_mgmnt.prep.bpe.ipynb",
          "split_lines_to_files": "14_mgmnt.prep.bpe.ipynb",
-         "Vectorizor": "19_repr.word2vec.eval.ipynb",
+         "Vectorizor": "18_repr.doc2vec.eval.ipynb",
          "BertVectorizor": "19_repr.word2vec.eval.ipynb",
+         "logger": "08_exp.info.ipynb",
+         "flatten": "06_benchmark.traceability.ipynb",
          "Testbed": "06_benchmark.traceability.ipynb",
          "Procedure": "06_benchmark.traceability.ipynb",
          "Benchmark": "06_benchmark.traceability.ipynb",
@@ -37,9 +39,15 @@ index = {"jsonl_list_to_dataframe": "14_mgmnt.prep.bpe.ipynb",
          "visualize_gt_ngt": "10_vis.ipynb",
          "visualize_events": "10_vis.ipynb",
          "plot_counts": "10_vis.ipynb",
+         "vis_3d": "10_vis.ipynb",
          "get_ground_truth": "14_mgmnt.prep.bpe.ipynb",
          "get_non_ground_truth": "14_mgmnt.prep.bpe.ipynb",
-         "gen_gt_ngt": "14_mgmnt.prep.bpe.ipynb"}
+         "gen_gt_ngt": "14_mgmnt.prep.bpe.ipynb",
+         "Corpus": "24_mgmnt.corpus.ipynb",
+         "get_gt_links": "25_mgmnt.prep.traceability.ipynb",
+         "get_non_gt": "25_mgmnt.prep.traceability.ipynb",
+         "add_wmd": "25_mgmnt.prep.traceability.ipynb",
+         "get_nltk_docs": "26_mgmnt.prep.nltk.ipynb"}
 
 modules = ["mgmnt/prep/i.py",
            "repr/i.py",
@@ -57,7 +65,9 @@ modules = ["mgmnt/prep/i.py",
            "repr/doc2vec/eval.py",
            "repr/word2vec/eval.py",
            "benchmark/codegen.py",
-           "mgmnt/corpus.py"]
+           "mgmnt/corpus.py",
+           "mgmnt/prep/traceability.py",
+           "mgmnt/prep/nltk.py"]
 
 git_url = "https://github.com/ncoop57/ds4se/tree/master/"
 

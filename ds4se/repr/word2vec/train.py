@@ -6,10 +6,8 @@ __all__ = []
 # Imports
 import numpy as np
 import pandas as pd
-import sentencepiece as sp
 
 from pathlib import Path
-from tokenizers import ByteLevelBPETokenizer
-from tokenizers.processors import BertProcessing
 
-from transformers import pipeline
+from gensim.test.utils import common_texts, get_tmpfile
+from gensim.models import Word2Vec
