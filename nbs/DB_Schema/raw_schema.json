@@ -10,7 +10,7 @@
         "type": "object",
         "properties": {
           "collection": {"type": "string"}, 
-          "document_id": {"type": "object"},
+          "document_id": {},
           "name_and_system": {
             "type": "array",
             "items": [
@@ -32,7 +32,7 @@
           "type": "object",
           "properties": {
             "collection": {"type": "string"}, 
-            "document_id": {"type": "object"},
+            "document_id": {},
             "transformation_identifier": {"type": "object"}
           }
         }

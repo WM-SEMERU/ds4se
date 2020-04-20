@@ -11,7 +11,7 @@
         "type": "object",
         "properties": {
           "collection": {"type": "string"},
-          "document_id": {"type": "object"}
+          "document_id": {}
           }
         },
         "required": ["collection", "document_id"]
@@ -25,11 +25,10 @@
           "type": "object",
           "properties": {
             "collection": {"type": "string"},
-            "document_id": {"type": "object"}
+            "document_id": {}
           }
         }
       }
     },
-  "required": ["system", "name", "contents", "transformation_identifier", "transformed_from"],
-  "additionalProperties": false
+  "required": ["system", "name", "contents", "transformation_identifier", "transformed_from"]
 }
