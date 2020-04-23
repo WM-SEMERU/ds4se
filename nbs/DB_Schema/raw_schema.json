@@ -1,0 +1,44 @@
+{
+  "type":"object",
+  "properties": {
+    "system": {"type": "string"},
+    "name": {"type": "string"},
+    "contents": {"type": "string"},
+    "ground_truth": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "collection": {"type": "string"}, 
+          "document_id": {},
+          "name_and_system": {
+            "type": "array",
+            "items": [
+              {"type":  "string"},
+              {"type":  "string"}
+            ]
+          }
+        },
+        "required": ["collection"],
+        "minProperties": 2,
+        "additionalProperties": false
+      }
+    },
+    "applied_transformations": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "collection": {"type": "string"}, 
+            "document_id": {},
+            "transformation_identifier": {"type": "object"}
+          }
+        }
+      }
+    }
+  },
+  "required": ["system", "name", "contents", "ground_truth"],
+  "additionalProperties": false
+}

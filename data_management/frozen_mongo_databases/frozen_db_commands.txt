@@ -1,0 +1,20 @@
+Last login: Sat Apr 18 11:44:08 on ttys002
+megretson@moonshot ~ % cd Projects 
+megretson@moonshot Projects % ls
+ds4se			flask_env		portfolio
+dsenv			mongo_serve_status
+megretson@moonshot Projects % mkdir frozen_dbs
+megretson@moonshot Projects % cd frozen_dbs 
+megretson@moonshot frozen_dbs % mongoexport --collection=requirement_raw --db=test --out=requirement_raw_20200419_1.json
+2020-04-19T20:42:06.834-0400	connected to: mongodb://localhost/
+2020-04-19T20:42:06.852-0400	exported 134 records
+megretson@moonshot frozen_dbs % mongoexport --collection=source_raw --db=test --out=source_raw_20200419_1.json
+2020-04-19T20:44:32.247-0400	connected to: mongodb://localhost/
+2020-04-19T20:44:32.294-0400	exported 200 records
+megretson@moonshot frozen_dbs % mongoimport --collection=requirement_raw_imported --db=test --file=requirement_raw_20200419_1.json
+2020-04-19T20:54:05.903-0400	connected to: mongodb://localhost/
+2020-04-19T20:54:05.971-0400	134 document(s) imported successfully. 0 document(s) failed to import.
+megretson@moonshot frozen_dbs % mongoimport --collection=source_raw_imported --db=test --file=source_raw_20200419_1.json
+2020-04-19T20:55:00.007-0400	connected to: mongodb://localhost/
+2020-04-19T20:55:00.081-0400	200 document(s) imported successfully. 0 document(s) failed to import.
+megretson@moonshot frozen_dbs % 

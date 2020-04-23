@@ -1,0 +1,34 @@
+{
+  "type":"object",
+  "properties": {
+    "system": {"type": "string"},
+    "name": {"type": "string"},
+    "contents": {"type": "string"},
+    "transformation_identifier": {"type": "object"},
+    "transformed_from": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "collection": {"type": "string"},
+          "document_id": {}
+          }
+        },
+        "required": ["collection", "document_id"]
+      }
+    },
+    "applied_transformations": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "collection": {"type": "string"},
+            "document_id": {}
+          }
+        }
+      }
+    },
+  "required": ["system", "name", "contents", "transformation_identifier", "transformed_from"]
+}
