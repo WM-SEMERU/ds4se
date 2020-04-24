@@ -87,17 +87,23 @@ def create_requirement_to_source_or_test_dicts(ground_file, split_on):
 
 def main():
     client = MongoClient('localhost', 27017)
-    db = client.test
-    req_collection = SemeruCollection(database=db, name="requirement_raw", raw_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/raw_schema.json",
-                        transform_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/transformed_schema.json")
-    test_collection = SemeruCollection(database=db, name="test_raw", raw_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/raw_schema.json",
-                        transform_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/transformed_schema.json")
-    source_collection = SemeruCollection(database=db, name="source_raw", raw_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/raw_schema.json",
-                        transform_schema="/Users/megretson/Projects/SE/ds4se/data_management/traceability_data/transformed_schema.json")
+    db = client.traceability
+    req_collection = SemeruCollection(database=db, name="requirement_raw", raw_schema="nbs/DB_Schema/raw_schema.json",
+                        transform_schema="nbs/DB_Schema/transformed_schema.json")
+    test_collection = SemeruCollection(database=db, name="test_raw", raw_schema="nbs/DB_Schema/raw_schema.json",
+                        transform_schema="nbs/DB_Schema/transformed_schema.json")
+    source_collection = SemeruCollection(database=db, name="source_raw", raw_schema="nbs/DB_Schema/raw_schema.json",
+                        transform_schema="nbs/DB_Schema/transformed_schema.json")
 
 
-    create_documents_from_LibEST('req_to_code_ground.txt', 'req_to_test_ground.txt', 'test_to_code_ground.txt',
-                                 '../traceability_data/raw/LibEST_semeru_format/requirements', 'test', 'source_code', req_collection, test_collection,
+    create_documents_from_LibEST('data/traceability/semeru-format/LibEST_semeru_format/req_to_code_ground.txt',
+                                 'data/traceability/semeru-format/LibEST_semeru_format/req_to_test_ground.txt',
+                                 'data/traceability/semeru-format/LibEST_semeru_format/test_to_code_ground.txt',
+                                 'data/traceability/semeru-format/LibEST_semeru_format/requirements',
+                                 'data/traceability/semeru-format/LibEST_semeru_format/test',
+                                 'data/traceability/semeru-format/LibEST_semeru_format/source_code',
+                                 req_collection,
+                                 test_collection,
                                  source_collection)
 
 

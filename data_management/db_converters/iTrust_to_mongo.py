@@ -3,17 +3,15 @@ import os
 from ds4se.mgmnt.db.mongo import SemeruCollection
 
 
-def create_documents_from_iTrust(ground_truth_file, use_dir, source_dir, db):
+def create_documents_from_iTrust(ground_truth_file, source_dir, use_dir, source_collection, use_collection):
     # pair requirements with source_code files
     use_to_source = create_requirement_to_source_or_test_dicts(ground_truth_file, " ")
     use_to_source = clean_iTrust_paths(use_to_source, source_dir)
 
-    use_collection = db["requirement_raw"]
-    source_collection = db["source_raw"]
 
     for use in use_to_source.keys():
 
-        use_path = os.path.join("../traceability_data/raw/iTrust_semeru_format", use_dir, use)
+        use_path = os.path.join(use_dir, use)
 
         with open(use_path, encoding="ISO-8859-1") as use_file:
             use_contents = use_file.read()
@@ -38,7 +36,7 @@ def create_and_link_source_documents(requirement, requirements_to_source, source
 
             if exists is None:
 
-                source_path = os.path.join("../traceability_data/raw/iTrust_semeru_format", source_dir, source)
+                source_path = os.path.join(source_dir, source)
 
                 with open(source_path, encoding="ISO-8859-1") as source_file:
                     source_contents = source_file.read()
@@ -100,8 +98,17 @@ def clean_iTrust_paths(use_to_source, source_dir):
 
 def main():
     client = MongoClient('localhost', 27017)
-    db = client.test
-    create_documents_from_iTrust('../traceability_data/raw/iTrust_semeru_format/ground.txt', 'use_cases', 'source_code', db)
+    db = client.traceability
+
+    source_collection = SemeruCollection(database=db, name="source_raw", raw_schema="nbs/DB_Schema/raw_schema.json",
+                        transform_schema="nbs/DB_Schema/transformed_schema.json")
+    use_collection = SemeruCollection(database=db, name="requirement_raw", raw_schema="nbs/DB_Schema/raw_schema.json",
+                        transform_schema="nbs/DB_Schema/transformed_schema.json")
+
+    create_documents_from_iTrust('data/traceability/semeru-format/iTrust_semeru_format/old_ground.txt',
+                                 'data/traceability/semeru-format/iTrust_semeru_format/source_code',
+                                 'data/traceability/semeru-format/iTrust_semeru_format/use_cases',
+                                 source_collection, use_collection)
 
 
 if __name__ == "__main__":
