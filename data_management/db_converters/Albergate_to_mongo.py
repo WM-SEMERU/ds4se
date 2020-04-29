@@ -1,69 +1,64 @@
 from pymongo import MongoClient
 import os
+import glob
 from ds4se.mgmnt.db.mongo import SemeruCollection
 
 
-def create_documents_from_albergate(ground_truth_file, req_dir, source_dir, db):
+def create_documents_from_Albergate(ground, source_dir, use_dir, source_collection, use_collection):
 
-    req_to_source = create_requirement_to_source_or_test_dicts(ground_truth_file, " ")
+    # pair requirements with source_code files
+    requirements_to_source = create_requirement_to_source_or_test_dicts(ground, " ")
 
-    use_collection = db["requirement_raw"]
-    source_collection = db["source_raw"]
+    # Insert all the requirements
+    req_to_id = insert_raw(dict(), use_dir, use_collection, "*.txt", "Albergate")
 
-    for requirement in req_to_source.keys():
-        use_path = os.path.join("", req_dir, requirement)
+    # Insert all of the source
+    source_to_id = insert_raw(dict(), source_dir, source_collection, "*.java", "Albergate")
 
-        with open(use_path, encoding="ISO-8859-1") as req_file:
-            req_contents = req_file.read()
-
-        req_document = {"name": requirement, "system": "Albergate", "applied_transformations": [],
-                        "ground_truth": [], "contents": req_contents}
-
-        req_id = use_collection.insert_one(req_document).inserted_id
-        req_query = {"_id": req_id}
-
-        create_and_link_source_documents(requirement, req_to_source, source_dir, source_collection, req_id,
-                                         use_collection, req_query)
+    link_docs(requirements_to_source, req_to_id, use_collection, source_to_id, source_collection)
 
 
-def create_and_link_source_documents(requirement, requirements_to_source, source_dir, source_collection,
-                                     req_id, req_collection, req_query):
+def link_docs(ground_dict, key_ids, key_collection, value_ids, value_collection):
 
-    try:
-        for source in requirements_to_source[requirement]:
+    for key in ground_dict.keys():
 
-            exists = source_collection.find_one({"name": source})
+        key_id = key_ids[key]
 
-            if exists is None:
+        for value in ground_dict[key]:
 
-                source_path = os.path.join("", source_dir, source)
+            if value != '':
 
-                with open(source_path, encoding="ISO-8859-1") as source_file:
-                    source_contents = source_file.read()
+                value_id = value_ids[value]
 
-                source_document = {"name": source, "system": "Albergate", "applied_transformations": [],
-                                   "ground_truth": [], "contents": source_contents}
+                key_collection.link_ground_truth(key_id, key_collection, value_id, value_collection)
 
-                # Check if a source_document of this name already exists
-                source_id = source_collection.insert_one(source_document).inserted_id
 
-            else:
-                source_id = exists["_id"]
+def insert_raw(doc_id_dict, dir, collection, ext, system):
 
-            new_req_values = {"$addToSet": {"ground_truth": ("source_raw", source_id)}}
+    files = []
+    for file in glob.glob(os.path.join(dir, ext)):
+        files.append(file)
 
-            source_query = {"_id": source_id}
-            new_source_values = {"$addToSet": {"ground_truth": ("requirement_raw", req_id)}}
+    # print(files)
 
-            req_collection.update_one(req_query, new_req_values)
-            source_collection.update_one(source_query, new_source_values)
+    for file in files:
 
-    except KeyError:
-        # print("There is no corresponding source for this requirement")
-        pass
+        with open(file, encoding="ISO-8859-1") as open_file:
+            contents = open_file.read()
+
+        file_name = os.path.split(file)[1]
+
+        req_document = {"name": file_name, "system": system, "applied_transformations": [],
+                        "ground_truth": [], "contents": contents}
+
+        id = collection.insert_one(req_document).inserted_id
+        doc_id_dict[file_name] = id
+
+    return doc_id_dict
 
 
 def create_requirement_to_source_or_test_dicts(ground_file, split_on):
+
     requirement_associations = dict()
 
     # pair requirements with source_code or test files
@@ -74,19 +69,26 @@ def create_requirement_to_source_or_test_dicts(ground_file, split_on):
 
             requirement_associations[files[0]] = files[1:]
 
-    # print(requirement_associations)
     return requirement_associations
 
 
 def main():
-
     client = MongoClient('localhost', 27017)
     db = client.test
-    create_documents_from_albergate('../traceability_data/raw/Albergate_semeru_format/ground.txt', 'requirements', 'source_code', db)
+    use_collection = SemeruCollection(database=db, name="requirement_raw", raw_schema="nbs/DB_Schema/raw_schema.json",
+                        transform_schema="nbs/DB_Schema/transformed_schema.json")
+    source_collection = SemeruCollection(database=db, name="source_raw", raw_schema="nbs/DB_Schema/raw_schema.json",
+                        transform_schema="nbs/DB_Schema/transformed_schema.json")
+
+    create_documents_from_Albergate("data/traceability/semeru-format/Albergate_semeru_format/ground.txt",
+                               "data/traceability/semeru-format/Albergate_semeru_format/source_code",
+                               "data/traceability/semeru-format/Albergate_semeru_format/requirements",
+                               source_collection, use_collection)
 
 
 if __name__ == "__main__":
     main()
+
 
 
 

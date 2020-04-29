@@ -1,139 +1,99 @@
 from pymongo import MongoClient
 import os
+import glob
 from ds4se.mgmnt.db.mongo import SemeruCollection
 
 
-def create_documents_from_EBT(code_ground, tests_ground, req_file, test_file, source_dir, db):
+def create_documents_from_EBT(code_ground, tests_ground, test_to_code_ground, req_dir, test_dir, source_dir,
+                                 req_collection, test_collection, source_collection):
 
     # pair requirements with source_code files
     requirements_to_source = create_requirement_to_source_or_test_dicts(code_ground, " ")
+    print(requirements_to_source)
 
-    # pair requirements with source_code files
+    # pair requirements with test files
     requirements_to_test = create_requirement_to_source_or_test_dicts(tests_ground, " ")
+    print(requirements_to_test)
 
-    # Read in the requirement file
-    requirements = parse_requirement_or_test_file(req_file, "\t")
+    # pair tests with source_code files
+    test_to_source = create_requirement_to_source_or_test_dicts(test_to_code_ground, " ")
+    print(test_to_source)
 
-    # Read in the test file
-    tests = parse_requirement_or_test_file(test_file, " ")
+    # Insert all the requirements
+    req_to_id = insert_from_file(dict(), 'data/traceability/semeru-format/EBT_semeru_format/requirements.txt', "\t",
+                                 req_collection, "EBT")
+    print(req_to_id)
 
-    req_collection = db["requirement_raw"]
-    source_collection = db["source_raw"]
-    test_collection = db["test_raw"]
+    # Insert all of the source
+    source_to_id = insert_raw(dict(), source_dir, source_collection, "*.java", "EBT")
+    print(source_to_id)
 
-    for requirement in requirements.keys():
+    # Insert all of the tests
+    test_to_id = insert_from_file(dict(), 'data/traceability/semeru-format/EBT_semeru_format/test_cases.txt', " ",
+                                 test_collection, "EBT")
+    print(test_to_id)
 
-        req_document = {"name": requirement, "system": "EBT", "applied_transformations": [],
-                        "ground_truth": [], "contents": requirements[requirement]}
-
-        req_id = req_collection.insert_one(req_document).inserted_id
-        req_query = {"_id": req_id}
-
-        create_and_link_source_documents(requirement, requirements_to_source, source_dir, source_collection, req_id,
-                                         req_collection, req_query)
-
-        create_and_link_test_documents(requirement, requirements_to_test, test_collection, tests, req_id,
-                                       req_collection, req_query)
-
-        link_source_and_tests(req_query, req_collection, source_collection, test_collection)
+    link_docs(requirements_to_source, req_to_id, req_collection, source_to_id, source_collection)
+    link_docs(requirements_to_test, req_to_id, req_collection, test_to_id, test_collection)
+    link_docs(test_to_source, test_to_id, test_collection, source_to_id, source_collection)
 
 
-def link_source_and_tests(req_query, req_collection, source_collection, test_collection):
+def link_docs(ground_dict, key_ids, key_collection, value_ids, value_collection):
 
-    req_document = req_collection.find_one(req_query)
-    source_ids = list()
-    test_ids = list()
+    for key in ground_dict.keys():
 
-    for file in req_document["ground_truth"]:
-        if file[0] == "source_raw":
-            source_ids.append(file[1])
-        elif file[0] == "test_raw":
-            test_ids.append(file[1])
-        else:
-            print("Unrecognizable artifact type")
-            raise KeyError
+        key_id = key_ids[key]
 
-    for source_id in source_ids:
+        for value in ground_dict[key]:
 
-        source_query = {"_id": source_id}
+            if value != '':
 
-        for test_id in test_ids:
-            test_query = {"_id": test_id}
+                value_id = value_ids[value]
 
-            new_source_values = {"$addToSet": {"ground_truth": ("test_raw", test_id)}}
-            new_test_values = {"$addToSet": {"ground_truth": ("source_raw", source_id)}}
-
-            source_collection.update_one(source_query, new_source_values)
-            test_collection.update_one(test_query, new_test_values)
+                key_collection.link_ground_truth(key_id, key_collection, value_id, value_collection)
 
 
-def create_and_link_source_documents(requirement, requirements_to_source, source_dir, source_collection,
-                                     req_id, req_collection, req_query):
+def insert_raw(doc_id_dict, dir, collection, ext, system):
 
-    try:
-        for source in requirements_to_source[requirement]:
+    files = []
+    for file in glob.glob(os.path.join(dir, ext)):
+        files.append(file)
 
-            exists = source_collection.find_one({"name": source})
+    # print(files)
 
-            if exists is None:
+    for file in files:
 
-                source_path = os.path.join("../traceability_data/raw/EBT_semeru_format", source_dir, source)
+        with open(file, encoding="ISO-8859-1") as open_file:
+            contents = open_file.read()
 
-                with open(source_path, encoding="ISO-8859-1") as source_file:
-                    source_contents = source_file.read()
+        file_name = os.path.split(file)[1]
 
-                source_document = {"name": source, "system": "EBT", "applied_transformations": [],
-                                   "ground_truth": [], "contents": source_contents}
+        req_document = {"name": file_name, "system": system, "applied_transformations": [],
+                        "ground_truth": [], "contents": contents}
 
-                # Check if a source_document of this name already exists
-                source_id = source_collection.insert_one(source_document).inserted_id
+        id = collection.insert_one(req_document).inserted_id
+        doc_id_dict[file_name] = id
 
-            else:
-                source_id = exists["_id"]
-
-            new_req_values = {"$addToSet": {"ground_truth": ("source_raw", source_id)}}
-
-            source_query = {"_id": source_id}
-            new_source_values = {"$addToSet": {"ground_truth": ("requirement_raw", req_id)}}
-
-            req_collection.update_one(req_query, new_req_values)
-            source_collection.update_one(source_query, new_source_values)
-
-    except KeyError:
-        # print("There is no corresponding source for this requirement")
-        pass
+    return doc_id_dict
 
 
-def create_and_link_test_documents(requirement, requirements_to_test, test_collection, tests, req_id,
-                                   req_collection, req_query):
+def insert_from_file(doc_id_dict, file, split_on,  collection, system):
 
-    try:
-        for test in requirements_to_test[requirement]:
+    # read in the lines and split
+    with open(file) as f:
+        for line in f:
+            line = line.rstrip()
+            req_or_test_id = line.split(split_on)[0]
+            contents = line.split(split_on, 1)[1]
 
-            exists = test_collection.find_one({"name": test})
+            document = {"name": req_or_test_id, "system": system, "applied_transformations": [],
+                            "ground_truth": [], "contents": contents}
 
-            if exists is None:
+            id = collection.insert_one(document).inserted_id
+            doc_id_dict[req_or_test_id] = id
 
-                test_contents = tests[test]
-                test_document = {"name": test, "system": "EBT", "applied_transformations": [], "ground_truth": [],
-                                 "contents": test_contents}
-
-                test_id = test_collection.insert_one(test_document).inserted_id
-
-            else:
-                test_id = exists["_id"]
-
-            new_req_values = {"$addToSet": {"ground_truth": ("test_raw", test_id)}}
-
-            test_query = {"_id": test_id}
-            new_test_values = {"$addToSet": {"ground_truth": ("requirement_raw", req_id)}}
-
-            req_collection.update_one(req_query, new_req_values)
-            test_collection.update_one(test_query, new_test_values)
-
-    except KeyError:
-        # print("There is no corresponding test for this requirement")
-        pass
+    # print(req_or_test)
+    return doc_id_dict
 
 
 def create_requirement_to_source_or_test_dicts(ground_file, split_on):
@@ -148,33 +108,33 @@ def create_requirement_to_source_or_test_dicts(ground_file, split_on):
 
             requirement_associations[files[0]] = files[1:]
 
-    # print(requirement_associations)
     return requirement_associations
-
-
-def parse_requirement_or_test_file(file, split_on):
-
-    req_or_test = dict()
-
-    # read in the lines and split
-    with open(file) as f:
-        for line in f:
-            line = line.rstrip()
-            req_or_test_id = line.split(split_on)[0]
-            req_or_test[req_or_test_id] = line
-
-    # print(req_or_test)
-    return req_or_test
 
 
 def main():
     client = MongoClient('localhost', 27017)
     db = client.test
-    create_documents_from_EBT('code_ground.txt', 'tests_ground.txt',
-                              '../traceability_data/raw/EBT_semeru_format/requirements.txt', 'test_cases.txt',
-                              'source_code', db)
+    req_collection = SemeruCollection(database=db, name="requirement_raw", raw_schema="nbs/DB_Schema/raw_schema.json",
+                        transform_schema="nbs/DB_Schema/transformed_schema.json")
+    test_collection = SemeruCollection(database=db, name="test_raw", raw_schema="nbs/DB_Schema/raw_schema.json",
+                        transform_schema="nbs/DB_Schema/transformed_schema.json")
+    source_collection = SemeruCollection(database=db, name="source_raw", raw_schema="nbs/DB_Schema/raw_schema.json",
+                        transform_schema="nbs/DB_Schema/transformed_schema.json")
+
+
+    create_documents_from_EBT('data/traceability/semeru-format/EBT_semeru_format/code_ground.txt',
+                                 'data/traceability/semeru-format/EBT_semeru_format/tests_ground.txt',
+                                 'data/traceability/semeru-format/EBT_semeru_format/test_to_source.txt',
+                                 'data/traceability/semeru-format/EBT_semeru_format/requirements.txt',
+                                 'data/traceability/semeru-format/EBT_semeru_format/test_cases.txt',
+                                 'data/traceability/semeru-format/EBT_semeru_format/source_code',
+                                 req_collection,
+                                 test_collection,
+                                 source_collection)
 
 
 if __name__ == "__main__":
     main()
+
+
 

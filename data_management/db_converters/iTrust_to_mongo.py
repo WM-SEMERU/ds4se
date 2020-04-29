@@ -8,7 +8,6 @@ def create_documents_from_iTrust(ground_truth_file, source_dir, use_dir, source_
     use_to_source = create_requirement_to_source_or_test_dicts(ground_truth_file, " ")
     use_to_source = clean_iTrust_paths(use_to_source, source_dir)
 
-
     for use in use_to_source.keys():
 
         use_path = os.path.join(use_dir, use)
