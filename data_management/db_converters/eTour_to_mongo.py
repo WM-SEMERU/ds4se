@@ -78,7 +78,7 @@ def create_requirement_to_source_or_test_dicts(ground_file, split_on):
 
 def main():
     client = MongoClient('localhost', 27017)
-    db = client.test
+    db = client.traceability
 
     source_collection = SemeruCollection(database=db, name="source_raw", raw_schema="nbs/DB_Schema/raw_schema.json",
                         transform_schema="nbs/DB_Schema/transformed_schema.json")

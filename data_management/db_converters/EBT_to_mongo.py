@@ -9,29 +9,23 @@ def create_documents_from_EBT(code_ground, tests_ground, test_to_code_ground, re
 
     # pair requirements with source_code files
     requirements_to_source = create_requirement_to_source_or_test_dicts(code_ground, " ")
-    print(requirements_to_source)
 
     # pair requirements with test files
     requirements_to_test = create_requirement_to_source_or_test_dicts(tests_ground, " ")
-    print(requirements_to_test)
 
     # pair tests with source_code files
     test_to_source = create_requirement_to_source_or_test_dicts(test_to_code_ground, " ")
-    print(test_to_source)
 
     # Insert all the requirements
     req_to_id = insert_from_file(dict(), 'data/traceability/semeru-format/EBT_semeru_format/requirements.txt', "\t",
                                  req_collection, "EBT")
-    print(req_to_id)
 
     # Insert all of the source
     source_to_id = insert_raw(dict(), source_dir, source_collection, "*.java", "EBT")
-    print(source_to_id)
 
     # Insert all of the tests
     test_to_id = insert_from_file(dict(), 'data/traceability/semeru-format/EBT_semeru_format/test_cases.txt', " ",
                                  test_collection, "EBT")
-    print(test_to_id)
 
     link_docs(requirements_to_source, req_to_id, req_collection, source_to_id, source_collection)
     link_docs(requirements_to_test, req_to_id, req_collection, test_to_id, test_collection)
@@ -113,7 +107,7 @@ def create_requirement_to_source_or_test_dicts(ground_file, split_on):
 
 def main():
     client = MongoClient('localhost', 27017)
-    db = client.test
+    db = client.traceability
     req_collection = SemeruCollection(database=db, name="requirement_raw", raw_schema="nbs/DB_Schema/raw_schema.json",
                         transform_schema="nbs/DB_Schema/transformed_schema.json")
     test_collection = SemeruCollection(database=db, name="test_raw", raw_schema="nbs/DB_Schema/raw_schema.json",
