@@ -11,10 +11,11 @@
         "type": "object",
         "properties": {
           "collection": {"type": "string"},
-          "document_id": {}
+          "document_id": {},
+          "query": {}
           }
         },
-        "required": ["collection", "document_id"]
+        "required": ["collection"]
       }
     },
     "applied_transformations": {

@@ -33,6 +33,7 @@
           "properties": {
             "collection": {"type": "string"}, 
             "document_id": {},
+            "query": {},
             "transformation_identifier": {"type": "object"}
           }
         }
