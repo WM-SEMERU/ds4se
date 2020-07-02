@@ -7,6 +7,8 @@ import os
 import unittest
 import random
 from nltk.stem.snowball import SnowballStemmer
+from pathlib import Path
+import glob
 
 # Cell
 class Corpus:

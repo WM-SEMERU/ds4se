@@ -117,6 +117,6 @@ def clusterize_w_entropy(gt_doc_vecs, ngt_doc_vecs, gt_entropies, ngt_entropies)
 #     ax.set_ylabel(trgt_dtype)
     ax.set_zlabel('Entropy')
 
-#     ax.invert_yaxis()
+    ax.invert_yaxis()
 
     plt.show()
