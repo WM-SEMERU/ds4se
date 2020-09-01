@@ -31,7 +31,7 @@ Description: Software data comprises any type of artifacts like source code, req
 - Required Knowledge Prerequisites: Python and Git
 - Preferred Knowledge Prerequisites: Machine Learning, Statistical Computing
 
-## Recommended Readings:
+### Recommended Readings:
 - Exploratory Programming with Nbdev [link](https://www.fast.ai/2019/12/02/nbdev/)
 - Manage your Data Science Project Structure in Early Stage [Blog](https://towardsdatascience.com/manage-your-data-science-project-structure-in-early-stage-95f91d4d0600)
 
