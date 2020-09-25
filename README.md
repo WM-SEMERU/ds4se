@@ -12,8 +12,31 @@
 
 > Data Science for Software Engieering (ds4se) is an academic initiative to perform exploratory analysis on software engineering artifacts and metadata. Data Management, Analysis, and Benchmarking for DL and Traceability.
 
+## A Data Science for Software Engineering Library (DS4SE-API)
+Project Leads: Nathan, @danaderp
 
-This file will become your README and also the index of your documentation.
+Description: Software data comprises any type of artifacts like source code, requirements, user stories, screens, binaries, etc. Automating software engineering tasks based on Machine Learning requires a huge effort of adapting algorithms and deep learning approaches for processing software data. SEMERU Lab is working on a solution for processing any type of data that is a product of software lifecycle. DS4SE library was coined to manage, describe, explore, infer, visualize, represent, and mine software data by relying on statistical theory and machine learning libraries. The DS4SE architecture follows the paradigm of “exploratory programming” to enhance the development process. However, most of the modules that compose the library are incomplete, incommunicated, or undocumented. In this project, we need a motivated team that will help us to connect, refactor, and implement several data science components critical for the future research in SEMERU Lab. You will be working on the back-end. The team is going to be divided into 3 domains: 
+- Back-End Development and Refactoring, 
+- Interface and Facade Implementation (or API), and 
+- Testing.
+
+## Project Description for CSCI 435/535
+
+### Project Goals:
+
+- [ ] Implement the Initial Data Analysis module based on SE metrics theory  
+- [ ] Refactor the Exploratory Data Analysis module based on information science theory
+- [ ] Integrate from other repositories (i.e. COMET) data science components like causal inference and data representation
+- [ ] Expose the API to be consumed by other teams (Team of Project#1 should consume your services)
+
+### Requirements:
+
+- Required Knowledge Prerequisites: Python and Git
+- Preferred Knowledge Prerequisites: Machine Learning, Statistical Computing
+
+### Recommended Readings:
+- Exploratory Programming with Nbdev [link](https://www.fast.ai/2019/12/02/nbdev/)
+- Manage your Data Science Project Structure in Early Stage [Blog](https://towardsdatascience.com/manage-your-data-science-project-structure-in-early-stage-95f91d4d0600)
 
 ## Install
 
