@@ -10,6 +10,7 @@ import pandas as pd
 from itertools import product
 from random import sample
 import functools
+import random
 
 # Cell
 #Visualizing wordEmbedding
@@ -19,3 +20,4 @@ import numpy as np                                  # array handling
 
 # Cell
 import ...mgmnt.prep.conv as prep
+import .train as wv

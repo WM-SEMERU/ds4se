@@ -14,12 +14,12 @@ from gensim.models import Word2Vec, Doc2Vec
 
 # Cell
 #export
-def LoadCorpus(sep=',', mode='a'):
+def LoadCorpus(params, sep=',', mode='a'):
     path_to_link = params['saving_path'] + '['+ params['system']  + '-' + params['version'] + '-{}].csv'.format(params['timestamp'])
     return pd.read_csv(path_to_link, header=0, index_col=0, sep=sep)
 
 # Cell
-def SaveModel(model, model_type='word2vec', description=''):
+def SaveModel(model, params, model_type='word2vec', description=''):
     timestamp = datetime.timestamp(datetime.now())
     path_to_link = params['saving_model'] + '['+ model_type  + '-' + description + '-{}].model'.format(timestamp)
     model.save(path_to_link)
@@ -27,11 +27,11 @@ def SaveModel(model, model_type='word2vec', description=''):
     pass
 
 # Cell
-def LoadWord2Vec(timestamp, model_type='word2vec', description=''):
+def LoadWord2Vec(timestamp, params, model_type='word2vec', description=''):
     path_to_link = params['saving_model'] + '['+ model_type + '-' + description + '-{}].model'.format(timestamp)
     return Word2Vec.load(path_to_link)
 
 # Cell
-def LoadDoc2vec(timestamp, model_type='doc2vec', description=''):
+def LoadDoc2vec(timestamp, params, model_type='doc2vec', description=''):
     path_to_link = params['saving_model'] + '['+ model_type + '-' + description + '-{}].model'.format(timestamp)
     return Doc2Vec.load(path_to_link)
