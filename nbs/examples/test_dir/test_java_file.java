@@ -1,0 +1,1 @@
+class SomeClass {int var, i, able; public int main() {return 0;} public void helper() {return i;}}
