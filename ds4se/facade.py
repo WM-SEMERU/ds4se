@@ -4,6 +4,9 @@ __all__ = ['TraceLinkValue', 'NumDoc', 'VocabSize', 'AverageToken', 'Vocab', 'Vo
            'MutualInformation', 'CrossEntropy', 'KLDivergence']
 
 # Cell
+import random
+
+# Cell
 def TraceLinkValue(filename, source, technique):
     value = random.randint(0,1)
     return value
