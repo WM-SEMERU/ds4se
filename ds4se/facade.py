@@ -60,7 +60,7 @@ def VocabShared(source, target):
 #export
 def SharedVocabSize(source, target):
     shared_size = random.randint(100,200)
-    return size
+    return shared_size
 
 #export
 def MutualInformation(source, target):
