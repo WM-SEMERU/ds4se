@@ -8,8 +8,8 @@ import random
 
 # Cell
 def TraceLinkValue(filename, source, technique):
-    value = random.randint(0,1)
-    return value
+    value = random.randint(0,100)
+    return value/100
 
 #export
 def NumDoc(source, target):
