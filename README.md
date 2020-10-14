@@ -2,6 +2,10 @@
 > Data Science for Software Engieering (ds4se) is an academic initiative to perform exploratory analysis on software engineering artifacts and metadata. Data Management, Analysis, and Benchmarking for DL and Traceability.
 
 
+```python
+import ds4se.facade as facade
+```
+
 This file will become your README and also the index of your documentation.
 
 ## Install
