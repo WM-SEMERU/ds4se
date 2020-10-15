@@ -1,1 +1,0 @@
-The user inputs invalid information and is prompted to try again.

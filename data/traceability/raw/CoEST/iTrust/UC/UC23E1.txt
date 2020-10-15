@@ -1,1 +1,0 @@
- The LHCP types an invalid MID and is prompted to try again.

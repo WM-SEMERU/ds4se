@@ -1,1 +1,0 @@
-An HCP may enter or edit their own demographic information according to data format 6.2 

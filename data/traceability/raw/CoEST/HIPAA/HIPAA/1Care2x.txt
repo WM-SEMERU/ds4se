@@ -1,6 +1,0 @@
-AC,x1
-AL,x5
-AUD,x4
-PA,x2
-SED,x3
-TED,x3

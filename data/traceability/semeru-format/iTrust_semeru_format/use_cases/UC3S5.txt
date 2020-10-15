@@ -1,3 +1,0 @@
-"A patient is presented with a screen of links to the following:
-
-Any upcoming appointments"
