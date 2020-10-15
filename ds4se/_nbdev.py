@@ -4,7 +4,10 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {}
 
-modules = [].py"].py"]
+modules = [].py",
+           "exp/info-[inspect].py"].py"]
+
+doc_url = "https://ncoop57.github.io/ds4se/"
 
 git_url = "https://github.com/ncoop57/ds4se/tree/master/"
 
