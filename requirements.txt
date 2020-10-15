@@ -84,3 +84,9 @@ webencodings==0.5.1
 Werkzeug==0.15.5
 widgetsnbextension==3.5.1
 wrapt==1.11.2
+gensim==3.8.3
+prg==0.0.1a
+fastprogress==1.0.0
+lizard==1.17.4
+
+
