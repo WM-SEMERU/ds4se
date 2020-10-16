@@ -4,12 +4,24 @@ __all__ = ['TraceLinkValue', 'NumDoc', 'VocabSize', 'AverageToken', 'Vocab', 'Vo
            'MutualInformation', 'CrossEntropy', 'KLDivergence']
 
 # Cell
-import random
+def TraceLinkValue(source, target, technique):
+    if (technique == "VSM"):
+        pass
+    if (technique == "LDA"):
+        pass
+    if (technique == "orthogonal"):
+        pass
+    if (technique == "LSA"):
+        pass
+    if (technique == "JS"):
+        pass
+    if (technique == "word2vec"):
+        pass
+    if (technique == "doc2vec"):
+        pass
+    value = random.randint(0,1)/100
 
-# Cell
-def TraceLinkValue(filename, source, technique):
-    value = random.randint(0,100)
-    return value/100
+    return value
 
 #export
 def NumDoc(source, target):

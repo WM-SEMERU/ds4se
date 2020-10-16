@@ -2,10 +2,6 @@
 > Data Science for Software Engieering (ds4se) is an academic initiative to perform exploratory analysis on software engineering artifacts and metadata. Data Management, Analysis, and Benchmarking for DL and Traceability.
 
 
-```python
-import ds4se.facade as facade
-```
-
 This file will become your README and also the index of your documentation.
 
 ## Install
@@ -28,13 +24,13 @@ To use the ds4se library to calculate trace link value of proposed trace link wi
         doc2vec
 
 ```python
-facade.TraceLinkValue("textfile.txt","source","techinque")
+facade.TraceLinkValue("source_string","target_string","techinque")
 ```
 
 
 
 
-    0.32
+    0.73
 
 
 
@@ -60,8 +56,8 @@ print("The number of documents for source is {} , with {} source difference".for
 print("The number of documents for target is {} , with {} target difference".format(target_doc, difference_target))
 ```
 
-    The number of documents for source is 148 , with -17 source difference
-    The number of documents for target is 165 , with 17 target difference
+    The number of documents for source is 160 , with 32 source difference
+    The number of documents for target is 128 , with -32 target difference
     
 
 ### Usage of ds4se model to calculate the vocabulary size of either source or target class
@@ -84,8 +80,8 @@ print("The vocabulary size for source is {} , with {} target difference".format(
 print("The vocabulary size for target is {} , with {} target difference".format(target, difference_target))
 ```
 
-    The vocabulary size for source is 103 , with -16 target difference
-    The vocabulary size for target is 119 , with 16 target difference
+    The vocabulary size for source is 179 , with 35 target difference
+    The vocabulary size for target is 144 , with -35 target difference
     
 
 ### Usage of ds4se model to calculate the average number of token of either source or target class
@@ -108,20 +104,20 @@ print("The number of average token for source is {} , with {} source difference"
 print("The number of average token for target is {} , with {} target difference".format(target, difference_target))
 ```
 
-    The number of average token for source is 150 , with -16 source difference
-    The number of average token for target is 100 , with 16 target difference
+    The number of average token for source is 107 , with 35 source difference
+    The number of average token for target is 143 , with -35 target difference
     
 
 ### Usage of ds4se model to retriev term frequency
 
-The method takes in two parameters, 
+    The method takes in two parameters, 
     1: source artifacts,
-    2: target artifacts.
+    2: target artifacts, 
     and it will do calculation for both classes.
     
-The method returns a dictonary with 
-    key: token;
-    value: a list of count and frequency.
+    The method returns a dictonary with 
+    key: token
+    value: a list of count and frequency
 
 ```python
 facade.VocabShared("source","target")
@@ -130,13 +126,13 @@ facade.VocabShared("source","target")
 
 
 
-    {'est': [111, 0.111], 'http': [139, 0.139], 'frequnecy': [178, 0.178]}
+    {'est': [160, 0.16], 'http': [136, 0.136], 'frequnecy': [124, 0.124]}
 
 
 
 If we only need the term frequency of one of two classes, we can use Vocab() function
 
-The filename should be the path to the file
+**The filename should be the path to the file**
 
 ```python
 facade.Vocab("filename")
@@ -145,7 +141,7 @@ facade.Vocab("filename")
 
 
 
-    {'est': [188, 0.188], 'http': [106, 0.106], 'frequnecy': [159, 0.159]}
+    {'est': [141, 0.141], 'http': [136, 0.136], 'frequnecy': [156, 0.156]}
 
 
 
@@ -166,7 +162,7 @@ facade.SharedVocabSize("source", "target")
 
 
 
-    189
+    112
 
 
 
@@ -179,7 +175,7 @@ facade.MutualInformation("source", "target")
 
 
 
-    104
+    127
 
 
 
@@ -192,7 +188,7 @@ facade.CrossEntropy("source", "target")
 
 
 
-    173
+    171
 
 
 
@@ -205,6 +201,6 @@ facade.KLDivergence("source", "target")
 
 
 
-    188
+    152
 
 
