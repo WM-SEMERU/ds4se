@@ -71,19 +71,14 @@ def Vocab(artifacts_df):
 
 #export
 def VocabShared(source, target):
-    total = 1000
-    vocab_dict = dict()
-    tmp1 = random.randint(100,200)
-    tmp2 = random.randint(100,200)
-    tmp3 = random.randint(100,200)
-    vocab_dict["est"] = [tmp1, tmp1/total]
-    vocab_dict["http"] = [tmp2, tmp2/total]
-    vocab_dict["frequnecy"] = [tmp3, tmp3/total]
-    return vocab_dict
+    df = pd.concat([source, target])
+    return Vocab(df)
 
 #export
 def SharedVocabSize(source, target):
-    shared_size = random.randint(100,200)
+    df = pd.concat([source, target])
+    df_counts = preprocess(df)
+    shared_size = len(df_counts[0])
     return shared_size
 
 #export
