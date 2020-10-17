@@ -88,5 +88,6 @@ gensim==3.8.3
 prg==0.0.1a
 fastprogress==1.0.0
 lizard==1.17.4
-
+chardet==3.0.4
+bs4==0.0.1
 
