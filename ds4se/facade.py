@@ -5,6 +5,15 @@ __all__ = ['TraceLinkValue', 'NumDoc', 'VocabSize', 'AverageToken', 'Vocab', 'Vo
 
 # Cell
 def TraceLinkValue(source, target, technique):
+    #param source a string of the entire source file
+    #param target a string of the entire target file
+    #param technique what tecchnique to use to calculate trace values
+    #return a trace value between [0,1]
+
+    #TODO make the string saved and then return the path to that string
+    sourcePath = "path/to/something"#this is where we save the passed in source
+    targetPath = "./something"
+
     if (technique == "VSM"):
         pass
     if (technique == "LDA"):
@@ -16,8 +25,42 @@ def TraceLinkValue(source, target, technique):
     if (technique == "JS"):
         pass
     if (technique == "word2vec"):
+        parameter = {
+            "vectorizationType": VectorizationType.word2vec,
+            "linkType": LinkType.req2tc,
+            "system": 'libest',
+            "path_to_trained_model": 'test_data/models/word2vec_libest.model',
+            "source_path": 'test_data/val.csv',
+            "target_path": 'test_data/val.csv',
+            "system_path": 'test_data/val.csv',
+            "saving_path": 'test_data/',
+            "names": ['Source','Target','Linked?']
+        }
+
+        source_df = pd.DataFrame({ "ids": ["file"],  "text":[source]})
+        target_df = pd.DataFrame({ "ids": ["file"],  "text":[target]})
+        word2vec = Word2VecSeqVect(parameter)
+        word2vec.df_source = source_df
+        word2vec.df_target = target_df
+        links = [source_df["ids"][0], target_df["ids"][0]]
+        computeDistanceMetric = word2vec.computeDistanceMetric(links, metric_list = [DistanceMetric.WMD,DistanceMetric.SCM])
+
+
+
+
         pass
     if (technique == "doc2vec"):
+        parameter = {
+            "vectorizationType": VectorizationType.doc2vec,
+            "linkType": LinkType.req2tc,
+            "system": 'libest',
+            "path_to_trained_model": 'test_data/models/doc2vec_libest.model',
+            "source_path": source,
+            "target_path": target,
+            "system_path": '/tf/main/benchmarking/traceability/testbeds/nltk/[libest-pre-all].csv',
+            "saving_path": 'test_data/',
+            "names": ['Source','Target','Linked?']
+        }
         pass
     value = random.randint(0,1)/100
 
@@ -25,6 +68,9 @@ def TraceLinkValue(source, target, technique):
 
 #export
 def NumDoc(source, target):
+    #param source a string of the entire source file
+    #param target a string of the entire target file
+    #return a list containing the the difference between the two files
     source_doc = source.shape[0]
     target_doc = target.shape[0]
     difference = source_doc - target_doc
@@ -32,6 +78,9 @@ def NumDoc(source, target):
 
 #export
 def VocabSize(source, target):
+    #param source a string of the entire source file
+    #param target a string of the entire target file
+    #return a list containing the the difference between the two files in terms of vocab
     source_list = preprocess(source)
     target_list = preprocess(target)
     source_size = len(source_list[0])
@@ -41,6 +90,9 @@ def VocabSize(source, target):
 
 #export
 def AverageToken(source, target):
+    #param source a string of the entire source file
+    #param target a string of the entire target file
+    #return a list containing the the difference between the two files in terms of tokens
     source_doc = source.shape[0]
     target_doc = target.shape[0]
 
@@ -58,6 +110,9 @@ def AverageToken(source, target):
 #export
 def Vocab(artifacts_df):
     #we can add a parameter for user to specify the number of most frequent token to return
+    #param source a string of the entire source file
+    #param target a string of the entire target file
+    #return a list containing the the difference between the two files in terms of vocab
     cnts = preprocess(artifacts_df)
     vocab_list = cnts[0].most_common(3)
     total = sum(cnts[0].values())
@@ -71,11 +126,17 @@ def Vocab(artifacts_df):
 
 #export
 def VocabShared(source, target):
+    #param source a string of the entire source file
+    #param target a string of the entire target file
+    #return the similarities of vocab in the files
     df = pd.concat([source, target])
     return Vocab(df)
 
 #export
 def SharedVocabSize(source, target):
+    #param source a string of the entire source file
+    #param target a string of the entire target file
+    #return the similarities of vocab sizes in the files
     df = pd.concat([source, target])
     df_counts = preprocess(df)
     shared_size = len(df_counts[0])
@@ -83,22 +144,34 @@ def SharedVocabSize(source, target):
 
 #export
 def MutualInformation(source, target):
+    #param source a string of the entire source file
+    #param target a string of the entire target file
+    #return the mutual information
     mutual_information = random.randint(100,200)
     return mutual_information
 
 #export
 def CrossEntropy(source, target):
+    #param source a string of the entire source file
+    #param target a string of the entire target file
+    #return the entropy
     cross_entropy = random.randint(100,200)
     cross_entropy = get_system_entropy_from_df(source, "col1",)
     return cross_entropy
 
 #export
 def KLDivergence(source, target):
+    #param source a string of the entire source file
+    #param target a string of the entire target file
+    #return the divergence
     divergence = random.randint(100,200)
     return divergence
 
 #export
 def get_docs(df, spm):
+    #param source a string of the entire source file
+    #param target a string of the entire target file
+    #return the document
     docs = []
     for fn in df["col1"]:
         docs += spm.EncodeAsPieces(fn)
@@ -106,6 +179,9 @@ def get_docs(df, spm):
 
 #export
 def get_counters(docs):
+    #param source a string of the entire source file
+    #param target a string of the entire target file
+    #return the number of tokens
     doc_cnts = []
     cnt = Counter()
     for tok in docs:
