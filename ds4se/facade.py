@@ -71,13 +71,15 @@ def TraceLinkValue(source, target, technique, word2vec_metric = "WMD"):
         doc2vec.df_source = source_df
         doc2vec.df_target = target_df
         doc2vec.InferDoc2Vec(steps=200)
-        doc2vec.ComputeDistanceArtifacts( sampling=True, samples = 50, metric_list = [DistanceMetric.EUC] )
-        doc2vec.SaveLinks()
-        #will most likely need to change this part need to change this part to a different path
-        path_to_ground_truth = '/tf/main/benchmarking/traceability/testbeds/groundtruth/english/[libest-ground-req-to-tc].txt'
-        doc2vec.MatchWithGroundTruth(path_to_ground_truth)
-        doc2vec.SaveLinks(grtruth = True)
-        #TODO find logic to LoadLink properly and display what is needed
+        table = doc2vec.ComputeDistanceArtifacts( sampling=True, samples = 50, metric_list = [DistanceMetric.EUC] )
+        value = (table[0][0][2], table[0][0][3])
+        #The bottom is here for reference -- may not need it
+#         doc2vec.SaveLinks()
+#         #will most likely need to change this part need to change this part to a different path
+#         path_to_ground_truth = '/tf/main/benchmarking/traceability/testbeds/groundtruth/english/[libest-ground-req-to-tc].txt'
+#         doc2vec.MatchWithGroundTruth(path_to_ground_truth)
+#         doc2vec.SaveLinks(grtruth = True)
+#         #TODO find logic to LoadLink properly and display what is needed
 
     return value
 
