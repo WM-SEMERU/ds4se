@@ -4,8 +4,9 @@ __all__ = ['get_desc_stats', 'confidence_interval', 'report_stats']
 
 # Cell
 # Imports
-from scipy.stats import sem, t, median_absolute_deviation as mad
+from scipy.stats import sem, t, median_abs_deviation as mad
 from statistics import mean, median, stdev
+import math
 
 # Cell
 def get_desc_stats(l):
