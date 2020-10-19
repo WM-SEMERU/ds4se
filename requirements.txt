@@ -84,3 +84,10 @@ webencodings==0.5.1
 Werkzeug==0.15.5
 widgetsnbextension==3.5.1
 wrapt==1.11.2
+gensim==3.8.3
+prg==0.0.1a
+fastprogress==1.0.0
+lizard==1.17.4
+chardet==3.0.4
+bs4==0.0.1
+pyemd==0.5.1
