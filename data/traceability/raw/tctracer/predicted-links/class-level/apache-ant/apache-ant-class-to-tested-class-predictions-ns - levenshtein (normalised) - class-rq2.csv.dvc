@@ -1,0 +1,4 @@
+outs:
+- md5: 890bb2b414e1fcb92d92ac1ca3dd3667
+  path: apache-ant-class-to-tested-class-predictions-ns - levenshtein (normalised)
+    - class-rq2.csv

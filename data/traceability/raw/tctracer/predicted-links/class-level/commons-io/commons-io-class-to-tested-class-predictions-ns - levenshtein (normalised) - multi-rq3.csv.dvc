@@ -1,0 +1,4 @@
+outs:
+- md5: e1ad97ed406fa68a9e003ca46cdaae70
+  path: commons-io-class-to-tested-class-predictions-ns - levenshtein (normalised)
+    - multi-rq3.csv

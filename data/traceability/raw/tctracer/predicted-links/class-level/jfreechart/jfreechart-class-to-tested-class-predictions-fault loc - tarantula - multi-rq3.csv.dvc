@@ -1,0 +1,3 @@
+outs:
+- md5: 19782128dcf3262f6aca38995948dbd9
+  path: jfreechart-class-to-tested-class-predictions-fault loc - tarantula - multi-rq3.csv

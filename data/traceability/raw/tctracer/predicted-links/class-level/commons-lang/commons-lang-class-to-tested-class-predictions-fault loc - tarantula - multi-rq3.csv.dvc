@@ -1,0 +1,3 @@
+outs:
+- md5: da48159f5ca3db18c78f7e67789a9400
+  path: commons-lang-class-to-tested-class-predictions-fault loc - tarantula - multi-rq3.csv

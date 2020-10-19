@@ -1,0 +1,4 @@
+outs:
+- md5: 301a83fa5b72f11b7c977467656828eb
+  path: jfreechart-class-to-tested-class-predictions-ns - levenshtein (normalised)
+    - multi-rq3.csv
