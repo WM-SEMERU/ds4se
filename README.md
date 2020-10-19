@@ -10,6 +10,10 @@ This file will become your README and also the index of your documentation.
 
 ## How to use
 
+```python
+import ds4se.facade as facade
+```
+
 ## Traceability
 
 To use the ds4se library to calculate trace link value of proposed trace link with given.
@@ -23,28 +27,34 @@ To use the ds4se library to calculate trace link value of proposed trace link wi
         word2vec
         doc2vec
 
+The function returns a tuple of two integers, with the first element as distance between two artifacts and the second element be the similarity between two artifacts, which is the traceability value.
+
 ```python
-facade.TraceLinkValue("source_string","target_string","techinque")
+facade.TraceLinkValue("source_string","target_string","LDA")
 ```
 
 
 
 
-    0.73
+    0.01
 
 
+
+word2vec_metric is an optional parameter when using word2vec as technique, available metrics are: 
+   <br> WMD
+  <br>  SCM
 
 ## Analysis
 
 ### Usage of ds4se model to calculate the number of documents of either source or target class
 
-    The method takes in two parameters, source artifacts and target artifacts, and it will do calculation for both classes.
+    The method takes in two parameters, a pandas dataframe for source artifacts and a pandas data frame for target artifacts, and it will do calculation for both classes.
     
     The method returns a list of 4 integers:
     1: number of documents for source artifacts;
     2: number of documents for target artifacts;
-    3: source difference;
-    4: target difference.
+    3: source difference (difference between previous two results);
+    4: target difference (same as above, but opposite).
 
 ```python
 result = facade.NumDoc("source","target")
@@ -60,6 +70,53 @@ print("The number of documents for target is {} , with {} target difference".for
     The number of documents for target is 128 , with -32 target difference
     
 
+For all functions in analysis part, input should be pandas dataframe with following structure
+
+```python
+d = {'contents': ["hello world", "this is a content of another file"]}
+df = pd.DataFrame(data=d)
+df
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>contents</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>hello world</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>this is a content of another file</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 ### Usage of ds4se model to calculate the vocabulary size of either source or target class
 
     The method takes in two parameters, source artifacts and target artifacts, and it will do calculation for both classes.
@@ -71,7 +128,7 @@ print("The number of documents for target is {} , with {} target difference".for
     4: target difference.
 
 ```python
-vocab_result = facade.VocabSize("source", "target")
+vocab_result = facade.VocabSize(source_df, target_df)
 source = vocab_result[0]
 target = vocab_result[1]
 difference_source = vocab_result[2]
@@ -95,7 +152,7 @@ print("The vocabulary size for target is {} , with {} target difference".format(
     4: target difference.
 
 ```python
-token_result = facade.AverageToken("source", "target")
+token_result = facade.AverageToken(source_df, target_df)
 source = token_result[0]
 target = token_result[1]
 difference_source = vocab_result[2]
@@ -120,7 +177,7 @@ print("The number of average token for target is {} , with {} target difference"
     value: a list of count and frequency
 
 ```python
-facade.VocabShared("source","target")
+facade.VocabShared(source_df,target_df)
 ```
 
 
@@ -135,7 +192,7 @@ If we only need the term frequency of one of two classes, we can use Vocab() fun
 **The filename should be the path to the file**
 
 ```python
-facade.Vocab("filename")
+facade.Vocab(artifacts_df)
 ```
 
 
@@ -156,7 +213,7 @@ And return one int value
 Shared vocabulary size
 
 ```python
-facade.SharedVocabSize("source", "target")
+facade.SharedVocabSize(source_df, target_df)
 ```
 
 
@@ -169,7 +226,7 @@ facade.SharedVocabSize("source", "target")
 Mutual information
 
 ```python
-facade.MutualInformation("source", "target")
+facade.MutualInformation(source_df, target_df)
 ```
 
 
@@ -182,7 +239,7 @@ facade.MutualInformation("source", "target")
 Corss Entropy
 
 ```python
-facade.CrossEntropy("source", "target")
+facade.CrossEntropy(source_df, target_df)
 ```
 
 
@@ -195,7 +252,7 @@ facade.CrossEntropy("source", "target")
 KL Divergence
 
 ```python
-facade.KLDivergence("source", "target")
+facade.KLDivergence(source_df, target_df)
 ```
 
 
