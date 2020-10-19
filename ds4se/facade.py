@@ -4,7 +4,7 @@ __all__ = ['TraceLinkValue', 'NumDoc', 'VocabSize', 'AverageToken', 'Vocab', 'Vo
            'MutualInformation', 'CrossEntropy', 'KLDivergence', 'get_docs', 'get_counters', 'preprocess']
 
 # Cell
-def TraceLinkValue(source, target, technique):
+def TraceLinkValue(source, target, technique, word2vec_metric = "WMD"):
     #param source a string of the entire source file
     #param target a string of the entire target file
     #param technique what tecchnique to use to calculate trace values
@@ -13,6 +13,9 @@ def TraceLinkValue(source, target, technique):
     #TODO make the string saved and then return the path to that string
     sourcePath = "path/to/something"#this is where we save the passed in source
     targetPath = "./something"
+
+    value = random.randint(0,1)/100
+
 
     if (technique == "VSM"):
         pass
@@ -37,32 +40,44 @@ def TraceLinkValue(source, target, technique):
             "names": ['Source','Target','Linked?']
         }
 
-        source_df = pd.DataFrame({ "ids": ["file"],  "text":[source]})
-        target_df = pd.DataFrame({ "ids": ["file"],  "text":[target]})
+        source_df = pd.DataFrame({ "ids": ["source"],  "text":[source]})
+        target_df = pd.DataFrame({ "ids": ["target"],  "text":[target]})
         word2vec = Word2VecSeqVect(parameter)
         word2vec.df_source = source_df
         word2vec.df_target = target_df
-        links = [source_df["ids"][0], target_df["ids"][0]]
-        computeDistanceMetric = word2vec.computeDistanceMetric(links, metric_list = [DistanceMetric.WMD,DistanceMetric.SCM])
+        links = [(source_df["ids"][0],target_df["ids"][0])]
+        if (word2vec_metric == "SCM"):
+            computeDistanceMetric = word2vec.computeDistanceMetric(links, metric_list = [DistanceMetric.SCM])
+        else:
+            computeDistanceMetric = word2vec.computeDistanceMetric(links, metric_list = [DistanceMetric.WMD])
+        value = (computeDistanceMetric[0][0][2],computeDistanceMetric[0][0][3])
 
-
-
-
-        pass
     if (technique == "doc2vec"):
         parameter = {
             "vectorizationType": VectorizationType.doc2vec,
             "linkType": LinkType.req2tc,
             "system": 'libest',
             "path_to_trained_model": 'test_data/models/doc2vec_libest.model',
-            "source_path": source,
-            "target_path": target,
-            "system_path": '/tf/main/benchmarking/traceability/testbeds/nltk/[libest-pre-all].csv',
+            "source_path": 'test_data/val.csv',
+            "target_path": 'test_data/val.csv',
+            "system_path": 'test_data/val.csv',
             "saving_path": 'test_data/',
             "names": ['Source','Target','Linked?']
         }
-        pass
-    value = random.randint(0,1)/100
+
+        source_df = pd.DataFrame({ "ids": ["source"],  "text":[source]})
+        target_df = pd.DataFrame({ "ids": ["target"],  "text":[target]})
+        doc2vec = Doc2VecSeqVect(params = parameter)
+        doc2vec.df_source = source_df
+        doc2vec.df_target = target_df
+        doc2vec.InferDoc2Vec(steps=200)
+        doc2vec.ComputeDistanceArtifacts( sampling=True, samples = 50, metric_list = [DistanceMetric.EUC] )
+        doc2vec.SaveLinks()
+        #will most likely need to change this part need to change this part to a different path
+        path_to_ground_truth = '/tf/main/benchmarking/traceability/testbeds/groundtruth/english/[libest-ground-req-to-tc].txt'
+        doc2vec.MatchWithGroundTruth(path_to_ground_truth)
+        doc2vec.SaveLinks(grtruth = True)
+        #TODO find logic to LoadLink properly and display what is needed
 
     return value
 

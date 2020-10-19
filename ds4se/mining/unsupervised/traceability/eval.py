@@ -257,7 +257,7 @@ class SupervisedVectorEvaluation(VectorEvaluation):
 
     def Compute_avg_precision(self):
         '''Generated precision-recall curve'''
-        # %matplotlib inline
+        %matplotlib inline
         # calculate the no skill line as the proportion of the positive class
         no_skill = len(self.y_test[self.y_test==1]) / len(self.y_test)
         plt.plot([0, 1], [no_skill, no_skill], linestyle='--', label='No Skill') #reference curve
@@ -276,7 +276,7 @@ class SupervisedVectorEvaluation(VectorEvaluation):
         pass
 
     def Compute_roc_curve(self):
-        # %matplotlib inline
+        %matplotlib inline
         plt.plot([0, 1], [0, 1], linestyle='--', label='No Skill') #reference curve
         fpr, tpr, _ = roc_curve(self.y_test, self.y_score) #compute roc curve
         plt.plot(fpr, tpr, marker='.', label=self.label) #plot model curve
