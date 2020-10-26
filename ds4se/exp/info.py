@@ -22,9 +22,6 @@ from scipy.stats import sem, t
 from statistics import mean, median, stdev
 from tqdm.notebook import tqdm
 
-# ds4se
-from ..mgmnt.prep.bpe import *
-
 # Cell
 logger = logging.getLogger(__name__)
 logging.basicConfig(

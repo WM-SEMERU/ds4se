@@ -27,9 +27,9 @@ class LinkType(Enum):
 
 #export
 def get_docs(df, spm):
-    #param source a dataframe of the entire source file
-    #param target a dataframe of the entire target file
-    #return the document
+    #param dataframe of content that need to be processed
+    #param sentence piece processor that will process the dataframe
+    #return the document list
     docs = []
     for fn in df["col"]:
         docs += spm.EncodeAsPieces(fn)
@@ -37,9 +37,8 @@ def get_docs(df, spm):
 
 #export
 def get_counters(docs):
-    #param source a string of the entire source file
-    #param target a string of the entire target file
-    #return the number of tokens
+    #param doc list of contents that need info on tokens
+    #return the counters object of tokens
     doc_cnts = []
     cnt = Counter()
     for tok in docs:
@@ -48,7 +47,8 @@ def get_counters(docs):
     return doc_cnts
 
 #export
-def preprocess(artifacts_df):
+#load sentence piece model and call two helper function to calculate token freqnency
+def preprocess(artifacts_df)
     spm = sp.SentencePieceProcessor()
     output = Path('test_data\models')
     system_name = "test"
@@ -62,7 +62,7 @@ def TraceLinkValue(source, target, technique, word2vec_metric = "WMD"):
     #param source a string of the entire source file
     #param target a string of the entire target file
     #param technique what tecchnique to use to calculate trace values
-    #return a trace value between [0,1]
+    #return a tuple: (distance, similarity)
 
     #TODO make the string saved and then return the path to that string
     sourcePath = "path/to/something"#this is where we save the passed in source
@@ -82,16 +82,14 @@ def TraceLinkValue(source, target, technique, word2vec_metric = "WMD"):
     if (technique == "JS"):
         pass
     if (technique == "word2vec"):
-        Model_Path = pkg_resources.resource_filename('ds4se', 'model/[word2vec-Java-Py-SK-500-20E-128k-1594873397.267055].model')
-        dummy_Path = pkg_resources.resource_filename('ds4se', 'model/val.csv')
         parameter = {
             "vectorizationType": VectorizationType.word2vec,
             "linkType": LinkType.req2tc,
             "system": 'libest',
-            "path_to_trained_model": Model_Path,
-            "source_path": dummy_Path,
-            "target_path": dummy_Path,
-            "system_path": dummy_Path,
+            "path_to_trained_model": 'test_data/models/word2vec_libest.model',
+            "source_path": 'test_data/val.csv',
+            "target_path": 'test_data/val.csv',
+            "system_path": 'test_data/val.csv',
             "saving_path": 'test_data/',
             "names": ['Source','Target','Linked?']
         }
@@ -140,12 +138,9 @@ def TraceLinkValue(source, target, technique, word2vec_metric = "WMD"):
     return value
 
 # Cell
-
-
-#export
 def NumDoc(source, target):
-    #param source a string of the entire source file
-    #param target a string of the entire target file
+    #param source a dataframe of the entire source file
+    #param target a dataframe of the entire target file
     #return a list containing the the difference between the two files
     source_doc = source.shape[0]
     target_doc = target.shape[0]
@@ -153,6 +148,9 @@ def NumDoc(source, target):
     return [source_doc, target_doc, difference, -difference]
 
 # Cell
+
+
+#export
 def VocabSize(source, target):
     #param source a string of the entire source file
     #param target a string of the entire target file
@@ -169,8 +167,8 @@ def VocabSize(source, target):
 
 #export
 def AverageToken(source, target):
-    #param source a string of the entire source file
-    #param target a string of the entire target file
+    #param source a dataframe of the entire source file
+    #param target a dataframe of the entire target file
     #return a list containing the the difference between the two files in terms of tokens
     source_doc = source.shape[0]
     target_doc = target.shape[0]
@@ -192,8 +190,7 @@ def AverageToken(source, target):
 #export
 def Vocab(artifacts_df):
     #we can add a parameter for user to specify the number of most frequent token to return
-    #param source a string of the entire source file
-    #param target a string of the entire target file
+    #param a dataframe of contents that need to be processed
     #return a list containing the the difference between the two files in terms of vocab
     cnts = preprocess(artifacts_df)
     vocab_list = cnts[0].most_common(3)
@@ -206,24 +203,17 @@ def Vocab(artifacts_df):
     return vocab_dict
 
 # Cell
-
-
-
-#export
 def VocabShared(source, target):
-    #param source a string of the entire source file
-    #param target a string of the entire target file
+    #param source a dataframe of the entire source file
+    #param target a dataframe of the entire target file
     #return the similarities of vocab in the files
     df = pd.concat([source, target])
     return Vocab(df)
 
 # Cell
-
-
-#export
 def SharedVocabSize(source, target):
-    #param source a string of the entire source file
-    #param target a string of the entire target file
+    #param source a dataframe of the entire source file
+    #param target a dataframe of the entire target file
     #return the similarities of vocab sizes in the files
     df = pd.concat([source, target])
     df_counts = preprocess(df)
