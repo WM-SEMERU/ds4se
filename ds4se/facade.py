@@ -48,7 +48,7 @@ def get_counters(docs):
 
 #export
 #load sentence piece model and call two helper function to calculate token freqnency
-def preprocess(artifacts_df)
+def preprocess(artifacts_df):
     spm = sp.SentencePieceProcessor()
     output = Path('test_data\models')
     system_name = "test"
@@ -68,6 +68,9 @@ def TraceLinkValue(source, target, technique, word2vec_metric = "WMD"):
     sourcePath = "path/to/something"#this is where we save the passed in source
     targetPath = "./something"
 
+    dummy_path = pkg_resources.resource_filename('ds4se', 'model/val.csv')
+
+
     value = random.randint(0,1)/100
 
 
@@ -82,14 +85,15 @@ def TraceLinkValue(source, target, technique, word2vec_metric = "WMD"):
     if (technique == "JS"):
         pass
     if (technique == "word2vec"):
+        model_path = pkg_resources.resource_filename('ds4se', 'model/[word2vec-Java-Py-SK-500-20E-128k-1594873397.267055].model')
         parameter = {
             "vectorizationType": VectorizationType.word2vec,
             "linkType": LinkType.req2tc,
             "system": 'libest',
-            "path_to_trained_model": 'test_data/models/word2vec_libest.model',
-            "source_path": 'test_data/val.csv',
-            "target_path": 'test_data/val.csv',
-            "system_path": 'test_data/val.csv',
+            "path_to_trained_model": model_path,
+            "source_path": dummy_path,
+            "target_path": dummy_path,
+            "system_path": dummy_path,
             "saving_path": 'test_data/',
             "names": ['Source','Target','Linked?']
         }
