@@ -11,9 +11,9 @@ import pandas as pd
 import sentencepiece as sp
 from pathlib import Path
 from collections import Counter
-from .mining.unsupervised.traceability.eval import *
+from ds4se.mining.unsupervised.traceability.eval import *
 from enum import Enum, unique, auto
-from .exp import i
+from ds4se.exp import i
 import os
 import pkg_resources
 
