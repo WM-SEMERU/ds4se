@@ -111,11 +111,12 @@ def TraceLinkValue(source, target, technique, word2vec_metric = "WMD"):
         value = (computeDistanceMetric[0][0][2],computeDistanceMetric[0][0][3])
 
     if (technique == "doc2vec"):
+        model_path = pkg_resources.resource_filename('ds4se', 'model/[word2vec-Java-Py-SK-500-20E-128k-1594873397.267055].model')
         parameter = {
             "vectorizationType": VectorizationType.doc2vec,
             "linkType": LinkType.req2tc,
             "system": 'libest',
-            "path_to_trained_model": 'test_data/models/doc2vec_libest.model',
+            "path_to_trained_model": model_path,
             "source_path": 'test_data/val.csv',
             "target_path": 'test_data/val.csv',
             "system_path": 'test_data/val.csv',

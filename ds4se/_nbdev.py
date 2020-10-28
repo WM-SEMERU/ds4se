@@ -18,8 +18,7 @@ index = {"get_unicode": "6.2_desc.metrics.java.ipynb",
          "display_numeric_col_stats": "6.2_desc.metrics.java.ipynb",
          "display_numeric_col_hist": "6.2_desc.metrics.java.ipynb"}
 
-modules = ["desc/metrics/java.py"].py",
-           "exp/info-[inspect].py"].py"]
+modules = ["desc/metrics/java.py"].py"].py"]
 
 doc_url = "https://ncoop57.github.io/ds4se/"
 
