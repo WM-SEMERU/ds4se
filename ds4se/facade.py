@@ -11,9 +11,9 @@ import pandas as pd
 import sentencepiece as sp
 from pathlib import Path
 from collections import Counter
-from ds4se.mining.unsupervised.traceability.eval import *
+from .mining.unsupervised.traceability.eval import *
 from enum import Enum, unique, auto
-from ds4se.exp import i
+from .exp import i
 import os
 import pkg_resources
 
@@ -31,7 +31,7 @@ def get_docs(df, spm):
     #param sentence piece processor that will process the dataframe
     #return the document list
     docs = []
-    for fn in df["col"]:
+    for fn in df["contents"]:
         docs += spm.EncodeAsPieces(fn)
     return docs
 
@@ -50,9 +50,8 @@ def get_counters(docs):
 #load sentence piece model and call two helper function to calculate token freqnency
 def preprocess(artifacts_df):
     spm = sp.SentencePieceProcessor()
-    output = Path('test_data\models')
-    system_name = "test"
-    spm.Load(f"{output / system_name}.model")
+    bpe_model_path = pkg_resources.resource_filename('ds4se', 'model/test.model')
+    spm.Load(bpe_model_path)
     docs = get_docs(artifacts_df,spm)
     cnts = get_counters(docs)
     return cnts
@@ -153,9 +152,6 @@ def NumDoc(source, target):
     return [source_doc, target_doc, difference, -difference]
 
 # Cell
-
-
-#export
 def VocabSize(source, target):
     #param source a string of the entire source file
     #param target a string of the entire target file
@@ -168,9 +164,6 @@ def VocabSize(source, target):
     return [source_size, target_size, difference, -difference]
 
 # Cell
-
-
-#export
 def AverageToken(source, target):
     #param source a dataframe of the entire source file
     #param target a dataframe of the entire target file
@@ -190,9 +183,6 @@ def AverageToken(source, target):
     return [source_token, target_token, difference, -difference]
 
 # Cell
-
-
-#export
 def Vocab(artifacts_df):
     #we can add a parameter for user to specify the number of most frequent token to return
     #param a dataframe of contents that need to be processed
@@ -226,9 +216,6 @@ def SharedVocabSize(source, target):
     return shared_size
 
 # Cell
-
-
-#export
 def MutualInformation(source, target):
     #param source a string of the entire source file
     #param target a string of the entire target file
@@ -237,9 +224,6 @@ def MutualInformation(source, target):
     return mutual_information
 
 # Cell
-
-
-#export
 def CrossEntropy(source, target):
     #param source a string of the entire source file
     #param target a string of the entire target file
