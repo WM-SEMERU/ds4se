@@ -84,7 +84,7 @@ def TraceLinkValue(source, target, technique, word2vec_metric = "WMD"):
     if (technique == "JS"):
         pass
     if (technique == "word2vec"):
-        model_path = pkg_resources.resource_filename('ds4se', 'model/[word2vec-Java-Py-SK-500-20E-128k-1594873397.267055].model')
+        model_path = pkg_resources.resource_filename('ds4se', 'model/word2vec_libest.model')
         parameter = {
             "vectorizationType": VectorizationType.word2vec,
             "linkType": LinkType.req2tc,
