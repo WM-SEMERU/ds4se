@@ -1,1 +1,0 @@
-The HCP provides a deceased date (data format 6.4). An optional diagnosis code is entered as the cause of death.

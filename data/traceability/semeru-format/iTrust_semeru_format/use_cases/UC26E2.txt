@@ -1,1 +1,0 @@
-The selected Lab Technician is not the intended Lab Technician. The HCP selects a different Lab Technician.

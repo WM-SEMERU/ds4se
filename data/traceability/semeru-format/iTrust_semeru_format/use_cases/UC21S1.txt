@@ -1,1 +1,0 @@
-The LHCP or ER enters a MID [E1] and confirms the input [E2].

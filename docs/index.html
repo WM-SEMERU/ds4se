@@ -2,10 +2,13 @@
 
 title: ds4se
 
+
 keywords: fastai
 sidebar: home_sidebar
 
 summary: "Data Science for Software Engieering (ds4se) is an academic initiative to perform exploratory analysis on software engineering artifacts and metadata. Data Management, Analysis, and Benchmarking for DL and Traceability."
+description: "Data Science for Software Engieering (ds4se) is an academic initiative to perform exploratory analysis on software engineering artifacts and metadata. Data Management, Analysis, and Benchmarking for DL and Traceability."
+nb_path: "nbs/index.ipynb"
 ---
 <!--
 
@@ -18,10 +21,14 @@ summary: "Data Science for Software Engieering (ds4se) is an academic initiative
 -->
 
 <div class="container" id="notebook-container">
+        
+    {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This file will become your README and also the index of your documentation.</p>
@@ -31,7 +38,7 @@ summary: "Data Science for Software Engieering (ds4se) is an academic initiative
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Install">Install<a class="anchor-link" href="#Install">&#182;</a></h2>
+<h2 id="Install">Install<a class="anchor-link" href="#Install"> </a></h2>
 </div>
 </div>
 </div>
@@ -44,23 +51,46 @@ summary: "Data Science for Software Engieering (ds4se) is an academic initiative
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-to-use">How to use<a class="anchor-link" href="#How-to-use">&#182;</a></h2>
+<h2 id="How-to-use">How to use<a class="anchor-link" href="#How-to-use"> </a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Fill me in please! Don't forget code examples:</p>
+<h2 id="Traceability">Traceability<a class="anchor-link" href="#Traceability"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To use the ds4se library to calculate trace link value of proposed trace link with given.</p>
 
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>Supported technique model:
+    VSM
+    LDA
+    orthogonal 
+    LSA
+    JS
+    word2vec
+    doc2vec</code></pre>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">TraceLinkValue</span><span class="p">(</span><span class="s2">&quot;textfile.txt&quot;</span><span class="p">,</span><span class="s2">&quot;source&quot;</span><span class="p">,</span><span class="s2">&quot;techinque&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -75,7 +105,7 @@ summary: "Data Science for Software Engieering (ds4se) is an academic initiative
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>2</pre>
+<pre>0.01</pre>
 </div>
 
 </div>
@@ -84,6 +114,458 @@ summary: "Data Science for Software Engieering (ds4se) is an academic initiative
 </div>
 
 </div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Usage-of-ds4se-model-to-calculate-the-number-of-documents-of-either-source-or-target-class">Usage of ds4se model to calculate the number of documents of either source or target class<a class="anchor-link" href="#Usage-of-ds4se-model-to-calculate-the-number-of-documents-of-either-source-or-target-class"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>The method takes in two parameters, source artifacts and target artifacts, and it will do calculation for both classes.
+
+The method returns a list of 4 integers:
+1: number of documents for source artifacts;
+2: number of documents for target artifacts;
+3: source difference;
+4: target difference.</code></pre>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">facade</span><span class="o">.</span><span class="n">NumDoc</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span><span class="s2">&quot;target&quot;</span><span class="p">)</span>
+<span class="n">source_doc</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">target_doc</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">difference_source</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">difference_target</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The number of documents for source is </span><span class="si">{}</span><span class="s2"> , with </span><span class="si">{}</span><span class="s2"> source difference&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">source_doc</span><span class="p">,</span> <span class="n">difference_source</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The number of documents for target is </span><span class="si">{}</span><span class="s2"> , with </span><span class="si">{}</span><span class="s2"> target difference&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target_doc</span><span class="p">,</span> <span class="n">difference_target</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The number of documents for source is 185 , with 43 source difference
+The number of documents for target is 142 , with -43 target difference
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Usage-of-ds4se-model-to-calculate-the-vocabulary-size-of-either-source-or-target-class">Usage of ds4se model to calculate the vocabulary size of either source or target class<a class="anchor-link" href="#Usage-of-ds4se-model-to-calculate-the-vocabulary-size-of-either-source-or-target-class"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>The method takes in two parameters, source artifacts and target artifacts, and it will do calculation for both classes.
+
+The method returns a list of 4 integers:
+1: vocabulary size for source artifacts;
+2: vocabulary size for target artifacts;
+3: source difference;
+4: target difference.</code></pre>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocab_result</span> <span class="o">=</span> <span class="n">facade</span><span class="o">.</span><span class="n">VocabSize</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">)</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">vocab_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">vocab_result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">difference_source</span> <span class="o">=</span> <span class="n">vocab_result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">difference_target</span> <span class="o">=</span> <span class="n">vocab_result</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The vocabulary size for source is </span><span class="si">{}</span><span class="s2"> , with </span><span class="si">{}</span><span class="s2"> target difference&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">difference_source</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The vocabulary size for target is </span><span class="si">{}</span><span class="s2"> , with </span><span class="si">{}</span><span class="s2"> target difference&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">difference_target</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The vocabulary size for source is 179 , with 35 target difference
+The vocabulary size for target is 144 , with -35 target difference
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Usage-of-ds4se-model-to-calculate-the-average-number-of-token-of-either-source-or-target-class">Usage of ds4se model to calculate the average number of token of either source or target class<a class="anchor-link" href="#Usage-of-ds4se-model-to-calculate-the-average-number-of-token-of-either-source-or-target-class"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>The method takes in two parameters, source artifacts and target artifacts, and it will do calculation for both classes.
+
+The method returns a list of 4 integers:
+1: average number of token for source artifacts;
+2: average number of token for target artifacts;
+3: source difference;
+4: target difference.</code></pre>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_result</span> <span class="o">=</span> <span class="n">facade</span><span class="o">.</span><span class="n">AverageToken</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">)</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">token_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">token_result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">difference_source</span> <span class="o">=</span> <span class="n">vocab_result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">difference_target</span> <span class="o">=</span> <span class="n">vocab_result</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The number of average token for source is </span><span class="si">{}</span><span class="s2"> , with </span><span class="si">{}</span><span class="s2"> source difference&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">difference_source</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The number of average token for target is </span><span class="si">{}</span><span class="s2"> , with </span><span class="si">{}</span><span class="s2"> target difference&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">difference_target</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The number of average token for source is 107 , with 35 source difference
+The number of average token for target is 143 , with -35 target difference
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Usage-of-ds4se-model-to-retriev-term-frequency">Usage of ds4se model to retriev term frequency<a class="anchor-link" href="#Usage-of-ds4se-model-to-retriev-term-frequency"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>The method takes in two parameters, 
+1： source artifacts,
+2： target artifacts, 
+and it will do calculation for both classes.
+
+The method returns a dictonary with 
+key: token
+value: a list of count and frequency</code></pre>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">VocabShared</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span><span class="s2">&quot;target&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;est&#39;: [160, 0.16], &#39;http&#39;: [136, 0.136], &#39;frequnecy&#39;: [124, 0.124]}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we only need the term frequency of one of two classes, we can use Vocab() function</p>
+<p><strong>The filename should be the path to the file</strong></p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">Vocab</span><span class="p">(</span><span class="s2">&quot;filename&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;est&#39;: [141, 0.141], &#39;http&#39;: [136, 0.136], &#39;frequnecy&#39;: [156, 0.156]}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="For-Shared-Metrics">For Shared Metrics<a class="anchor-link" href="#For-Shared-Metrics"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Using the following metrics to compute using both source and target artifacts, use the following funtions.</p>
+<p>They all require two parameters: source and target artifacts.</p>
+<p>And return one int value</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Shared vocabulary size</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">SharedVocabSize</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>112</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Mutual information</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">MutualInformation</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>127</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Corss Entropy</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">CrossEntropy</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>171</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>KL Divergence</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">KLDivergence</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>152</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 </div>
  
 
