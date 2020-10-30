@@ -1,0 +1,3 @@
+outs:
+- md5: 30b91951bccce0eaf1b7247885117ca9.dir
+  path: sentencepiece
