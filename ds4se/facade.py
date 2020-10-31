@@ -110,15 +110,15 @@ def TraceLinkValue(source, target, technique, word2vec_metric = "WMD"):
         value = (computeDistanceMetric[0][0][2],computeDistanceMetric[0][0][3])
 
     if (technique == "doc2vec"):
-        model_path = pkg_resources.resource_filename('ds4se', 'model/[word2vec-Java-Py-SK-500-20E-128k-1594873397.267055].model')
+        model_path = pkg_resources.resource_filename('ds4se', 'model/doc2vec_libest.model')
         parameter = {
             "vectorizationType": VectorizationType.doc2vec,
             "linkType": LinkType.req2tc,
             "system": 'libest',
             "path_to_trained_model": model_path,
-            "source_path": 'test_data/val.csv',
-            "target_path": 'test_data/val.csv',
-            "system_path": 'test_data/val.csv',
+            "source_path": dummy_path,
+            "target_path": dummy_path,
+            "system_path": dummy_path,
             "saving_path": 'test_data/',
             "names": ['Source','Target','Linked?']
         }
@@ -128,8 +128,9 @@ def TraceLinkValue(source, target, technique, word2vec_metric = "WMD"):
         doc2vec = Doc2VecSeqVect(params = parameter)
         doc2vec.df_source = source_df
         doc2vec.df_target = target_df
+        links = [(source_df["ids"][0],target_df["ids"][0])]
         doc2vec.InferDoc2Vec(steps=200)
-        table = doc2vec.ComputeDistanceArtifacts( sampling=True, samples = 50, metric_list = [DistanceMetric.EUC] )
+        table = doc2vec.computeDistanceMetric( links, metric_list = [DistanceMetric.EUC] )
         value = (table[0][0][2], table[0][0][3])
         #The bottom is here for reference -- may not need it
 #         doc2vec.SaveLinks()
