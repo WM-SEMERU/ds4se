@@ -3,6 +3,23 @@
 __all__ = ['df_to_txt_file', 'gen_sp_model', 'encode_text', 'dit_shannon', 'entropies_of_df_entries']
 
 # Cell
+# Imports
+import pandas as pd
+import sentencepiece as sp
+import dit
+
+from collections import Counter
+from scipy.stats import sem, t
+from numpy import mean
+from numpy import std
+import statistics as stat
+import matplotlib.pyplot as plt
+
+
+# TODO: Remove when mongo call is implemented
+import os
+
+# Cell
 def df_to_txt_file(df, output, cols):
     """Converts a dataframe into a text file that SentencePiece can use to train a BPE model"""
     if cols is None: cols = list(df.columns)
