@@ -12,7 +12,7 @@ import sentencepiece as sp
 from pathlib import Path
 from collections import Counter
 from .mining.unsupervised.traceability.eval import *
-import ds4se.mining.unsupervised.traceability.approach.cisco as cisco
+# import ds4se.mining.unsupervised.traceability.approach.cisco as cisco
 from enum import Enum, unique, auto
 from .exp import i
 import os
