@@ -6,12 +6,8 @@
 pip install ds4se
 ```
 
-    Requirement already satisfied: ds4se in c:\users\admin\desktop\fall2020\software engineering\project\github desktop\ds4se (0.0.7)
+    Requirement already satisfied: ds4se in c:\users\admin\desktop\fall2020\software engineering\project\github desktop\ds4se (0.1.5)
     Note: you may need to restart the kernel to use updated packages.
-    
-
-    WARNING: You are using pip version 20.2.3; however, version 20.2.4 is available.
-    You should consider upgrading via the 'C:\Users\admin\anaconda3\python.exe -m pip install --upgrade pip' command.
     
 
 This file will become your README and also the index of your documentation.
@@ -45,33 +41,31 @@ The function returns a tuple of two integers, with the first element as distance
 facade.TraceLinkValue("source_string is a string of entire content of one source file","target_string is a string of entire content of one targetfile","word2vec")
 ```
 
-    2020-10-27 23:03:35,138 : INFO : adding document #0 to Dictionary(0 unique tokens: [])
-    2020-10-27 23:03:35,147 : INFO : built Dictionary(1815 unique tokens: ['@return', 'Converts', 'The', 'a', 'and']...) from 153 documents (total 5769 corpus positions)
-    2020-10-27 23:03:35,147 : INFO : loading Word2Vec object from c:\users\admin\desktop\fall2020\software engineering\project\github desktop\ds4se\ds4se\model\[word2vec-Java-Py-SK-500-20E-128k-1594873397.267055].model
-    2020-10-27 23:03:35,263 : INFO : loading wv recursively from c:\users\admin\desktop\fall2020\software engineering\project\github desktop\ds4se\ds4se\model\[word2vec-Java-Py-SK-500-20E-128k-1594873397.267055].model.wv.* with mmap=None
-    2020-10-27 23:03:35,265 : INFO : loading vectors from c:\users\admin\desktop\fall2020\software engineering\project\github desktop\ds4se\ds4se\model\[word2vec-Java-Py-SK-500-20E-128k-1594873397.267055].model.wv.vectors.npy with mmap=None
-    2020-10-27 23:03:35,295 : INFO : setting ignored attribute vectors_norm to None
-    2020-10-27 23:03:35,296 : INFO : loading vocabulary recursively from c:\users\admin\desktop\fall2020\software engineering\project\github desktop\ds4se\ds4se\model\[word2vec-Java-Py-SK-500-20E-128k-1594873397.267055].model.vocabulary.* with mmap=None
-    2020-10-27 23:03:35,298 : INFO : loading trainables recursively from c:\users\admin\desktop\fall2020\software engineering\project\github desktop\ds4se\ds4se\model\[word2vec-Java-Py-SK-500-20E-128k-1594873397.267055].model.trainables.* with mmap=None
-    2020-10-27 23:03:35,299 : INFO : loading syn1neg from c:\users\admin\desktop\fall2020\software engineering\project\github desktop\ds4se\ds4se\model\[word2vec-Java-Py-SK-500-20E-128k-1594873397.267055].model.trainables.syn1neg.npy with mmap=None
-    2020-10-27 23:03:35,330 : INFO : setting ignored attribute cum_table to None
-    2020-10-27 23:03:35,331 : INFO : loaded c:\users\admin\desktop\fall2020\software engineering\project\github desktop\ds4se\ds4se\model\[word2vec-Java-Py-SK-500-20E-128k-1594873397.267055].model
-    2020-10-27 23:03:35,402 : INFO : precomputing L2-norms of word weight vectors
-    2020-10-27 23:03:35,454 : INFO : constructing a sparse term similarity matrix using <gensim.models.keyedvectors.WordEmbeddingSimilarityIndex object at 0x000001C608E797F0>
-    2020-10-27 23:03:35,455 : INFO : iterating over columns in dictionary order
-    2020-10-27 23:03:35,460 : INFO : PROGRESS: at 0.06% columns (1 / 1815, 0.055096% density, 0.055096% projected density)
-    2020-10-27 23:03:37,412 : INFO : PROGRESS: at 55.15% columns (1001 / 1815, 0.347548% density, 0.585365% projected density)
-    2020-10-27 23:03:38,271 : INFO : constructed a sparse term similarity matrix with 0.418460% density
-    2020-10-27 23:03:38,290 : INFO : Removed 1 and 2 OOV words from document 1 and 2 (respectively).
-    2020-10-27 23:03:38,292 : INFO : adding document #0 to Dictionary(0 unique tokens: [])
-    2020-10-27 23:03:38,293 : INFO : built Dictionary(9 unique tokens: ['a', 'content', 'entire', 'file', 'is']...) from 2 documents (total 18 corpus positions)
-    2020-10-27 23:03:38,305 : INFO : Computed distances or similarities ('source', 'target')[[0.25430019797963815, 0.7972573085858937]]
+    2020-11-01 22:55:01,937 : INFO : adding document #0 to Dictionary(0 unique tokens: [])
+    2020-11-01 22:55:01,947 : INFO : built Dictionary(1815 unique tokens: ['@return', 'Converts', 'The', 'a', 'and']...) from 153 documents (total 5769 corpus positions)
+    2020-11-01 22:55:01,949 : INFO : loading Word2Vec object from c:\users\admin\desktop\fall2020\software engineering\project\github desktop\ds4se\ds4se\model\word2vec_libest.model
+    2020-11-01 22:55:01,997 : INFO : loading wv recursively from c:\users\admin\desktop\fall2020\software engineering\project\github desktop\ds4se\ds4se\model\word2vec_libest.model.wv.* with mmap=None
+    2020-11-01 22:55:01,998 : INFO : setting ignored attribute vectors_norm to None
+    2020-11-01 22:55:01,999 : INFO : loading vocabulary recursively from c:\users\admin\desktop\fall2020\software engineering\project\github desktop\ds4se\ds4se\model\word2vec_libest.model.vocabulary.* with mmap=None
+    2020-11-01 22:55:01,999 : INFO : loading trainables recursively from c:\users\admin\desktop\fall2020\software engineering\project\github desktop\ds4se\ds4se\model\word2vec_libest.model.trainables.* with mmap=None
+    2020-11-01 22:55:02,001 : INFO : setting ignored attribute cum_table to None
+    2020-11-01 22:55:02,002 : INFO : loaded c:\users\admin\desktop\fall2020\software engineering\project\github desktop\ds4se\ds4se\model\word2vec_libest.model
+    2020-11-01 22:55:02,015 : INFO : precomputing L2-norms of word weight vectors
+    2020-11-01 22:55:02,019 : INFO : constructing a sparse term similarity matrix using <gensim.models.keyedvectors.WordEmbeddingSimilarityIndex object at 0x000001F77D3A65B0>
+    2020-11-01 22:55:02,020 : INFO : iterating over columns in dictionary order
+    2020-11-01 22:55:02,022 : INFO : PROGRESS: at 0.06% columns (1 / 1815, 0.055096% density, 0.055096% projected density)
+    2020-11-01 22:55:02,167 : INFO : PROGRESS: at 55.15% columns (1001 / 1815, 0.140033% density, 0.209102% projected density)
+    2020-11-01 22:55:02,227 : INFO : constructed a sparse term similarity matrix with 0.173668% density
+    2020-11-01 22:55:02,235 : INFO : Removed 7 and 7 OOV words from document 1 and 2 (respectively).
+    2020-11-01 22:55:02,236 : INFO : adding document #0 to Dictionary(0 unique tokens: [])
+    2020-11-01 22:55:02,238 : INFO : built Dictionary(4 unique tokens: ['content', 'file', 'one', 'string']) from 2 documents (total 7 corpus positions)
+    2020-11-01 22:55:02,239 : INFO : Computed distances or similarities ('source', 'target')[[0.12804699828021432, 0.88648788705131]]
     
 
 
 
 
-    (0.25430019797963815, 0.7972573085858937)
+    (0.12804699828021432, 0.88648788705131)
 
 
 
@@ -108,7 +102,7 @@ print(df)
     4: target difference (same as above, but opposite sign).
 
 ```python
-result = facade.NumDoc("source","target")
+result = facade.NumDoc(source_df, target_df)
 source_doc = result[0]
 target_doc = result[1]
 difference_source = result[2]
@@ -117,8 +111,8 @@ print("The number of documents for source is {} , with {} source difference".for
 print("The number of documents for target is {} , with {} target difference".format(target_doc, difference_target))
 ```
 
-    The number of documents for source is 160 , with 32 source difference
-    The number of documents for target is 128 , with -32 target difference
+    The number of documents for source is 2 , with 0 source difference
+    The number of documents for target is 2 , with 0 target difference
     
 
 ### Usage of ds4se model to calculate the vocabulary size of either source or target class
@@ -142,21 +136,9 @@ print("The vocabulary size for source is {} , with {} target difference".format(
 print("The vocabulary size for target is {} , with {} target difference".format(target, difference_target))
 ```
 
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-17-0a0a1023f2fc> in <module>
-    ----> 1 vocab_result = facade.VocabSize(source_df, target_df)
-          2 source = vocab_result[0]
-          3 target = vocab_result[1]
-          4 difference_source = vocab_result[2]
-          5 difference_target = vocab_result[3]
+    The vocabulary size for source is 10 , with 0 target difference
+    The vocabulary size for target is 10 , with 0 target difference
     
-
-    NameError: name 'source_df' is not defined
-
 
 ### Usage of ds4se model to calculate the average number of token of either source or target class
 
@@ -225,11 +207,13 @@ facade.Vocab(artifacts_df)
 
 Using the following metrics to compute using both source and target artifacts, use the following funtions. 
 
-They all require two parameters: source and target artifacts. 
+For all methods below, two parameters are required: source and target artifacts, they are all in form of dataframes
 
-And return one integer value
+They all return one integer value
 
 Shared vocabulary size
+
+return the totla vocab size of source and target combined
 
 ```python
 facade.SharedVocabSize(source_df, target_df)
@@ -255,7 +239,9 @@ facade.MutualInformation(source_df, target_df)
 
 
 
-Corss Entropy
+CrossEntropy
+
+CrossEntropy calculates shanno entropy of combind source and target artifacts, it returns a integers.
 
 ```python
 facade.CrossEntropy(source_df, target_df)
