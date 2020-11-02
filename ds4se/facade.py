@@ -231,7 +231,7 @@ def CrossEntropy(source, target):
     #param target a dataframe of the entire target artifact
     #return the entropy
     combined = source.append(target)
-    entropy = i.dit_shannon(preprocess(df)[0])
+    entropy = i.dit_shannon(preprocess(combined)[0])
 
     return entropy
 
