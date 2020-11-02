@@ -12,6 +12,7 @@ import sentencepiece as sp
 from pathlib import Path
 from collections import Counter
 from .mining.unsupervised.traceability.eval import *
+import ds4se.mining.unsupervised.traceability.approach.cisco as cisco
 from enum import Enum, unique, auto
 from .exp import i
 import os
@@ -226,12 +227,18 @@ def MutualInformation(source, target):
 
 # Cell
 def CrossEntropy(source, target):
-    #param source a string of the entire source file
-    #param target a string of the entire target file
+    #param source a dataframe of the entire source artifact
+    #param target a dataframe of the entire target artifact
     #return the entropy
-    cross_entropy = random.randint(100,200)
-    cross_entropy = get_system_entropy_from_df(source, "col1",)
-    return cross_entropy
+    combined = source.append(target)
+    entropy = i.dit_shannon(preprocess(df)[0])
+
+    return entropy
+
+
+#     cross_entropy = random.randint(100,200)#looks like it is the msi funciton in the classes for word2vec or doc2vec
+#     cross_entropy = get_system_entropy_from_df(source, "col1",)
+#     return cross_entropy
 
 # Cell
 
