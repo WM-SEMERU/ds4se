@@ -6,6 +6,7 @@ __all__ = ['softEngF20Run', 'fileBasedRun']
 import os
 import nbdev
 import sys
+from nbdev import test
 
 # Cell
 
@@ -14,25 +15,42 @@ import sys
 #The File takes in nothing but returns to the command line the status of each test
 def softEngF20Run():
 
-    Arr = ["1.0_exp.i",
+    ExpArr = ["1.0_exp.i",
            "1.1_exp.info",
            "1.2_exp.csnc",
-           "1.2_exp.gen.code",
-           "1.3_exp.csnc_python",
+           "1.2_exp.gen.code"]
+
+    MinArr = ["1.3_exp.csnc_python",
            "3.1_mining.unsupervised.traceability.eda",
            "3.2_mining.unsupervised.eval.ipynb",
            "3.2_mining.unsupervised.traceability.approach.cisco",
            "3.2_mining.unsupervised.traceability.approach",
            "3.2_mining.unsupervised.traceability.approach.libest",
-           "3.4_facade",
-           "6.0_desc.stats",
+           "3.4_facade"]
+
+    DescArr = ["6.0_desc.stats",
            "6.1_desc.metrics.java",
            "6.1_desc.metrics.main",
            "6.1_desc.metrics.se"]
 
-    for item in Arr:
-        t_string = "nbdev_test_nbs --fname "+ "'" + ".\\nbs\\" + item + ".ipynb" + "'"
-        print(t_string)
+    for item in ExpArr:
+        t_string = "nbdev_test_nbs --fname "+ item + ".ipynb " + "--flags " + "'" + "ExpTest" + "'"
+        results = os.popen(t_string)
+        output = results.read()
+        print(output)
+
+    print("\n\n\n Mining Tests \n\n\n")
+
+    for item in MinArr:
+        t_string = "nbdev_test_nbs --fname "+ item + ".ipynb " + "--flags " + "'" + "tst" + "'"
+        results = os.popen(t_string)
+        output = results.read()
+        print(output)
+
+    print("\n\n\n Desc Tests \n\n\n")
+
+    for item in DescArr:
+        t_string = "nbdev_test_nbs --fname "+ item + ".ipynb " + "--flags " + "'" + "DescTest" + "'"
         results = os.popen(t_string)
         output = results.read()
         print(output)
@@ -46,7 +64,7 @@ def fileBasedRun():
 
     #
     for item in Arr:
-        t_string = "nbdev_test_nbs --fname "+ "'" + ".\\" + item + "'"
+        t_string = "nbdev_test_nbs --fname " + item
         print(t_string)
         results = os.popen(t_string)
         output = results.read()
@@ -62,12 +80,13 @@ if __name__ == '__main__':
     #First we need to know if we're checking specific files or running normally
     programArr = sys.argv
     #Check if files were provided
-    if (len(sys.argv) == 1):
-        softEngF20Run()
+
+    #if (len(sys.argv) == 1):
+    softEngF20Run()
 
     #If we add files
-    elif (len(sys.argv) > 1):
-        fileBasedRun()
+    #elif (len(sys.argv) > 1):
+     #   fileBasedRun()
 
     else:
         print("How did you do this??? I'm confused and impressed.")
