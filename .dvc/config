@@ -1,6 +1,8 @@
 [core]
-    remote = localstorage
+    remote = localremote
 ['remote "localstorage"']
     url = ssh://semeru@172.17.0.1/mnt/data/ds4se/dvc-ds4se
     port = 22
     ask_password = true
+['remote "localremote"']
+    url = /tf/data/dvc-ds4se
