@@ -8,7 +8,7 @@ __all__ = ['get_contours', 'visualize_gt_ngt', 'visualize_events', 'plot_counts'
 import matplotlib.pyplot as plt
 import numpy as np
 
-from .desc.stats import *
+#from ds4se.desc.stats import *
 from mpl_toolkits.mplot3d import Axes3D
 from scipy.interpolate import griddata
 from sklearn.decomposition import PCA
