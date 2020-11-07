@@ -2,10 +2,11 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {}
+index = {"get_desc_stats": "6.0_desc.stats.ipynb",
+         "confidence_interval": "6.0_desc.stats.ipynb",
+         "report_stats": "6.0_desc.stats.ipynb"}
 
-modules = [].py",
-           "exp/info-[inspect].py"].py"]
+modules = ["desc/stats.py"]
 
 doc_url = "https://ncoop57.github.io/ds4se/"
 
