@@ -29,16 +29,25 @@ class LinkType(Enum):
 # Cell
 
 #export
+"""
+Helper functions to extract all entries in the dataframe, which will be contents of either source or target artifacts. Contents are stored
+in the column named "contents". This helper function retrive strings stored in this columns and stored them in a list.
+:param df: dataframe of content that need to be processed
+:param spm: sentence piece processor that will process the dataframe
+:returns: documents lists of all entries in the dataframe
+"""
 def get_docs(df, spm):
-    #param dataframe of content that need to be processed
-    #param sentence piece processor that will process the dataframe
-    #return the document list
     docs = []
     for fn in df["contents"]:
         docs += spm.EncodeAsPieces(fn)
     return docs
 
 #export
+"""
+Helper functions to retrive counter object for all tokens in a dataframe.
+:param docs: doc list of contents that we need to extract information on tokens and their frequency
+:returns: documents counter of token and corresponding occurrence.
+"""
 def get_counters(docs):
     #param doc list of contents that need info on tokens
     #return the counters object of tokens
@@ -50,7 +59,12 @@ def get_counters(docs):
     return doc_cnts
 
 #export
-#load sentence piece model and call two helper function to calculate token freqnency
+"""
+Helper functions that get a dataframe and generate a Counter object for all of them tokens it contains,
+as well as their frequency. It load sentence piece model and call two helper function to calculate token freqnency
+:param artifacts_df: doc list of contents that we need to extract information on tokens and their frequency
+:returns: counter object with token and term occurrence.
+"""
 def preprocess(artifacts_df):
     spm = sp.SentencePieceProcessor()
     bpe_model_path = pkg_resources.resource_filename('ds4se', 'model/test.model')
@@ -60,15 +74,16 @@ def preprocess(artifacts_df):
     return cnts
 
 # Cell
+"""
+Calculate traceability of two strings of artifacts with given techniques. Method will group two strings as a pair and feed into
+the traceability model to get result. If users switch the order of source and target, result should be very similar.
+:param source: a string of the entire source file
+:param target: a string of the entire target file
+:param technique: what tecchnique to use to calculate traceability
+:param word2vec_metric: optional, what metric to use to calculate traceability. Only for word2vec
+:returns: a tuple: (distance, similarity), similarity is the traceability value
+"""
 def TraceLinkValue(source, target, technique, word2vec_metric = "WMD"):
-    #param source a string of the entire source file
-    #param target a string of the entire target file
-    #param technique what tecchnique to use to calculate trace values
-    #return a tuple: (distance, similarity)
-
-    #TODO make the string saved and then return the path to that string
-    sourcePath = "path/to/something"#this is where we save the passed in source
-    targetPath = "./something"
 
     dummy_path = pkg_resources.resource_filename('ds4se', 'model/val.csv')
 
@@ -148,16 +163,27 @@ def TraceLinkValue(source, target, technique, word2vec_metric = "WMD"):
     return value
 
 # Cell
+"""
+Calculate the number of documents of two artifacts. Since in each dataframe, each document takes exactly one row, just counting the number
+of rows in each dataframe will gives the result.
+:param source: a dataframe of the entire source file
+:param target: a dataframe of the entire target file
+:returns: a list containing the number of documents in both source and target artifacts and the difference between the size of two artifacts
+"""
 def NumDoc(source, target):
-    #param source a dataframe of the entire source file
-    #param target a dataframe of the entire target file
-    #return a list containing the the difference between the two files
     source_doc = source.shape[0]
     target_doc = target.shape[0]
     difference = source_doc - target_doc
     return [source_doc, target_doc, difference, -difference]
 
 # Cell
+"""
+Calculate the number of vocabulary in each of the two artifacts. This method calls the helper function that uses a bpe model.The helper
+function returns a counter object of all tokens and their occurrence, the length of the list is the vocab size.
+:param source: a dataframe of the entire source file
+:param target: a dataframe of the entire target file
+:returns: a list containing the vocabulary size of both source and target artifacts and the difference between the vocabulary sizes two artifacts
+"""
 def VocabSize(source, target):
     #param source a string of the entire source file
     #param target a string of the entire target file
@@ -170,9 +196,16 @@ def VocabSize(source, target):
     return [source_size, target_size, difference, -difference]
 
 # Cell
+"""
+Calculate the average number of token per document in each of the two artifacts. This method calls the helper function that uses a bpe model.The helper
+function returns a counter object of all tokens and their occurrence, sum up all the occurrence is the total number of tokens across entire actifact.
+Divide that number by the number of documents will get the result we need.
+:param source: a dataframe of the entire source file
+:param target: a dataframe of the entire target file
+:returns: a list containing the average number of token per document in both source and target artifacts and the difference between these two.
+"""
 def AverageToken(source, target):
-    #param source a dataframe of the entire source file
-    #param target a dataframe of the entire target file
+
     #return a list containing the the difference between the two files in terms of tokens
     source_doc = source.shape[0]
     target_doc = target.shape[0]
@@ -189,10 +222,16 @@ def AverageToken(source, target):
     return [source_token, target_token, difference, -difference]
 
 # Cell
+"""
+Calculate the top 3 most frequent token in one artifacts. This method calls the helper function that uses a bpe model.The helper
+function returns a counter object of all tokens and their occurrence, get the first three elements will gives us the most frequent
+token. Divide their occurrence with totle number of tokens to get actual frequency
+Divide that number by the number of documents will get the result we need.
+:param artifacts_df: a dataframe of contents that need to be processed
+:returns: a dictionary of top three most frenquent token with their frenquency
+"""
 def Vocab(artifacts_df):
-    #we can add a parameter for user to specify the number of most frequent token to return
-    #param a dataframe of contents that need to be processed
-    #return a list containing the the difference between the two files in terms of vocab
+    #Note: we can add a parameter for user to specify the number of most frequent token to return
     cnts = preprocess(artifacts_df)
     vocab_list = cnts[0].most_common(3)
     total = sum(cnts[0].values())
@@ -204,24 +243,35 @@ def Vocab(artifacts_df):
     return vocab_dict
 
 # Cell
+"""
+Calculate the top 3 most frequent token in both source and target artifacts. This method calls the helper function that uses a bpe model
+with combined dataframe.The helperfunction returns a counter object of all tokens and their occurrence, get the first three elements
+will gives us the most frequent token. Divide their occurrence with totle number of tokens to get actual frequency.
+Divide that number by the number of documents will get the result we need.
+:param source: a dataframe of the entire source file
+:param target: a dataframe of the entire target file
+:returns: a dictionary of top three most frenquent token with their frenquency
+"""
 def VocabShared(source, target):
-    #param source a dataframe of the entire source file
-    #param target a dataframe of the entire target file
-    #return the similarities of vocab in the files
     df = pd.concat([source, target])
     return Vocab(df)
 
 # Cell
+"""
+Calculate the total number of vocabulary size of both soruce and target artifacts. The method first combines two dataframes together
+and then call help function preprocess to get counter object. The length of resulting object is the total size of vocab.
+:param source: a dataframe of the entire source file
+:param target: a dataframe of the entire target file
+:returns: a number indicating the vocabulary size of both soruce and target artifacts
+"""
 def SharedVocabSize(source, target):
-    #param source a dataframe of the entire source file
-    #param target a dataframe of the entire target file
-    #return the similarities of vocab sizes in the files
     df = pd.concat([source, target])
     df_counts = preprocess(df)
     shared_size = len(df_counts[0])
     return shared_size
 
 # Cell
+
 def MutualInformation(source, target):
     #param source a string of the entire source file
     #param target a string of the entire target file
@@ -230,6 +280,13 @@ def MutualInformation(source, target):
     return mutual_information
 
 # Cell
+"""
+Calculate the cross entropy of soruce and target artifacts. The method first combines two dataframes together
+and then call the dit_shannon method to calcualte cross entropy with a counter object.
+:param source: a dataframe of the entire source file
+:param target: a dataframe of the entire target file
+:returns: a number indicating the vocabulary size of both soruce and target artifacts
+"""
 def CrossEntropy(source, target):
     #param source a dataframe of the entire source artifact
     #param target a dataframe of the entire target artifact
