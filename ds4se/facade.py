@@ -271,7 +271,12 @@ def SharedVocabSize(source, target):
     return shared_size
 
 # Cell
-
+"""
+Calculate mutual information of source and target artifacts, which will be the overlap between two artifacts.
+:param source: a dataframe of the entire source file
+:param target: a dataframe of the entire target file
+:returns: a number representing the mutual information of two artifacts.
+"""
 def MutualInformation(source, target):
     #param source a string of the entire source file
     #param target a string of the entire target file
@@ -307,6 +312,12 @@ def makeArray(text):
     return np.fromstring(text[1:-1],sep=' ')
 
 #export
+"""
+Calculate KLDivergence of source and target artifacts combined.
+:param source: a dataframe of the entire source file
+:param target: a dataframe of the entire target file
+:returns: a number representing the divergence of two artifacts.
+"""
 def KLDivergence(source, target):
     #param source a string of the entire source file
     #param target a string of the entire target file
