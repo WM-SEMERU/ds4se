@@ -82,6 +82,31 @@ All methods in this section takes in pandas dataframe(s) as input.
 
 To further add implementations for KLDivergence() and MutualInformation(), notebook 3.4_facade.ipynb should be modified. 
 
+## Deployment
+
+The API is deployed to pypi at https://pypi.org/project/ds4se/. 
+
+To deploy future version of the API, follow steps listed below:
+
+    1) open setting.ini and increment the version number. 
+    
+    2) open terminal and run following commmad to package the library:
+> python3 setup.py sdist bdist_wheel 
+    
+    3) run following command to upload the package:>twine upload dist/*  
+    4) when promoted for username, type in username:
+> ds4se
+   
+    5) when promoted for password, type in username:>ds4seCS435   
+   
+Note: you might need to run the following commands to make sure you have the latest version of setuptools, wheel and twine:
+> python3 -m pip install --user --upgrade setuptools wheel
+  
+>python3 -m pip install --user --upgrade twine
+
+To include non-".py" file in the package, modified package_data variable in setup.py. For example, if you want to include "hello.model" and "world.csv" in the package, package_data should be:>package_data={'': ['hello.model','world.csv']},
+
+
 ## Install
 
 `pip install ds4se`
