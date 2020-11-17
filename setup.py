@@ -35,7 +35,7 @@ setuptools.setup(
     ] + ['Programming Language :: Python :: '+o for o in py_versions[py_versions.index(min_python):]],
     url = 'https://github.com/{}/{}'.format(cfg['user'],cfg['lib_name']),
     packages = setuptools.find_packages(),
-    package_data={'': ['*.model','*.npy','*.csv','*.vocab']},
+    package_data={'': ['*.model','*.npy','*.csv','*.vocab','DS4SE.png']},
 #     include_package_data = True,
     install_requires = requirements,
     python_requires  = '>=' + cfg['min_python'],

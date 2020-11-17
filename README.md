@@ -16,7 +16,7 @@ This documentation composed of 4 parts:
 
 Below is the Architecture diagram of the DS4Se library.
 
-![DS4SE.png](DS4SE.png)
+![DS4SE.png](ds4se\model\DS4SE.png)
 
 Users of the DS4SE API will pass in either strings or pandas dataframes that consist of content of either source or target artifacts as input, and get different analytical results of the input depending on the function user called.  
 
@@ -109,9 +109,24 @@ To include non-".py" file in the package, modified package_data variable in setu
 
 ## Install
 
-`pip install ds4se`
+To install the API, run following commmand:
+> pip install ds4se
+
+If you need to upgrade DS4SE, run:> pip install DS4SE --upgrade
+The library requires several other libraries, to install/upgrade them, run these command:
+> pip install --upgrade gensim
+
+>pip install nbdev
+
+>pip install sentencepiece
+
+>pip install dit
+
+After installing/upgrading above libraries, DS4SE is ready to use!
 
 ## How to use
+
+After installing the API, import ds4se.facade to use its functionalities.
 
 ```python
 import ds4se.facade as facade
