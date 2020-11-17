@@ -16,7 +16,7 @@ This documentation composed of 4 parts:
 
 Below is the Architecture diagram of the DS4Se library.
 
-![DS4SE.png](ds4se\model\DS4SE.png)
+![DS4SE.png](https://github.com/WM-SEMERU/ds4se/raw/SE_Proj2_Facade/DS4SE.png)
 
 Users of the DS4SE API will pass in either strings or pandas dataframes that consist of content of either source or target artifacts as input, and get different analytical results of the input depending on the function user called.  
 
