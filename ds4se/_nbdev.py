@@ -2,12 +2,15 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {}
+index = {"Class": "00_data.core.ipynb",
+         "Method": "00_data.core.ipynb",
+         "Document": "00_data.core.ipynb",
+         "Requirement": "00_data.core.ipynb"}
 
-modules = []
+modules = ["data/core.py"]
 
 doc_url = "https://WM-SEMERU.github.io/ds4se/"
 
-git_url = "https://github.com/WM-SEMERU/ds4se/tree/main/"
+git_url = "https://github.com/WM-SEMERU/ds4se/tree/master/"
 
 def custom_doc_links(name): return None

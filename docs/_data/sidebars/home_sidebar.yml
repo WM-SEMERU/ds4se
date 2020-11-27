@@ -10,8 +10,8 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: module name here
-      url: /core
+      title: Data Core
+      url: /data.core
     output: web
     title: ds4se
   output: web
