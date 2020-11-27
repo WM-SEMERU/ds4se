@@ -38,6 +38,36 @@ nb_path: "nbs/00_data.core.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">F_EXT_TO_LANG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;.java&quot;</span><span class="p">:</span> <span class="s2">&quot;Java&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;.py&quot;</span><span class="p">:</span> <span class="s2">&quot;Python&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;.cpp&quot;</span><span class="p">:</span> <span class="s2">&quot;C++&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;.c&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;.js&quot;</span><span class="p">:</span> <span class="s2">&quot;Javascript&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
 <div class="output">
@@ -46,7 +76,7 @@ nb_path: "nbs/00_data.core.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Class" class="doc_header"><code>class</code> <code>Class</code><a href="https://github.com/WM-SEMERU/ds4se/tree/master/ds4se/data/core.py#L6" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Class</code>()</p>
+<h2 id="Class" class="doc_header"><code>class</code> <code>Class</code><a href="https://github.com/WM-SEMERU/ds4se/tree/master/ds4se/data/core.py#L11" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Class</code>(<strong><code>text</code></strong>:<code>str</code>, <strong><code>lang</code></strong>:<code>str</code>, <strong><code>instance_vars</code></strong>:<code>List</code>[<code>str</code>]=<em><code>[]</code></em>, <strong><code>methods</code></strong>:<code>List</code>[<code>str</code>]=<em><code>[]</code></em>) :: <code>BaseModel</code></p>
 </blockquote>
 
 </div>
@@ -70,11 +100,75 @@ nb_path: "nbs/00_data.core.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Method" class="doc_header"><code>class</code> <code>Method</code><a href="https://github.com/WM-SEMERU/ds4se/tree/master/ds4se/data/core.py#L9" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Method</code>()</p>
+<h2 id="Method" class="doc_header"><code>class</code> <code>Method</code><a href="https://github.com/WM-SEMERU/ds4se/tree/master/ds4se/data/core.py#L24" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Method</code>()</p>
 </blockquote>
 
 </div>
 
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tempfile</span>
+
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;tmpClass&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.java&quot;</span><span class="p">)</span>
+<span class="n">class_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;public class tmpClass {</span>
+<span class="s2">    public static void main(String[] args) {</span>
+<span class="s2">    </span>
+<span class="s2">    }</span>
+<span class="s2">}&quot;&quot;&quot;</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">tmp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">class_str</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+    <span class="n">tmp</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">new_class</span> <span class="o">=</span> <span class="n">Class</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">tmp</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">tmp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">assert</span> <span class="n">new_class</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="n">class_str</span>
+<span class="k">assert</span> <span class="n">new_class</span><span class="o">.</span><span class="n">lang</span> <span class="o">==</span> <span class="s2">&quot;Java&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-5-498b8b87d094&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">     11</span>     tmp<span class="ansi-blue-fg">.</span>seek<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     12</span> 
+<span class="ansi-green-fg">---&gt; 13</span><span class="ansi-red-fg">     </span>new_class <span class="ansi-blue-fg">=</span> Class<span class="ansi-blue-fg">.</span>from_file<span class="ansi-blue-fg">(</span>Path<span class="ansi-blue-fg">(</span>tmp<span class="ansi-blue-fg">.</span>name<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     14</span> <span class="ansi-green-fg">finally</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     15</span>     tmp<span class="ansi-blue-fg">.</span>close<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/projects/semeru/ds4se/ds4se/data/core.py</span> in <span class="ansi-cyan-fg">from_file</span><span class="ansi-blue-fg">(fpath)</span>
+<span class="ansi-green-intense-fg ansi-bold">     19</span>         <span class="ansi-green-fg">with</span> open<span class="ansi-blue-fg">(</span>fpath<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;r&#39;</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">as</span> f<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     20</span>             text <span class="ansi-blue-fg">=</span> f<span class="ansi-blue-fg">.</span>read<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">---&gt; 21</span><span class="ansi-red-fg">         </span>lang <span class="ansi-blue-fg">=</span> F_EXT_TO_LANG<span class="ansi-blue-fg">[</span>fpath<span class="ansi-blue-fg">.</span>suffix<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">     22</span>         <span class="ansi-green-fg">return</span> Class<span class="ansi-blue-fg">(</span>text <span class="ansi-blue-fg">=</span> text<span class="ansi-blue-fg">,</span> lang <span class="ansi-blue-fg">=</span> lang<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     23</span> 
+
+<span class="ansi-red-fg">NameError</span>: name &#39;F_EXT_TO_LANG&#39; is not defined</pre>
+</div>
 </div>
 
 </div>
@@ -101,7 +195,7 @@ nb_path: "nbs/00_data.core.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Document" class="doc_header"><code>class</code> <code>Document</code><a href="https://github.com/WM-SEMERU/ds4se/tree/master/ds4se/data/core.py#L13" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Document</code>()</p>
+<h2 id="Document" class="doc_header"><code>class</code> <code>Document</code><a href="https://github.com/WM-SEMERU/ds4se/tree/master/ds4se/data/core.py#L30" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Document</code>()</p>
 </blockquote>
 
 </div>
@@ -125,7 +219,7 @@ nb_path: "nbs/00_data.core.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Requirement" class="doc_header"><code>class</code> <code>Requirement</code><a href="https://github.com/WM-SEMERU/ds4se/tree/master/ds4se/data/core.py#L16" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Requirement</code>()</p>
+<h2 id="Requirement" class="doc_header"><code>class</code> <code>Requirement</code><a href="https://github.com/WM-SEMERU/ds4se/tree/master/ds4se/data/core.py#L34" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Requirement</code>()</p>
 </blockquote>
 
 </div>

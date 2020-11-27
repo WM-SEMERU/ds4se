@@ -3,15 +3,34 @@
 __all__ = ['Class', 'Method', 'Document', 'Requirement']
 
 # Cell
-class Class:
-    pass
+from pathlib import Path
+from pydantic import BaseModel
+from typing import List, Optional
+
+# Cell
+class Class(BaseModel):
+    text: str
+    lang: str
+    instance_vars: Optional[List[str]] = []
+    methods: Optional[List[str]] = []
+
+    @staticmethod
+    def from_file(fpath: Path):
+        with open(fpath, 'r') as f:
+            text = f.read()
+        lang = F_EXT_TO_LANG[fpath.suffix]
+        return Class(text = text, lang = lang)
 
 class Method:
+    text: str
+    lang: str
     pass
 
 # Cell
 class Document:
-    pass
+    text: str
+    lang: str
 
 class Requirement:
+    text: str
     pass
