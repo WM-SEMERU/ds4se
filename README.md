@@ -2,21 +2,131 @@
 > Data Science for Software Engieering (ds4se) is an academic initiative to perform exploratory analysis on software engineering artifacts and metadata. Data Management, Analysis, and Benchmarking for DL and Traceability.
 
 
-```python
-pip install ds4se
-```
+This documentation composed of 4 parts: 
 
-    Requirement already satisfied: ds4se in c:\users\admin\desktop\fall2020\software engineering\project\github desktop\ds4se (0.1.5)
-    Note: you may need to restart the kernel to use updated packages.
+1)architecture
+
+2)deployment
+
+3)installation 
+
+4)usage
+
+## Architecture
+
+Below is the Architecture diagram of the DS4Se library.
+
+![DS4SE.png](https://github.com/WM-SEMERU/ds4se/raw/SE_Proj2_Facade/DS4SE.png)
+
+Users of the DS4SE API will pass in either strings or pandas dataframes that consist of content of either source or target artifacts as input, and get different analytical results of the input depending on the function user called.  
+
+The DS4SE library is divided into two parts: Traceability and Analysis, corresponind to different usages of the API. 
+
+
+
+#### Traceability
+
+The traceability part consists only one method: TraceLinkValue(), that will process strings with user-specified technique. This method intends to support 6 different techniques: 
+
+
+VSM
+
+orthogonal
+
+JS
+
+LDA
+
+LSA
+
+word2vec
+
+doc2vec
+
+>Currently only word2vec and doc2vec are inplementated. The implementations are in notebook 3.4_facade.ipynb and corresponind generated facade.py file. Actual implementation of word2vec and doc2vec are in the notebook 3.2_mining.unsupervised.eval.ipynb and corresponding nbdev generated eval.py. As the diagram shows, 3.4_facade.ipynb imports eval.py for instantiation of either word2vec or doc2vec class object. Those object then load "*.model" file and start calculation. 
+
+To further add implementations for other techniques, programmers should modify notebook 3.4_facade.ipynb. 
+
+#### Analysis
+The analysis part of the API consists 9 methods: 
+
+NumDoc()
+
+VocabShared()
+
+VocabSize()
+
+Vocab()
+
+SharedVocabSize()
+
+AverageToken()
+
+CrossEntropy()
+
+KLDivergence()
+
+MutualInformation()
+
+
+
+Currently only KLDivergence() and MutualInformation() are NOT inplementated. The implementations are in notebook 3.4_facade.ipynb and corresponind generated facade.py file. 
+
+All methods in this section takes in pandas dataframe(s) as input. 
+
+>NumDoc() method are simple enough to stand on its own, it just count the number of rows in dataframes. 
+
+>Functions VocabShared(), VocabSize(), Vocab(), SharedVocabSize(), AverageToken() only need a sentencepiece processor bpe model to function. All these methods instantiate a processor by a "*.model" file and receive a Counter object, in which results are stored.
+
+>Actual implementation of CrossEntropy() is in notebook 1.0_exp.i.ipynb as dit_shannon(). CrossEntropy() simply combines two user-provided dataframes and process it through sentencepiece processor and calls this method with resulting Counter object. 
+
+To further add implementations for KLDivergence() and MutualInformation(), notebook 3.4_facade.ipynb should be modified. 
+
+## Deployment
+
+The API is deployed to pypi at https://pypi.org/project/ds4se/. 
+
+To deploy future version of the API, follow steps listed below:
+
+    1) open setting.ini and increment the version number. 
     
+    2) open terminal and run following commmad to package the library:
+> python3 setup.py sdist bdist_wheel 
+    
+    3) run following command to upload the package:>twine upload dist/*  
+    4) when promoted for username, type in username:
+> ds4se
+   
+    5) when promoted for password, type in username:>ds4seCS435   
+   
+Note: you might need to run the following commands to make sure you have the latest version of setuptools, wheel and twine:
+> python3 -m pip install --user --upgrade setuptools wheel
+  
+>python3 -m pip install --user --upgrade twine
 
-This file will become your README and also the index of your documentation.
+To include non-".py" file in the package, modified package_data variable in setup.py. For example, if you want to include "hello.model" and "world.csv" in the package, package_data should be:>package_data={'': ['hello.model','world.csv']},
+
 
 ## Install
 
-`pip install ds4se`
+To install the API, run following commmand:
+> pip install ds4se
+
+If you need to upgrade DS4SE, run:> pip install DS4SE --upgrade
+The library requires several other libraries, to install/upgrade them, run these command:
+> pip install --upgrade gensim
+
+>pip install nbdev
+
+>pip install sentencepiece
+
+>pip install dit
+
+After installing/upgrading above libraries, DS4SE is ready to use!
 
 ## How to use
+
+After installing the API, import ds4se.facade to use its functionalities.
 
 ```python
 import ds4se.facade as facade
