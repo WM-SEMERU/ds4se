@@ -14,8 +14,36 @@ import functools
 import os
 
 # Cell
+from datetime import datetime
+import seaborn as sns
+
+# Cell
 import logging
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+
+# Cell
+from sklearn.metrics import precision_recall_curve
+from sklearn.metrics import plot_precision_recall_curve
+from sklearn.metrics import auc
+import matplotlib.pyplot as plt
+from prg import prg
+from pandas.plotting import scatter_matrix
+from pandas.plotting import lag_plot
+import math as m
+import random as r
+import collections
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Cell
+from gensim.models import WordEmbeddingSimilarityIndex
+from gensim.similarities import SparseTermSimilarityMatrix
+from gensim import corpora
+
+# Cell
+from sklearn.metrics import average_precision_score
+from sklearn.metrics import roc_curve
+from sklearn.metrics import roc_auc_score
+from sklearn.metrics import confusion_matrix
 
 # Cell
 class BasicSequenceVectorization():

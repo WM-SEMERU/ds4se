@@ -10,9 +10,14 @@ import pandas as pd
 from itertools import product
 from random import sample
 import functools
+import random
 
 # Cell
 #Visualizing wordEmbedding
 from sklearn.decomposition import IncrementalPCA    # inital reduction
 from sklearn.manifold import TSNE                   # final reduction
 import numpy as np                                  # array handling
+
+# Cell
+import ds4se.mgmnt.prep.conv as prep
+import ds4se.repr.word2vec.train as wv

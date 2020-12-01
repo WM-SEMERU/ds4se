@@ -3,8 +3,31 @@
 __all__ = ['df_to_txt_file', 'gen_sp_model', 'encode_text', 'dit_shannon', 'entropies_of_df_entries']
 
 # Cell
+# Imports
+import pandas as pd
+import sentencepiece as sp
+import dit
+
+from collections import Counter
+from scipy.stats import sem, t
+from numpy import mean
+from numpy import std
+import statistics as stat
+import matplotlib.pyplot as plt
+
+
+# TODO: Remove when mongo call is implemented
+import os
+
+# Cell
+"""
+Converts a dataframe into a text file that SentencePiece can use to train a BPE model
+:param df: a pandas dataframe
+:param output: name of the output txt file to stored the contents of dataframe
+:param cols: names of all columns in df dataframe
+:returns: full name of output text file
+"""
 def df_to_txt_file(df, output, cols):
-    """Converts a dataframe into a text file that SentencePiece can use to train a BPE model"""
     if cols is None: cols = list(df.columns)
     merged_df = pd.concat([df[col] for col in cols])
 
@@ -13,15 +36,28 @@ def df_to_txt_file(df, output, cols):
     return output + '_text.txt'
 
 # Cell
+"""
+Trains a SentencePiece BPE model from a pandas dataframe
+:param df: pandas dataframe
+:param output: output text file
+:param model_name: name of the bpe model to be trained
+:param cols: columns of dataframe
+:returns: trained bpe model
+"""
 def gen_sp_model(df, output, model_name, cols=None):
-    """Trains a SentencePiece BPE model from a pandas dataframe"""
     fname = df_to_txt_file(df, output, cols)
     sp.SentencePieceTrainer.train(f'--input={fname} --model_prefix={output + model_name} --hard_vocab_limit=false --model_type=bpe')
     return output + model_name
 
 # Cell
+"""
+Encodes text using a pre-trained sp model, returns the occurrences of each token in the text
+:param text: text that we need information on token counts
+:param model_prefix: trained model to process text
+:returns: documents lists of all entries in the dataframe
+"""
 def encode_text(text, model_prefix):
-    '''Encodes text using a pre-trained sp model, returns the occurrences of each token in the text'''
+    ''''''
     sp_processor = sp.SentencePieceProcessor()
     sp_processor.Load(f"{model_prefix}.model")
     token_counts = Counter()
@@ -32,8 +68,12 @@ def encode_text(text, model_prefix):
 
 # Cell
 #Notes: token_counts is a counter object.
+"""
+Takes in a counter object of token occurrences, computes the entropy of the corpus that produced it
+:param token_counts: counter object of token information
+:returns: a number representing entropy
+"""
 def dit_shannon(token_counts):
-    '''Takes in a counter object of token occurrences, computes the entropy of the corpus that produced it'''
     num_tokens = 0
     for token in token_counts:
         num_tokens += token_counts[token]
@@ -45,6 +85,13 @@ def dit_shannon(token_counts):
     return dit.shannon.entropy(d)
 
 # Cell
+"""
+Calculate entropies for each entry in a dataframe column
+:param df: dataframe of content that need to be processed
+:param col: columns of the dataframe
+:param model_prefix: name of bpe model
+:returns: a list of the entropies of each entry in a dataframe column
+"""
 def entropies_of_df_entries(df, col, model_prefix):
     '''Returns a list of the entropies of each entry in a dataframe column'''
     entropies = []
