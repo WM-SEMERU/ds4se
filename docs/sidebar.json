@@ -1,0 +1,7 @@
+{
+  "mlproj_template": {
+    "Overview": "/",
+    "Core": "core.html",
+    "CLI": "cli.html"
+  }
+}
