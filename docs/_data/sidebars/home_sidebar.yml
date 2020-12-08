@@ -10,12 +10,18 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: Core
-      url: core.html
+      title: Data Management Core
+      url: data.management.core.html
+    - output: web,pdf
+      title: Data Management Transforms
+      url: data.management.transforms.html
+    - output: web,pdf
+      title: Data Management Tokenizers Core
+      url: data.management.tokenizers.html
     - output: web,pdf
       title: CLI
       url: cli.html
     output: web
-    title: mlproj_template
+    title: ds4se
   output: web
   title: Sidebar

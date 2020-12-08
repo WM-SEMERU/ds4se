@@ -1,7 +1,9 @@
 {
-  "mlproj_template": {
+  "ds4se": {
     "Overview": "/",
-    "Core": "core.html",
+    "Data Management Core": "data.management.core.html",
+    "Data Management Transforms": "data.management.transforms.html",
+    "Data Management Tokenizers Core": "data.management.tokenizers.html",
     "CLI": "cli.html"
   }
 }
