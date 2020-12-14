@@ -2,13 +2,10 @@
 
 title: ds4se
 
-
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "Data Science for Software Engieering (ds4se) is an academic initiative to perform exploratory analysis on software engineering artifacts and metadata. Data Management, Analysis, and Benchmarking for DL and Traceability."
-description: "Data Science for Software Engieering (ds4se) is an academic initiative to perform exploratory analysis on software engineering artifacts and metadata. Data Management, Analysis, and Benchmarking for DL and Traceability."
-nb_path: "nbs/index.ipynb"
+summary: "Data Science for Software Engieering (ds4se) is an academic initiative to perform exploratory analysis on software engineering artifacts (e.g., requirements, issues, source code, or test cases) and metadata (e.g., repository logs, databases logs, or binaries). This EDA involves the following components:"
 ---
 <!--
 
@@ -21,14 +18,10 @@ nb_path: "nbs/index.ipynb"
 -->
 
 <div class="container" id="notebook-container">
-        
-    {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This file will become your README and also the index of your documentation.</p>
@@ -38,7 +31,7 @@ nb_path: "nbs/index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Install">Install<a class="anchor-link" href="#Install"> </a></h2>
+<h2 id="Install">Install<a class="anchor-link" href="#Install">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -51,13 +44,26 @@ nb_path: "nbs/index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-to-use">How to use<a class="anchor-link" href="#How-to-use"> </a></h2>
+<h2 id="How-to-use">How to use<a class="anchor-link" href="#How-to-use">&#182;</a></h2>
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">ds4se.facade</span> <span class="k">as</span> <span class="nn">facade</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Traceability">Traceability<a class="anchor-link" href="#Traceability"> </a></h2>
+<h2 id="Traceability">Traceability<a class="anchor-link" href="#Traceability">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -83,14 +89,19 @@ nb_path: "nbs/index.ipynb"
 </div>
 </div>
 </div>
-    {% raw %}
-    
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The function returns a tuple of two integers, with the first element as distance between two artifacts and the second element be the similarity between two artifacts, which is the traceability value.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">TraceLinkValue</span><span class="p">(</span><span class="s2">&quot;textfile.txt&quot;</span><span class="p">,</span><span class="s2">&quot;source&quot;</span><span class="p">,</span><span class="s2">&quot;techinque&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">TraceLinkValue</span><span class="p">(</span><span class="s2">&quot;source_string&quot;</span><span class="p">,</span><span class="s2">&quot;target_string&quot;</span><span class="p">,</span><span class="s2">&quot;LDA&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -114,36 +125,41 @@ nb_path: "nbs/index.ipynb"
 </div>
 
 </div>
-    {% endraw %}
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>word2vec_metric is an optional parameter when using word2vec as technique, available metrics are: 
+   <br> WMD
+  <br>  SCM</p>
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis"> </a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Usage-of-ds4se-model-to-calculate-the-number-of-documents-of-either-source-or-target-class">Usage of ds4se model to calculate the number of documents of either source or target class<a class="anchor-link" href="#Usage-of-ds4se-model-to-calculate-the-number-of-documents-of-either-source-or-target-class"> </a></h3>
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Usage-of-ds4se-model-to-calculate-the-number-of-documents-of-either-source-or-target-class">Usage of ds4se model to calculate the number of documents of either source or target class<a class="anchor-link" href="#Usage-of-ds4se-model-to-calculate-the-number-of-documents-of-either-source-or-target-class">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
-<pre><code>The method takes in two parameters, source artifacts and target artifacts, and it will do calculation for both classes.
+<pre><code>The method takes in two parameters, a pandas dataframe for source artifacts and a pandas data frame for target artifacts, and it will do calculation for both classes.
 
 The method returns a list of 4 integers:
 1: number of documents for source artifacts;
 2: number of documents for target artifacts;
-3: source difference;
-4: target difference.</code></pre>
+3: source difference (difference between previous two results);
+4: target difference (same as above, but opposite).</code></pre>
 
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -168,8 +184,8 @@ The method returns a list of 4 integers:
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>The number of documents for source is 185 , with 43 source difference
-The number of documents for target is 142 , with -43 target difference
+<pre>The number of documents for source is 160 , with 32 source difference
+The number of documents for target is 128 , with -32 target difference
 </pre>
 </div>
 </div>
@@ -178,11 +194,78 @@ The number of documents for target is 142 , with -43 target difference
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Usage-of-ds4se-model-to-calculate-the-vocabulary-size-of-either-source-or-target-class">Usage of ds4se model to calculate the vocabulary size of either source or target class<a class="anchor-link" href="#Usage-of-ds4se-model-to-calculate-the-vocabulary-size-of-either-source-or-target-class"> </a></h3>
+<p>For all functions in analysis part, input should be pandas dataframe with following structure</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;contents&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hello world&quot;</span><span class="p">,</span> <span class="s2">&quot;this is a content of another file&quot;</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>contents</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>hello world</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>this is a content of another file</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Usage-of-ds4se-model-to-calculate-the-vocabulary-size-of-either-source-or-target-class">Usage of ds4se model to calculate the vocabulary size of either source or target class<a class="anchor-link" href="#Usage-of-ds4se-model-to-calculate-the-vocabulary-size-of-either-source-or-target-class">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -200,14 +283,12 @@ The method returns a list of 4 integers:
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocab_result</span> <span class="o">=</span> <span class="n">facade</span><span class="o">.</span><span class="n">VocabSize</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocab_result</span> <span class="o">=</span> <span class="n">facade</span><span class="o">.</span><span class="n">VocabSize</span><span class="p">(</span><span class="n">source_df</span><span class="p">,</span> <span class="n">target_df</span><span class="p">)</span>
 <span class="n">source</span> <span class="o">=</span> <span class="n">vocab_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">target</span> <span class="o">=</span> <span class="n">vocab_result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">difference_source</span> <span class="o">=</span> <span class="n">vocab_result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
@@ -236,11 +317,9 @@ The vocabulary size for target is 144 , with -35 target difference
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Usage-of-ds4se-model-to-calculate-the-average-number-of-token-of-either-source-or-target-class">Usage of ds4se model to calculate the average number of token of either source or target class<a class="anchor-link" href="#Usage-of-ds4se-model-to-calculate-the-average-number-of-token-of-either-source-or-target-class"> </a></h3>
+<h3 id="Usage-of-ds4se-model-to-calculate-the-average-number-of-token-of-either-source-or-target-class">Usage of ds4se model to calculate the average number of token of either source or target class<a class="anchor-link" href="#Usage-of-ds4se-model-to-calculate-the-average-number-of-token-of-either-source-or-target-class">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -258,14 +337,12 @@ The method returns a list of 4 integers:
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_result</span> <span class="o">=</span> <span class="n">facade</span><span class="o">.</span><span class="n">AverageToken</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_result</span> <span class="o">=</span> <span class="n">facade</span><span class="o">.</span><span class="n">AverageToken</span><span class="p">(</span><span class="n">source_df</span><span class="p">,</span> <span class="n">target_df</span><span class="p">)</span>
 <span class="n">source</span> <span class="o">=</span> <span class="n">token_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">target</span> <span class="o">=</span> <span class="n">token_result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">difference_source</span> <span class="o">=</span> <span class="n">vocab_result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
@@ -294,11 +371,9 @@ The number of average token for target is 143 , with -35 target difference
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Usage-of-ds4se-model-to-retriev-term-frequency">Usage of ds4se model to retriev term frequency<a class="anchor-link" href="#Usage-of-ds4se-model-to-retriev-term-frequency"> </a></h3>
+<h3 id="Usage-of-ds4se-model-to-retriev-term-frequency">Usage of ds4se model to retriev term frequency<a class="anchor-link" href="#Usage-of-ds4se-model-to-retriev-term-frequency">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -306,8 +381,8 @@ The number of average token for target is 143 , with -35 target difference
 <div class="text_cell_render border-box-sizing rendered_html">
 
 <pre><code>The method takes in two parameters, 
-1： source artifacts,
-2： target artifacts, 
+1: source artifacts,
+2: target artifacts, 
 and it will do calculation for both classes.
 
 The method returns a dictonary with 
@@ -317,14 +392,12 @@ value: a list of count and frequency</code></pre>
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">VocabShared</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span><span class="s2">&quot;target&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">VocabShared</span><span class="p">(</span><span class="n">source_df</span><span class="p">,</span><span class="n">target_df</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -348,8 +421,6 @@ value: a list of count and frequency</code></pre>
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If we only need the term frequency of one of two classes, we can use Vocab() function</p>
@@ -358,14 +429,12 @@ value: a list of count and frequency</code></pre>
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">Vocab</span><span class="p">(</span><span class="s2">&quot;filename&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">Vocab</span><span class="p">(</span><span class="n">artifacts_df</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -389,11 +458,9 @@ value: a list of count and frequency</code></pre>
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="For-Shared-Metrics">For Shared Metrics<a class="anchor-link" href="#For-Shared-Metrics"> </a></h3>
+<h3 id="For-Shared-Metrics">For Shared Metrics<a class="anchor-link" href="#For-Shared-Metrics">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -413,14 +480,12 @@ value: a list of count and frequency</code></pre>
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">SharedVocabSize</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">SharedVocabSize</span><span class="p">(</span><span class="n">source_df</span><span class="p">,</span> <span class="n">target_df</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -444,8 +509,6 @@ value: a list of count and frequency</code></pre>
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Mutual information</p>
@@ -453,14 +516,12 @@ value: a list of count and frequency</code></pre>
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">MutualInformation</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">MutualInformation</span><span class="p">(</span><span class="n">source_df</span><span class="p">,</span> <span class="n">target_df</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -484,8 +545,6 @@ value: a list of count and frequency</code></pre>
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Corss Entropy</p>
@@ -493,14 +552,12 @@ value: a list of count and frequency</code></pre>
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">CrossEntropy</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">CrossEntropy</span><span class="p">(</span><span class="n">source_df</span><span class="p">,</span> <span class="n">target_df</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -524,8 +581,6 @@ value: a list of count and frequency</code></pre>
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>KL Divergence</p>
@@ -533,14 +588,12 @@ value: a list of count and frequency</code></pre>
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">KLDivergence</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">facade</span><span class="o">.</span><span class="n">KLDivergence</span><span class="p">(</span><span class="n">source_df</span><span class="p">,</span> <span class="n">target_df</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -564,8 +617,6 @@ value: a list of count and frequency</code></pre>
 </div>
 
 </div>
-    {% endraw %}
-
 </div>
  
 
