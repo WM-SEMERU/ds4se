@@ -2,13 +2,10 @@
 
 title: Exploration Statistics
 
-
 keywords: fastai
 sidebar: home_sidebar
 
 summary: "This module comprises all the functions for calculating descriptive statistics."
-description: "This module comprises all the functions for calculating descriptive statistics."
-nb_path: "nbs/6.0_desc.stats.ipynb"
 ---
 <!--
 
@@ -21,30 +18,98 @@ nb_path: "nbs/6.0_desc.stats.ipynb"
 -->
 
 <div class="container" id="notebook-container">
-        
-    {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
-    {% endraw %}
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
-    {% raw %}
-    
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install dit
+<span class="o">!</span>pip install sentencepiece
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Requirement already satisfied: dit in c:\webscraper\lib\site-packages (1.2.3)
+Requirement already satisfied: scipy&gt;=0.15.0 in c:\webscraper\lib\site-packages (from dit) (1.2.1)
+Requirement already satisfied: networkx in c:\webscraper\lib\site-packages (from dit) (2.2)
+Requirement already satisfied: boltons in c:\webscraper\lib\site-packages (from dit) (20.2.1)
+Requirement already satisfied: contextlib2 in c:\webscraper\lib\site-packages (from dit) (0.5.5)
+Requirement already satisfied: numpy&gt;=1.11 in c:\webscraper\lib\site-packages (from dit) (1.16.2)
+Requirement already satisfied: prettytable in c:\webscraper\lib\site-packages (from dit) (0.7.2)
+Requirement already satisfied: six&gt;=1.4.0 in c:\webscraper\lib\site-packages (from dit) (1.12.0)
+Requirement already satisfied: debtcollector in c:\webscraper\lib\site-packages (from dit) (2.2.0)
+Requirement already satisfied: decorator&gt;=4.3.0 in c:\webscraper\lib\site-packages (from networkx-&gt;dit) (4.4.0)
+Requirement already satisfied: wrapt&gt;=1.7.0 in c:\webscraper\lib\site-packages (from debtcollector-&gt;dit) (1.11.1)
+Requirement already satisfied: pbr!=2.1.0,&gt;=2.0.0 in c:\webscraper\lib\site-packages (from debtcollector-&gt;dit) (5.5.0)
+Requirement already satisfied: sentencepiece in c:\webscraper\lib\site-packages (0.1.92)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">ImportError</span>                               Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-4-8c9165a1de6f&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">      1</span> <span class="ansi-red-intense-fg ansi-bold"># export</span>
+<span class="ansi-green-fg">      2</span> <span class="ansi-red-intense-fg ansi-bold"># Imports</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 3</span><span class="ansi-yellow-intense-fg ansi-bold"> </span><span class="ansi-green-intense-fg ansi-bold">from</span> scipy<span class="ansi-yellow-intense-fg ansi-bold">.</span>stats <span class="ansi-green-intense-fg ansi-bold">import</span> sem<span class="ansi-yellow-intense-fg ansi-bold">,</span> t<span class="ansi-yellow-intense-fg ansi-bold">,</span> median_absolute_deviation <span class="ansi-green-intense-fg ansi-bold">as</span> mad
+<span class="ansi-green-fg">      4</span> <span class="ansi-green-intense-fg ansi-bold">from</span> statistics <span class="ansi-green-intense-fg ansi-bold">import</span> mean<span class="ansi-yellow-intense-fg ansi-bold">,</span> median<span class="ansi-yellow-intense-fg ansi-bold">,</span> stdev
+
+<span class="ansi-red-intense-fg ansi-bold">ImportError</span>: cannot import name &#39;median_absolute_deviation&#39; from &#39;scipy.stats&#39; (C:\WebScraper\lib\site-packages\scipy\stats\__init__.py)</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Testing List</span>
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Get_desc_stats-&amp;-test">Get_desc_stats &amp; test<a class="anchor-link" href="#Get_desc_stats-&amp;-test">&#182;</a></h1>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -54,7 +119,7 @@ nb_path: "nbs/6.0_desc.stats.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_desc_stats" class="doc_header"><code>get_desc_stats</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/desc/stats.py#L11" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_desc_stats</code>(<strong><code>l</code></strong>)</p>
+<h4 id="get_desc_stats" class="doc_header"><code>get_desc_stats</code><a href="ds4se/desc/stats.py#L18" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_desc_stats</code>(<strong><code>l</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -65,17 +130,86 @@ nb_path: "nbs/6.0_desc.stats.ipynb"
 </div>
 
 </div>
-    {% endraw %}
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
-    {% raw %}
-    
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Here we test get desc stats</span>
+<span class="n">testGDS</span> <span class="o">=</span> <span class="n">get_desc_stats</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+<span class="c1">#Expected results</span>
+<span class="c1">#max = 10</span>
+<span class="c1">#min = 1</span>
+<span class="c1">#mean = 5.33</span>
+<span class="c1">#median = 5.5?</span>
+<span class="c1">#std = 3.559?</span>
+<span class="c1">#MAD = 4.44708?</span>
+
+<span class="k">assert</span><span class="p">(</span><span class="n">testGDS</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">testGDS</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">testGDS</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mf">5.33</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">testGDS</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mf">5.5</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">testGDS</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mf">3.56</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">testGDS</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Confidence_interval-&amp;-test">Confidence_interval &amp; test<a class="anchor-link" href="#Confidence_interval-&amp;-test">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Testing List</span>
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Here we test get desc stats</span>
+<span class="n">testGDS</span> <span class="o">=</span> <span class="n">get_desc_stats</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+<span class="c1">#Expected results</span>
+<span class="c1">#max = 10</span>
+<span class="c1">#min = 1</span>
+<span class="c1">#mean = 5.33</span>
+<span class="c1">#median = 5.5?</span>
+<span class="c1">#std = 3.559?</span>
+<span class="c1">#MAD = 4.44708?</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">testGDS</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">testGDS</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">testGDS</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mf">5.33</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">testGDS</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="mf">5.5</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">testGDS</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="mf">3.559</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">testGDS</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="mf">4.44708</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -85,7 +219,7 @@ nb_path: "nbs/6.0_desc.stats.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="confidence_interval" class="doc_header"><code>confidence_interval</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/desc/stats.py#L15" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>confidence_interval</code>(<strong><code>l</code></strong>, <strong><code>c</code></strong>=<em><code>0.95</code></em>)</p>
+<h4 id="confidence_interval" class="doc_header"><code>confidence_interval</code><a href="ds4se/desc/stats.py#L29" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>confidence_interval</code>(<strong><code>l</code></strong>, <strong><code>c</code></strong>=<em><code>0.95</code></em>)</p>
 </blockquote>
 
 </div>
@@ -96,17 +230,72 @@ nb_path: "nbs/6.0_desc.stats.ipynb"
 </div>
 
 </div>
-    {% endraw %}
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
-    {% raw %}
-    
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#TestStats</span>
+<span class="c1">#Test confidence Interval</span>
+<span class="n">testCI</span> <span class="o">=</span> <span class="n">confidence_interval</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+<span class="k">assert</span><span class="p">(</span><span class="n">testCI</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.598364516031722</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Report_stats-&amp;-test">Report_stats &amp; test<a class="anchor-link" href="#Report_stats-&amp;-test">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#TestStats</span>
+<span class="c1">#Test confidence Interval</span>
+<span class="n">testCI</span> <span class="o">=</span> <span class="n">confidence_interval</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+<span class="k">assert</span><span class="p">(</span><span class="n">testCI</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.598364516031722</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-6-35fa242402e6&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">      1</span> <span class="ansi-red-intense-fg ansi-bold">#TestStats</span>
+<span class="ansi-green-fg">      2</span> <span class="ansi-red-intense-fg ansi-bold">#Test confidence Interval</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 3</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>testCI <span class="ansi-yellow-intense-fg ansi-bold">=</span> confidence_interval<span class="ansi-yellow-intense-fg ansi-bold">(</span>l<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">      4</span> 
+<span class="ansi-green-fg">      5</span> <span class="ansi-green-intense-fg ansi-bold">assert</span><span class="ansi-yellow-intense-fg ansi-bold">(</span>testCI<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">==</span> <span class="ansi-cyan-intense-fg ansi-bold">1.598364516031722</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name &#39;l&#39; is not defined</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -116,7 +305,7 @@ nb_path: "nbs/6.0_desc.stats.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="report_stats" class="doc_header"><code>report_stats</code><a href="https://github.com/ncoop57/ds4se/tree/master/ds4se/desc/stats.py#L27" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>report_stats</code>(<strong><code>l</code></strong>, <strong><code>c</code></strong>=<em><code>0.95</code></em>)</p>
+<h4 id="report_stats" class="doc_header"><code>report_stats</code><a href="ds4se/desc/stats.py#L48" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>report_stats</code>(<strong><code>l</code></strong>, <strong><code>c</code></strong>=<em><code>0.95</code></em>)</p>
 </blockquote>
 
 </div>
@@ -127,8 +316,6 @@ nb_path: "nbs/6.0_desc.stats.ipynb"
 </div>
 
 </div>
-    {% endraw %}
-
 </div>
  
 
