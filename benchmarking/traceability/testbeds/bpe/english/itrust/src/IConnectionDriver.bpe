@@ -1,1 +1,0 @@
-▁p ackage ▁edu . nc su . cs c . itrust . dao ; ▁import ▁java . sql . Connection ; ▁import ▁java . sql . SQLException ; ▁/** ▁* ▁Used ▁by ▁DAOFactory ▁to ▁abstract ▁away ▁different ▁way s ▁of ▁ getting ▁our ▁JDBC ▁connection ▁* ▁* ▁@ author ▁Andy ▁* ▁*/ ▁public ▁interface ▁I ConnectionDriver ▁{ ▁public ▁ Connection ▁get Connection () ▁throw s ▁SQLException ; ▁}

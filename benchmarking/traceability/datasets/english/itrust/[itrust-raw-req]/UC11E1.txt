@@ -1,1 +1,0 @@
-The HCP types an invalid medical identification number and is prompted to try again.

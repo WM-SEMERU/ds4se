@@ -1,1 +1,0 @@
-▁ REQUIRE MENT ▁48 : ▁CSR ▁ATTRIBUTES ▁REQUEST ▁The ▁EST ▁client ▁requests ▁a ▁list ▁of ▁CA - desired ▁CSR ▁attributes ▁from ▁the ▁CA ▁by ▁send ing ▁an ▁HTTP S ▁GET ▁message ▁to ▁the ▁EST ▁server ▁with ▁an ▁operations ▁path ▁of ▁" / csrattrs " .

@@ -1,1 +1,0 @@
-▁<%@ ▁page ▁language =" java " ▁content Type =" text / html ; ▁char set = ISO -8859-1" ▁page Encoding =" ISO -8859-1" %> ▁<% ▁response . send Redirect (" auth / forward User . jsp "); ▁%>

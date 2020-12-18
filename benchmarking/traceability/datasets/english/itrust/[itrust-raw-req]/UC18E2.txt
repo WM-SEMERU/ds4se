@@ -1,1 +1,0 @@
-The administrator types an invalid hospital name and is prompted to try again.
