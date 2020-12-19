@@ -1,0 +1,1 @@
+▁Subscriber ▁fails ▁to ▁register ▁with ▁subscriber ▁manager ▁(2.1. 3 )(2.2. 2)(3. 2.2 ? ) ▁Preconditions ▁The ▁subscriber ▁is ▁a ▁valid ▁subscriber ▁Steps ▁The ▁subscriber ▁a ttempt s ▁to ▁exit ▁from ▁the ▁registrat ion ▁process ▁with out ▁register ing ▁it self ▁under ▁a ▁subscriber ▁manager . ▁Postconditions ▁The ▁subscriber ▁is ▁remove d ▁from ▁the ▁system .

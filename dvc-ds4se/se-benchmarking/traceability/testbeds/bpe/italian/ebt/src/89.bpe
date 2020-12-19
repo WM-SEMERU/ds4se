@@ -1,0 +1,1 @@
+▁ 89 ▁" Event ▁ Line ▁prot ected ▁int ▁top , ▁left , ▁right , ▁bottom ; ▁public ▁EventLine ▁( ▁int ▁t , ▁int ▁l , ▁int ▁r , ▁int ▁b ) ▁{ ▁top ▁= ▁t ; ▁left ▁= ▁l ; ▁right ▁= ▁r ; ▁bottom ▁= ▁b ; ▁} ▁public ▁int ▁Get T () ▁{ ▁return ▁top ;} ▁public ▁int ▁Get L () ▁{ ▁return ▁left ;} public ▁int ▁Get R () ▁{ ▁return ▁right ;} ▁public ▁int ▁Get B () ▁{ ▁return ▁bottom ;} "

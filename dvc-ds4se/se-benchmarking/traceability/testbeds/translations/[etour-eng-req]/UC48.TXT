@@ -1,0 +1,37 @@
+Use case name MODIFICAPREFERENZEGENERICHE
+Edit Preferences generic personal.
+Partecipating
+Actor initialized by Tourist
+Entry
+Conditions � Tourism has successfully authenticated to the system.
+Flow of events User System
+1. Access to functionality for the modification of generic personal preferences.
+2 Upload your preferences and the general view in a form.
+3 Edit the fields in the form and submit.
+4 Asks for confirmation of the change.
+5 Confirm the operation.
+6. Stores preferences changed.
+Exit conditions � The system shall notify the successful modification of general preferences.
+� The Tourist cancels the operation.
+� Interruption of the connection to the server ETOUR.
+Quality
+requirements
+
+Usa il nome del caso MODIFICAPREFERENZEGENERICHE
+Modifica preferenze personali generiche.
+Partecipare
+Attore inizializzato da Tourist
+Iscrizione
+Condizioni Il turismo è stato autenticato correttamente nel sistema.
+Flusso di eventi Sistema utente
+1. Accesso alle funzionalità per la modifica delle preferenze personali generiche.
+2 Carica le tue preferenze e la vista generale in un modulo.
+3 Modifica i campi nel modulo e invia.
+4 chiede conferma del cambiamento.
+5 Confermare l'operazione.
+6. Memorizza le preferenze cambiate.
+Condizioni di uscita Il sistema notifica la corretta modifica delle preferenze generali.
+The Tourist annulla l'operazione.
+Interruzione della connessione al server ETOUR.
+Qualità
+requisiti

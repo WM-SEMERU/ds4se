@@ -1,0 +1,35 @@
+Use case name ELIMINABANNER
+Delete a banner ad associated with the point of rest.
+Partecipating
+Actor initialization Operator Point Of Restaurants
+Entry
+conditions � The Point Of Restaurant Operator has successfully authenticated to the system.
+Flow of events User System
+1. Select the feature for 'removal of the banner.
+2 View the list of banner associated with the point of rest.
+3 Select a banner from the list and enter the function of elimination.
+4 Displays a message confirming the deletion.
+5 Confirm the operation.
+6. Removes the banner.
+Exit conditions � The system shall notify the successful elimination of the selected banner.
+� The Point Of Operator Restaurant cancels the operation.
+� Interruption of the connection to the server ETOUR.
+Quality requirements
+
+Usa il nome del caso ELIMINABANNER
+Elimina un banner pubblicitario associato al punto di sosta.
+Partecipare
+Inizializzazione degli attori Operator Point Of Restaurants
+Iscrizione
+condizioni L'operatore Point Of Restaurant è stato autenticato correttamente nel sistema.
+Flusso di eventi Sistema utente
+1. Seleziona la funzionalità per la rimozione del banner.
+2 Visualizza l'elenco di banner associato al punto di riposo.
+3 Seleziona un banner dall'elenco e inserisci la funzione di eliminazione.
+4 Visualizza un messaggio che conferma la cancellazione.
+5 Confermare l'operazione.
+6. Rimuove il banner.
+Condizioni di uscita Il sistema notificherà l'avvenuta eliminazione del banner selezionato.
+Il Point Of Operator Restaurant annulla l'operazione.
+Interruzione della connessione al server ETOUR.
+Requisiti di qualità

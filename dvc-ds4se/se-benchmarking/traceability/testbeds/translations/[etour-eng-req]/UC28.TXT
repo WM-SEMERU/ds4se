@@ -1,0 +1,29 @@
+Use case name ELIMINATAG
+Removes one or more search tags in the system.
+Partecipating
+Actor initialization Agency Operator
+Entry
+Operator conditions � The agency has logged.
+Flow of events User System
+1. Access the functionality to delete a tag.
+2 Research in the existing system, the tags and displays them in a form.
+3 Select one or more tags from the list and sends the request for deletion.
+4 Delete the selected search tag.
+Exit conditions � The system shall notify the successful elimination of selected tags.
+� Interruption of the connection to the server ETOUR.
+Quality requirements
+
+Usa il nome del caso ELIMINATAG
+Rimuove uno o più tag di ricerca nel sistema.
+Partecipare
+Operatore di inizializzazione degli attori
+Iscrizione
+Condizioni dell'operatore L'agenzia ha effettuato l'accesso.
+Flusso di eventi Sistema utente
+1. Accedere alla funzionalità per eliminare un tag.
+2 Ricerca nel sistema esistente, i tag e li visualizza in una forma.
+3 Seleziona uno o più tag dall'elenco e invia la richiesta di cancellazione.
+4 Elimina il tag di ricerca selezionato.
+Condizioni di uscita Il sistema deve notificare l'avvenuta eliminazione delle etichette selezionate.
+Interruzione della connessione al server ETOUR.
+Requisiti di qualità

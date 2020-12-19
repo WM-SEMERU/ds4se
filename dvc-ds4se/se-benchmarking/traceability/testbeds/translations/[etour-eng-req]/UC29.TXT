@@ -1,0 +1,25 @@
+Use case name ERRORETAGESISTENTE
+E 'was asked to enter a search tags already in the system.
+Participating
+Actor
+Entry
+conditions � He was asked to enter a search tags already in the system.
+Flow of events User System
+1. Notice the error message and asks for confirmation of its reading.
+2 Confirmation of the reading of the notification.
+3 Recovers the previous state.
+Exit conditions � The system returns control to the user interaction.
+Quality requirements
+
+Usa il nome del caso ERRORETAGESISTENTE
+E 'stato chiesto di inserire un tag di ricerca già presente nel sistema.
+partecipante
+Attore
+Iscrizione
+condizioni È stato chiesto di inserire i tag di ricerca già presenti nel sistema.
+Flusso di eventi Sistema utente
+1. Notare il messaggio di errore e chiede conferma della sua lettura.
+2 Conferma della lettura della notifica.
+3 Recupera lo stato precedente.
+Condizioni di uscita Il sistema restituisce il controllo all'interazione dell'utente.
+Requisiti di qualità

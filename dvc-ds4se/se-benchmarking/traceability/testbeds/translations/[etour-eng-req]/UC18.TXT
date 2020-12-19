@@ -1,0 +1,27 @@
+Use case name CONTROLLANUMEROBANNER
+Check if a point Refreshments included the maximum number of allowed banners to it.
+Partecipating
+Actor
+Entry
+Operator conditions � The agency wants to put a new banner
+Flow of events User System
+1. Load the data of the Convention of refreshment point and verify that the number of banners is less than the specified number of the current banner. If not checked, will end the operation input and displays a notification.
+2 Confirmation of the reading of the notification.
+3 Recovers the previous state.
+Exit conditions � The system returns control to the user interaction.
+� Interruption of the connection to the server ETOUR.
+Quality requirements
+
+Usa il nome del caso CONTROLLANUMEROBANNER
+Controlla se un punto Refreshments includeva il numero massimo di banner consentiti.
+Partecipare
+Attore
+Iscrizione
+Condizioni dell'operatore L'agenzia vuole mettere un nuovo banner
+Flusso di eventi Sistema utente
+1. Caricare i dati della Convenzione del punto di ristoro e verificare che il numero di banner sia inferiore al numero specificato del banner corrente. Se non selezionato, termina l'operazione e viene visualizzata una notifica.
+2 Conferma della lettura della notifica.
+3 Recupera lo stato precedente.
+Condizioni di uscita Il sistema restituisce il controllo all'interazione dell'utente.
+Interruzione della connessione al server ETOUR.
+Requisiti di qualità

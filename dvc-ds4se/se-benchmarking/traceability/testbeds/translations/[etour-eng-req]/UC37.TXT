@@ -1,0 +1,27 @@
+Use case name LOGOUT
+Ends the current session.
+Participating
+Actor initialization Registered User
+Entry
+conditions � A registered user has previously made a successful Login.
+Flow of events User System
+1. Access the functionality of disconnection from the system.
+2 Asks for confirmation of the transaction.
+3 Confirm the request for disconnection.
+4 Disconnects the Registered User.
+Exit conditions � The system shall notify the successful operation logout.
+Quality requirements
+
+Usa il nome del caso LOGOUT
+Termina la sessione corrente.
+partecipante
+Inizializzazione attore Utente registrato
+Iscrizione
+condizioni Un utente registrato ha effettuato in precedenza un accesso riuscito.
+Flusso di eventi Sistema utente
+1. Accedere alla funzionalità di disconnessione dal sistema.
+2 Chiede conferma della transazione.
+3 Confermare la richiesta di disconnessione.
+4 Disconnette l'utente registrato.
+Condizioni di uscita Il sistema deve notificare il logout corretto dell'operazione.
+Requisiti di qualità
