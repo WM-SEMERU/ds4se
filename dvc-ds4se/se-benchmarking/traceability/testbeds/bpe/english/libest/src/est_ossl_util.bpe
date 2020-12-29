@@ -1,1 +1,0 @@
-▁int ▁ossl _ verify _ cb ( int ▁ok , ▁X 509_ STORE _ CTX ▁* ctx ); ▁ LIB EST _ TEST _ API ▁void ▁ossl _ dump _ ssl _ errors ( void ); ▁EST _ ERROR ▁ossl _ init _ cert _ store ▁( X 509_ STORE ▁* store , ▁un signed ▁char ▁* raw 1, ▁int ▁size 1);

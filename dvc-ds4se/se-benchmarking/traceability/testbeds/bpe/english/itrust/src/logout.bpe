@@ -1,1 +1,0 @@
-▁<%@ include ▁file ="/ global . jsp " ▁%> ▁<% ▁pageTitle ▁= ▁" iTrust ▁Log out "; ▁session . invalidate (); ▁ validSession ▁= ▁false ; ▁response . send Redirect ("/ iTrust "); ▁%>

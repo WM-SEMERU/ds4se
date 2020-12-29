@@ -1,1 +1,0 @@
-▁ REQUIRE MENT ▁ 39 : ▁F ULL ▁CMC ▁An ▁EST ▁client ▁can ▁request ▁a ▁certificate ▁from ▁an ▁EST ▁server ▁with ▁an ▁HTTP S ▁POST ▁using ▁the ▁operation ▁path ▁value ▁of ▁" / fullcmc " . ▁Support ▁for ▁the ▁/ fullcmc ▁function ▁is ▁OPTIONAL ▁for ▁both ▁clients ▁and ▁server s .
