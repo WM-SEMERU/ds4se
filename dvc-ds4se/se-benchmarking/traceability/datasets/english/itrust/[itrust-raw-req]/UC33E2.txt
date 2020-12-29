@@ -1,1 +1,0 @@
-The patient, receiving HCP, referral notes, and/or referral priority are invalid, and the HCP is prompted to enter this information again.
