@@ -1,0 +1,5 @@
+outs:
+- md5: 30c9af089661c70e005f829372f8cea5.dir
+  size: 98020813
+  nfiles: 1164
+  path: testbeds
