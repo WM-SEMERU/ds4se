@@ -26,8 +26,8 @@ from scipy.spatial import distance
 from scipy.stats import pearsonr
 
 # Cell
-import logging as logger
-logger.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logger.ERROR)
+import logging
+logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.ERROR)
 
 # Cell
 #@unique
@@ -73,6 +73,7 @@ class SoftwareArtifacts(Enum):
     SRC = 'src'
     PY = 'py'
     PR = 'pr'
+    UC = 'uc'
 
 # Cell
 #@unique
@@ -87,6 +88,8 @@ class LinkType(Enum):
     req2src = auto()
     issue2src = auto()
     pr2src = auto()
+    uc2src = auto()
+    uc2tc = auto()
 
 # Cell
 class BasicSequenceVectorization():
@@ -129,7 +132,7 @@ class BasicSequenceVectorization():
         elif self.params['system_path_config']['prep'] == Preprocessing.bpe:
             self.documents = [eval(doc) for doc in self.df_all_system[tag].values] #Preparing Corpus
             self.dictionary = corpora.Dictionary( self.documents ) #Preparing Dictionary
-            self.computing_bpe_vocab()
+            self.computing_bpe_vocab(tag=tag)
             self.logging.info("bpe preprocessing documents, dictionary, and vocab for the test corpus")
 
 
@@ -148,13 +151,13 @@ class BasicSequenceVectorization():
                              ]
         }
 
-    def computing_bpe_vocab(self):
+    def computing_bpe_vocab(self,tag):
         ####INFO science params
-        #TODO generalize bpe8k parameter
-        abstracted_vocab = [ set(doc) for doc in self.df_all_system[ 'bpe8k' ].values] #creation of sets
+        abstracted_vocab = [ set( eval(doc) ) for doc in self.df_all_system[ tag ].values] #creation of sets
         abstracted_vocab = functools.reduce( lambda a,b : a.union(b), abstracted_vocab ) #union of sets
         self.vocab = {self.prep.sp_bpe.id_to_piece(id): 0 for id in range(self.prep.sp_bpe.get_piece_size())}
         dict_abs_vocab = { elem : 0 for elem in abstracted_vocab - set(self.vocab.keys()) } #Ignored vocab by BPE
+        self.logging.info('Ignored vocab by BPE' + str(abstracted_vocab - set(self.vocab.keys())) )
         self.vocab.update(dict_abs_vocab) #Updating
 
     def ground_truth_processing(self, path_to_ground_truth = '', from_mappings = False):
@@ -163,12 +166,18 @@ class BasicSequenceVectorization():
         if from_mappings:
             df_mapping = pd.read_csv(self.params['path_mappings'], header = 0, sep = ',')
             ground_links = list(zip(df_mapping['id_pr'].astype(str), df_mapping['doc_id']))
+            self.logging.info('ground truth from mappings')
         else:
+            self.logging.info('generating ground truth')
             ground_truth = open(path_to_ground_truth,'r')
             #Organizing The Ground Truth under the given format
             ground_links = [ [(line.strip().split()[0], elem) for elem in line.strip().split()[1:]] for line in ground_truth]
             ground_links = functools.reduce(lambda a,b : a+b,ground_links) #reducing into one list
-            assert len(ground_links) ==  len(set(ground_links)) #To Verify Redundancies in the file
+            #assert len(ground_links) ==  len(set(ground_links))
+            #To Verify Redundancies in the file
+            if len(ground_links) !=  len(set(ground_links)):
+                ground_links = list(set(ground_links))
+                self.logging.warning("-----WARNING!-------- Redundacy in the ground truth file")
         return ground_links
 
     def samplingLinks(self, sampling = False, samples = 10, basename = False):
@@ -247,20 +256,22 @@ class BasicSequenceVectorization():
     def findDistInDF(self, g_tuple, from_mappings=False, semeru_format=False):
         '''Return the index values of the matched mappings
         .eq is used for Source since it must match the exact code to avoid number substrings
-        for the target, the substring might works fine'''
+        for the target, the substring might works fine
+        '/' is aggregated before the tuple to avoid matching more then one substring
+        '''
 
         if from_mappings: #SACP Format
+            self.logging.info('processing from mappings SACP')
             dist = self.df_ground_link.loc[(self.df_ground_link["Source"].eq(g_tuple[0]) ) &
                  (self.df_ground_link["Target"].str.contains(g_tuple[1], regex=False))]
-            self.logging.info('findDistInDF: from_mappings')
         elif semeru_format: #LibEST Format
-            dist = self.df_ground_link.loc[(self.df_ground_link["Source"].str.contains(g_tuple[0], regex=False) ) &
-                 (self.df_ground_link["Target"].str.contains(g_tuple[1], regex=False))]
-            self.logging.info('findDistInDF: semeru_format')
+            self.logging.info('processing from semeru_format LibEST')
+            dist = self.df_ground_link.loc[(self.df_ground_link["Source"].str.contains('/' + g_tuple[0], regex=False) ) &
+                 (self.df_ground_link["Target"].str.contains('/' + g_tuple[1], regex=False))]
         else: #By Default use Semeru Format
+            self.logging.info('processing by Default')
             dist = self.df_ground_link[self.df_ground_link[self.params['names'][0]].str.contains( g_tuple[0][:g_tuple[0].find('.')] + '-' )
                      & self.df_ground_link[self.params['names'][1]].str.contains(g_tuple[1][:g_tuple[1].find('.')]) ]
-            self.logging.info('findDistInDF: default')
         return dist.index.values
 
 
@@ -329,7 +340,6 @@ class Word2VecSeqVect(BasicSequenceVectorization):
         token_counts_2 = self.__get_cnts(sentence_b, vocab)
         self.logging.info('token count processed')
         #Minimum Shared Tokens
-        #TODO create an if down to include Joint Entropy by summing token_counts_1 and token_counts_2
         token_counts = { token: min(token_counts_1[token],token_counts_2[token]) for token in vocab }
 
         alphabet = list(set(token_counts.keys())) #[ list(set(cnt.keys())) for cnt in token_counts ]
@@ -338,8 +348,10 @@ class Word2VecSeqVect(BasicSequenceVectorization):
 
         if not frequencies:
             #"List is empty"
+            "nan Means that src and target do not share information at all"
             entropies = float('nan')
             extropies = float('nan')
+            self.logging.info('FREQUENCIES NOT COMPUTED!!!<--------------')
         else:
             scalar_distribution = dit.ScalarDistribution(alphabet, frequencies) #[dit.ScalarDistribution(alphabet[id], frequencies[id]) for id in range( len(token_counts) )]
             self.logging.info('scalar_distribution processed')
@@ -364,15 +376,20 @@ class Word2VecSeqVect(BasicSequenceVectorization):
         token_counts_2 = self.__get_cnts(sentence_b, vocab)
         self.logging.info('token count processed')
 
-
-        #TODO verify redundancies in the alphabet
-        alphabet_source = list(set(token_counts_1.keys()))
-        self.logging.info('alphabet_source #'+ str(len(alphabet_source)))
-        alphabet_target = list(set(token_counts_2.keys()))
-        self.logging.info('alphabet_target #'+ str(len(alphabet_target)))
-
         self.logging.info('vocab #'+ str(len(self.vocab.keys())))
-        self.logging.info('diff #'+ str(set(token_counts_1.keys()) - set(token_counts_2.keys())))
+
+        alphabet_source = list(set(token_counts_1.keys()))
+        self.logging.info('alphabet_source #'+ str(len(alphabet_source)) )
+
+        alphabet_target = list(set(token_counts_2.keys()))
+        self.logging.info('alphabet_target #'+ str(len(alphabet_target)) )
+
+
+        self.logging.info('diff src2tgt #'+ str(set(token_counts_1.keys()) - set(token_counts_2.keys())))
+        self.logging.info('diff tgt2src #'+ str(set(token_counts_2.keys()) - set(token_counts_1.keys())))
+
+        assert( len(alphabet_source) ==  len(alphabet_target) )
+
         #Computing Self-Information (or Entropy)
         scalar_distribution_source = dit.ScalarDistribution(alphabet_source, self.__get_freqs( token_counts_1 ) )
         entropy_source = dit.shannon.entropy( scalar_distribution_source )
@@ -400,8 +417,6 @@ class Word2VecSeqVect(BasicSequenceVectorization):
 
         return [entropy_source, entropy_target, joint_entropy,
                 mutual_information, loss, noise]
-
-    #ToDo Mutual information
 
     def distance(self, metric_list,link):
         '''Iterate on the metrics'''
@@ -452,7 +467,11 @@ def LoadLinks(timestamp, params, logging, grtruth=False, sep=' ' ):
 
     logging.info("Loading computed links from... "+ path)
 
-    return pd.read_csv(path, header=0, index_col=0, sep=sep)
+
+    df_load = pd.read_csv(path, header=0, index_col=0, sep=sep)
+    df_load["Source"] = df_load.Source.astype(str)
+    logging.info("df_x.dtypes" + str(df_load.dtypes))
+    return df_load
 
 # Cell
 class Doc2VecSeqVect(BasicSequenceVectorization):
@@ -481,6 +500,7 @@ class Doc2VecSeqVect(BasicSequenceVectorization):
         self.logging.info("Computed distances or similarities "+ str(link) + str(dist))
         return functools.reduce(lambda a,b : a+b, dist) #Always return a list
 
+    """
     def computeDistanceMetric(self, links, metric_list):
         '''It is computed the cosine similarity'''
 
@@ -489,7 +509,7 @@ class Doc2VecSeqVect(BasicSequenceVectorization):
         distSim = [[elem[0], elem[1]] + elem[2] for elem in distSim] #Return the link with metrics
 
         return distSim, functools.reduce(lambda a,b : a+b, metric_labels)
-
+    """
 
     def InferDoc2Vec(self, steps=200):
         '''Activate Inference on Target and Source Corpus'''
