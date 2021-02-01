@@ -1,0 +1,57 @@
+UC1.TXT GestioneBeniCulturaliAgenzia.java DBBeneCulturale.java IDBBeneCulturale.java BeniCulturali.java
+UC2.TXT DBBeneCulturale.java IGestioneBeniCulturaliAgenzia.java GestioneBeniCulturaliAgenzia.java ControlloBeniCulturali.java BeanBeneCulturale.java BeniCulturali.java
+UC3.TXT DBBeneCulturale.java IGestioneBeniCulturaliAgenzia.java GestioneBeniCulturaliAgenzia.java ControlloBeniCulturali.java BeanBeneCulturale.java BeniCulturali.java
+UC4.TXT DBBeneCulturale.java IGestioneBeniCulturaliAgenzia.java GestioneBeniCulturaliAgenzia.java Ricerca.java RicercaStandard.java RicercaAvanzata.java BeanBeneCulturale.java IRicerca.java BeniCulturali.java
+UC5.TXT BeanBeneCulturale.java IGestioneBeniCulturaliComune.java GestioneBeniCulturaliComune.java BeniCulturali.java
+UC6.TXT DBPuntoDiRistoro.java GestionePuntiDiRistoroAgenzia.java IGestionePuntiDiRistoroAgenzia.java
+UC7.TXT IDBConvenzione.java GestionePuntiDiRistoroAgenzia.java IGestionePuntiDiRistoroAgenzia.java BeanConvenzione.java
+UC8.TXT DBPuntoDiRistoro.java GestionePuntiDiRistoroAgenzia.java IGestionePuntiDiRistoroAgenzia.java ControlloDati.java BeanPuntoDiRistoro.java
+UC9.TXT DBPuntoDiRistoro.java GestionePuntiDiRistoroAgenzia.java IGestionePuntiDiRistoroAgenzia.java Ricerca.java RicercaStandard.java RicercaAvanzata.java BeanPuntoDiRistoro.java IRicerca.java
+UC10.TXT BeanPuntoDiRistoro.java IGestionePuntiDiRistoroComune.java GestionePuntiDiRistoroComune.java IDBPuntoDiRistoro.java DBPuntoDiRistoro.java GestionePuntiDiRistoroAgenzia.java IGestionePuntiDiRistoroAgenzia.java
+UC11.TXT IDBConvenzione.java BeanConvenzione.java
+UC12.TXT Turisti.java TuristiTableModel.java BeanTurista.java GestioneTuristaComune.java
+UC13.TXT IGestioneTuristiAgenzia.java Turisti.java DBTurista.java IDBTurista.java BeanTurista.java
+UC14.TXT IDBTurista.java GestioneTuristiAgenzia.java IGestioneTuristiAgenzia.java RicercaAvanzata.java BeanTurista.java
+UC15.TXT IDBTurista.java GestioneTuristiAgenzia.java IGestioneTuristiAgenzia.java ControlloDati.java BeanTurista.java GestioneTuristaComune.java
+UC16.TXT IDBTurista.java GestioneTuristiAgenzia.java IGestioneTuristiAgenzia.java BeanTurista.java
+UC17.TXT BannerNode.java ControlloDati.java IDBBanner.java DBBanner.java BeanBanner.java IGestioneAdvertisement.java GestioneAdvertisement.java GestioneAdvertisementAgenzia.java IGestioneAdvertisementAgenzia.java ControlloDatiAdvertisement.java CostantiGlobali.java Banner.java
+UC18.TXT IGestioneAdvertisement.java IDBBanner.java DBBanner.java BeanBanner.java MessaggiErrore.java
+UC19.TXT DBBanner.java GestioneAdvertisement.java IGestioneAdvertisement.java BeanBanner.java GestioneAdvertisementAgenzia.java IGestioneAdvertisementAgenzia.java ControlloDatiAdvertisement.java CostantiGlobali.java Banner.java
+UC20.TXT BannerNode.java ControlloDati.java IDBBanner.java DBBanner.java GestioneAdvertisement.java IGestioneAdvertisement.java BeanBanner.java GestioneAdvertisementAgenzia.java IGestioneAdvertisementAgenzia.java ControlloDatiAdvertisement.java CostantiGlobali.java Banner.java
+UC21.TXT IDBNews.java GestioneAdvertisementAgenzia.java IGestioneAdvertisementAgenzia.java News.java ControlloDati.java BeanNews.java ControlloDatiAdvertisement.java
+UC22.TXT IDBNews.java GestioneAdvertisementAgenzia.java IGestioneAdvertisementAgenzia.java BeanNews.java ControlloDatiAdvertisement.java
+UC23.TXT IDBNews.java GestioneAdvertisementAgenzia.java IGestioneAdvertisementAgenzia.java News.java ControlloDati.java BeanNews.java ControlloDatiAdvertisement.java
+UC24.TXT IGestioneBeniCulturaliAgenzia.java GestionePuntiDiRistoroAgenzia.java IGestionePuntiDiRistoroAgenzia.java GestioneBeniCulturaliComune.java GestionePuntiDiRistoroComune.java IGestionePuntiDiRistoroComune.java IGestioneBeniCulturaliComune.java FeedBackTableModel.java GestioneTuristiAgenzia.java IGestioneTuristiAgenzia.java
+UC25.TXT GestionePuntiDiRistoroComune.java GestioneBeniCulturaliAgenzia.java IGestioneBeniCulturaliComune.java
+UC26.TXT BeanVisitaPR.java FeedBackTableModel.java
+UC27.TXT IRicerca.java
+UC28.TXT IDBTag.java GestioneTagOperatoreAgenzia.java IGestioneTagOperatoreAgenzia.java TAGTableModel.java BeanTag.java
+UC29.TXT GestioneTagOperatoreAgenzia.java
+UC30.TXT GestioneTagOperatoreAgenzia.java DBTag.java IDBTag.java BeanTag.java
+UC31.TXT DBOperatoreAgenzia.java OperatoreAgenzia.java IDBOperatoreAgenzia.java
+UC32.TXT DBOperatoreAgenzia.java OperatoreAgenzia.java
+UC33.TXT ControlloDati.java IDBTurista.java DBTurista.java IGestioneTuristaClient.java GestioneTuristaClient.java SchedaTurista.java
+UC34.TXT IRicerca.java GestioneBeniCulturaliComune.java IGestioneBeniCulturaliComune.java IGestionePuntiDiRistoroComune.java GestionePuntiDiRistoroComune.java
+UC35.TXT IAutenticazione.java ControlloDati.java BeanTurista.java BeanOperatorePuntoDiRistoro.java
+UC36.TXT IAutenticazione.java ControlloDati.java
+UC38.TXT IDBBanner.java GestioneAdvertisementPuntoDiRistoro.java IGestioneAdvertisementPuntoDiRistoro.java ControlloDati.java BannerDialog.java BannerNode.java BeanBanner.java IGestioneAdvertisement.java GestioneAdvertisement.java ControlloDatiAdvertisement.java
+UC39.TXT IDBBanner.java GestioneAdvertisementPuntoDiRistoro.java IGestioneAdvertisementPuntoDiRistoro.java ControlloDati.java BannerDialog.java BannerNode.java BeanBanner.java IGestioneAdvertisement.java GestioneAdvertisement.java ControlloDatiAdvertisement.java
+UC40.TXT IDBBanner.java GestioneAdvertisementPuntoDiRistoro.java IGestioneAdvertisementPuntoDiRistoro.java BeanBanner.java IGestioneAdvertisement.java GestioneAdvertisement.java ControlloDatiAdvertisement.java
+UC41.TXT DBMenu.java IDBMenu.java DBPiatto.java IDBPiatto.java BeanMenu.java BeanPiatto.java
+UC42.TXT DBMenu.java IDBMenu.java DBPiatto.java IDBPiatto.java BeanMenu.java BeanPiatto.java
+UC43.TXT IDBPuntoDiRistoro.java ControlloDati.java PuntiDiRistoro.java BeanPuntoDiRistoro.java IGestionePuntiDiRistoroComune.java GestionePuntiDiRistoroComune.java PRNode.java
+UC44.TXT ControlloDati.java IDBConvenzione.java BeanConvenzione.java
+UC45.TXT GestionePuntiDiRistoroComune.java IGestionePuntiDiRistoroComune.java BeanPuntoDiRistoro.java BeanBeneCulturale.java
+UC46.TXT DBPreferenzeDiRicerca.java IDBPreferenzeDiRicerca.java GestioneTuristaComune.java BeanPreferenzaDiRicerca.java IDBPreferenzeGeneriche.java DBPreferenzeGeneriche.java
+UC47.TXT DBTurista.java IDBTurista.java GestioneTuristaClient.java IGestioneTuristaClient.java GestioneTuristaComune.java SchedaTurista.java BeanTurista.java
+UC48.TXT DBPreferenzeGeneriche.java IDBPreferenzeGeneriche.java GestioneTuristaClient.java BeanPreferenzeGeneriche.java IGestioneTuristaClient.java
+UC49.TXT GestioneTuristaClient.java IGestioneTuristaClient.java GestioneBeniCulturaliComune.java IGestioneBeniCulturaliComune.java GestionePuntiDiRistoroComune.java IGestionePuntiDiRistoroComune.java
+UC50.TXT IDBVisitaBC.java DBVisitaPR.java IDBVisitaPR.java ControlloVisiteBeniCulturali.java SitoTableModel.java ControlloDati.java BeanVisitaBC.java
+UC51.TXT IDBPreferenzeGeneriche.java GestioneTuristaComune.java IGestioneTuristaClient.java ControlloDati.java BeanPreferenzeGeneriche.java
+UC52.TXT IDBPreferenzeGeneriche.java GestioneTuristaComune.java IGestioneTuristaClient.java BeanPreferenzeGeneriche.java IDBTurista.java DBTurista.java
+UC53.TXT IDBVisitaBC.java DBVisitaPR.java IDBVisitaPR.java ControlloVisiteBeniCulturali.java SitoTableModel.java ControlloDati.java
+UC54.TXT BeanVisitaPR.java DBVisitaBC.java IDBVisitaBC.java DBVisitaPR.java IDBVisitaPR.java ControlloVisiteBeniCulturali.java SitoTableModel.java ControlloDati.java
+UC55.TXT ControlloDati.java BeanVisitaBC.java BeanVisitaPR.java
+UC56.TXT Punto3DRenderer.java Ricerca.java IRicerca.java RicercaStandard.java
+UC57.TXT IRicerca.java
+UC58.TXT SchedaBC.java SchedaPR.java BeanPuntoDiRistoro.java BeanBeneCulturale.java

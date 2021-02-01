@@ -1,0 +1,16 @@
+F-GES-01.txt ModificaStanze.java SubStanze.java CancellaStanze.java VediStanza.java
+F-GES-02.txt AggiungiBeneServizio.java CancellaBeniServizi.java InserisciBeniServizi.java VediBeniServizi.java MascheraBeneServizio.java ModificaBeniServizi.java SubBeniServizi.java
+F-GES-03.txt SubStorico.java MascheraRicercaStorico.java
+F-GES-04.txt SubGestione.java ConfigurazioneSistema.java
+F-PRE-01.txt MascheraDisponibilita.java
+F-PRE-02.txt MascheraRicercaStanza.java ControllaPrenotazione.java VediPrenotazione.java MascheraPrenotazione.java SubPrenotazione.java InserisciPrenotazione.java RicercaPrenotazione.java
+F-PRE-03.txt PrenotazioniScadute.java
+F-PRE-04.txt VediCommissione.java CancellaCommissioni.java MascheraCommissioni.java InserisciCommissioni.java ModificaCommissioni.java SubCommissioni.java AskChiudiSingoloConAgenzia.java MascheraRicercaStanza.java
+F-PRE-05.txt CancellaPrenotazione.java
+F-PRE-06.txt ModificaPrenotazione.java
+F-SOG-01.txt AggiungiSoggiornante.java MascheraSoggiorno.java InserisciSoggiornante.java MascheraRicercaSoggiornante.java SubSoggiorno.java VediSoggiornante.java VediCliente.java
+F-SOG-02.txt VediAddebito.java MascheraAddebiti.java MascheraPerAddebitare.java
+F-SOG-03.txt RicercaTelefonate.java MascheraTelefonate.java
+F-SOG-04.txt MascheraCalcoloConto.java MascheraVisualizzazioneConto.java RicercaAddebiti.java AskChiudiConto.java
+F-SOG-06.txt MascheraCambio.java
+F-RIS-01.txt MascheraContoRistorazione.java SubRistorazione.java
