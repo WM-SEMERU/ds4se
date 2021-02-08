@@ -1,3 +1,5 @@
 outs:
-- md5: 30b91951bccce0eaf1b7247885117ca9.dir
+- md5: a45e883f4ead1d23d10914ffb1aa826b.dir
   path: sentencepiece
+  size: 225226789
+  nfiles: 26
