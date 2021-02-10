@@ -4,7 +4,7 @@ ENV PATH="/.local/bin:${PATH}"
 
 ADD ./requirements.txt .
 
-RUN pip install -r requirements.txt
 RUN apt-get update -y && apt-get install git wget -y
+RUN pip install -r requirements.txt
 
 EXPOSE 8888 6006
