@@ -1,0 +1,5 @@
+outs:
+- md5: 0deafaaa9774f5385bd910e4c10f4d1e.dir
+  size: 1678599566
+  nfiles: 4
+  path: java-large-release
