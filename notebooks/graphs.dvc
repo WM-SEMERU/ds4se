@@ -1,0 +1,5 @@
+outs:
+- md5: 5cf67382efebb644ab4bfaa0ca8e27e6.dir
+  size: 1858108
+  nfiles: 4
+  path: graphs
