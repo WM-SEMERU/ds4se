@@ -5,17 +5,19 @@ __all__ = ['compute_metrics', 'PythonAnalyzer']
 # Cell
 
 import pandas as pd
-from scipy.spatial import distance
-from sklearn import preprocessing
-import lizard
-import radon
 import pprint
+
+# Cell
+
+#Import of Metric 3rd party libraries
+import radon
 from radon.raw import analyze
 from radon.complexity import *
 from radon.metrics import *
 
 # Cell
 
+# TODO Add a Nan to columns where the registry cannot be computed instead of dropping it out
 def compute_metrics(df_series):
     '''
     Computes metrics from source code
@@ -65,6 +67,7 @@ def compute_metrics(df_series):
     problem_records_indices = []
 
     for idx, code in df_series.iteritems():
+        new_row = {}
         try:
             # Computes available metrics if possible
             raw = analyze(code)
@@ -79,7 +82,7 @@ def compute_metrics(df_series):
                 total_complexity += func.complexity
 
             new_row = {
-                'sample': idx,
+                'sample': int(idx),
                 'loc': raw.loc,
                 'lloc': raw.lloc,
                 'sloc': raw.sloc,
@@ -104,10 +107,36 @@ def compute_metrics(df_series):
                 'maint_idx_rank': maint_idx_rank
             }
 
-            metrics_df = metrics_df.append(new_row, ignore_index=True)
-
         except:
             problem_records_indices.append(idx)
+            new_row = {
+            'sample': int(idx),
+            'loc': float('nan'),
+            'lloc': float('nan'),
+            'sloc': float('nan'),
+            'comments': float('nan'),
+            'multi': float('nan'),
+            'blank': float('nan'),
+            'single_comments': float('nan'),
+            'h1': float('nan'),
+            'h2': float('nan'),
+            'N1': float('nan'),
+            'N2': float('nan'),
+            'vocabulary': float('nan'),
+            'length': float('nan'),
+            'calculated_length': float('nan'),
+            'volume': float('nan'),
+            'difficulty': float('nan'),
+            'effort': float('nan'),
+            'time': float('nan'),
+            'bugs': float('nan'),
+            'complexity': float('nan'),
+            'maint_idx': float('nan'),
+            'maint_idx_rank': float('nan')
+            }
+
+        finally:
+            metrics_df = metrics_df.append(new_row, ignore_index=True)
 
     if problem_records_indices:
         print(f'There was a problem computing metrics for {len(problem_records_indices)} records.')
