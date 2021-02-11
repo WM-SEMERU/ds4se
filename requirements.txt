@@ -6,7 +6,7 @@ astunparse==1.6.3
 atpublic==2.1.2
 attrs==19.1.0
 backcall==0.1.0
-bleach==3.1.0
+bleach==3.3.0
 boltons==20.2.1
 cachetools==4.2.1
 certifi==2020.12.5
