@@ -1,2 +1,4 @@
 [core]
     remote = localremote
+['remote "localremote"']
+    url = /tf/data/dvc-ds4se
