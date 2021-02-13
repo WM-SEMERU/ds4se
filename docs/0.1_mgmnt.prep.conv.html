@@ -38,156 +38,6 @@ summary: "This module comprises preprocessing techniques applied to software art
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Requirement already satisfied: tensorflow-gpu in /usr/local/lib/python3.6/dist-packages (2.0.0rc0)
-Collecting tensorflow-gpu
-  Downloading tensorflow_gpu-2.4.0-cp36-cp36m-manylinux2010_x86_64.whl (394.7 MB)
-     |████████████████████████████████| 394.7 MB 11 kB/s s eta 0:00:01
-Requirement already satisfied: termcolor~=1.1.0 in /usr/local/lib/python3.6/dist-packages (from tensorflow-gpu) (1.1.0)
-Requirement already satisfied: absl-py~=0.10 in /usr/local/lib/python3.6/dist-packages (from tensorflow-gpu) (0.10.0)
-Requirement already satisfied: typing-extensions~=3.7.4 in /usr/local/lib/python3.6/dist-packages (from tensorflow-gpu) (3.7.4.3)
-Collecting astunparse~=1.6.3
-  Downloading astunparse-1.6.3-py2.py3-none-any.whl (12 kB)
-Collecting flatbuffers~=1.12.0
-  Downloading flatbuffers-1.12-py2.py3-none-any.whl (15 kB)
-Collecting gast==0.3.3
-  Downloading gast-0.3.3-py2.py3-none-any.whl (9.7 kB)
-Collecting google-pasta~=0.2
-  Downloading google_pasta-0.2.0-py3-none-any.whl (57 kB)
-     |████████████████████████████████| 57 kB 5.0 MB/s  eta 0:00:01
-Collecting grpcio~=1.32.0
-  Downloading grpcio-1.32.0-cp36-cp36m-manylinux2014_x86_64.whl (3.8 MB)
-     |████████████████████████████████| 3.8 MB 12.6 MB/s eta 0:00:01
-Collecting h5py~=2.10.0
-  Downloading h5py-2.10.0-cp36-cp36m-manylinux1_x86_64.whl (2.9 MB)
-     |████████████████████████████████| 2.9 MB 13.2 MB/s eta 0:00:01
-Collecting keras-preprocessing~=1.1.2
-  Downloading Keras_Preprocessing-1.1.2-py2.py3-none-any.whl (42 kB)
-     |████████████████████████████████| 42 kB 1.3 MB/s  eta 0:00:01
-Collecting numpy~=1.19.2
-  Downloading numpy-1.19.4-cp36-cp36m-manylinux2010_x86_64.whl (14.5 MB)
-     |████████████████████████████████| 14.5 MB 12.1 MB/s eta 0:00:01
-Collecting opt-einsum~=3.3.0
-  Downloading opt_einsum-3.3.0-py3-none-any.whl (65 kB)
-     |████████████████████████████████| 65 kB 3.9 MB/s  eta 0:00:01
-Collecting protobuf&gt;=3.9.2
-  Downloading protobuf-3.14.0-cp36-cp36m-manylinux1_x86_64.whl (1.0 MB)
-     |████████████████████████████████| 1.0 MB 12.1 MB/s eta 0:00:01
-Collecting six~=1.15.0
-  Downloading six-1.15.0-py2.py3-none-any.whl (10 kB)
-Collecting tensorboard~=2.4
-  Downloading tensorboard-2.4.0-py3-none-any.whl (10.6 MB)
-     |████████████████████████████████| 10.6 MB 11.2 MB/s eta 0:00:01
-Requirement already satisfied: markdown&gt;=2.6.8 in /usr/local/lib/python3.6/dist-packages (from tensorboard~=2.4-&gt;tensorflow-gpu) (3.1.1)
-Requirement already satisfied: werkzeug&gt;=0.11.15 in /usr/local/lib/python3.6/dist-packages (from tensorboard~=2.4-&gt;tensorflow-gpu) (0.15.5)
-Requirement already satisfied: requests&lt;3,&gt;=2.21.0 in /usr/local/lib/python3.6/dist-packages (from tensorboard~=2.4-&gt;tensorflow-gpu) (2.25.0)
-Requirement already satisfied: absl-py~=0.10 in /usr/local/lib/python3.6/dist-packages (from tensorflow-gpu) (0.10.0)
-Requirement already satisfied: setuptools&gt;=41.0.0 in /usr/local/lib/python3.6/dist-packages (from tensorboard~=2.4-&gt;tensorflow-gpu) (41.2.0)
-Collecting google-auth&lt;2,&gt;=1.6.3
-  Downloading google_auth-1.24.0-py2.py3-none-any.whl (114 kB)
-     |████████████████████████████████| 114 kB 12.2 MB/s eta 0:00:01
-Requirement already satisfied: setuptools&gt;=41.0.0 in /usr/local/lib/python3.6/dist-packages (from tensorboard~=2.4-&gt;tensorflow-gpu) (41.2.0)
-Collecting cachetools&lt;5.0,&gt;=2.0.0
-  Downloading cachetools-4.2.0-py3-none-any.whl (12 kB)
-Collecting google-auth-oauthlib&lt;0.5,&gt;=0.4.1
-  Downloading google_auth_oauthlib-0.4.2-py2.py3-none-any.whl (18 kB)
-Requirement already satisfied: setuptools&gt;=41.0.0 in /usr/local/lib/python3.6/dist-packages (from tensorboard~=2.4-&gt;tensorflow-gpu) (41.2.0)
-Collecting pyasn1-modules&gt;=0.2.1
-  Downloading pyasn1_modules-0.2.8-py2.py3-none-any.whl (155 kB)
-     |████████████████████████████████| 155 kB 13.0 MB/s eta 0:00:01
-Collecting pyasn1&lt;0.5.0,&gt;=0.4.6
-  Downloading pyasn1-0.4.8-py2.py3-none-any.whl (77 kB)
-     |████████████████████████████████| 77 kB 4.5 MB/s  eta 0:00:01
-Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/lib/python3/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard~=2.4-&gt;tensorflow-gpu) (2.6)
-Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.6/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard~=2.4-&gt;tensorflow-gpu) (3.0.4)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.6/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard~=2.4-&gt;tensorflow-gpu) (2020.12.5)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.6/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard~=2.4-&gt;tensorflow-gpu) (1.26.2)
-Collecting requests-oauthlib&gt;=0.7.0
-  Downloading requests_oauthlib-1.3.0-py2.py3-none-any.whl (23 kB)
-Requirement already satisfied: requests&lt;3,&gt;=2.21.0 in /usr/local/lib/python3.6/dist-packages (from tensorboard~=2.4-&gt;tensorflow-gpu) (2.25.0)
-Collecting oauthlib&gt;=3.0.0
-  Downloading oauthlib-3.1.0-py2.py3-none-any.whl (147 kB)
-     |████████████████████████████████| 147 kB 11.7 MB/s eta 0:00:01
-Collecting rsa&lt;5,&gt;=3.1.4
-  Downloading rsa-4.6-py3-none-any.whl (47 kB)
-     |████████████████████████████████| 47 kB 4.4 MB/s  eta 0:00:01
-Collecting tensorboard-plugin-wit&gt;=1.6.0
-  Downloading tensorboard_plugin_wit-1.7.0-py3-none-any.whl (779 kB)
-     |████████████████████████████████| 779 kB 11.8 MB/s eta 0:00:01
-Collecting tensorflow-estimator&lt;2.5.0,&gt;=2.4.0rc0
-  Downloading tensorflow_estimator-2.4.0-py2.py3-none-any.whl (462 kB)
-     |████████████████████████████████| 462 kB 12.7 MB/s eta 0:00:01
-Collecting wheel~=0.35
-  Downloading wheel-0.36.2-py2.py3-none-any.whl (35 kB)
-Collecting wrapt~=1.12.1
-  Downloading wrapt-1.12.1.tar.gz (27 kB)
-Building wheels for collected packages: wrapt
-  Building wheel for wrapt (setup.py) ... done
-  Created wheel for wrapt: filename=wrapt-1.12.1-cp36-cp36m-linux_x86_64.whl size=69387 sha256=5ae2ed9bd1a20ce0fd874098321bcbfa8ad70ee10e1b91045b3a865c08371882
-  Stored in directory: /root/.cache/pip/wheels/32/42/7f/23cae9ff6ef66798d00dc5d659088e57dbba01566f6c60db63
-Successfully built wrapt
-Installing collected packages: pyasn1, six, rsa, pyasn1-modules, oauthlib, cachetools, requests-oauthlib, google-auth, wheel, tensorboard-plugin-wit, protobuf, numpy, grpcio, google-auth-oauthlib, wrapt, tensorflow-estimator, tensorboard, opt-einsum, keras-preprocessing, h5py, google-pasta, gast, flatbuffers, astunparse, tensorflow-gpu
-  Attempting uninstall: six
-    Found existing installation: six 1.11.0
-    Uninstalling six-1.11.0:
-      Successfully uninstalled six-1.11.0
-  Attempting uninstall: wheel
-    Found existing installation: wheel 0.30.0
-    Uninstalling wheel-0.30.0:
-      Successfully uninstalled wheel-0.30.0
-  Attempting uninstall: protobuf
-    Found existing installation: protobuf 3.9.1
-    Uninstalling protobuf-3.9.1:
-      Successfully uninstalled protobuf-3.9.1
-  Attempting uninstall: numpy
-    Found existing installation: numpy 1.17.1
-    Uninstalling numpy-1.17.1:
-      Successfully uninstalled numpy-1.17.1
-  Attempting uninstall: grpcio
-    Found existing installation: grpcio 1.23.0
-    Uninstalling grpcio-1.23.0:
-      Successfully uninstalled grpcio-1.23.0
-  Attempting uninstall: wrapt
-    Found existing installation: wrapt 1.11.2
-    Uninstalling wrapt-1.11.2:
-      Successfully uninstalled wrapt-1.11.2
-  Attempting uninstall: opt-einsum
-    Found existing installation: opt-einsum 3.0.1
-    Uninstalling opt-einsum-3.0.1:
-      Successfully uninstalled opt-einsum-3.0.1
-  Attempting uninstall: keras-preprocessing
-    Found existing installation: Keras-Preprocessing 1.1.0
-    Uninstalling Keras-Preprocessing-1.1.0:
-      Successfully uninstalled Keras-Preprocessing-1.1.0
-  Attempting uninstall: h5py
-    Found existing installation: h5py 2.9.0
-    Uninstalling h5py-2.9.0:
-      Successfully uninstalled h5py-2.9.0
-  Attempting uninstall: google-pasta
-    Found existing installation: google-pasta 0.1.7
-    Uninstalling google-pasta-0.1.7:
-      Successfully uninstalled google-pasta-0.1.7
-  Attempting uninstall: gast
-    Found existing installation: gast 0.2.2
-    Uninstalling gast-0.2.2:
-      Successfully uninstalled gast-0.2.2
-  Attempting uninstall: tensorflow-gpu
-    Found existing installation: tensorflow-gpu 2.0.0rc0
-    Uninstalling tensorflow-gpu-2.0.0rc0:
-      Successfully uninstalled tensorflow-gpu-2.0.0rc0
-Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0.3.3 google-auth-1.24.0 google-auth-oauthlib-0.4.2 google-pasta-0.2.0 grpcio-1.32.0 h5py-2.10.0 keras-preprocessing-1.1.2 numpy-1.19.4 oauthlib-3.1.0 opt-einsum-3.3.0 protobuf-3.14.0 pyasn1-0.4.8 pyasn1-modules-0.2.8 requests-oauthlib-1.3.0 rsa-4.6 six-1.15.0 tensorboard-2.4.0 tensorboard-plugin-wit-1.7.0 tensorflow-estimator-2.4.0 tensorflow-gpu-2.4.0 wheel-0.36.2 wrapt-1.12.1
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -210,6 +60,20 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.stem.snowball</span> <span class="k">import</span> <span class="n">SnowballStemmer</span>
+<span class="n">englishStemmer</span><span class="o">=</span><span class="n">SnowballStemmer</span><span class="p">(</span><span class="s2">&quot;english&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="ch">#! pip install nltk</span>
 <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
 </pre></div>
@@ -225,7 +89,7 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>[nltk_data] Downloading package stopwords to /root/nltk_data...
-[nltk_data]   Unzipping corpora/stopwords.zip.
+[nltk_data]   Package stopwords is already up-to-date!
 </pre>
 </div>
 </div>
@@ -279,28 +143,11 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="default_params" class="doc_header"><code>default_params</code><a href="ds4se/mgmnt/prep/conv.py#L43" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>default_params</code>()</p>
-</blockquote>
-
-</div>
-
-</div>
-
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Setup">Setup<a class="anchor-link" href="#Setup">&#182;</a></h2>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -311,11 +158,12 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
     <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;system&#39;</span><span class="p">:</span> <span class="s1">&#39;libest&#39;</span><span class="p">,</span>
         <span class="c1">#&#39;path_zip&#39;: Path(&quot;cisco/sacp-python-common.zip&quot;),</span>
-        <span class="s1">&#39;saving_path&#39;</span><span class="p">:</span> <span class="s1">&#39;cisco/libest_data/&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;saving_path&#39;</span><span class="p">:</span> <span class="n">path_data</span><span class="o">+</span> <span class="s1">&#39;se-benchmarking/traceability/testbeds/processed/libest_data&#39;</span><span class="p">,</span>
         <span class="s1">&#39;language&#39;</span><span class="p">:</span> <span class="s1">&#39;english&#39;</span><span class="p">,</span>
-        <span class="c1">#&#39;model_prefix&#39;:&#39;test_data/sentencepiece/wiki_py_java_bpe_128k&#39; #For BPE Analysis</span>
-        <span class="c1">#&#39;model_prefix&#39;:&#39;test_data/sentencepiece/wiki_py_java_bpe_32k&#39;</span>
-        <span class="s1">&#39;model_prefix&#39;</span><span class="p">:</span><span class="s1">&#39;test_data/sentencepiece/wiki_py_java_bpe_8k&#39;</span>
+        <span class="s1">&#39;dataset&#39;</span> <span class="p">:</span> <span class="n">path_data</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1">#&#39;model_prefix&#39;: path_data+&#39;models/bpe/sentencepiece/wiki_py_java_bpe_128k&#39; #For BPE Analysis</span>
+        <span class="c1">#&#39;model_prefix&#39;: path_data+&#39;models/bpe/sentencepiece/wiki_py_java_bpe_32k&#39;</span>
+        <span class="s1">&#39;model_prefix&#39;</span><span class="p">:</span><span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;models/bpe/sentencepiece/wiki_py_java_bpe_8k&#39;</span>
     <span class="p">}</span>
 </pre></div>
 
@@ -329,8 +177,25 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="n">default_params</span><span class="p">()</span>
-<span class="c1">#params = libest_params()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_prefix</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;bpe8k&#39;</span> <span class="p">:</span> <span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;models/bpe/sentencepiece/wiki_py_java_bpe_8k&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bpe32k&#39;</span> <span class="p">:</span> <span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;models/bpe/sentencepiece/wiki_py_java_bpe_32k&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bpe128k&#39;</span> <span class="p">:</span> <span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;models/bpe/sentencepiece/wiki_py_java_bpe_128k&#39;</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#params = default_params()</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">libest_params</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -340,7 +205,7 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conventional-Preprocessing-Class">Conventional Preprocessing Class<a class="anchor-link" href="#Conventional-Preprocessing-Class">&#182;</a></h2>
+<h1 id="Conventional-Preprocessing-Class">Conventional Preprocessing Class<a class="anchor-link" href="#Conventional-Preprocessing-Class">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -356,10 +221,113 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ConventionalPreprocessing" class="doc_header"><code>class</code> <code>ConventionalPreprocessing</code><a href="ds4se/mgmnt/prep/conv.py#L53" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ConventionalPreprocessing</code>(<strong><code>params</code></strong>, <strong><code>bpe</code></strong>=<em><code>False</code></em>)</p>
+<h2 id="ConventionalPreprocessing" class="doc_header"><code>class</code> <code>ConventionalPreprocessing</code><a href="ds4se/mgmnt/prep/conv.py#L41" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ConventionalPreprocessing</code>(<strong><code>params</code></strong>, <strong><code>bpe</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
 <p>NLTK libraries for Conventional Preprocessing</p>
 
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="open_file" class="doc_header"><code>open_file</code><a href="ds4se/mgmnt/prep/conv.py#L171" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>open_file</code>(<strong><code>f</code></strong>, <strong><code>encoding</code></strong>=<em><code>'utf-8'</code></em>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_files" class="doc_header"><code>get_files</code><a href="ds4se/mgmnt/prep/conv.py#L179" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_files</code>(<strong><code>system</code></strong>, <strong><code>ends</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.-Processing-Software-Corpora-from-GitHub">1. Processing Software Corpora from GitHub<a class="anchor-link" href="#1.-Processing-Software-Corpora-from-GitHub">&#182;</a></h2><blockquote><p>Cisco Repositories</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;cisco/CSB-CICDPipelineEdition-master/&quot;</span><span class="p">)</span>
+<span class="n">path</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="n">sacp_params</span><span class="p">()</span>
+<span class="n">params</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;system&#39;: &#39;sacp-python-common&#39;,
+ &#39;path_zip&#39;: PosixPath(&#39;tf/data/cisco/sacp_data/sacp-python-common.zip&#39;),
+ &#39;dataset&#39;: &#39;tf/data/cisco/sacp_data/&#39;,
+ &#39;saving_path&#39;: &#39;../../data/cisco/sacp_data/&#39;,
+ &#39;language&#39;: &#39;english&#39;,
+ &#39;model_prefix&#39;: &#39;../dvc-ds4se/models/bpe/sentencepiece/wiki_py_java_bpe_8k&#39;}</pre>
 </div>
 
 </div>
@@ -381,70 +349,15 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Processing-Software-Corpora-from-GitHub">Processing Software Corpora from GitHub<a class="anchor-link" href="#Processing-Software-Corpora-from-GitHub">&#182;</a></h3><blockquote><p>Cisco Repositories</p>
-</blockquote>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;cisco/CSB-CICDPipelineEdition-master/&quot;</span><span class="p">)</span>
-<span class="n">path</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">########################################################</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="open_file" class="doc_header"><code>open_file</code><a href="ds4se/mgmnt/prep/conv.py#L183" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>open_file</code>(<strong><code>f</code></strong>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_files" class="doc_header"><code>get_files</code><a href="ds4se/mgmnt/prep/conv.py#L191" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_files</code>(<strong><code>system</code></strong>, <strong><code>ends</code></strong>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -503,7 +416,7 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_file_zip" class="doc_header"><code>get_file_zip</code><a href="ds4se/mgmnt/prep/conv.py#L198" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_file_zip</code>(<strong><code>params</code></strong>, <strong><code>ends</code></strong>)</p>
+<h4 id="get_file_zip" class="doc_header"><code>get_file_zip</code><a href="ds4se/mgmnt/prep/conv.py#L186" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_file_zip</code>(<strong><code>params</code></strong>, <strong><code>ends</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -573,7 +486,7 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Creating-standard-dataframe-for-issues-and-pull-requiest-(cisco)">Creating standard dataframe for issues and pull-requiest (cisco)<a class="anchor-link" href="#Creating-standard-dataframe-for-issues-and-pull-requiest-(cisco)">&#182;</a></h3>
+<h3 id="Creating-standard-dataframe-for-issues-and-pull-request-(cisco)">Creating standard dataframe for issues and pull-request (cisco)<a class="anchor-link" href="#Creating-standard-dataframe-for-issues-and-pull-request-(cisco)">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -712,6 +625,13 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Loading for Preprocessing</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -730,10 +650,87 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_sacp</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_sacp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ids</th>
+      <th>text</th>
+      <th>type</th>
+      <th>conv</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>295</td>
+      <td>Production Merge * Feed release name through t...</td>
+      <td>pr</td>
+      <td>product merg feed releas name upload bom allow...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>294</td>
+      <td>Add test fields for DARE push * Added test dat...</td>
+      <td>pr</td>
+      <td>add test field dare push test data json sent d...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>293</td>
+      <td>Allow passing a release to uploadBom by name, ...</td>
+      <td>pr</td>
+      <td>allow pass releas upload bom name rather chang...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>287</td>
+      <td>Allow append images #363 - Changed how image n...</td>
+      <td>pr</td>
+      <td>allow append imag chang imag name creat send c...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>274</td>
+      <td>Move docker/blackduck test to slave 4</td>
+      <td>pr</td>
+      <td>move docker blackduck test slave</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -756,10 +753,122 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_sacp</span><span class="p">[</span><span class="s1">&#39;bpe8k&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prep</span><span class="o">.</span><span class="n">bpe_pieces_pipeline</span><span class="p">(</span> <span class="n">df_sacp</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="p">)</span> <span class="c1">#BPE Preprocessing</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Iterating All Possible BPEs configs</span>
+<span class="k">for</span> <span class="n">bpe</span> <span class="ow">in</span> <span class="n">model_prefix</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">mpr</span> <span class="o">=</span> <span class="n">model_prefix</span><span class="p">[</span><span class="n">bpe</span><span class="p">]</span>
+    <span class="n">prep</span> <span class="o">=</span> <span class="n">ConventionalPreprocessing</span><span class="p">(</span><span class="n">sacp_params</span><span class="p">(</span><span class="n">model_prefix</span> <span class="o">=</span> <span class="n">mpr</span><span class="p">),</span> <span class="n">bpe</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">df_sacp</span><span class="p">[</span><span class="n">bpe</span><span class="p">]</span> <span class="o">=</span> <span class="n">prep</span><span class="o">.</span><span class="n">bpe_pieces_pipeline</span><span class="p">(</span> <span class="n">df_sacp</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="p">)</span> <span class="c1">#BPE Preprocessing</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_sacp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ids</th>
+      <th>text</th>
+      <th>type</th>
+      <th>conv</th>
+      <th>bpe8k</th>
+      <th>bpe32k</th>
+      <th>bpe128k</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>295</td>
+      <td>Production Merge * Feed release name through t...</td>
+      <td>pr</td>
+      <td>product merg feed releas name upload bom allow...</td>
+      <td>[▁production, ▁mer, ge, ▁*, ▁feed, ▁release, ▁...</td>
+      <td>[▁production, ▁merge, ▁*, ▁feed, ▁release, ▁na...</td>
+      <td>[▁production, ▁merge, ▁*, ▁feed, ▁release, ▁na...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>294</td>
+      <td>Add test fields for DARE push * Added test dat...</td>
+      <td>pr</td>
+      <td>add test field dare push test data json sent d...</td>
+      <td>[▁add, ▁test, ▁fields, ▁for, ▁d, are, ▁p, ush,...</td>
+      <td>[▁add, ▁test, ▁fields, ▁for, ▁dare, ▁push, ▁*,...</td>
+      <td>[▁add, ▁test, ▁fields, ▁for, ▁dare, ▁push, ▁*,...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>293</td>
+      <td>Allow passing a release to uploadBom by name, ...</td>
+      <td>pr</td>
+      <td>allow pass releas upload bom name rather chang...</td>
+      <td>[▁allow, ▁passing, ▁a, ▁release, ▁to, ▁up, loa...</td>
+      <td>[▁allow, ▁passing, ▁a, ▁release, ▁to, ▁up, loa...</td>
+      <td>[▁allow, ▁passing, ▁a, ▁release, ▁to, ▁upload,...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>287</td>
+      <td>Allow append images #363 - Changed how image n...</td>
+      <td>pr</td>
+      <td>allow append imag chang imag name creat send c...</td>
+      <td>[▁allow, ▁app, end, ▁images, ▁#, 3, 63, ▁-, ▁c...</td>
+      <td>[▁allow, ▁append, ▁images, ▁#3, 63, ▁-, ▁chang...</td>
+      <td>[▁allow, ▁append, ▁images, ▁#3, 63, ▁-, ▁chang...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>274</td>
+      <td>Move docker/blackduck test to slave 4</td>
+      <td>pr</td>
+      <td>move docker blackduck test slave</td>
+      <td>[▁move, ▁d, ock, er, /, black, d, uck, ▁test, ...</td>
+      <td>[▁move, ▁dock, er, /, black, d, uck, ▁test, ▁t...</td>
+      <td>[▁move, ▁docker, /, black, duck, ▁test, ▁to, ▁...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -773,6 +882,20 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>2020-12-29 06:52:58,801 : INFO : Saving in...../../data/cisco/sacp_data/[sacp-python-common-all-corpus-1609224778.517111].csv
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -892,7 +1015,7 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Processing-Software-Corpora-from-CodeSearchNet">Processing Software Corpora from CodeSearchNet<a class="anchor-link" href="#Processing-Software-Corpora-from-CodeSearchNet">&#182;</a></h3>
+<h1 id="2.-Processing-Software-Corpora-from-CodeSearchNet">2. Processing Software Corpora from CodeSearchNet<a class="anchor-link" href="#2.-Processing-Software-Corpora-from-CodeSearchNet">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -901,7 +1024,8 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#CodeSearchNet Parameters</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;system&#39;</span><span class="p">:</span><span class="s1">&#39;codesearchnet&#39;</span><span class="p">,</span>
     <span class="s1">&#39;saving_path&#39;</span><span class="p">:</span> <span class="s1">&#39;test_data/&#39;</span><span class="p">,</span>
     <span class="s1">&#39;language&#39;</span><span class="p">:</span> <span class="s1">&#39;english&#39;</span>
@@ -1210,8 +1334,8 @@ Successfully installed astunparse-1.6.3 cachetools-4.2.0 flatbuffers-1.12 gast-0
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Pre-processing-from-Wikipedia">Pre-processing from Wikipedia<a class="anchor-link" href="#Pre-processing-from-Wikipedia">&#182;</a></h3><p>Inspired by <a href="https://www.kdnuggets.com/2017/11/building-wikipedia-text-corpus-nlp.html">KD</a>
-Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
+<h1 id="3.-Processing-from-Wikipedia">3. Processing from Wikipedia<a class="anchor-link" href="#3.-Processing-from-Wikipedia">&#182;</a></h1><blockquote><p>Inspired by <a href="https: //www.kdnuggets.com/2017/11/building-wikipedia-text-corpus-nlp.html">KD</a>&gt; &gt;Dump Wiki File <a href="https: //dumps.wikimedia.org/enwiki/latest/">here</a></p>
+</blockquote>
 
 </div>
 </div>
@@ -1434,9 +1558,23 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">functools</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pre-processing-from-Semeru-Format-and-Converting-into-Mappings">Pre-processing from Semeru Format and Converting into Mappings<a class="anchor-link" href="#Pre-processing-from-Semeru-Format-and-Converting-into-Mappings">&#182;</a></h2><p>@danaderp July 29'20</p>
+<h1 id="4.-Processing-from-Semeru-Format-and-Converting-into-Mappings">4. Processing from Semeru Format and Converting into Mappings<a class="anchor-link" href="#4.-Processing-from-Semeru-Format-and-Converting-into-Mappings">&#182;</a></h1><blockquote><p>@danaderp July 29'20</p>
+</blockquote>
 
 </div>
 </div>
@@ -1446,10 +1584,7 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#libest_dir = pathlib.Path(&#39;test_data/LibEST_semeru_format/test&#39;)</span>
-<span class="c1">#libest_dir = pathlib.Path(&#39;test_data/LibEST_semeru_format/source_code&#39;)</span>
-<span class="n">libest_dir</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;test_data/LibEST_semeru_format/requirements&#39;</span><span class="p">)</span>
-<span class="n">ends</span> <span class="o">=</span> <span class="s1">&#39;.txt&#39;</span> <span class="c1">#.c .h</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">functools</span> 
 </pre></div>
 
     </div>
@@ -1462,10 +1597,21 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Creating the mappings</span>
-<span class="n">libest_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">entry</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">libest_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*&#39;</span> <span class="o">+</span><span class="n">ends</span><span class="p">)]</span>
-<span class="n">libest_filenames</span> <span class="o">=</span> <span class="p">[(</span><span class="n">filename</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span> <span class="n">open_file</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="p">)</span> <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">libest_names</span><span class="p">]</span>
-<span class="n">df_libest</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span> <span class="n">libest_filenames</span> <span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">,</span><span class="s1">&#39;filenames&#39;</span><span class="p">,</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Setting Up SemeruFormat</span>
+<span class="k">def</span> <span class="nf">libest_params</span><span class="p">(</span><span class="n">model_prefix</span> <span class="o">=</span> <span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;models/bpe/sentencepiece/wiki_py_java_bpe_8k&#39;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;system&#39;</span><span class="p">:</span> <span class="s1">&#39;libest&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;saving_path&#39;</span><span class="p">:</span> <span class="n">path_data</span><span class="o">+</span> <span class="s1">&#39;se-benchmarking/traceability/testbeds/processed/&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;language&#39;</span><span class="p">:</span> <span class="s1">&#39;english&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;dataset&#39;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;req&#39;</span><span class="p">:</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span> <span class="n">semeru_format</span> <span class="o">+</span> <span class="s1">&#39;LibEST_semeru_format/requirements&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;src&#39;</span><span class="p">:</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span> <span class="n">semeru_format</span> <span class="o">+</span> <span class="s1">&#39;LibEST_semeru_format/source_code&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;tc&#39;</span><span class="p">:</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span> <span class="n">semeru_format</span> <span class="o">+</span> <span class="s1">&#39;LibEST_semeru_format/test&#39;</span><span class="p">)</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;ends&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;.txt&#39;</span><span class="p">,</span><span class="s1">&#39;.c&#39;</span><span class="p">,</span><span class="s1">&#39;.h&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;model_prefix&#39;</span><span class="p">:</span><span class="n">model_prefix</span><span class="p">,</span>
+        <span class="s1">&#39;encoding&#39;</span><span class="p">:</span><span class="s1">&#39;utf-8&#39;</span>
+    <span class="p">}</span>
 </pre></div>
 
     </div>
@@ -1478,7 +1624,21 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_libest</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;req&#39;</span><span class="c1">#&#39;src&#39; tc</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ebt_params</span><span class="p">(</span><span class="n">model_prefix</span> <span class="o">=</span> <span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;models/bpe/sentencepiece/wiki_py_java_bpe_8k&#39;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;system&#39;</span><span class="p">:</span> <span class="s1">&#39;ebt&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;saving_path&#39;</span><span class="p">:</span> <span class="n">path_data</span><span class="o">+</span> <span class="s1">&#39;se-benchmarking/traceability/testbeds/processed/&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;language&#39;</span><span class="p">:</span> <span class="s1">&#39;english&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;dataset&#39;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;req&#39;</span><span class="p">:</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span> <span class="n">semeru_format</span> <span class="o">+</span> <span class="s1">&#39;EBT_semeru_format/requirements&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;tc&#39;</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span> <span class="n">semeru_format</span> <span class="o">+</span> <span class="s1">&#39;EBT_semeru_format/test_cases&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;src&#39;</span><span class="p">:</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span> <span class="n">semeru_format</span> <span class="o">+</span> <span class="s1">&#39;EBT_semeru_format/source_code&#39;</span><span class="p">)</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;ends&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;.txt&#39;</span><span class="p">,</span><span class="s1">&#39;.java&#39;</span><span class="p">,</span><span class="s1">&#39;.c&#39;</span><span class="p">,</span><span class="s1">&#39;.h&#39;</span><span class="p">,</span><span class="s1">&#39;.TXT&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;model_prefix&#39;</span><span class="p">:</span><span class="n">model_prefix</span><span class="p">,</span>
+        <span class="c1">#&#39;encoding&#39;:&#39;ISO-8859-1&#39;</span>
+        <span class="s1">&#39;encoding&#39;</span><span class="p">:</span><span class="s1">&#39;utf-8&#39;</span> <span class="c1">#english encoding</span>
+    <span class="p">}</span>
 </pre></div>
 
     </div>
@@ -1491,7 +1651,20 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_libest</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">itrust_params</span><span class="p">(</span><span class="n">model_prefix</span> <span class="o">=</span> <span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;models/bpe/sentencepiece/wiki_py_java_bpe_8k&#39;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;system&#39;</span><span class="p">:</span> <span class="s1">&#39;itrust&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;saving_path&#39;</span><span class="p">:</span> <span class="n">path_data</span><span class="o">+</span> <span class="s1">&#39;se-benchmarking/traceability/testbeds/processed/&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;language&#39;</span><span class="p">:</span> <span class="s1">&#39;english&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;dataset&#39;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;uc&#39;</span><span class="p">:</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span> <span class="n">semeru_format</span> <span class="o">+</span> <span class="s1">&#39;iTrust_semeru_format/use_cases&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;src&#39;</span><span class="p">:</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span> <span class="n">semeru_format</span> <span class="o">+</span> <span class="s1">&#39;iTrust_semeru_format/source_code&#39;</span><span class="p">)</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;ends&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;.txt&#39;</span><span class="p">,</span><span class="s1">&#39;.java&#39;</span><span class="p">,</span><span class="s1">&#39;.c&#39;</span><span class="p">,</span><span class="s1">&#39;.h&#39;</span><span class="p">,</span><span class="s1">&#39;.TXT&#39;</span><span class="p">,</span><span class="s1">&#39;.jsp&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;model_prefix&#39;</span><span class="p">:</span><span class="n">model_prefix</span><span class="p">,</span>
+        <span class="s1">&#39;encoding&#39;</span><span class="p">:</span><span class="s1">&#39;ISO-8859-1&#39;</span>
+        <span class="c1">#&#39;encoding&#39;:&#39;utf-8&#39; #english encoding</span>
+    <span class="p">}</span>
 </pre></div>
 
     </div>
@@ -1504,8 +1677,20 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#run one time</span>
-<span class="n">df_libest_</span> <span class="o">=</span> <span class="n">df_libest</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">smos_params</span><span class="p">(</span><span class="n">model_prefix</span> <span class="o">=</span> <span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;models/bpe/sentencepiece/wiki_py_java_bpe_8k&#39;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;system&#39;</span><span class="p">:</span> <span class="s1">&#39;smos&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;saving_path&#39;</span><span class="p">:</span> <span class="n">path_data</span><span class="o">+</span> <span class="s1">&#39;se-benchmarking/traceability/testbeds/processed/&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;language&#39;</span><span class="p">:</span> <span class="s1">&#39;italian&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;dataset&#39;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;uc&#39;</span><span class="p">:</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span> <span class="n">semeru_format</span> <span class="o">+</span> <span class="s1">&#39;SMOS_semeru_format/use_cases&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;src&#39;</span><span class="p">:</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span> <span class="n">semeru_format</span> <span class="o">+</span> <span class="s1">&#39;SMOS_semeru_format/source_code&#39;</span><span class="p">)</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;ends&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;.txt&#39;</span><span class="p">,</span><span class="s1">&#39;.java&#39;</span><span class="p">,</span><span class="s1">&#39;.c&#39;</span><span class="p">,</span><span class="s1">&#39;.h&#39;</span><span class="p">,</span><span class="s1">&#39;.TXT&#39;</span><span class="p">,</span><span class="s1">&#39;.jsp&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;model_prefix&#39;</span><span class="p">:</span><span class="n">model_prefix</span><span class="p">,</span>
+        <span class="s1">&#39;encoding&#39;</span><span class="p">:</span><span class="s1">&#39;ISO-8859-1&#39;</span>
+        <span class="c1">#&#39;encoding&#39;:&#39;utf-8&#39; #english encoding</span>
+    <span class="p">}</span>
 </pre></div>
 
     </div>
@@ -1518,9 +1703,133 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#updating df_libest</span>
-<span class="c1"># pd.concat([data1, data2], ignore_index=True, sort=False)</span>
-<span class="n">df_libest_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_libest_</span><span class="p">,</span><span class="n">df_libest</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#parameters = libest_params(model_prefix=model_prefix[&#39;bpe8k&#39;])</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="n">smos_params</span><span class="p">()</span>
+<span class="n">parameters</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;system&#39;: &#39;smos&#39;,
+ &#39;saving_path&#39;: &#39;../dvc-ds4se/se-benchmarking/traceability/testbeds/processed/&#39;,
+ &#39;language&#39;: &#39;italian&#39;,
+ &#39;dataset&#39;: {&#39;uc&#39;: PosixPath(&#39;../dvc-ds4se/se-benchmarking/traceability/datasets/formatted/semeru_format/SMOS_semeru_format/use_cases&#39;),
+  &#39;src&#39;: PosixPath(&#39;../dvc-ds4se/se-benchmarking/traceability/datasets/formatted/semeru_format/SMOS_semeru_format/source_code&#39;)},
+ &#39;ends&#39;: [&#39;.txt&#39;, &#39;.java&#39;, &#39;.c&#39;, &#39;.h&#39;, &#39;.TXT&#39;, &#39;.jsp&#39;],
+ &#39;model_prefix&#39;: &#39;../dvc-ds4se/models/bpe/sentencepiece/wiki_py_java_bpe_8k&#39;,
+ &#39;encoding&#39;: &#39;ISO-8859-1&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;dataset&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dict_keys([&#39;uc&#39;, &#39;src&#39;])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;artifacts: &quot;</span>  <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;dataset&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;artifacts: &quot;</span>  <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;dataset&#39;</span><span class="p">][</span><span class="s1">&#39;uc&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>2021-01-11 23:50:05,499 : INFO : artifacts: dict_keys([&#39;uc&#39;, &#39;src&#39;])
+2021-01-11 23:50:05,500 : INFO : artifacts: ../dvc-ds4se/se-benchmarking/traceability/datasets/formatted/semeru_format/SMOS_semeru_format/use_cases
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">entry</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;dataset&#39;</span><span class="p">][</span><span class="s1">&#39;uc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*&#39;</span> <span class="o">+</span> <span class="s2">&quot;.txt&quot;</span> <span class="p">)]</span>
+<span class="n">lst</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>PosixPath(&#39;../dvc-ds4se/se-benchmarking/traceability/datasets/formatted/semeru_format/SMOS_semeru_format/use_cases/SMOS37.txt&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="p">[(</span><span class="n">filename</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span> <span class="n">open_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">])</span> <span class="p">)</span> <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -1533,10 +1842,51 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_libest_</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(PosixPath(&#39;../dvc-ds4se/se-benchmarking/traceability/datasets/formatted/semeru_format/SMOS_semeru_format/use_cases/SMOS37.txt&#39;),
+ &#39;SMOS37.txt&#39;,
+ &#34;Nome: InserisciNota\nAttori: Amministratore\nDescrizione: Inserimento Note Disciplinari\nPrecondizioni:\nâ\x80¢ â\x80¢ â\x80¢ â\x80¢\nL&#39;utente deve essere loggato al sistema come Amministratore L&#39;utente ha svolto il caso d&#39;uso â\x80\x9cVisualizzaDettagliSingoloRegistroâ\x80\x9d L&#39;utente ha giÃ\xa0 svolto il caso d&#39;uso â\x80\x9cVisualizzaElencoNoteâ\x80\x9d L&#39;utente clicca sul pulsante â\x80\x9cNuova notaâ\x80\x9d\nSequenza degli eventi\nUtente\nSistema\n2. Compila il form 3. Clicca su â\x80\x9cSalvaâ\x80\x9d\n1. Mostra un form con i campi della nota (studente, data, docente , descrizione).\n4. Salva la nota e invia una notifica via e-mail al genitore\nPostcondizioni:\nâ\x80¢\nâ\x80¢ â\x80¢\nI dati della nota sono stati inseriti nel sistema, ed il sistema ha inviato la notifica ai genitori. Il sistema ritorna alla schermata del registro. Lâ\x80\x99amministratore interrompe lâ\x80\x99operazione Connessione al server SMOS interrotta&#34;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="loading_artifacts" class="doc_header"><code>loading_artifacts</code><a href="ds4se/mgmnt/prep/conv.py#L196" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>loading_artifacts</code>(<strong><code>params</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -1546,11 +1896,25 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#running conventional preprocessing </span>
-<span class="n">df_libest_</span><span class="p">[</span><span class="s1">&#39;conv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prep</span><span class="o">.</span><span class="n">fromdocs_pipeline</span><span class="p">(</span> <span class="n">df_libest_</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="p">)</span> <span class="c1">#Conventional Preprocessing</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_test</span> <span class="o">=</span> <span class="n">loading_artifacts</span><span class="p">(</span> <span class="n">params</span> <span class="o">=</span> <span class="n">parameters</span> <span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>2021-01-11 23:50:14,606 : INFO : artifacts: 67
+2021-01-11 23:50:14,619 : INFO : artifacts: 100
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -1560,10 +1924,110 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_libest_0</span> <span class="o">=</span> <span class="n">df_libest_</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_test</span><span class="p">[</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;src&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ids</th>
+      <th>filenames</th>
+      <th>text</th>
+      <th>type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>67</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>ManagerClassroom.java</td>
+      <td>package smos.storage;\n\n\nimport java.sql.Con...</td>
+      <td>src</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>ServletUpdateUser.java</td>
+      <td>package smos.application.userManagement;\n\nim...</td>
+      <td>src</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>ServletComputateStatistics.java</td>
+      <td>package smos.application.registerManagement;\n...</td>
+      <td>src</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>ServletProva.java</td>
+      <td>package smos.application.teachingManagement;\n...</td>
+      <td>src</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>ServletInitialize.java</td>
+      <td>package smos.application;\n\nimport javax.serv...</td>
+      <td>src</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="processing_artifacts" class="doc_header"><code>processing_artifacts</code><a href="ds4se/mgmnt/prep/conv.py#L213" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>processing_artifacts</code>(<strong><code>model_prefix</code></strong>, <strong><code>df_sys_all</code></strong>, <strong><code>funct_params</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -1573,11 +2037,35 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_libest_0</span><span class="p">[</span><span class="s1">&#39;bpe8k&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prep</span><span class="o">.</span><span class="n">bpe_pieces_pipeline</span><span class="p">(</span> <span class="n">df_libest_</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="p">)</span> <span class="c1">#BPE Preprocessing</span>
-<span class="c1">#bpe_pieces_pipeline</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_test_sys</span><span class="p">,</span><span class="n">r_prep</span> <span class="o">=</span> <span class="n">processing_artifacts</span><span class="p">(</span> <span class="n">model_prefix</span> <span class="o">=</span> <span class="n">model_prefix</span><span class="p">,</span> 
+                                          <span class="n">df_sys_all</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">,</span> 
+                                          <span class="n">funct_params</span> <span class="o">=</span> <span class="n">smos_params</span> <span class="c1">#itrust_params#ebt_params</span>
+                                         <span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>2021-01-11 23:51:45,591 : INFO : fromtokens_pipeline: clean punctuation
+2021-01-11 23:51:45,627 : INFO : fromtokens_pipeline: camel case
+2021-01-11 23:51:45,630 : INFO : fromtokens_pipeline: lowe case
+2021-01-11 23:51:45,631 : INFO : fromtokens_pipeline: white space removed
+2021-01-11 23:51:45,663 : INFO : fromtokens_pipeline: WordPunctTokenizer
+2021-01-11 23:51:45,922 : INFO : fromtokens_pipeline: Stop words
+2021-01-11 23:51:46,655 : INFO : fromtokens_pipeline: Stemmings
+2021-01-11 23:51:46,670 : INFO : fromtokens_pipeline: Removed Special Terns
+2021-01-11 23:51:46,672 : INFO : fromtokens_pipeline END
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -1587,10 +2075,111 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_libest_0</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_test_sys</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ids</th>
+      <th>filenames</th>
+      <th>text</th>
+      <th>type</th>
+      <th>bpe8k</th>
+      <th>bpe32k</th>
+      <th>bpe128k</th>
+      <th>conv</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>SMOS37.txt</td>
+      <td>Nome: InserisciNota\nAttori: Amministratore\nD...</td>
+      <td>uc</td>
+      <td>[▁n, ome, :, ▁ins, er, isc, in, ota, \n, att, ...</td>
+      <td>[▁n, ome, :, ▁ins, er, isc, in, ota, \n, att, ...</td>
+      <td>[▁nome, :, ▁ins, er, isc, in, ota, \n, att, or...</td>
+      <td>nome inserisci nota attori amministrator descr...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>SMOS16.txt</td>
+      <td>Nome: EliminaClasse\nAttori: Amministratore\nD...</td>
+      <td>uc</td>
+      <td>[▁n, ome, :, ▁elimin, ac, las, se, \n, att, or...</td>
+      <td>[▁n, ome, :, ▁elimin, ac, las, se, \n, att, or...</td>
+      <td>[▁nome, :, ▁elimin, ac, lasse, \n, att, ori, :...</td>
+      <td>nome elimina class attori amministrator descri...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>SMOS24.txt</td>
+      <td>Nome:VisualizzaDettagliInsegnamento\nAttori: A...</td>
+      <td>uc</td>
+      <td>[▁n, ome, :, vis, ual, iz, z, ad, ett, ag, li,...</td>
+      <td>[▁n, ome, :, vis, ual, izz, ad, ett, ag, li, i...</td>
+      <td>[▁nome, :, visual, izz, ad, ett, agli, in, se,...</td>
+      <td>nome visualizza dettag insegnamento attori amm...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>SMOS36.txt</td>
+      <td>Nome: InserisciGiustifica\nAttori: Amministrat...</td>
+      <td>uc</td>
+      <td>[▁n, ome, :, ▁ins, er, isc, ig, i, ust, ific, ...</td>
+      <td>[▁n, ome, :, ▁ins, er, isc, igi, ust, ific, a,...</td>
+      <td>[▁nome, :, ▁ins, er, isc, igi, ust, ific, a, \...</td>
+      <td>nome inserisci giustifica attori amministrator...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>SMOS26.txt</td>
+      <td>Nome: EliminaInsegnamento\nAttori: Amministrat...</td>
+      <td>uc</td>
+      <td>[▁n, ome, :, ▁elimin, ain, se, gn, ament, o, \...</td>
+      <td>[▁n, ome, :, ▁elimin, ain, se, gn, amento, \n,...</td>
+      <td>[▁nome, :, ▁elimin, ain, se, gn, amento, \n, a...</td>
+      <td>nome elimina insegnamento attori amministrator...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -1600,10 +2189,26 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">prep</span><span class="o">.</span><span class="n">SaveCorpus</span><span class="p">(</span><span class="n">df_libest_0</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s1">&#39;all-corpus&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;~&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_test_sys</span><span class="p">[</span><span class="s1">&#39;ids&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>PosixPath(&#39;../dvc-ds4se/se-benchmarking/traceability/datasets/formatted/semeru_format/SMOS_semeru_format/use_cases/SMOS37.txt&#39;)</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -1613,7 +2218,215 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">prep</span><span class="o">.</span><span class="n">LoadCorpus</span><span class="p">(</span><span class="mf">1596063103.098236</span><span class="p">,</span><span class="n">language</span><span class="o">=</span><span class="s1">&#39;all-corpus&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;~&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_test_sys</span><span class="p">[</span><span class="n">df_test_sys</span><span class="p">[</span><span class="s1">&#39;filenames&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;.java&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ids</th>
+      <th>filenames</th>
+      <th>text</th>
+      <th>type</th>
+      <th>bpe8k</th>
+      <th>bpe32k</th>
+      <th>bpe128k</th>
+      <th>conv</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>67</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>ManagerClassroom.java</td>
+      <td>package smos.storage;\n\n\nimport java.sql.Con...</td>
+      <td>src</td>
+      <td>[▁pack, age, ▁sm, os, ., st, or, age, ;, \n\n\...</td>
+      <td>[▁package, ▁sm, os, ., stor, age, ;, \n\n\n, i...</td>
+      <td>[▁package, ▁sm, os, ., storage, ;, \n\n\n, imp...</td>
+      <td>packag smos storag import java sql connect imp...</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>ServletUpdateUser.java</td>
+      <td>package smos.application.userManagement;\n\nim...</td>
+      <td>src</td>
+      <td>[▁pack, age, ▁sm, os, ., ap, pl, ication, ., u...</td>
+      <td>[▁package, ▁sm, os, ., appl, ication, ., us, e...</td>
+      <td>[▁package, ▁sm, os, ., application, ., us, erm...</td>
+      <td>packag smos applic user manag import smos envi...</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>ServletComputateStatistics.java</td>
+      <td>package smos.application.registerManagement;\n...</td>
+      <td>src</td>
+      <td>[▁pack, age, ▁sm, os, ., ap, pl, ication, ., r...</td>
+      <td>[▁package, ▁sm, os, ., appl, ication, ., reg, ...</td>
+      <td>[▁package, ▁sm, os, ., application, ., registe...</td>
+      <td>packag smos applic regist manag import java io...</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>ServletProva.java</td>
+      <td>package smos.application.teachingManagement;\n...</td>
+      <td>src</td>
+      <td>[▁pack, age, ▁sm, os, ., ap, pl, ication, ., t...</td>
+      <td>[▁package, ▁sm, os, ., appl, ication, ., te, a...</td>
+      <td>[▁package, ▁sm, os, ., application, ., teachin...</td>
+      <td>packag smos applic teach manag import javax se...</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>ServletInitialize.java</td>
+      <td>package smos.application;\n\nimport javax.serv...</td>
+      <td>src</td>
+      <td>[▁pack, age, ▁sm, os, ., ap, pl, ication, ;, \...</td>
+      <td>[▁package, ▁sm, os, ., appl, ication, ;, \n\n,...</td>
+      <td>[▁package, ▁sm, os, ., application, ;, \n\n, i...</td>
+      <td>packag smos applic import javax servlet servle...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>ServletReportTeachings.java</td>
+      <td>package smos.application.userManagement;\n\nim...</td>
+      <td>src</td>
+      <td>[▁pack, age, ▁sm, os, ., ap, pl, ication, ., u...</td>
+      <td>[▁package, ▁sm, os, ., appl, ication, ., us, e...</td>
+      <td>[▁package, ▁sm, os, ., application, ., us, erm...</td>
+      <td>packag smos applic user manag import smos envi...</td>
+    </tr>
+    <tr>
+      <th>163</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>ServletAssignRole.java</td>
+      <td>package smos.application.userManagement;\n\nim...</td>
+      <td>src</td>
+      <td>[▁pack, age, ▁sm, os, ., ap, pl, ication, ., u...</td>
+      <td>[▁package, ▁sm, os, ., appl, ication, ., us, e...</td>
+      <td>[▁package, ▁sm, os, ., application, ., us, erm...</td>
+      <td>packag smos applic user manag import smos envi...</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>display.java</td>
+      <td>\n\n/****************** displaytag stylesheet ...</td>
+      <td>src</td>
+      <td>[▁, \n\n, /, *, *, *, *, *, *, *, *, *, *, *, ...</td>
+      <td>[▁, \n\n, /, *, *, *, *, *, *, *, *, *, *, *, ...</td>
+      <td>[▁, \n\n, /, **, **, **, **, **, **, **, **, *...</td>
+      <td>displaytag stylesheet tabl datat border color ...</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>ServletInsertReport.java</td>
+      <td>package smos.application.reportManagement;\n\n...</td>
+      <td>src</td>
+      <td>[▁pack, age, ▁sm, os, ., ap, pl, ication, ., r...</td>
+      <td>[▁package, ▁sm, os, ., appl, ication, ., re, p...</td>
+      <td>[▁package, ▁sm, os, ., application, ., report,...</td>
+      <td>packag smos applic report manag import smos en...</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>../dvc-ds4se/se-benchmarking/traceability/data...</td>
+      <td>ServletShowAddressDetails.java</td>
+      <td>package smos.application.addressManagement;\n\...</td>
+      <td>src</td>
+      <td>[▁pack, age, ▁sm, os, ., ap, pl, ication, ., a...</td>
+      <td>[▁package, ▁sm, os, ., appl, ication, ., add, ...</td>
+      <td>[▁package, ▁sm, os, ., application, ., address...</td>
+      <td>packag smos applic address manag import smos e...</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 8 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r_prep</span><span class="o">.</span><span class="n">SaveCorpus</span><span class="p">(</span><span class="n">df_test_sys</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s1">&#39;all-corpus&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;~&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>2021-01-11 23:46:32,071 : INFO : Saving in...../dvc-ds4se/se-benchmarking/traceability/testbeds/processed/[itrust-all-corpus-1610408791.737875].csv
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r_prep</span><span class="o">.</span><span class="n">LoadCorpus</span><span class="p">(</span><span class="mf">1609221582.171744</span><span class="p">,</span><span class="n">language</span><span class="o">=</span><span class="s1">&#39;all-corpus&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;~&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1626,6 +2439,106 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 <h3 id="Pre-processing-from-Semeru-Format">Pre-processing from Semeru Format<a class="anchor-link" href="#Pre-processing-from-Semeru-Format">&#182;</a></h3>
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Special Case EBT To Create Separate Files [Only one implementation]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Canonical EBT</span>
+<span class="k">def</span> <span class="nf">ebt_params</span><span class="p">(</span><span class="n">model_prefix</span> <span class="o">=</span> <span class="n">path_data</span><span class="o">+</span><span class="s1">&#39;models/bpe/sentencepiece/wiki_py_java_bpe_8k&#39;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;system&#39;</span><span class="p">:</span> <span class="s1">&#39;ebt&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;saving_path&#39;</span><span class="p">:</span> <span class="n">path_data</span><span class="o">+</span> <span class="s1">&#39;se-benchmarking/traceability/testbeds/processed/&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;language&#39;</span><span class="p">:</span> <span class="s1">&#39;english&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;dataset&#39;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;req&#39;</span><span class="p">:</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span> <span class="n">semeru_format</span> <span class="o">+</span> <span class="s1">&#39;EBT_semeru_format/requirements.txt&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;tc&#39;</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span> <span class="n">semeru_format</span> <span class="o">+</span> <span class="s1">&#39;EBT_semeru_format/test_cases.txt&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;src&#39;</span><span class="p">:</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span> <span class="n">semeru_format</span> <span class="o">+</span> <span class="s1">&#39;EBT_semeru_format/source_code&#39;</span><span class="p">)</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;ends&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;.txt&#39;</span><span class="p">,</span><span class="s1">&#39;.java&#39;</span><span class="p">,</span><span class="s1">&#39;.c&#39;</span><span class="p">,</span><span class="s1">&#39;.h&#39;</span><span class="p">,</span><span class="s1">&#39;.TXT&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;model_prefix&#39;</span><span class="p">:</span><span class="n">model_prefix</span><span class="p">,</span>
+        <span class="c1">#&#39;encoding&#39;:&#39;ISO-8859-1&#39;</span>
+        <span class="s1">&#39;encoding&#39;</span><span class="p">:</span><span class="s1">&#39;utf-8&#39;</span> <span class="c1">#english encoding</span>
+    <span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="n">ebt_params</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dataset&#39;</span><span class="p">][</span><span class="s1">&#39;req&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd_ebt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dataset&#39;</span><span class="p">][</span><span class="s1">&#39;req&#39;</span><span class="p">],</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;/t&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dataset&#39;</span><span class="p">][</span><span class="s1">&#39;tc&#39;</span><span class="p">])</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">Lines</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">Lines</span><span class="p">:</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">semeru_format</span> <span class="o">+</span> <span class="s1">&#39;EBT_semeru_format/test_cases/&#39;</span><span class="o">+</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;.txt&#39;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">wp</span><span class="p">:</span> 
+            <span class="n">wp</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -2052,19 +2965,6 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">functools</span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Merging all the corpuses</span>
 <span class="n">pre_doc_path_tc</span> <span class="o">=</span> <span class="s1">&#39;/tf/main/benchmarking/traceability/testbeds/nltk/[libest-pre-tc].csv&#39;</span>
 <span class="n">pre_doc_path_req</span> <span class="o">=</span> <span class="s1">&#39;/tf/main/benchmarking/traceability/testbeds/nltk/[libest-pre-req].csv&#39;</span>
@@ -2134,18 +3034,11 @@ Dump Wiki File <a href="https://dumps.wikimedia.org/enwiki/latest/">here</a></p>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#########################################################</span>
-</pre></div>
-
-    </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h6 id="#">#<a class="anchor-link" href="##">&#182;</a></h6>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
