@@ -109,10 +109,9 @@ pyasn1-modules==0.2.8
 pycparser==2.19
 pycrypto==2.6.1
 pydot==1.4.1
-Pygments==2.4.2
+Pygments==2.6.0
 pygobject==3.26.1
 pygtrie==2.3.2
-pyparsing==2.4.2
 pyprg==0.1.1b7
 pyrsistent==0.15.4
 python-apt==1.6.4
@@ -128,7 +127,7 @@ qtconsole==4.5.4
 regex==2020.11.13
 requests==2.25.1
 requests-oauthlib==1.3.0
-rich==9.10.0
+rich
 rsa==4.7
 ruamel.yaml==0.16.12
 ruamel.yaml.clib==0.2.2
