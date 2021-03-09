@@ -2,4 +2,4 @@ outs:
 - md5: ad8533ff73a33b45ed74570b4105d1ce.dir
   size: 4424
   nfiles: 2
-  path: Causality
+  path: causality
