@@ -121,7 +121,7 @@ python-fsutil==0.4.0
 python-slugify==4.0.1
 pytz==2019.3
 pyxdg==0.25
-PyYAML==5.2
+PyYAML==5.4
 pyzmq==18.1.0
 qtconsole==4.5.4
 regex==2020.11.13
