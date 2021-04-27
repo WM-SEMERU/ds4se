@@ -18,6 +18,8 @@ from ...description.eval.traceability import VectorEvaluation
 # Cell
 import numpy as np
 import matplotlib.pyplot as plt
+import plotly.express as px
+import plotly.graph_objects as go
 
 # Cell
 import gensim
@@ -87,40 +89,88 @@ class SupervisedVectorEvaluation(VectorEvaluation):
             logging.info('Vectorization: ' +  str(vecType) )
         return y_test,y_score
 
-    def Compute_precision_recall_gain(self, vecType = VectorizationType.word2vec):
-        '''One might choose PRG if there is little interest in identifying false negatives '''
-        y_test,y_score = self.vecTypeVerification(vecType=vecType)
+    def vecTypeVerificationSim(self, vecType= VectorizationType.word2vec,sim=SimilarityMetric.SCM_sim):
+        if vecType == VectorizationType.word2vec:
+            self.sim_list = self.sim_list_w2v
+            y_test = self.df_filtered_w2v['Linked?'].values
+            y_score = self.df_filtered_w2v[ str(sim) ].values
+            logging.info('Vectorization: ' +  str(vecType) + " " + str(sim))
+        elif vecType == VectorizationType.doc2vec:
+            self.sim_list = self.sim_list_d2v
+            y_test = self.df_filtered_d2v['Linked?'].values
+            y_score = self.df_filtered_d2v[ str(sim) ].values
+            logging.info('Vectorization: ' +  str(vecType) + " " + str(sim))
+        return y_test,y_score
 
-        figures = []
-        for count,sim in enumerate(self.sim_list):
-            fig = plt.figure()
-            prg_curve = prg.create_prg_curve(y_test, y_score[count])
-            auprg = prg.calc_auprg(prg_curve)
-            plot = prg.plot_prg(prg_curve)
-            print(type(plot))
-            logging.info('auprg:  %.3f' %  auprg)
-            logging.info("compute_precision_recall_gain Complete: "+str(sim))
-            figures.append(plot)
-        return figures
+    def Compute_precision_recall_gain(self, vecType = VectorizationType.word2vec, sim=SimilarityMetric.SCM_sim):
+        '''One might choose PRG if there is little interest in identifying false negatives '''
+        y_test,y_score = self.vecTypeVerificationSim(vecType=vecType, sim=sim)
+
+        fig = go.Figure(layout_yaxis_range=[-0.05,1.02],layout_xaxis_range=[-0.05,1.02])
+        prg_curve = prg.create_prg_curve(y_test, y_score)
+        indices = np.arange(np.argmax(prg_curve['in_unit_square']) - 1,
+                        len(prg_curve['in_unit_square']))
+        pg = prg_curve['precision_gain']
+        rg = prg_curve['recall_gain']
+        fig.add_trace(go.Scatter(x=rg[indices], y=pg[indices],
+                        line = dict(color="cyan", width=2,dash="solid")))
+
+        indices = np.logical_or(prg_curve['is_crossing'],
+                    prg_curve['in_unit_square'])
+        fig.add_trace(go.Scatter(x=rg[indices], y=pg[indices],
+                    line = dict(color="blue", width=2,dash="solid")))
+
+        indices = np.logical_and(prg_curve['in_unit_square'],
+                        True - prg_curve['is_crossing'])
+        fig.add_trace(go.Scatter(x=rg[indices], y=pg[indices],mode='markers'))
+
+        valid_points = np.logical_and( ~ np.isnan(rg), ~ np.isnan(pg))
+        upper_hull = prg.convex_hull(zip(rg[valid_points],pg[valid_points]))
+        rg_hull, pg_hull = zip(*upper_hull)
+        fig.add_trace(go.Scatter(x=rg_hull, y=pg_hull, mode = "lines",
+                           line = dict(color="red", width=2,dash="dash")))
+        auprg = prg.calc_auprg(prg_curve)
+
+        logging.info('auprg:  %.3f' %  auprg)
+        logging.info("compute_precision_recall_gain Complete: "+str(sim))
+
+        fig.update_layout(
+            title=self.sys + "-[" + str(sim) + "]",
+            height = 600,
+            width = 600,
+            xaxis_title='Recall Gain',
+            xaxis = dict(
+                tickmode = 'linear',
+                tick0 = 0,
+                dtick = 0.25),
+            yaxis_title='Precision Gain',
+            yaxis = dict(
+                tickmode = 'linear',
+                tick0 = 0,
+                dtick = 0.25)
+            )
+        fig.update_yaxes(
+            scaleanchor = "x",
+            scaleratio = 1,
+            )
+
+
+        return fig
 
     def Compute_avg_precision(self, vecType = VectorizationType.word2vec):
         '''Generated precision-recall curve enhanced'''
         y_test,y_score = self.vecTypeVerification(vecType=vecType)
 
-        linestyles = ['solid','dashed','dashdot','dotted']
+        linestyles = ['solid','dash','dashdot','dotted']
 
-        fig, ax1 = plt.subplots(figsize=(8, 6))
-
-        ax1.grid(True)
-        #ax1.yaxis.grid(color='gray', linestyle='dashed')
-
-        color = 'tab:red'
-        ax1.set_xlabel('recall [fpr]')
-        ax1.set_ylabel('precision', color=color)
+        color = 'red'
 
         # calculate the no skill line as the proportion of the positive class
         no_skill = len(y_test[y_test==1]) / len(y_test)
-        ax1.plot([0, 1], [no_skill, no_skill], color=color, linewidth=0.5, linestyle='dotted', label='No Skill [{0:0.2f}]'.format(no_skill)) #reference curve
+
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=[0, 1], y=[no_skill, no_skill], name='No Skill [{0:0.2f}]'.format(no_skill), mode = "lines",
+                         line = dict(color='red', width=.5, dash='dash')))
 
         for count,sim in enumerate(self.sim_list):
             precision, recall, _ = precision_recall_curve(y_test, y_score[count]) #compute precision-recall curve
@@ -129,52 +179,44 @@ class SupervisedVectorEvaluation(VectorEvaluation):
             logging.info('Average precision-recall score: {0:0.2f}'.format(average_precision))
             logging.info('Precision-Recall AUC: %.2f' % auc_score)
 
-            #plt.plot(recall, precision, linewidth=0.4, marker='.', label = str(sim)) #plot model curve
-            ax1.plot(recall, precision, color=color, linewidth=1, linestyle=linestyles[count], label = str(sim.name)+' [auc:{0:0.2f}]'.format(auc_score)) #plot model curve
 
+            fig.add_trace(go.Scatter(x=recall, y=precision, name=str(sim.name)+' [auc:{0:0.2f}]'.format(auc_score),
+                         line = dict(color=color, width=1, dash=linestyles[count])))
 
-        ax1.tick_params(axis='y', labelcolor=color) #Color of the axis value
 
 
         ##AUC
-        ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+        color = 'blue'
 
-        color = 'tab:blue'
-        ax2.set_ylabel('tpr', color=color)  # we already handled the x-label with ax1
-
-        ax2.plot([0, 1], [0, 1], color=color,  linewidth=0.5, linestyle='dotted', label='No Skill') #reference curve
+        fig.add_trace(go.Scatter(x=[0, 1], y=[0, 1], name='No Skill', mode = "lines",
+                         line = dict(color='blue', width=.5, dash='dot')))
         for count,sim in enumerate(self.sim_list):
             fpr, tpr, _ = roc_curve(y_test, y_score[count]) #compute roc curve
             roc_auc = roc_auc_score(y_test, y_score[count])
             logging.info('ROC AUC %.2f' % roc_auc)
+            fig.add_trace(go.Scatter(x=fpr, y=tpr, name=str(sim.name)+' [auc:{0:0.2f}]'.format(roc_auc),
+                         line = dict(color=color, width=1, dash=linestyles[count])))
 
-            ax2.plot(fpr, tpr, color=color, linewidth=1, linestyle=linestyles[count], label = str(sim.name)+ ' [auc:{0:0.2f}]'.format(roc_auc)) #plot model curve
 
-
-        ax2.tick_params(axis='y', labelcolor=color) #Color of the axis value
-
-        ##Design
-        ax1.legend(loc='upper center',ncol=3, fontsize= 'small')
-        ax2.legend(loc='lower center',ncol=3, fontsize= 'small')
-
-        fig.tight_layout()  # otherwise the right y-label is slightly clipped
-
-        #plt.set_axisbelow(True)
-        #plt.yaxis.grid(color='gray', linestyle='dashed')
-
-        plt.title( self.sys + "-[" + str(vecType) + "]")
-        plt.plot()
+        fig.update_layout(
+            title=self.sys + "-[" + str(vecType) + "]",
+            xaxis_title='recall [fpr]',
+            yaxis_title='tpr')
         return fig
 
-    def __Compute_avg_precision_same_plot(self, vecType = VectorizationType.word2vec):
+    def Compute_avg_precision_same_plot(self, vecType = VectorizationType.word2vec):
         '''Generated precision-recall curve'''
 
-        fig = plt.figure()
+        linestyles = ['solid','dash','dashdot','dotted']
+
+        fig = go.Figure()
+        color = 'red'
         y_test,y_score = self.vecTypeVerification(vecType=vecType)
 
         # calculate the no skill line as the proportion of the positive class
         no_skill = len(y_test[y_test==1]) / len(y_test)
-        plt.plot([0, 1], [no_skill, no_skill], linewidth=0.5, linestyle='--', label='No Skill [{0:0.2f}]'.format(no_skill)) #reference curve
+        fig.add_trace(go.Scatter(x=[0, 1], y=[no_skill, no_skill], name='No Skill [{0:0.2f}]'.format(no_skill), mode = "lines",
+                         line = dict(color='red', width=.5, dash='dash'))) #reference curve
 
         for count,sim in enumerate(self.sim_list):
             precision, recall, _ = precision_recall_curve(y_test, y_score[count]) #compute precision-recall curve
@@ -183,38 +225,40 @@ class SupervisedVectorEvaluation(VectorEvaluation):
             logging.info('Average precision-recall score: {0:0.2f}'.format(average_precision))
             logging.info('Precision-Recall AUC: %.2f' % auc_score)
 
-            #plt.plot(recall, precision, linewidth=0.4, marker='.', label = str(sim)) #plot model curve
-            plt.plot(recall, precision, linewidth=1, label = str(sim)+ ' [auc:{0:0.2f}]'.format(auc_score)) #plot model curve
+            fig.add_trace(go.Scatter(x=recall, y=precision, name=str(sim.name)+' [auc:{0:0.2f}]'.format(auc_score),
+                         line = dict(color=color, width=1, dash=linestyles[count]))) #plot model curve
 
-
-        plt.title(str(vecType))
-        plt.xlabel('Recall')
-        plt.ylabel('Precision')
-        plt.legend(fontsize=9) #show the legend
-#         plt.show() #show the plot
+        fig.update_layout(
+            title=self.sys + "-[" + str(vecType) + "]",
+            xaxis_title='Recall',
+            yaxis_title='Precision')
         return fig
 
-    def __Compute_roc_curve(self, vecType = VectorizationType.word2vec):
+    def Compute_roc_curve(self, vecType = VectorizationType.word2vec):
 
-        fig = plt.figure()
+        linestyles = ['solid','dash','dashdot','dotted']
+
+        fig = go.Figure()
+        color = 'blue'
         y_test,y_score = self.vecTypeVerification(vecType = vecType)
 
-        plt.plot([0, 1], [0, 1],  linewidth=0.5, linestyle='--', label='No Skill') #reference curve
+        fig.add_trace(go.Scatter(x=[0, 1], y=[0, 1], name='No Skill', mode = "lines",
+                         line = dict(color='blue', width=.5, dash='dot'))) #reference curve
 
         for count,sim in enumerate(self.sim_list):
             fpr, tpr, _ = roc_curve(y_test, y_score[count]) #compute roc curve
             roc_auc = roc_auc_score(y_test, y_score[count])
             logging.info('ROC AUC %.2f' % roc_auc)
 
-            plt.plot(fpr, tpr,  linewidth=1, label = str(sim)+  ' [auc:{0:0.2f}]'.format(roc_auc)) #plot model curve
-            pass
-        plt.title(str(vecType))
-        plt.xlabel('False Positive Rate')
-        plt.ylabel('True Positive Rate')
-        plt.legend(fontsize=9) #show the legend
-        #plt.show() #show the plot
+            fig.add_trace(go.Scatter(x=fpr, y=tpr, name=str(sim.name)+' [auc:{0:0.2f}]'.format(roc_auc),
+                         line = dict(color=color, width=1, dash=linestyles[count]))) #plot model curve #plot model curve
 
-        return figure
+        fig.update_layout(
+            title=self.sys + "-[" + str(vecType) + "]",
+            xaxis_title='False Positive Rate',
+            yaxis_title='True Positive Rate')
+
+        return fig
 
     def CofusionMatrix(self, vecType = VectorizationType.word2vec):
         ##TODO This implementatin is incomplete and not verify it yet
@@ -235,22 +279,20 @@ class ManifoldEntropy(VectorEvaluation):
     def minimum_shared_entropy(self,dist = SimilarityMetric.WMD_sim, extropy=False):
         '''Minimum Shared Plot'''
         ent = EntropyMetric.MSI_I
-        color = 'DarkBlue'
+        color = 'dark blue'
         if extropy:
             ent = EntropyMetric.MSI_X
-            color = 'Red'
+            color = 'red'
         columns = [str(i) for i in [ent, dist ]]
 
         corr = self.compute_spearman_corr(self.sharedEntropy_filtered, columns)
         logging.info('Correlation {%.2f}' % corr)
-        x1 = self.sharedEntropy_filtered.plot.scatter(
-            x = columns[0],
-            y = columns[1],
-            c = color,
-            s = 1,
+        fig = px.scatter(self.sharedEntropy_filtered,
+                                 x = columns[0], y = columns[1], color_discrete_sequence=[color])
+        fig.update_layout(
             title = self.sys +': ['+ dist.name + '-' + ent.name + '] Correlation {%.2f}' % corr
         )
-        return x1.figure
+        return fig
 
 
     def manifold_entropy_plot(self, manifold = EntropyMetric.MI, dist = SimilarityMetric.WMD_sim):
@@ -260,14 +302,13 @@ class ManifoldEntropy(VectorEvaluation):
         corr = self.compute_spearman_corr(self.manifoldEntropy, columns)
 
         logging.info('Correlation {%.2f}' % corr)
-        x1 = self.manifoldEntropy.plot.scatter(
-            x = columns[0],
-            y = columns[1],
-            c = 'DarkBlue',
-            s = 1,
+
+        fig = px.scatter(self.manifoldEntropy,
+                                 x = columns[0], y = columns[1], color_continuous_scale=["dark blue"])
+        fig.update_layout(
             title = self.sys +': ['+ dist.name + '-' + manifold.name + '] Correlation {%.2f}' % corr
         )
-        return x1.figure
+        return fig
 
     def composable_entropy_plot(self,
                                 manifold_x = EntropyMetric.MI,
@@ -277,25 +318,18 @@ class ManifoldEntropy(VectorEvaluation):
                                ):
 
         columns = [str(i) for i in [manifold_x, manifold_y, dist]]
-        fig, ax = plt.subplots()
 
         if ground:
             title = params['system']+': Information-Semantic Interactions by GT '
         else:
             title = params['system']+': Information-Semantic Interactions '+ dist.name
 
-        self.manifoldEntropy.plot.scatter(
-            x = columns[0],
-            y = columns[1],
-            c = columns[2],
-            #figsize = [12, 6],
-            title = title ,
-            colormap = 'viridis',
-            ax = ax,
-            s=1
+
+        fig = px.scatter(self.manifoldEntropy,x = columns[0], y = columns[1], color = columns[2],
+                         color_continuous_scale=px.colors.sequential.Viridis)
+        fig.update_layout(
+            title = title
         )
-        ax.set_xlabel( columns[0] )
-        ax.set_ylabel( columns[1] )
         return fig
 
     def composable_shared_plot(self,
@@ -306,25 +340,17 @@ class ManifoldEntropy(VectorEvaluation):
                                ):
 
         columns = [str(i) for i in [manifold_x, manifold_y, dist]]
-        fig, ax = plt.subplots()
 
         if ground:
             title = params['system']+': Information-Semantic Interactions by GT'
         else:
             title = params['system']+': Information-Semantic Interactions '+ dist.name
 
-        self.sharedEntropy_filtered.plot.scatter(
-            x = columns[0],
-            y = columns[1],
-            c = columns[2],
-            #figsize = [12, 6],
-            title = title,
-            colormap = 'viridis',
-            ax = ax,
-            s=1
+        fig = px.scatter(self.sharedEntropy_filtered,x = columns[0], y = columns[1], color = columns[2],
+                         color_continuous_scale=px.colors.sequential.Viridis)
+        fig.update_layout(
+            title = title
         )
-        ax.set_xlabel( columns[0] )
-        ax.set_ylabel( columns[1] )
         return fig
 
     def compute_spearman_corr(self, filter_metrics_01, columns):
