@@ -344,7 +344,6 @@ class ManifoldEntropy(VectorEvaluation):
         title = params['system']+': Information-Semantic Interactions '+ dist.name
 
         df = self.df_w2v.dropna(inplace=False)
-        print(df.columns)
         fig = px.scatter(df,x = columns[0], y = columns[1], color = columns[2],
                          color_continuous_scale=px.colors.sequential.Viridis)
         fig.update_layout(
