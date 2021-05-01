@@ -313,16 +313,12 @@ class ManifoldEntropy(VectorEvaluation):
     def composable_entropy_plot(self,
                                 manifold_x = EntropyMetric.MI,
                                 manifold_y = EntropyMetric.Loss,
-                                dist = SimilarityMetric.WMD_sim,
-                                ground = False
+                                dist = SimilarityMetric.WMD_sim
                                ):
 
         columns = [str(i) for i in [manifold_x, manifold_y, dist]]
 
-        if ground:
-            title = params['system']+': Information-Semantic Interactions by GT '
-        else:
-            title = params['system']+': Information-Semantic Interactions '+ dist.name
+        title = self.sys+': Information-Semantic Interactions '+ dist.name
 
 
         fig = px.scatter(self.manifoldEntropy,x = columns[0], y = columns[1], color = columns[2],
@@ -341,7 +337,7 @@ class ManifoldEntropy(VectorEvaluation):
         columns = [str(i) for i in [manifold_x, manifold_y, dist]]
 
 
-        title = params['system']+': Information-Semantic Interactions '+ dist.name
+        title = self.sys +': Information-Semantic Interactions '+ dist.name
 
         df = self.df_w2v.dropna(inplace=False)
         fig = px.scatter(df,x = columns[0], y = columns[1], color = columns[2],
