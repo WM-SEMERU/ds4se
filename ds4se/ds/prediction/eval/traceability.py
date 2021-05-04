@@ -10,6 +10,7 @@ import ds4se as ds
 from ....mining.ir import VectorizationType
 from ....mining.ir import SimilarityMetric
 from ....mining.ir import EntropyMetric
+from ....mining.ir import DistanceMetric
 
 # Cell
 #Description importation
@@ -318,7 +319,10 @@ class ManifoldEntropy(VectorEvaluation):
 
         columns = [str(i) for i in [manifold_x, manifold_y, dist]]
 
-        title = self.sys+': Information-Semantic Interactions '+ dist.name
+        if isinstance(dist, str):
+            title = self.sys +': Information-Semantic Interactions '+ dist
+        else:
+            title = self.sys +': Information-Semantic Interactions '+ dist.name
 
 
         fig = px.scatter(self.manifoldEntropy,x = columns[0], y = columns[1], color = columns[2],
@@ -336,10 +340,16 @@ class ManifoldEntropy(VectorEvaluation):
 
         columns = [str(i) for i in [manifold_x, manifold_y, dist]]
 
-
-        title = self.sys +': Information-Semantic Interactions '+ dist.name
+        if isinstance(dist, str):
+            title = self.sys +': Information-Semantic Interactions '+ dist
+        else:
+            title = self.sys +': Information-Semantic Interactions '+ dist.name
 
         df = self.df_w2v.dropna(inplace=False)
+
+#         df = self.df_w2v.dropna(inplace=False)
+#         df = pd.concat([df, self.df_d2v.drop(columns=["Linked?"])],axis=1,join="inner")
+
         fig = px.scatter(df,x = columns[0], y = columns[1], color = columns[2],
                          color_continuous_scale=px.colors.sequential.Viridis)
         fig.update_layout(
