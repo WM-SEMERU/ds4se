@@ -18,7 +18,7 @@ from gensim.similarities import SparseTermSimilarityMatrix
 from gensim import corpora
 from datetime import datetime
 from enum import Enum, unique, auto
-from ..mgmnt.prep.conv import *
+from ..mgmnt.prep import *
 
 # Cell
 #export

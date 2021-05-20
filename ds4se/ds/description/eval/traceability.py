@@ -141,7 +141,8 @@ class ExploratoryDataSoftwareAnalysis(VectorEvaluation):
         fig = px.scatter(
             dataset,
             x=[dataset["lower"],dataset["upper"]], #no need of str here
-            y=dataset["category"], color = color
+            y=dataset["category"], color = color,
+            labels={"color": "Linked"},
         )
         fig.update_yaxes(type='category',categoryorder='category ascending')
         fig.update_layout(showlegend=True, xaxis_title="",
@@ -174,7 +175,7 @@ class ExploratoryDataSoftwareAnalysis(VectorEvaluation):
                          df,
                          samples=10000,
                          conf=0.95,
-                         color=['blue','red'],
+                         color=['True','False'],
                          byLink = False
                         ):
         '''Main method for generating bootstrapping CIs'''

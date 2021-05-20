@@ -335,7 +335,8 @@ class ManifoldEntropy(VectorEvaluation):
     def composable_shared_plot(self,
                                 manifold_x = EntropyMetric.MSI_I,
                                 manifold_y = EntropyMetric.Loss,
-                                dist = SimilarityMetric.WMD_sim
+                                dist = SimilarityMetric.WMD_sim,
+                                drop_na = True
                                ):
 
         columns = [str(i) for i in [manifold_x, manifold_y, dist]]
@@ -345,17 +346,17 @@ class ManifoldEntropy(VectorEvaluation):
         else:
             title = self.sys +': Information-Semantic Interactions '+ dist.name
 
-        df = self.df_w2v.dropna(inplace=False)
-
-#         df = self.df_w2v.dropna(inplace=False)
-#         df = pd.concat([df, self.df_d2v.drop(columns=["Linked?"])],axis=1,join="inner")
+        df =  self.df_w2v
+        num_na = df.isna().sum().sum()
+        if drop_na:
+            df = df.dropna(inplace=False)
 
         fig = px.scatter(df,x = columns[0], y = columns[1], color = columns[2],
                          color_continuous_scale=px.colors.sequential.Viridis)
         fig.update_layout(
             title = title
         )
-        return fig
+        return fig, num_na
 
     def compute_spearman_corr(self, filter_metrics_01, columns):
         df_correlation = filter_metrics_01.copy()
