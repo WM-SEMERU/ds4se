@@ -2,7 +2,7 @@
 
 __all__ = ['logger', 'fhandler', 'formatter', 'fixed_errors', 'regex_errors', 'fixed_errors', 'regex_errors',
            'named_errors', 'warnings', 'name_coincidence_errors', 'jarWrapper', 'process_chars_for_bpes',
-           'JavaErrorChecker', 'selected_errors', 'group_error_df', 'get_errors_java_data']
+           'JavaErrorChecker', 'selected_errors', 'group_error_df', 'JavaErrorAnalyzer']
 
 # Cell
 
@@ -361,22 +361,31 @@ def group_error_df(error_df: pd.DataFrame, selected_errors) -> pd.DataFrame:
 
 # Cell
 
-def get_errors_java_data(df: pd.DataFrame, jar_path: str,
-                         id_column : Optional[str]='ID Class', error_column:Optional[str]=' error message',
-                         base_errors:Optional[list]=selected_errors) -> pd.DataFrame:
-    """
-    Function to perform the process of getting error-related data
-    :param df: Pandas DataFrame containing code snippets
-    :param jar_path: Path with the corresponding location of the jar pkg (error detection program)
-    :param id_column: Idx column name in the generated report
-    :param error_column: Column name of the error in the generated report
+class JavaErrorAnalyzer:
+    def __init__(self, jar_path: str):
+        """
+        :param jar_path:
+        """
 
-    :return: Pandas DataFrame containing the grouped errors
-    """
+        self.java_error_checker = JavaErrorChecker(jar_path)
 
-    java_error_checker = JavaErrorChecker(jar_path)
-    error_report_df = java_error_checker.perform_analysis(df, id_column, error_column)
+    def get_errors_java_data(self, df: pd.DataFrame,
+                             id_column: Optional[str]='ID Class',
+                             error_column: Optional[str]=' error message',
+                             base_errors:Optional[list]=selected_errors) -> pd.DataFrame:
+        """
+        Function to perform the process of getting error-related data
+        :param df: Pandas DataFrame containing code snippets
+        :param jar_path: Path with the corresponding location of the jar pkg (error detection program)
+        :param id_column: Idx column name in the generated report
+        :param error_column: Column name of the error in the generated report
 
-    grouped_df = group_error_df(error_report_df, base_errors)
+        :return: Pandas DataFrame containing the grouped errors
+        """
 
-    return grouped_df
+
+        error_report_df = self.java_error_checker.perform_analysis(df, id_column, error_column)
+
+        grouped_df = group_error_df(error_report_df, base_errors)
+
+        return grouped_df
