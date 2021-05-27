@@ -7,6 +7,8 @@ index = {}
 modules = [].py",
            "exp/info.py"].py"]
 
+doc_url = "https://ncoop57.github.io/ds4se/"
+
 git_url = "https://github.com/ncoop57/ds4se/tree/master/"
 
 def custom_doc_links(name): return None
