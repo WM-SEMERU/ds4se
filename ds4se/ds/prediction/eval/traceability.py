@@ -288,6 +288,14 @@ class ManifoldEntropy(VectorEvaluation):
 
         corr = self.compute_spearman_corr(self.sharedEntropy_filtered, columns)
         logging.info('Correlation {%.2f}' % corr)
+
+        x1 = self.sharedEntropy_filtered.plot.scatter(
+            x = columns[0],
+            y = columns[1],
+            c = color,
+            s = 1,
+            title = params['system']+': ['+ dist.name + '-' + ent.name + '] Correlation {%.2f}' % corr
+
         fig = px.scatter(self.sharedEntropy_filtered,
                                  x = columns[0], y = columns[1], color_discrete_sequence=[color])
         fig.update_layout(
@@ -303,6 +311,14 @@ class ManifoldEntropy(VectorEvaluation):
         corr = self.compute_spearman_corr(self.manifoldEntropy, columns)
 
         logging.info('Correlation {%.2f}' % corr)
+        x1 = self.manifoldEntropy.plot.scatter(
+            x = columns[0],
+            y = columns[1],
+            c = 'DarkBlue',
+            s = 1,
+            title = params['system']+': ['+ dist.name + '-' + manifold.name + '] Correlation {%.2f}' % corr
+
+        logging.info('Correlation {%.2f}' % corr)
 
         fig = px.scatter(self.manifoldEntropy,
                                  x = columns[0], y = columns[1], color_continuous_scale=["dark blue"])
@@ -314,10 +330,31 @@ class ManifoldEntropy(VectorEvaluation):
     def composable_entropy_plot(self,
                                 manifold_x = EntropyMetric.MI,
                                 manifold_y = EntropyMetric.Loss,
-                                dist = SimilarityMetric.WMD_sim
+                                dist = SimilarityMetric.WMD_sim,
+                                ground = False
                                ):
 
         columns = [str(i) for i in [manifold_x, manifold_y, dist]]
+
+        fig, ax = plt.subplots()
+
+        if ground:
+            title = params['system']+': Information-Semantic Interactions by GT '
+        else:
+            title = params['system']+': Information-Semantic Interactions '+ dist.name
+
+        self.manifoldEntropy.plot.scatter(
+            x = columns[0],
+            y = columns[1],
+            c = columns[2],
+            #figsize = [12, 6],
+            title = title ,
+            colormap = 'viridis',
+            ax = ax,
+            s=1
+        )
+        ax.set_xlabel( columns[0] )
+        ax.set_ylabel( columns[1] )
 
         if isinstance(dist, str):
             title = self.sys +': Information-Semantic Interactions '+ dist
@@ -336,6 +373,26 @@ class ManifoldEntropy(VectorEvaluation):
                                 manifold_x = EntropyMetric.MSI_I,
                                 manifold_y = EntropyMetric.Loss,
                                 dist = SimilarityMetric.WMD_sim,
+                                ground = False
+                               ):
+
+        columns = [str(i) for i in [manifold_x, manifold_y, dist]]
+        fig, ax = plt.subplots()
+
+        if ground:
+            title = params['system']+': Information-Semantic Interactions by GT'
+        else:
+            title = params['system']+': Information-Semantic Interactions '+ dist.name
+
+        self.sharedEntropy_filtered.plot.scatter(
+            x = columns[0],
+            y = columns[1],
+            c = columns[2],
+            #figsize = [12, 6],
+            title = title,
+            colormap = 'viridis',
+            ax = ax,
+            s=1
                                 drop_na = True
                                ):
 
