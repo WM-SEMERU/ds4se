@@ -19,7 +19,7 @@ configobj==5.0.6
 contextlib2==0.6.0.post1
 cryptography==2.3
 cycler==0.10.0
-dataclasses==0.7
+dataclasses==0.6
 debtcollector==2.2.0
 decorator==4.4.0
 defusedxml==0.6.0
@@ -110,11 +110,11 @@ pycparser==2.19
 pycrypto==2.6.1
 pydot==1.4.1
 Pygments==2.6.0
-pygobject==3.26.1
+#pygobject==3.26.1
 pygtrie==2.3.2
 pyprg==0.1.1b7
 pyrsistent==0.15.4
-python-apt==1.6.4
+#python-apt==1.6.4
 python-benedict==0.23.2
 python-dateutil==2.8.0
 python-fsutil==0.4.0
@@ -150,7 +150,7 @@ tensorboard-plugin-wit==1.8.0
 tensorflow==2.4.1
 tensorflow-datasets==4.2.0
 tensorflow-estimator==2.4.0
-tensorflow-gpu==2.0.0rc0
+tensorflow-gpu==2.2.0rc1
 tensorflow-metadata==0.27.0
 termcolor==1.1.0
 terminado==0.8.2
