@@ -2,16 +2,20 @@
 
 __all__ = ['logger', 'fhandler', 'formatter', 'fixed_errors', 'regex_errors', 'fixed_errors', 'regex_errors',
            'named_errors', 'warnings', 'name_coincidence_errors', 'jarWrapper', 'process_chars_for_bpes',
-           'JavaErrorChecker', 'selected_errors', 'group_error_df', 'JavaErrorAnalyzer']
+           'JavaErrorChecker', 'selected_errors', 'get_error_columns', 'group_error_df', 'JavaErrorAnalyzer',
+           'compute_jaccard_similarity', 'verify_columns', 'compare_jacc_sample_sets']
 
 # Cell
 
 import pandas as pd
 import numpy as np
+
 from pathlib import Path
 import os, shutil
+
 from subprocess import *
-from typing import Optional
+
+from typing import Optional, List
 
 # Cell
 
@@ -328,6 +332,20 @@ selected_errors = ['cannot_find_symbol',
 
 # Cell
 
+def get_error_columns(df_columns: List[str]) -> List[str]:
+    """
+    Get the appropriate columns according to the selected errors
+    and present errors in the provided dataset
+
+    :param df_columns: List containing the columns of a given dataset
+
+    :return: List containing appropriate columns.
+    """
+
+    return [e  for e in errors_result.columns if e != 'ID Class']
+
+# Cell
+
 def group_error_df(error_df: pd.DataFrame, selected_errors) -> pd.DataFrame:
     """
     :param error_df: Pandas Dataframe containing the errors for the code snippet
@@ -389,3 +407,71 @@ class JavaErrorAnalyzer:
         grouped_df = group_error_df(error_report_df, base_errors)
 
         return grouped_df
+
+# Cell
+
+def compute_jaccard_similarity(x: np.ndarray, y: np.ndarray) -> float:
+    """
+    Calculate the jaccard similarity for 2 sets
+
+    :param x: np array containing 1st set
+    :param y: np array containing 2nd set
+
+    :return: Float with the resulting jaccard index value.
+    """
+    x_set = set(x)
+    y_set = set(y)
+
+    jacc_idx= len(x_set & y_set) / len(x_set | y_set)
+
+    return jacc_idx
+
+# Cell
+
+def verify_columns(cols1: List[str], cols2: List[str]) -> bool:
+    """
+    Perform verification for columns prior to comparison
+
+    :return: bool indicating if the column sets match
+    """
+    if len(cols1) != len(cols2):
+        msg = "Columns lengths don't match"
+        logging.error(msg)
+        return False
+
+    s1 = set(cols1)
+    s2 = set(cols2)
+
+    if len(s1-s2) != 0:
+        msg = "Columns sets don't match"
+        logging.error(msg)
+        return False
+
+    return True
+
+# Cell
+
+def compare_jacc_sample_sets(sample_set1: pd.DataFrame, sample_set2: pd.DataFrame):
+    """
+    Compare 2 sample sets based on error information: Computes jaccard similarity index
+    for the vector representing the mean of base errors for the entire set.
+
+
+    :param sample_set1: DataFrame containing error information for 1st sample set to be compared
+    :param sample_set2: DataFrame containing error information for 2nd sample set to be compared
+    :return: Float value Jaccard similarity
+    """
+    columns_s1 = get_error_columns(list(sample_set1.columns))
+    columns_s2 = get_error_columns(list(sample_set2.columns))
+
+    if not verify_columns(columns_s1, columns_s2):
+        msg = "Data frames cannot be compared, different dimensions provided."
+        logger.error(msg)
+        raise Exception(msg)
+
+    error_vect_s1 = sample_set1.describe()[columns_s1].loc['mean'].values
+    error_vect_s2 = sample_set2.describe()[columns_s2].loc['mean'].values
+
+    jacc_idx = compute_jaccard_similarity(error_vect_s1, error_vect_s2)
+
+    return jacc_idx

@@ -12,6 +12,8 @@ import matplotlib.gridspec as gridspec
 import matplotlib.cm as cmx
 import matplotlib.patches as patches
 
+import numpy as np
+
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.colors import ListedColormap, LogNorm
 

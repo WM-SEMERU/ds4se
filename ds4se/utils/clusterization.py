@@ -53,9 +53,11 @@ def reduce_dims(feature_vectors, dims = 2):
     # hyperparameters from https://towardsdatascience.com/visualising-high-dimensional-datasets-using-pca-and-t-sne-in-python-8ef87e7915b
     pca = PCA(n_components=50)
     pca_features = pca.fit_transform(feature_vectors)
+    logging.info("Reduced dims via PCA.")
 
     tsne = TSNE(n_components=dims, verbose=1, perplexity=40, n_iter=300)
     tsne_features = tsne.fit_transform(pca_features)
+    logging.info("Reduced dims via t-SNE.")
 
     return tsne_features
 
@@ -109,11 +111,12 @@ def clusterize(feature_vecs, k_range = [2], dims = 2):
 # Cell
 
 def find_best_k(samples):
+    logging.info("Searching best k for clustering.")
     search_instance = silhouette_ksearch(samples, 2, 10, algorithm=silhouette_ksearch_type.KMEDOIDS).process()
     amount = search_instance.get_amount()
     scores = search_instance.get_scores()
 
-    print(f"Best Silhouette Score for k = {amount}: {scores[amount]}")
+    logging.info(f"Best Silhouette Score for k = {amount}: {scores[amount]}")
 
     return amount
 
