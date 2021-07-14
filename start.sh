@@ -23,7 +23,7 @@
 
 DATA=$1
 PORT=$2
-TAG=icodegen
+TAG=ds4se
 
 docker run --gpus all -d -p $PORT:8888 --user root \
 	-e NB_GROUP=grad -e NB_UID=$(id -u) -e NB_GID=$(id -g) \
