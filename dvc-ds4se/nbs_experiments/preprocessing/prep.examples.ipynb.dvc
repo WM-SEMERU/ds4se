@@ -1,0 +1,4 @@
+outs:
+- md5: 9816f29b7b6daa8bf41a5cf593fa02b6
+  size: 39433
+  path: prep.examples.ipynb
