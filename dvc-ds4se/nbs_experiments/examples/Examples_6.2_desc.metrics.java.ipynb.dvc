@@ -1,0 +1,4 @@
+outs:
+- md5: 3b8f08e4e9b861a93a27e90332ae6290
+  size: 47802
+  path: Examples_6.2_desc.metrics.java.ipynb

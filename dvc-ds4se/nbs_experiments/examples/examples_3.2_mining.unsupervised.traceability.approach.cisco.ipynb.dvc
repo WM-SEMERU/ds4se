@@ -1,0 +1,4 @@
+outs:
+- md5: 01416763dd341feb07fe2d202541e4c2
+  size: 35519
+  path: examples_3.2_mining.unsupervised.traceability.approach.cisco.ipynb

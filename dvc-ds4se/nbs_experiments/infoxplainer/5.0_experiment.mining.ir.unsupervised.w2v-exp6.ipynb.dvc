@@ -1,0 +1,4 @@
+outs:
+- md5: a2c79c87e17a7535710b9afb26670006
+  size: 37216
+  path: 5.0_experiment.mining.ir.unsupervised.w2v-exp6.ipynb

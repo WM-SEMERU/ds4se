@@ -1,0 +1,4 @@
+outs:
+- md5: 21e76374a80de359f6d1eb28f88f2873
+  size: 135633
+  path: Examples_6.2_desc.metrics.main.ipynb
