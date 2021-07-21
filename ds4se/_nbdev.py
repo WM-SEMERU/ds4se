@@ -2,8 +2,7 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"logging.basicConfig(format": "8.5_codexplainer.d2v_vectorization.ipynb",
-         "ConventionalPreprocessing": "0.1_mgmnt.prep.ipynb",
+index = {"ConventionalPreprocessing": "0.1_mgmnt.prep.ipynb",
          "open_file": "0.1_mgmnt.prep.ipynb",
          "get_files": "0.1_mgmnt.prep.ipynb",
          "jsonl_list_to_dataframe": "3.1_traceability.unsupervised.eda.ipynb",
@@ -15,14 +14,16 @@ index = {"logging.basicConfig(format": "8.5_codexplainer.d2v_vectorization.ipynb
          "tokenize_fns": "0.1_mgmnt.prep.ipynb",
          "read_bpe_files": "0.1_mgmnt.prep.ipynb",
          "split_lines_to_files": "0.1_mgmnt.prep.ipynb",
+         "logger": "8.5_codexplainer.d2v_vectorization.ipynb",
+         "get_file_name": "0.2_mgmnt.prep.files_mgmnt.ipynb",
          "get_files_list": "0.2_mgmnt.prep.files_mgmnt.ipynb",
          "jsonl_to_dataframe": "0.2_mgmnt.prep.files_mgmnt.ipynb",
          "csv_to_dataframe": "0.2_mgmnt.prep.files_mgmnt.ipynb",
          "load_np_vectors": "0.2_mgmnt.prep.files_mgmnt.ipynb",
+         "get_vector_paths_4_sample_set": "0.2_mgmnt.prep.files_mgmnt.ipynb",
          "CustomTokenizer": "0.3_mgmnt.prep.bpe_tokenization.ipynb",
          "HFTokenizer": "0.3_mgmnt.prep.bpe_tokenization.ipynb",
          "SPTokenizer": "0.3_mgmnt.prep.bpe_tokenization.ipynb",
-         "logger": "8.5_codexplainer.d2v_vectorization.ipynb",
          "get_tokens_frequency_hf_tkzr": "0.4_mgmnt.prep.tokenization_counting.ipynb",
          "get_cnts": "1.1_exp.info.ipynb",
          "encode_text": "1.1_exp.info.ipynb",
@@ -60,6 +61,8 @@ index = {"logging.basicConfig(format": "8.5_codexplainer.d2v_vectorization.ipynb
          "write_dataset_to_files": "1.5_exp.metrics_java.ipynb",
          "jarWrapper": "8.1_codexplainer.error_checker.ipynb",
          "JavaAnalyzer": "1.5_exp.metrics_java.ipynb",
+         "metrics_categories": "1.5_exp.metrics_java.ipynb",
+         "compute_categorized_euclidean_dist": "1.5_exp.metrics_java.ipynb",
          "Vectorizor": "2.2_repr.roberta.eval.ipynb",
          "BertVectorizor": "2.2_repr.roberta.eval.ipynb",
          "LoadCorpus": "2.3_repr.word2vec.train.ipynb",
@@ -74,7 +77,6 @@ index = {"logging.basicConfig(format": "8.5_codexplainer.d2v_vectorization.ipynb
          "heatmap": "3.1_traceability.unsupervised.eda.ipynb",
          "corrplot": "3.1_traceability.unsupervised.eda.ipynb",
          "BasicSequenceVectorization": "4.0_infoxplainer.ir.ipynb",
-         "Doc2VecSeqVect": "4.0_infoxplainer.ir.ipynb",
          "VectorizationType": "4.0_infoxplainer.ir.ipynb",
          "LinkType": "4.0_infoxplainer.ir.ipynb",
          "DistanceMetric": "4.0_infoxplainer.ir.ipynb",
@@ -88,9 +90,9 @@ index = {"logging.basicConfig(format": "8.5_codexplainer.d2v_vectorization.ipynb
          "SoftwareArtifacts": "4.0_infoxplainer.ir.ipynb",
          "ExploratoryDataSoftwareAnalysis": "4.5_infoxplainer.description.eval.traceability.ipynb",
          "ManifoldEntropy": "4.6_infoxplainer.prediction.eval.traceability.ipynb",
-         "CustomDistance": "5.0_utils.clusterization.ipynb",
+         "CustomDistance": "5.2_utils.distances.ipynb",
          "EuclideanSquareDistance": "5.0_utils.clusterization.ipynb",
-         "EuclideanDistance": "5.0_utils.clusterization.ipynb",
+         "EuclideanDistance": "5.2_utils.distances.ipynb",
          "reduce_dims_pca_tsne": "5.0_utils.clusterization.ipynb",
          "reduce_dims_tsne": "5.0_utils.clusterization.ipynb",
          "reduce_dims_pca": "5.0_utils.clusterization.ipynb",
@@ -125,6 +127,7 @@ index = {"logging.basicConfig(format": "8.5_codexplainer.d2v_vectorization.ipynb
          "plot_gmm_1d": "5.1_utils.visualization.ipynb",
          "plot_features": "5.1_utils.visualization.ipynb",
          "plot_clusters": "5.1_utils.visualization.ipynb",
+         "JaccardDistance": "5.2_utils.distances.ipynb",
          "fixed_errors": "8.1_codexplainer.error_checker.ipynb",
          "regex_errors": "8.1_codexplainer.error_checker.ipynb",
          "named_errors": "8.1_codexplainer.error_checker.ipynb",
@@ -138,7 +141,9 @@ index = {"logging.basicConfig(format": "8.5_codexplainer.d2v_vectorization.ipynb
          "JavaErrorAnalyzer": "8.1_codexplainer.error_checker.ipynb",
          "compute_jaccard_similarity": "8.1_codexplainer.error_checker.ipynb",
          "verify_columns": "8.1_codexplainer.error_checker.ipynb",
+         "validate_columns": "8.1_codexplainer.error_checker.ipynb",
          "compare_jacc_sample_sets": "8.1_codexplainer.error_checker.ipynb",
+         "compare_euclidean_sample_sets": "8.1_codexplainer.error_checker.ipynb",
          "check_file_existence": "8.5_codexplainer.d2v_vectorization.ipynb",
          "configure_dirs": "8.5_codexplainer.d2v_vectorization.ipynb",
          "Doc2VecVectorizer": "8.5_codexplainer.d2v_vectorization.ipynb",
@@ -146,7 +151,13 @@ index = {"logging.basicConfig(format": "8.5_codexplainer.d2v_vectorization.ipynb
          "Doc2VecVectorizerHF": "8.5_codexplainer.d2v_vectorization.ipynb",
          "reshape_vectors": "8.6_codexplainer.prototypes_criticisms.ipynb",
          "Clusterizer": "8.6_codexplainer.prototypes_criticisms.ipynb",
-         "KMedoidsClusterizer": "8.6_codexplainer.prototypes_criticisms.ipynb"}
+         "KMedoidsClusterizer": "8.6_codexplainer.prototypes_criticisms.ipynb",
+         "CriticismFinder": "8.6_codexplainer.prototypes_criticisms.ipynb",
+         "plot_data_distributions": "8.6_codexplainer.prototypes_criticisms.ipynb",
+         "plot_gmms": "8.6_codexplainer.prototypes_criticisms.ipynb",
+         "plot_overlap_gmm_compute_kl_div": "8.6_codexplainer.prototypes_criticisms.ipynb",
+         "plot_boundaries": "8.6_codexplainer.prototypes_criticisms.ipynb",
+         "perform_analysis": "8.6_codexplainer.prototypes_criticisms.ipynb"}
 
 modules = ["mgmnt/prep.py",
            "mgmnt/prep/files_mgmnt.py",
@@ -174,9 +185,12 @@ modules = ["mgmnt/prep.py",
            "infoxplainer/prediction/eval/traceability.py",
            "utils/clusterization.py",
            "utils/visualization.py",
+           "utils/distances.py",
            "codexplainer/error_checker.py",
            "codexplainer/d2v_vectorization.py",
            "codexplainer/prototypes_criticisms.py"]
+
+doc_url = "https://ncoop57.github.io/ds4se/"
 
 git_url = "https://github.com/ncoop57/ds4se/tree/master/"
 
