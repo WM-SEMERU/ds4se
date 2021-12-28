@@ -3,8 +3,8 @@
 __all__ = ['logger', 'fhandler', 'formatter', 'fixed_errors', 'regex_errors', 'fixed_errors', 'regex_errors',
            'named_errors', 'warnings', 'name_coincidence_errors', 'jarWrapper', 'process_chars_for_bpes',
            'JavaErrorChecker', 'selected_errors', 'get_error_columns', 'group_error_df', 'JavaErrorAnalyzer',
-           'compute_jaccard_similarity', 'verify_columns', 'validate_columns', 'compare_jacc_sample_sets',
-           'compare_euclidean_sample_sets']
+           'compare_sample_sets_errors', 'gather_errors_data_model', 'get_distances_4_errors_dfs',
+           'compute_err_divergence_dimension_wise', 'perform_error_distance_analysis']
 
 # Cell
 
@@ -15,10 +15,14 @@ from pathlib import Path
 import os, shutil
 
 from subprocess import *
+from tqdm import tqdm
 
-from typing import Optional, List
+from typing import Optional, List, Tuple, Dict, Callable
 
-from ..utils.distances import *
+from ..utils.distances import EuclideanDistance, JaccardDistance, CustomDistance, statistical_distance
+from ..utils.statistics import bootstrapping
+from ..mgmnt.prep.files_mgmnt import *
+from ..mgmnt.prep.token_mgmnt import *
 
 # Cell
 
@@ -345,7 +349,7 @@ def get_error_columns(df_columns: List[str]) -> List[str]:
     :return: List containing appropriate columns.
     """
 
-    return [e  for e in errors_result.columns if e != 'ID Class']
+    return [e for e in df_columns if e != 'ID Class']
 
 # Cell
 
@@ -385,7 +389,7 @@ def group_error_df(error_df: pd.DataFrame, selected_errors) -> pd.DataFrame:
 class JavaErrorAnalyzer:
     def __init__(self, jar_path: str):
         """
-        :param jar_path:
+        :param jar_path: Location of the jar file containing the tool
         """
 
         self.java_error_checker = JavaErrorChecker(jar_path)
@@ -413,90 +417,375 @@ class JavaErrorAnalyzer:
 
 # Cell
 
-def compute_jaccard_similarity(x: np.ndarray, y: np.ndarray) -> float:
-    """
-    Calculate the jaccard similarity for 2 sets
+def _get_appropriate_columns(columns_s1: List[str], columns_s2: List[str]):
+    s1 = set(columns_s1)
+    s2 = set(columns_s2)
 
-    :param x: np array containing 1st set
-    :param y: np array containing 2nd set
+    inters = list(s1 & s2)
+    s1_only = list(s1 - s2)
+    s2_only = list(s2 - s1)
 
-    :return: Float with the resulting jaccard index value.
-    """
-    x_set = set(x)
-    y_set = set(y)
-
-    jacc_idx= len(x_set & y_set) / len(x_set | y_set)
-
-    return jacc_idx
+    return inters, s1_only, s2_only
 
 # Cell
 
-def verify_columns(cols1: List[str], cols2: List[str]) -> bool:
+def _concat_vectors(intersect_vect, own_vect, outer_vect, is_set1: bool):
     """
-    Perform verification for columns prior to comparison
-
-    :return: bool indicating if the column sets match
+    Concatenates the vectors for posterior comparison
     """
-    if len(cols1) != len(cols2):
-        msg = "Columns lengths don't match"
-        logging.error(msg)
-        return False
+    outer_dims = np.zeros(len(outer_vect))
 
-    s1 = set(cols1)
-    s2 = set(cols2)
+    if not is_set1:
+        outer_dims, own_vect = own_vect, outer_dims
 
-    if len(s1-s2) != 0:
-        msg = "Columns sets don't match"
-        logging.error(msg)
-        return False
+    full_vector = np.concatenate([intersect_vect, own_vect, outer_dims],  axis=0)
 
-    return True
+    return full_vector
 
 # Cell
 
-def validate_columns(columns_s1, columns_s2):
-
-    if not verify_columns(columns_s1, columns_s2):
-        msg = "Data frames cannot be compared, different dimensions provided."
-        logger.error(msg)
-        raise Exception(msg)
-
-# Cell
-
-def compare_jacc_sample_sets(sample_set1: pd.DataFrame, sample_set2: pd.DataFrame):
+def compare_sample_sets_errors(sample_set1: pd.DataFrame, sample_set2: pd.DataFrame,
+                               distance: CustomDistance,
+                               stats: Optional[List]=['mean']) -> List[float]:
     """
-    Compare 2 sample sets based on error information: Computes jaccard similarity index
-    for the vector representing the mean of base errors for the entire set.
+    Performs comparison for 2 set of error data (coming from 2 diff. distributions)
 
+    :param sample_set1: pd.DF containing the grouped error info. for 1st sample set
+    :param sample_set1: pd.DF containing the grouped error info. for 2nd sample set
+    :param distance: CustomDistance object implementing the desired similarity
+    :param stats: List indicating the stats of interest for performing comparison
 
-    :param sample_set1: DataFrame containing error information for 1st sample set to be compared
-    :param sample_set2: DataFrame containing error information for 2nd sample set to be compared
-    :return: Float value Jaccard similarity
+    :return: float indicating the similarity (or distance value)
     """
-    columns_s1 = get_error_columns(list(sample_set1.columns))
-    columns_s2 = get_error_columns(list(sample_set2.columns))
-
-    if not verify_columns(columns_s1, columns_s2):
-        msg = "Data frames cannot be compared, different dimensions provided."
-        logger.error(msg)
-        raise Exception(msg)
-
-    error_vect_s1 = sample_set1.describe()[columns_s1].loc['mean'].values
-    error_vect_s2 = sample_set2.describe()[columns_s2].loc['mean'].values
-
-    jacc_idx = compute_jaccard_similarity(error_vect_s1, error_vect_s2)
-
-    return jacc_idx
-
-# Cell
-
-def compare_euclidean_sample_sets(sample_set1: pd.DataFrame, sample_set2: pd.DataFrame):
-    """
-    """
+    comparisons = []
 
     columns_s1 = get_error_columns(list(sample_set1.columns))
     columns_s2 = get_error_columns(list(sample_set2.columns))
 
-    validate_columns(columns_s1, columns_s2)
+    shared_cols, s1_cols, s2_cols = _get_appropriate_columns(columns_s1, columns_s2)
+
+    for stat in stats:
+        error_vect_s1 = sample_set1.describe()[shared_cols].loc[stat].values
+        error_vect_s2 = sample_set2.describe()[shared_cols].loc[stat].values
+
+        err_vect_s1_only = sample_set1.describe()[s1_cols].loc[stat].values
+        err_vect_s2_only = sample_set2.describe()[s2_cols].loc[stat].values
+
+        full_vector_s1 = _concat_vectors(error_vect_s1, err_vect_s1_only, err_vect_s2_only, is_set1=True)
+        full_vector_s2 = _concat_vectors(error_vect_s2, err_vect_s2_only, err_vect_s1_only, is_set1=False)
+
+        distance_value = distance.compute_distance(full_vector_s1, full_vector_s2)
+        comparisons.append(distance_value)
+
+    return comparisons
+
+# Cell
+
+def _perform_error_counting(freqs: Dict[str, int], errors_df: pd.DataFrame):
+    """
+    Accumulate the frequency of errors occurrence
+    """
+
+    errors = get_error_columns(list(errors_df.columns))
+
+    for err in errors:
+        freqs[err] = 1 if err not in freqs else freqs[err] + 1
+
+# Cell
+
+def _gather_description_stats(errors_list: List[str], exp_stats_dict: Dict, stats: List[str],
+             decript_df: pd.DataFrame):
+    """
+    Gather data related to a set of errors and a set of statistics behavior (e.g., mean, median)
+
+    """
+    for err in errors_list:
+        if err not in exp_stats_dict:
+            exp_stats_dict[err] = {}
+            for stat in stats:
+                exp_stats_dict[err][stat] = {}
+
+        for stat in stats:
+            exp_stats_dict[err][stat] = decript_df[err].loc[stat]
+
+def _gather_stats_for_experiment(gen_errors: pd.DataFrame, hmn_errors: pd.DataFrame,
+                                stats: List[str]) -> Tuple[Dict, Dict]:
+    """
+    Gather the data for 2 sets of errors, regarding the behavior of several statistics (e.g, mean)
+    for a single experiment
+
+    :param gen_errors: pd.DF containing errors data for generator model
+    :param hmn_errors: pd.DF containing errors data for human data
+    :param stats: List containing the stats of interest
+
+    :return: Tuple[Dict, Dict] containing the data for both error samples (model, human)
+    """
+    gen_err_cols = get_error_columns(list(gen_errors.columns))
+    hmn_err_cols = get_error_columns(list(hmn_errors.columns))
+
+    gen_err_descript = gen_errors.describe()
+    hmn_err_descript = hmn_errors.describe()
+
+    errors = gen_err_cols + hmn_err_cols
+    gen_exp_stats = {}
+    hmn_exp_stats = {}
+
+    _gather_description_stats(gen_err_cols, gen_exp_stats, stats, gen_err_descript)
+    _gather_description_stats(hmn_err_cols, hmn_exp_stats, stats, hmn_err_descript)
+
+    return gen_exp_stats, hmn_exp_stats
+
+# Cell
+
+def gather_errors_data_model(gen_samples_path: str, hmn_samples_path: str,
+                             metrics_tool_jar: str, n_samples: Optional[int]=None,
+                             samples_extension: Optional[str]="jsonl",
+                             compar_stats: Optional[List]=['mean'],
+                             compar_dists: Optional[List]=None,
+                             dist_names: Optional[List]=None) -> Tuple:
+    """
+
+    """
+    check_file_existence(metrics_tool_jar)
+
+    # Utils objects for performing analysis
+    java_error_analyzer = JavaErrorAnalyzer(jar_path=metrics_tool_jar)
+
+    # Custom distance objects
+
+    # Data for multiple distances, for multiple stats
+    distances_accumulation = {}
+
+    if compar_dists is None:
+        compar_dists = []
+        dist_names = ["Euclidean", "Jaccard"]
+
+        euclid_dist = EuclideanDistance()
+        jacc_dist = JaccardDistance()
+
+        compar_dists.append(euclid_dist)
+        compar_dists.append(jacc_dist)
+
+    for dist in dist_names:
+        distances_accumulation[dist] = {}
+        for stat in compar_stats:
+            distances_accumulation[dist][stat] = []
+
+    if len(compar_dists) != len(dist_names):
+        logging.error("Comparison distances and names don't match.")
+        return
+
+    gen_sample_set = get_files_list(gen_samples_path, samples_extension)
+    hmn_sample_set = get_files_list(hmn_samples_path, samples_extension)
+
+    # To gather info. about frequency of errors throughout the series of experiments
+    err_freqs = {
+        "Model": {},
+        "Human": {}
+    }
+
+    gen_errors_stats = []
+    hmn_errors_stats = []
+
+    if n_samples is None:
+        n_samples = len(gen_sample_set)
+
+    # For each experiment
+    for i in range(n_samples):
+        gen_sample_path = gen_sample_set[i]
+        hmn_sample_path = hmn_sample_set[i]
+
+        gen_samples = jsonl_to_dataframe(str(gen_sample_path))
+        hmn_samples = jsonl_to_dataframe(str(hmn_sample_path))
+
+        gen_errors = java_error_analyzer.get_errors_java_data(gen_samples)
+        hmn_errors = java_error_analyzer.get_errors_java_data(hmn_samples)
+
+        # Perform comparison for the given distances
+        for i in range(len(compar_dists)):
+            dist = compar_dists[i]
+            dist_name = dist_names[i]
+
+            custom_dist = compare_sample_sets_errors(gen_errors, hmn_errors, dist, compar_stats)
+
+            # Gather data for each stat of interest
+            for i in range(len(compar_stats)):
+                stat = compar_stats[i]
+                distances_accumulation[dist_name][stat].append(custom_dist[i])
+
+        gen_exp_stats, hmn_exp_stats = _gather_stats_for_experiment(gen_errors, hmn_errors, compar_stats)
+
+        gen_errors_stats.append(gen_exp_stats)
+        hmn_errors_stats.append(hmn_exp_stats)
+
+        _perform_error_counting(err_freqs["Model"], gen_errors)
+        _perform_error_counting(err_freqs["Human"], hmn_errors)
+
+    return distances_accumulation, err_freqs, gen_errors_stats, hmn_errors_stats
+
+# Cell
+
+def get_distances_4_errors_dfs(gen_err_df: pd.DataFrame, hmn_err_df: pd.DataFrame,
+                               estimation_function: Callable,
+                               bootstrap_samples_size: int):
+    """
+    Compares 2 error sets
+    """
+    gen_err_dims = get_error_columns(list(gen_err_df.columns))
+    hmn_err_dims = get_error_columns(list(hmn_err_df.columns))
+
+    js_dimension_compar = compute_err_divergence_dimension_wise(
+        gen_err_df, hmn_err_df,
+        gen_err_dims, hmn_err_dims,
+        estimation_function, bootstrap_samples_size
+    )
+
+    return js_dimension_compar
 
 
+def compute_err_divergence_dimension_wise(gen_err_df: pd.DataFrame, hmn_err_df: pd.DataFrame,
+                           dims_gen_err: List[str], dims_hmn_err: List[str],
+                           est_func: Callable, bs_size: int):
+    """
+    Compute the err divergence for 2 given error sets
+
+    :param gen_err_df: pd.DataFrame containing grouped errors for model set
+    :param hmn_err_df: pd.DataFrame containing grouped errors for human set
+    :param dims_gen_err: List[str] indicating dimensions present in gen. model for comparison
+    :param dims_hmn_err: List[str] indicating dimensions present in human set for comparison
+    :param est_function: Callable(function) indicating the estimation function
+
+    :return: Dictionary containing dimension-wise computations of JS divergence and distance
+    """
+    div_dist_data = {}
+    dims = set(dims_gen_err + dims_hmn_err)
+
+    for dimension in dims:
+        # Get the data for the specific dimension to be compared, in case
+        # any of the 2 sets does not contain the specified dimension, zeros are used as data
+
+        if dimension in dims_gen_err:
+            gen_dim_data = gen_err_df[dimension].values
+            gen_artificial_dim = False
+        else:
+            gen_dim_data = np.zeros(len(gen_err_df))
+            gen_artificial_dim = True
+
+        if dimension in dims_hmn_err:
+            hmn_dim_data = hmn_err_df[dimension].values
+            hmn_artificial_dim = False
+        else:
+            hmn_dim_data = np.zeros(len(hmn_err_df))
+            hmn_artificial_dim = True
+#
+#         logging.info("Starting bootstrapping.")
+#         bs_gen_dim_data = bootstrapping(gen_dim_data, est_func, sample_size=bs_size)
+#         bs_hmn_dim_data = bootstrapping(hmn_dim_data, est_func, sample_size=bs_size)
+
+#         bs_gen_dim = bs_gen_dim_data['bootstrap_repl'].values
+#         bs_hmn_dim = bs_hmn_dim_data['bootstrap_repl'].values
+
+        logging.info("Starting JS computations.")
+        # Bins setting is estimated via Freedman–Diaconis rule
+        js_div, js_dist = statistical_distance(hmn_dim_data, gen_dim_data)
+        div_dist_data[dimension] = {
+            "JS-Divergence": js_div,
+            "JS-Distance": js_dist
+        }
+
+    return div_dist_data
+
+# Cell
+
+def perform_error_distance_analysis(gen_samples_path: str, hmn_samples_path: str,
+                                    metrics_tool_jar: str, n_experiments: Optional[int]=None,
+                                    samples_extension: Optional[str]="jsonl",
+                                    compar_stats: Optional[List]=['mean'],
+                                    dist_names: Optional[List]=None,
+                                    np_est_function: Optional[Callable]=np.mean,
+                                    bootstrap_samples_size: Optional[int]=500
+                                    ) -> Tuple:
+    """
+    Perform error-based analysis for Generated data vs Real data
+
+    :return: Tuple[Array, Dict, Array, Array]: [experiments_distances, error_freqs, gen_err_stats, hmn_err_stats]
+             Containing
+             - experiment distances: (accumulation over collection of experiments)
+             - error freqs: Frequency behavior of errors over all the experiments (mere counting)
+             - gen error stats: Description of errors behavior throughout the experiments (based on certain stats [e.g. mean])
+                                for generator samples
+             - hmn error stats: Description of errors behavior throughout the experiments (based on certain stats [e.g. mean])
+                                for human samples
+    """
+
+    check_file_existence(metrics_tool_jar)
+
+    # Utils objects for performing analysis
+    # Build the Error analyzer tool
+
+    logging.info("Building error analyzer tool.")
+    java_error_analyzer = JavaErrorAnalyzer(jar_path=metrics_tool_jar)
+
+    # Get sample file names
+    gen_sample_set = get_files_list(gen_samples_path, samples_extension)
+    hmn_sample_set = get_files_list(hmn_samples_path, samples_extension)
+
+    # Collection of dimension-based comparison (JS divergence & distance)
+    # for each experiment
+    distance_data = []
+
+    # To gather info. about frequency of errors throughout the series of experiments
+    err_freqs = {
+        "Model": {},
+        "Human": {}
+    }
+
+    gen_errors_stats = []
+    hmn_errors_stats = []
+
+    # For each experiment (i.e, couple of compared sample sets)
+    for i in tqdm(range(n_experiments)):
+        gen_sample_path = gen_sample_set[i]
+        hmn_sample_path = hmn_sample_set[i]
+
+        gen_samples = jsonl_to_dataframe(str(gen_sample_path))
+        hmn_samples = jsonl_to_dataframe(str(hmn_sample_path))
+
+        gen_samples = replace_spec_toks_to_original(gen_samples, java_special_tokens)
+        hmn_samples = replace_spec_toks_to_original(hmn_samples, java_special_tokens)
+
+        logging.info('Gen samples: ')
+        logging.info(gen_samples.head())
+
+        logging.info('Human samples: ')
+        logging.info(hmn_samples.head())
+
+        logging.info("Gathering errors for samples.")
+        gen_errors = java_error_analyzer.get_errors_java_data(gen_samples)
+        hmn_errors = java_error_analyzer.get_errors_java_data(hmn_samples)
+
+        logging.info("Starting comparison computation.")
+
+        dimension_comparison = get_distances_4_errors_dfs(
+            gen_errors, hmn_errors,
+            np_est_function,
+            bootstrap_samples_size
+        )
+
+        distance_data.append(dimension_comparison)
+
+        # Accumulate errors frequency over all experiments
+        # Grouped by model and human data
+
+        logging.info("Counting error freqs.")
+
+        _perform_error_counting(err_freqs["Model"], gen_errors)
+        _perform_error_counting(err_freqs["Human"], hmn_errors)
+
+        logging.info("Gathering individual error freqs.")
+        gen_exp_stats, hmn_exp_stats = _gather_stats_for_experiment(gen_errors, hmn_errors, compar_stats)
+
+        gen_errors_stats.append(gen_exp_stats)
+        hmn_errors_stats.append(hmn_exp_stats)
+
+    return distance_data, err_freqs, gen_errors_stats, hmn_errors_stats
