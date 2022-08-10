@@ -81,7 +81,7 @@ MarkupSafe==1.1.1
 matplotlib==3.1.1
 mistune==0.8.4
 nanotime==0.5.2
-nbconvert==5.6.0
+nbconvert==6.3.0
 nbdev==0.2.3
 nbformat==4.4.0
 networkx==2.5
