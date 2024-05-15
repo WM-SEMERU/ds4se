@@ -1,0 +1,23 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/python-3-miniconda
+{
+	"name": "ds4se",
+	//"image": "vsc-codesyntaxconcept-b6450add37b45ea5771471ffb96f60f8daaa6c97232a67b0fc572cec6e1a9bef",
+	"build": { 
+		"context": "..",
+		"dockerfile": "Dockerfile",
+		"args": {
+			"NODE_VERSION": "none"
+		}
+	},
+	"mounts": [
+		"source=/nfs/semeru/ds4se/code_syntax_concept,target=/workspaces/ds4se/data,type=bind,consistency=cached",
+		"source=/nfs/semeru/data/data-backup/dvc-ds4se,target=/tf/dvc,type=bind,consistency=cached",
+		"source=/scratch/danaderp/datax,target=/workspaces/ds4se/datax,type=bind,consistency=cached"
+	],
+	"remoteEnv": {
+        //"MY_PROJECT_NAME": "The-container-name-here" //NOTE: make this name the same as the folder containing the repo
+        "MY_PROJECT_NAME": "ds4se"
+    },
+	"runArgs": ["--gpus", "all", "-e", "GRANT_SUDO=yes","--name", "${localWorkspaceFolderBasename}-danaderp", "--add-host", "host.docker.internal:host-gateway"]	
+}
